@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScaleReach AI - Free AI Video Repurposing & Viral Clips</title>
+  <meta name="description" content="100% Free AI video clipping tool. Turn long videos into viral shorts, choose 8 crazy caption styles, split-screen gameplay, and export 9:16 shorts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-body">
+
+  <div class="app-layout">
+    
+    <!-- ==========================================
+         SIDEBAR (Exact match with user screenshot)
+         ========================================== -->
+    <aside class="app-sidebar" id="appSidebar">
+      
+      <!-- Workspace Switcher Header -->
+      <div class="sidebar-workspace-header">
+        <div class="workspace-brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="18" height="18" x="3" y="3" rx="2"/>
+            <path d="M3 9h18"/><path d="M9 21V9"/>
+          </svg>
+        </div>
+        <div class="workspace-text-group">
+          <strong>AJJEZ</strong>
+          <small>Owner</small>
+        </div>
+        <span class="workspace-caret">&#9662;</span>
+      </div>
+
+      <nav class="sidebar-nav-scroll">
+        
+        <!-- Home Link (Active) -->
+        <div class="nav-item-group">
+          <button class="side-link active" id="sideNavHome">
+            <span class="side-icon">📹</span>
+            <span>Home</span>
+          </button>
+        </div>
+
+        <!-- Library Section -->
+        <div class="sidebar-section">
+          <span class="section-title-label">Library</span>
+          <button class="side-link" id="sideNavAllClips">
+            <span class="side-icon">✂️</span>
+            <span>All Clips</span>
+          </button>
+          <button class="side-link" id="sideNavFavorites">
+            <span class="side-icon">⭐</span>
+            <span>Favorites</span>
+          </button>
+        </div>
+
+        <!-- Tools Section -->
+        <div class="sidebar-section">
+          <span class="section-title-label">Tools</span>
+          <button class="side-link" id="sideNavTemplates">
+            <span class="side-icon">🎨</span>
+            <span>Brand Templates</span>
+          </button>
+          <button class="side-link" id="sideNavScheduler">
+            <span class="side-icon">📅</span>
+            <span>Social Scheduler</span>
+          </button>
+          <div class="side-link-with-badge">
+            <div class="side-link-inner">
+              <span class="side-icon">⏱️</span>
+              <span>Minutes</span>
+            </div>
+            <span class="badge-free-unlimited">Free &bull; Unlimited</span>
+          </div>
+        </div>
+
+        <!-- Free Creator Access Box (No paid subscription text) -->
+        <div class="free-creator-card">
+          <div class="free-card-content">
+            <div class="free-badge-tag">⚡ 100% Free Forever</div>
+            <h4>Unlimited AI Clips</h4>
+            <p>Export in 1080p with no watermarks or limits.</p>
+          </div>
+        </div>
+
+        <!-- System & General Section -->
+        <div class="sidebar-section">
+          <button class="side-link">
+            <span class="side-icon">🎁</span>
+            <span>Affiliate</span>
+            <span class="badge-green-new">New</span>
+          </button>
+          <button class="side-link">
+            <span class="side-icon">🔑</span>
+            <span>API Keys</span>
+          </button>
+          <button class="side-link">
+            <span class="side-icon">⚙️</span>
+            <span>Settings</span>
+          </button>
+          <button class="side-link">
+            <span class="side-icon">⌨️</span>
+            <span>Shortcuts</span>
+          </button>
+          <button class="side-link">
+            <span class="side-icon">❓</span>
+            <span>Get Help</span>
+          </button>
+          <button class="side-link">
+            <span class="side-icon">💬</span>
+            <span>Report Issue</span>
+          </button>
+        </div>
+
+      </nav>
+
+    </aside>
+
+    <!-- ==========================================
+         MAIN APP CONTENT AREA
+         ========================================== -->
+    <div class="app-main-viewport">
+      
+      <!-- Top Navigation Header -->
+      <header class="top-nav-bar">
+        <div class="nav-left-group">
+          <button class="icon-btn-sidebar" id="sidebarToggleBtn" title="Toggle Sidebar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="18" x="3" y="3" rx="2"/>
+              <path d="M9 3v18"/>
+            </svg>
+          </button>
+          <div class="breadcrumb-trail">
+            <a href="#" class="crumb-link" id="crumbDashboard">Dashboard</a>
+            <span class="crumb-separator">&gt;</span>
+            <span class="crumb-current" id="crumbCurrent">Videos</span>
+          </div>
+        </div>
+
+        <div class="nav-right-group">
+          <span class="plan-badge-pill">Free</span>
+          <div class="free-status-badge">
+            <span class="pulse-green-dot"></span>
+            <span>100% Free Mode</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Main Viewport Container -->
+      <div class="content-scroll-container">
+        
+        <!-- ==================================================================
+             SCREEN 1: HOME PAGE (EXACT MATCH WITH USER SCREENSHOT)
+             ================================================================== -->
+        <section class="view-screen active" id="homeDashboardView">
+          
+          <div class="home-hero-center">
+            
+            <!-- Greeting Header with Free Minutes Pill -->
+            <div class="greeting-row">
+              <h1 class="greeting-title">
+                <span class="wave-emoji">👋</span> Hey, AJJEZ
+              </h1>
+              <div class="greeting-actions-right">
+                <div class="free-minutes-pill">
+                  <span class="clock-icon">⏱️</span>
+                  <span>Unlimited Free Mins</span>
+                </div>
+                <div class="free-creator-tag">
+                  <span>✨ 100% Free AI</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Central Hero Generation Card (Exact match with screenshot) -->
+            <div class="hero-generation-card">
+              
+              <!-- 1. YouTube Connect Banner (At top of the card) -->
+              <div class="yt-connect-banner" id="ytConnectBanner">
+                <div class="yt-connect-left">
+                  <span class="yt-badge-red-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </span>
+                  <span class="yt-connect-text">Connect your YouTube channel to import videos in one click</span>
+                  <span class="yt-bonus-pill">+Free Bonus</span>
+                </div>
+                <button class="btn-connect-link" id="connectYoutubeBtn">Connect</button>
+              </div>
+
+              <!-- 2. "Don't have a video ready?" + Sample Link Selector -->
+              <div class="sample-prompt-row">
+                <span class="prompt-dim-text">Don't have a video ready?</span>
+                <div class="sample-dropdown-trigger" id="sampleDropdownTrigger">
+                  <span class="sample-link-blue">Try a sample video &#9662;</span>
+                  
+                  <!-- Dropdown Menu of Presets -->
+                  <div class="sample-menu-popover hidden" id="sampleMenuPopover">
+                    <div class="sample-option-item" data-url="https://www.youtube.com/watch?v=ishowspeed_wwe" data-title="HOW I FOUGHT IN WRESTLEMANIA" data-author="IShowSpeed • 18:24" data-img="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?w=800&auto=format&fit=crop&q=80">
+                      <strong>🔥 IShowSpeed WrestleMania</strong>
+                      <small>High Energy • 18:24</small>
+                    </div>
+                    <div class="sample-option-item" data-url="https://www.youtube.com/watch?v=travel_vlogger" data-title="RUSSIA TO IRAN OVERLAND ADVENTURE" data-author="Vlogger Overland • 42:15" data-img="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80">
+                      <strong>🚌 Overland Travel Roadtrip</strong>
+                      <small>Adventure • 42:15</small>
+                    </div>
+                    <div class="sample-option-item" data-url="https://www.youtube.com/watch?v=mkbhd_folding" data-title="The Dual Screen Folding Revolution" data-author="MKBHD • 16:40" data-img="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&auto=format&fit=crop&q=80">
+                      <strong>📱 MKBHD Folding Phone</strong>
+                      <small>Tech Deep Dive • 16:40</small>
+                    </div>
+                    <div class="sample-option-item" data-url="https://www.youtube.com/watch?v=khan_sir_podcast" data-title="KHAN SIR ON PAKISTAN & GEOPOLITICS" data-author="The Real Talks • 1h 12m" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80">
+                      <strong>🎙️ Khan Sir Podcast (35M+ views)</strong>
+                      <small>Podcast • 1h 12m</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Big Input Bar with Google Drive Logo & Multi-Source Placeholder -->
+              <div class="main-video-input-box">
+                <span class="drive-multi-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 14.5L9.5 5h5L9 14.5H4z" fill="#34A853"/>
+                    <path d="M9.5 5h5l5.5 9.5h-5L9.5 5z" fill="#4285F4"/>
+                    <path d="M4 14.5l2.5 4.5h11l2.5-4.5H4z" fill="#FBBC05"/>
+                  </svg>
+                </span>
+                <input type="text" id="mainVideoUrlInput" placeholder="Enter URL">
+              </div>
+
+              <!-- 4. Big Primary Button "Get clips in 1 click" -->
+              <button class="btn-get-clips-primary" id="homeGetClipsBtn">
+                <span>Get clips in 1 click</span>
+              </button>
+
+              <!-- 5. Footer Row: Upload File + Works With Platform Icons -->
+              <div class="hero-card-footer-row">
+                <div class="upload-file-group">
+                  <input type="file" id="homeFileInput" accept="video/mp4,video/webm,video/quicktime" class="hidden-input">
+                  <button class="btn-upload-file-pill" id="homeUploadFileBtn">
+                    <span class="icon-upload">📁</span>
+                    <span>Upload file</span>
+                    <span class="badge-free-tag">FREE</span>
+                  </button>
+                </div>
+
+                <div class="works-with-logos">
+                  <span class="works-label">Works with</span>
+                  <span class="icon-brand yt-red">▶</span>
+                  <span class="icon-brand twitch-purp">👾</span>
+                  <span class="icon-brand kick-green">🟩</span>
+                  <span class="icon-brand drive-color">☁️</span>
+                  <span class="icon-brand loom-sun">📼</span>
+                  <span class="formats-text">+ .mp4/.mov links</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Demo Videos Section (Exact match with screenshot) -->
+            <div class="demo-videos-section">
+              <div class="demo-section-header">
+                <div class="demo-title-group">
+                  <span class="cam-icon">📹</span>
+                  <h3>Demo Videos</h3>
+                  <span class="badge-try-it">TRY IT</span>
+                </div>
+                <p>Explore real videos with AI-generated clips. Edit captions, try styles, and see the full workflow.</p>
+              </div>
+
+              <!-- Demo Thumbnails Carousel / Grid (The 5 exact videos from user screenshot) -->
+              <div class="demo-cards-carousel" id="demoCardsCarousel">
+                
+                <!-- Demo 1: Overland Bus Vlogger -->
+                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=travel_vlogger" data-title="Overland Adventure: Russia to Iran" data-author="Outdoor Vlogger • 24:10" data-img="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80">
+                  <div class="demo-thumb-box">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80" alt="Travel Vlog">
+                    <div class="badge-sticker sticker-russia">RUSSIA ✈️</div>
+                    <div class="badge-sticker sticker-iran">IRAN 🚌</div>
+                    <div class="demo-play-btn">▶</div>
+                  </div>
+                  <div class="demo-card-info">
+                    <h4>Overland Adventure: Russia to Iran</h4>
+                    <p>Travel &amp; Vlog &bull; 24:10</p>
+                  </div>
+                </div>
+
+                <!-- Demo 2: IShowSpeed WrestleMania -->
+                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=ishowspeed_wwe" data-title="HOW I FOUGHT IN WRESTLEMANIA" data-author="IShowSpeed • 18:24" data-img="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?w=800&auto=format&fit=crop&q=80">
+                  <div class="demo-thumb-box">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?w=800&auto=format&fit=crop&q=80" alt="Speed WrestleMania">
+                    <div class="badge-sticker sticker-speed">WRESTLEMANIA 🔥</div>
+                    <div class="demo-play-btn">▶</div>
+                  </div>
+                  <div class="demo-card-info">
+                    <h4>HOW I FOUGHT IN WRESTLEMANIA</h4>
+                    <p>IShowSpeed &bull; 18:24</p>
+                  </div>
+                </div>
+
+                <!-- Demo 3: MKBHD Folding Phone -->
+                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=mkbhd_folding" data-title="The Dual Screen Folding Revolution" data-author="MKBHD • 16:40" data-img="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&auto=format&fit=crop&q=80">
+                  <div class="demo-thumb-box">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&auto=format&fit=crop&q=80" alt="MKBHD Smartphone">
+                    <div class="badge-sticker sticker-tech">9:41 REVIEW</div>
+                    <div class="demo-play-btn">▶</div>
+                  </div>
+                  <div class="demo-card-info">
+                    <h4>The Dual Screen Folding Revolution</h4>
+                    <p>MKBHD &bull; 16:40</p>
+                  </div>
+                </div>
+
+                <!-- Demo 4: Khan Sir on Pakistan Podcast -->
+                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=khan_sir_podcast" data-title="KHAN SIR ON PAKISTAN & GEOPOLITICS" data-author="The Real Talks • 1h 12m" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80">
+                  <div class="demo-thumb-box">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" alt="Khan Sir Podcast">
+                    <div class="badge-sticker sticker-views">35M+ VIEWS</div>
+                    <div class="demo-play-btn">▶</div>
+                  </div>
+                  <div class="demo-card-info">
+                    <h4>KHAN SIR ON PAKISTAN</h4>
+                    <p>Podcast &bull; 1h 12m</p>
+                  </div>
+                </div>
+
+                <!-- Demo 5: Paris Chef in Kitchen -->
+                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=french_chef" data-title="Cooking 1,000 Baguettes in Paris" data-author="Chef Pierre • 14:50" data-img="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&auto=format&fit=crop&q=80">
+                  <div class="demo-thumb-box">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&auto=format&fit=crop&q=80" alt="French Chef">
+                    <div class="badge-sticker sticker-paris">PARIS 🥐</div>
+                    <div class="demo-play-btn">▶</div>
+                  </div>
+                  <div class="demo-card-info">
+                    <h4>Cooking 1,000 Baguettes in Paris</h4>
+                    <p>Food &bull; 14:50</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==================================================================
+             SCREEN 2: CONFIGURE VIEW (WITH THE 8 CRAZY CAPTION STYLES)
+             ================================================================== -->
+        <section class="view-screen hidden" id="configureView">
+          
+          <div class="top-back-row">
+            <button class="back-link-btn" id="backToHomeBtn">
+              <span>&larr;</span> Back to Dashboard
+            </button>
+          </div>
+
+          <div class="configure-grid">
+            
+            <!-- LEFT COLUMN: YouTube URL & Video Thumbnail Card -->
+            <div class="col-left">
+              <div class="card card-url-preview">
+                
+                <div class="url-input-label">
+                  <span class="yt-icon-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff0000">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </span>
+                  <strong>YouTube URL</strong>
+                </div>
+
+                <div class="input-validated-wrapper">
+                  <input type="text" id="youtubeUrlInput" placeholder="Enter URL" spellcheck="false">
+                  <span class="validation-check-icon">&#10003;</span>
+                </div>
+
+                <!-- Video Thumbnail Card with Title & Duration -->
+                <div class="video-preview-tile" id="videoPreviewTile">
+                  <div class="thumb-media-box">
+                    <img id="videoThumbImg" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&auto=format&fit=crop&q=80" alt="Video Thumbnail">
+                    <div class="thumb-badge-duration" id="videoDurationBadge">22:28</div>
+                    <div class="thumb-play-overlay">▶</div>
+                  </div>
+
+                  <div class="thumb-meta-footer">
+                    <div class="thumb-titles">
+                      <h4 id="videoMetaTitle">Beat Professional Athlete, Win $100,000</h4>
+                      <p id="videoMetaAuthor">MrBeast &bull; 22:28</p>
+                    </div>
+                    <button class="thumb-remove-btn" id="removeVideoBtn" title="Change video">&times;</button>
+                  </div>
+                </div>
+
+                <div class="local-upload-option">
+                  <span>Or choose file from computer:</span>
+                  <input type="file" id="localFileInput" accept="video/mp4,video/webm,video/quicktime" class="hidden-input">
+                  <button class="btn btn-secondary btn-sm" id="localBrowseBtn">
+                    📁 Browse Local File (.MP4, .MOV)
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Clip Type, The 8 Crazy Captions, Auto Hook -->
+            <div class="col-right">
+              
+              <!-- Card 1: Clip Type -->
+              <div class="card card-setting">
+                <div class="setting-header">
+                  <div class="setting-title-box">
+                    <span class="setting-title">Clip Type <span class="info-circle" title="Choose the AI extraction strategy">ⓘ</span></span>
+                    <p class="setting-subtitle">Choose what kind of clips to generate</p>
+                  </div>
+                  <div class="pill-segmented-control">
+                    <button class="seg-btn active" data-seg="templates">Templates</button>
+                    <button class="seg-btn" data-seg="custom">Custom</button>
+                  </div>
+                </div>
+
+                <!-- Dropdown Selector -->
+                <div class="custom-select-box" id="clipTypeDropdown">
+                  <div class="select-selected">
+                    <div class="select-main-text">
+                      <strong id="selectedClipTypeTitle">Viral Clips</strong>
+                      <span id="selectedClipTypeDesc">For several high-impact short videos.</span>
+                    </div>
+                    <span class="select-arrow">&#9662;</span>
+                  </div>
+                  <div class="select-dropdown-menu hidden" id="clipTypeMenu">
+                    <div class="dropdown-item active" data-val="viral" data-title="Viral Clips" data-desc="For several high-impact short videos.">
+                      <strong>Viral Clips</strong>
+                      <span>High-retention hooks and punchlines.</span>
+                    </div>
+                    <div class="dropdown-item" data-val="funny" data-title="Funny Moments & Reactions" data-desc="Focused on laughter bursts and comedy timing.">
+                      <strong>Funny Moments & Reactions</strong>
+                      <span>AI scans laughter frequencies and jokes.</span>
+                    </div>
+                    <div class="dropdown-item" data-val="split" data-title="Split-Screen Gameplay Format" data-desc="Video on top + Subway Surfers / Minecraft on bottom.">
+                      <strong>Split-Screen Gameplay Format</strong>
+                      <span>Viral TikTok format with bottom gaming footage.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: The Exact 8 Crazy Caption Styles -->
+              <div class="card card-setting card-captions-suite">
+                <div class="setting-header">
+                  <div class="setting-title-box">
+                    <span class="setting-title">Captions <span class="info-circle" title="Choose among the top 8 viral caption presets">ⓘ</span></span>
+                    <p class="setting-subtitle">Add captions to your clips and choose a style</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="captionsToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <!-- 8 Crazy Captions Carousel with < and > Arrows -->
+                <div class="carousel-outer-shell">
+                  
+                  <button class="carousel-arrow arrow-left" id="carouselPrevBtn" aria-label="Previous Captions">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                  </button>
+
+                  <div class="captions-eight-grid" id="captionsGrid">
+                    
+                    <!-- 1. Classic (Active by default) -->
+                    <div class="caption-card-item active" data-id="classic">
+                      <div class="cap-visual-box bg-dark-clean">
+                        <div class="cap-typography style-classic-render">
+                          <span class="word-white">TO GET</span>
+                          <span class="word-yellow">STARTED</span>
+                        </div>
+                      </div>
+                      <span class="cap-label-name">Classic</span>
+                    </div>
+
+                    <!-- 2. Cyan Slide -->
+                    <div class="caption-card-item" data-id="cyan_slide">
+                      <div class="cap-visual-box bg-creator-frame">
+                        <div class="cap-typography style-cyan-slide-render">
+                          <span>MORE FO<span class="cyan-highlight">UN</span>DERS THAN</span>
+                        </div>
+                      </div>
+                      <span class="cap-label-name">Cyan Slide</span>
+                    </div>
+
+                    <!-- 3. Italic Red -->
+                    <div class="caption-card-item" data-id="italic_red">
+                      <div class="cap-visual-box bg-creator-frame">
+                        <div class="cap-typography style-italic-red-render">
+                          <span>MORE FOUN<span class="red-highlight">DERS</span> THAN</span>
+                        </div>
+                      </div>
+                      <span class="cap-label-name">Italic Red</span>
+                    </div>
+
+                    <!-- 4. Cream Blue -->
+                    <div class="caption-card-item" data-id="cream_blue">
+                      <div class="cap-visual-box bg-creator-frame">
+                        <div class="cap-typography style-cream-blue-render">
+                          <span>MORE FOUNDERS THAN</span>
+                        </div>
+                      </div>
+                      <span class="cap-label-name">Cream Blue</span>
+                    </div>
+
+                    <!-- 5. Red Spin -->
+                    <div class="caption-card-item" data-id="red_spin">
+                      <div class="cap-visual-box bg-creator-frame-gesture">
+                        <div class="cap-typography style-red-spin-render">
+                          <span>BAD PRODUCTS OR</span>
+                        </div>
+                      </div>
+                      <span class="cap-label-name">Red Spin</span>
+                    </div>
+
+                    <!-- 6. Violet -->
+                    <div class="caption-card-item" data-id="violet">
+                      <div class="cap-visual-box bg-creator-frame-gesture">
+                        <div class="cap-typography style-violet-render">
+                          <span>BAD PRODUCTS OR</span>
+                        </div>
+                      </div>
+                      <span class="cap-label-name">Violet</span>
+                    </div>
+
+                    <!-- 7. Blue Glow -->
+                    <div class="caption-card-item" data-id="blue_glow">
+                      <div class="cap-visual-box bg-dark-clean">
+                        <div class="cap-typography style-blue-glow-render">
+                          <span class="word-small-white">to get</span>
+                          <span class="word-glow-cyan">STARTED</span>
+                        </div>
+                      </div>
+                      <span class="cap-label-name">Blue Glow</span>
+                    </div>
+
+                    <!-- 8. Toxic Green -->
+                    <div class="caption-card-item" data-id="toxic_green">
+                      <div class="cap-visual-box bg-dark-clean">
+                        <div class="cap-typography style-toxic-green-render">
+                          <span class="toxic-line1">TO GET</span>
+                          <span class="toxic-line2">STARTED</span>
+                        </div>
+                      </div>
+                      <span class="cap-label-name">Toxic Green</span>
+                    </div>
+
+                  </div>
+
+                  <button class="carousel-arrow arrow-right" id="carouselNextBtn" aria-label="Next Captions">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+
+                </div>
+              </div>
+
+              <!-- Card 3: Auto Hook -->
+              <div class="card card-setting">
+                <div class="setting-header">
+                  <div class="setting-title-box">
+                    <span class="setting-title">Auto Hook <span class="info-circle" title="Puts a high-retention header title at top of every short">ⓘ</span></span>
+                    <p class="setting-subtitle">AI hook title at the top of every clip to grab attention</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoHookToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                
+                <div class="hook-preview-subline" id="hookSublineBox">
+                  <input type="text" id="hookTextInput" class="hook-input-clean" value="Wait for the punchline at the end... 😱" placeholder="Type custom top hook banner...">
+                </div>
+              </div>
+
+              <!-- Get Clips Button -->
+              <button class="btn btn-get-clips" id="getClipsBtn">
+                <span class="star-icon">&#10022;</span>
+                <span class="btn-text-clips">Get Clips</span>
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==================================================================
+             SCREEN 3: STUDIO & CLIPPING WORKSPACE VIEW
+             ================================================================== -->
+        <section class="view-screen hidden" id="studioView">
+          
+          <div class="studio-subnav">
+            <button class="btn btn-outline btn-sm" id="backToConfigureBtn">
+              &larr; Configure Settings
+            </button>
+            <div class="clip-selector-pills" id="clipSelectorPills">
+              <button class="clip-pill active" data-clip="1">🔥 Reel 1 (99%)</button>
+              <button class="clip-pill" data-clip="2">⚡ Reel 2 (97%)</button>
+              <button class="clip-pill" data-clip="3">😂 Reel 3 (96%)</button>
+              <button class="clip-pill" data-clip="4">🤯 Reel 4 (95%)</button>
+              <button class="clip-pill" data-clip="5">💡 Reel 5 (93%)</button>
+              <button class="clip-pill" data-clip="6">🏆 Reel 6 (91%)</button>
+            </div>
+            <div class="spacer"></div>
+            <button class="btn btn-outline btn-sm capcut-subnav-btn" id="subnavEffectsBtn" title="CapCut 4K HDR Special Effects">
+              ✨ 4K HDR: ON
+            </button>
+            <button class="btn btn-primary btn-sm" id="exportFromStudioBtn">
+              ⚡ Free Export 9:16 Short (1080p)
+            </button>
+          </div>
+
+          <div class="studio-grid">
+            
+            <!-- Left: Video Source, Audio Waveform & AI Virality Breakdown -->
+            <div class="studio-col-left">
+              
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="dot-purple"></span>
+                    <h3 id="studioVideoTitle">Beat Professional Athlete, Win $100,000</h3>
+                  </div>
+                  <span class="file-name-pill" id="studioChannelPill">MrBeast • 22:28</span>
+                </div>
+
+                <div class="video-wrapper">
+                  <video id="sourceVideo" playsinline preload="auto"></video>
+                  <iframe id="youtubeIframe" class="hidden" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                  
+                  <!-- Switch Video Source Pill / Fallback Toggle -->
+                  <div class="video-mode-switch-bar" id="videoModeSwitchBar">
+                    <button class="mode-switch-pill" id="switchToRealVideoBtn" title="Switch to Real Local HD Video">
+                      🎬 Switch to Real HD Video
+                    </button>
+                    <button class="mode-switch-pill" id="studioBrowseLocalBtn" title="Choose any video from your PC">
+                      📁 Open Local File
+                    </button>
+                  </div>
+
+                  <div class="video-controls-overlay" id="videoControlsOverlay">
+                    <button class="ctrl-btn" id="playPauseBtn">▶</button>
+                    <span class="time-display" id="currentTimeDisplay">00:00 / 00:00</span>
+                    <div class="spacer"></div>
+                    <button class="ctrl-btn" id="muteBtn">🔊</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 1. CUSTOM CLIP TRIMMER (DIRECTLY UNDER LARGE SCREEN) -->
+              <div class="card trimmer-card" id="customTrimmerCard">
+                <div class="timeline-header">
+                  <div class="card-title">
+                    <span class="dot-emerald"></span>
+                    <div>
+                      <h3>🎛️ Custom Clip Trimmer (Apni Marzi Se Clipping Karein)</h3>
+                      <p class="section-micro-desc">Agar AI ki suggest ki hui clip achi na lage, toh yahan yellow handles se apni marzi ka hissa chun lein — mobile preview live chalega!</p>
+                    </div>
+                  </div>
+                  <div class="live-sync-indicator" id="liveSyncStatus">
+                    <span class="sync-dot-pulse"></span>
+                    <span id="syncStatusText">Synced with Mobile: 00:15 - 00:45 (30s)</span>
+                  </div>
+                </div>
+
+                <div class="waveform-container" id="waveformContainer">
+                  <canvas id="waveformCanvas" height="90"></canvas>
+                  
+                  <div class="trimmer-overlay" id="trimmerOverlay">
+                    <div class="trimmer-handle handle-left" id="trimmerLeft" title="Drag to adjust Start Time">
+                      <span class="handle-bar"></span>
+                      <span class="handle-label" id="leftTimeTag">00:15</span>
+                    </div>
+                    <div class="trimmer-active-zone" id="trimmerZone" title="Drag to reposition short window">
+                      <div class="zone-badge" id="zoneBadge">⚡ Selected Short (30s)</div>
+                    </div>
+                    <div class="trimmer-handle handle-right" id="trimmerRight" title="Drag to adjust End Time">
+                      <span class="handle-bar"></span>
+                      <span class="handle-label" id="rightTimeTag">00:45</span>
+                    </div>
+                  </div>
+
+                  <div class="playhead-line" id="playheadLine"></div>
+                </div>
+
+                <div class="trim-metrics-bar">
+                  <div class="metric-block">
+                    <label>Start:</label>
+                    <input type="text" id="startInput" class="time-input" value="00:15" title="Type start time MM:SS">
+                  </div>
+                  <div class="metric-block">
+                    <label>End:</label>
+                    <input type="text" id="endInput" class="time-input" value="00:45" title="Type end time MM:SS">
+                  </div>
+                  <div class="metric-block duration-highlight">
+                    <label>Length:</label>
+                    <span id="clipDurationDisplay">30.0s</span>
+                  </div>
+                  <div class="preset-duration-btns">
+                    <span>Quick Presets:</span>
+                    <button class="preset-btn" data-dur="15">15s</button>
+                    <button class="preset-btn active" data-dur="30">30s</button>
+                    <button class="preset-btn" data-dur="60">60s</button>
+                  </div>
+                </div>
+
+                <div class="trimmer-sync-banner">
+                  <span class="sync-banner-icon">📱</span>
+                  <span><strong>Live Sync Active:</strong> Jo bhi timing aap yahan yellow handles se set karenge, wahi clip mobile screen par live loop chalegi!</span>
+                </div>
+              </div>
+
+              <!-- 2. AI SUGGESTED CLIPS (Option 2: 6 Pre-Analyzed Viral Reels) -->
+              <div class="card ai-suggested-card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="dot-cyan"></span>
+                    <div>
+                      <h3>⚡ Or Choose From 6 AI Suggested Reels (Crazy & Funny Hooks)</h3>
+                      <p class="section-micro-desc">AI ne video analyze karke 6 crazy viral reels detect kiye hain. Kisi bhi reel par click karke live play karein:</p>
+                    </div>
+                  </div>
+                  <span class="ai-status-pill" id="aiStatusPill">6 Viral Reels</span>
+                </div>
+
+                <div class="ai-suggested-list" id="aiSuggestedList">
+                  <!-- Reel 1 (Default Active) -->
+                  <div class="suggest-clip-row active" data-clip="1">
+                    <div class="suggest-badge-col">
+                      <span class="suggest-score-badge score-high">99% Viral</span>
+                      <span class="suggest-play-status">▶ Playing</span>
+                    </div>
+                    <div class="suggest-info-col">
+                      <div class="suggest-top-line">
+                        <strong class="suggest-title">🔥 Reel 1: Striker Haaland 1-on-1 Challenge</strong>
+                        <span class="suggest-time-pill">00:15 - 00:45 (30s)</span>
+                      </div>
+                      <p class="suggest-hook-text">"High-retention intro hook & immediate penalty confrontation."</p>
+                      <div class="suggest-tags-row">
+                        <span class="suggest-tag-item">⚡ Highest Retention</span>
+                        <span class="suggest-tag-item">⚽ High Pace</span>
+                        <span class="suggest-active-pill">📱 Live on Mobile Preview</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Reel 2 -->
+                  <div class="suggest-clip-row" data-clip="2">
+                    <div class="suggest-badge-col">
+                      <span class="suggest-score-badge score-high">97% Viral</span>
+                      <span class="suggest-play-status">Select</span>
+                    </div>
+                    <div class="suggest-info-col">
+                      <div class="suggest-top-line">
+                        <strong class="suggest-title">😂 Reel 2: Insane Goalkeeper Save & Reaction</strong>
+                        <span class="suggest-time-pill">00:45 - 01:15 (30s)</span>
+                      </div>
+                      <p class="suggest-hook-text">"Laughter frequency burst & shocked goalkeeper expression."</p>
+                      <div class="suggest-tags-row">
+                        <span class="suggest-tag-item">😂 Laughter Spike</span>
+                        <span class="suggest-tag-item">🧤 Shock Moment</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Reel 3 -->
+                  <div class="suggest-clip-row" data-clip="3">
+                    <div class="suggest-badge-col">
+                      <span class="suggest-score-badge score-mid">96% Viral</span>
+                      <span class="suggest-play-status">Select</span>
+                    </div>
+                    <div class="suggest-info-col">
+                      <div class="suggest-top-line">
+                        <strong class="suggest-title">⚡ Reel 3: 100 MPH Rocket Kick Test</strong>
+                        <span class="suggest-time-pill">01:20 - 01:50 (30s)</span>
+                      </div>
+                      <p class="suggest-hook-text">"Ball speed radar clocking maximum power with slow-mo impact."</p>
+                      <div class="suggest-tags-row">
+                        <span class="suggest-tag-item">⚡ High Tempo</span>
+                        <span class="suggest-tag-item">💥 Slow Motion</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Reel 4 -->
+                  <div class="suggest-clip-row" data-clip="4">
+                    <div class="suggest-badge-col">
+                      <span class="suggest-score-badge score-mid">95% Viral</span>
+                      <span class="suggest-play-status">Select</span>
+                    </div>
+                    <div class="suggest-info-col">
+                      <div class="suggest-top-line">
+                        <strong class="suggest-title">🤯 Reel 4: Crossbar Challenge for $50,000</strong>
+                        <span class="suggest-time-pill">01:55 - 02:25 (30s)</span>
+                      </div>
+                      <p class="suggest-hook-text">"Impossible precision attempt with crowd cheering and gasping."</p>
+                      <div class="suggest-tags-row">
+                        <span class="suggest-tag-item">🤯 Plot Twist</span>
+                        <span class="suggest-tag-item">🎯 Pure Tension</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Reel 5 -->
+                  <div class="suggest-clip-row" data-clip="5">
+                    <div class="suggest-badge-col">
+                      <span class="suggest-score-badge score-mid">93% Viral</span>
+                      <span class="suggest-play-status">Select</span>
+                    </div>
+                    <div class="suggest-info-col">
+                      <div class="suggest-top-line">
+                        <strong class="suggest-title">💡 Reel 5: Haaland's Pre-Game Warmup Habit</strong>
+                        <span class="suggest-time-pill">02:30 - 03:00 (30s)</span>
+                      </div>
+                      <p class="suggest-hook-text">"Exclusive pro-athlete routine & tactical insight breakdown."</p>
+                      <div class="suggest-tags-row">
+                        <span class="suggest-tag-item">💡 Pro Secret</span>
+                        <span class="suggest-tag-item">🧠 High Saves</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Reel 6 -->
+                  <div class="suggest-clip-row" data-clip="6">
+                    <div class="suggest-badge-col">
+                      <span class="suggest-score-badge score-mid">91% Viral</span>
+                      <span class="suggest-play-status">Select</span>
+                    </div>
+                    <div class="suggest-info-col">
+                      <div class="suggest-top-line">
+                        <strong class="suggest-title">🏆 Reel 6: $100,000 Cash Handover & Speech</strong>
+                        <span class="suggest-time-pill">03:05 - 03:35 (30s)</span>
+                      </div>
+                      <p class="suggest-hook-text">"Emotional climax, cash briefcase celebration and final punchline."</p>
+                      <div class="suggest-tags-row">
+                        <span class="suggest-tag-item">💰 $100k Winner</span>
+                        <span class="suggest-tag-item">🎉 Climax Peak</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Titles & Hashtags Box -->
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="dot-emerald"></span>
+                    <h3>⚡ AI Viral Titles & Hashtags</h3>
+                  </div>
+                  <button class="btn btn-secondary btn-xs copy-btn" id="copyAllTagsBtn">📋 Copy Tags</button>
+                </div>
+
+                <div class="seo-title-preview-box">
+                  <label>Recommended Viral Title (Click to Copy):</label>
+                  <div class="title-copy-row">
+                    <strong id="seoTitleDisplay">"He challenged a world champion and this happened... 😱"</strong>
+                    <button class="btn btn-outline btn-xs" id="copyTitleOnlyBtn">Copy</button>
+                  </div>
+                </div>
+
+                <div class="hashtag-cloud" id="hashtagCloud">
+                  <span class="hashtag-pill">#shorts</span>
+                  <span class="hashtag-pill">#viral</span>
+                  <span class="hashtag-pill">#challenge</span>
+                  <span class="hashtag-pill">#fyp</span>
+                  <span class="hashtag-pill">#impossible</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right: 9:16 Vertical Smartphone Live Preview -->
+            <div class="studio-col-right">
+              
+              <div class="card vertical-preview-card">
+                <div class="card-header preview-card-header">
+                  <div class="card-title">
+                    <span class="dot-pink"></span>
+                    <h3>9:16 Short Live Preview</h3>
+                  </div>
+                  <span class="badge-social" id="activeStyleBadge">Style: Classic</span>
+                </div>
+
+                <!-- Ratio Framing Selector Buttons (Directly Above Mobile Screen) -->
+                <div class="top-ratio-selector-bar">
+                  <span class="ratio-label">Framing Ratio:</span>
+                  <div class="top-ratio-btn-group">
+                    <button class="layout-btn active" data-layout="standard" title="Full 9:16 Auto Reframe">
+                      <span>📱 9:16 Full</span>
+                    </button>
+                    <button class="layout-btn" data-layout="split" title="Split-Screen: Top Video + Subway Gameplay">
+                      <span>🎮 Split-Screen</span>
+                    </button>
+                    <button class="layout-btn" data-layout="square" title="Square 1:1 format for Instagram">
+                      <span>🔲 1:1 Square</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="phone-wrapper">
+                  <div class="phone-bezel">
+                    <div class="phone-camera-hole"></div>
+
+                    <div class="phone-screen-area">
+                      <canvas id="cropCanvas" width="720" height="1280"></canvas>
+                      
+                      <!-- YouTube Live Embed in Mobile Preview -->
+                      <div class="phone-yt-wrapper hidden" id="phoneYtWrapper">
+                        <iframe id="phoneYoutubeIframe" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </div>
+
+                      <!-- Overlay for Captions when YouTube is playing -->
+                      <canvas id="phoneCaptionsOverlayCanvas" class="hidden" width="720" height="1280"></canvas>
+
+                      <!-- Live Clip Tag at Top of Phone (Showing exact adjusted loop) -->
+                      <div class="phone-live-indicator" id="phoneLiveIndicator">
+                        <span class="live-rec-dot"></span>
+                        <span class="live-tag-text" id="phoneLiveTagText">CLIP 1 • 00:15 - 00:45 (30s)</span>
+                      </div>
+
+                      <!-- NO WATERMARK ON VIDEO (Clean Video Preview as requested) -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Hidden inputs to preserve script state without taking visual space -->
+                <input type="hidden" id="customCaptionInput" value="TO GET STARTED">
+                <input type="hidden" id="panSlider" value="50">
+
+                <!-- Free Export & Download (Placed directly under mobile screen) -->
+                <div class="export-box">
+                  <button class="btn btn-primary btn-full btn-export" id="exportShortBtn">
+                    ⚡ Free Download 9:16 Short (No Watermark)
+                  </button>
+
+                  <div class="export-progress-bar hidden" id="exportProgressBox">
+                    <div class="progress-labels">
+                      <span id="exportStatusText">Encoding 9:16 short with captions...</span>
+                      <span id="exportPercentText">0%</span>
+                    </div>
+                    <div class="progress-track-export">
+                      <div class="progress-fill-export" id="exportFill"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- CapCut Style Special Effects & 4K HDR Panel -->
+              <div class="card capcut-effects-card" id="capcutEffectsCard">
+                <div class="card-header capcut-card-header">
+                  <div class="card-title">
+                    <span class="dot-cyan"></span>
+                    <div>
+                      <div class="capcut-title-badge-row">
+                        <h3>✨ Special Effects</h3>
+                        <span class="capcut-brand-pill">CapCut Style</span>
+                        <span class="capcut-status-badge active" id="capcutStatusBadge">4K HDR Active</span>
+                      </div>
+                      <p class="section-micro-desc">Video visuals & quality ko 4K HDR effect se enhance aur customize karein:</p>
+                    </div>
+                  </div>
+                  <div class="capcut-toggle-wrap">
+                    <label class="switch-toggle" title="Turn 4K HDR On/Off">
+                      <input type="checkbox" id="capcutEffectMasterToggle" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- CapCut Video Effects Grid / Selector -->
+                <div class="capcut-effects-tabs-row">
+                  <span class="effects-tab-title">Video Effects:</span>
+                  <div class="capcut-effects-grid" id="capcutEffectsGrid">
+                    <button class="capcut-fx-item active" data-effect="4k_hdr" title="CapCut 4K HDR AI Upscaler">
+                      <span class="fx-thumb-icon">💎</span>
+                      <span class="fx-name">4K HDR</span>
+                      <span class="fx-pro-tag">PRO</span>
+                    </button>
+                    <button class="capcut-fx-item" data-effect="dynamic_blur" title="Dynamic Blur & Focus">
+                      <span class="fx-thumb-icon">💨</span>
+                      <span class="fx-name">Dynamic Blur</span>
+                    </button>
+                    <button class="capcut-fx-item" data-effect="soft_glow" title="Dreamy Soft Glow">
+                      <span class="fx-thumb-icon">✨</span>
+                      <span class="fx-name">Soft Glow</span>
+                    </button>
+                    <button class="capcut-fx-item" data-effect="ultra_sharpen" title="Ultra 4K Crisp Edge Sharpen">
+                      <span class="fx-thumb-icon">🔪</span>
+                      <span class="fx-name">4K Sharpen</span>
+                    </button>
+                    <button class="capcut-fx-item" data-effect="flash_focus" title="Flash Focus Highlight">
+                      <span class="fx-thumb-icon">⚡</span>
+                      <span class="fx-name">Flash Focus</span>
+                    </button>
+                    <button class="capcut-fx-item" data-effect="camcorder" title="Classic DV Camcorder Retro">
+                      <span class="fx-thumb-icon">📹</span>
+                      <span class="fx-name">Classic DV</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- CapCut Details Panel (Matching Screenshot 1 & 2) -->
+                <div class="capcut-details-panel" id="capcutDetailsPanel">
+                  <div class="capcut-details-header">
+                    <div class="details-title-left">
+                      <span class="arrow-down-icon">▾</span>
+                      <strong>Details</strong>
+                      <span class="effect-current-name" id="effectCurrentName">4K HDR <span class="gem-icon">💎</span></span>
+                    </div>
+                    <div class="details-actions-right">
+                      <button class="btn-capcut-reset" id="reset4kEffectBtn" title="Reset to CapCut Default">
+                        ↺ Reset
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Quick Presets matching user screenshots -->
+                  <div class="capcut-quick-presets">
+                    <span class="preset-label">CapCut Presets:</span>
+                    <button class="fx-preset-pill active" id="presetCapcutPunchy" title="Values from Screenshot 1 (Glow 30, Sharpen 70, Filters 100)">
+                      💎 4K Ultra HDR
+                    </button>
+                    <button class="fx-preset-pill" id="presetCapcutNatural" title="Values from Screenshot 2 (Glow 10, Sharpen 12, Filters 79)">
+                      ⚡ Natural Crisp 4K
+                    </button>
+                    <button class="fx-preset-pill" id="presetCapcutDreamy" title="Soft Light & Glow">
+                      🌟 Soft Aesthetic
+                    </button>
+                    <button class="fx-preset-pill" id="presetCapcutOriginal" title="Turn Off Effects">
+                      🚫 Original (Off)
+                    </button>
+                  </div>
+
+                  <!-- The 7 Sliders with Number Inputs matching Screenshot 1 & 2 -->
+                  <div class="capcut-sliders-list">
+                    
+                    <!-- 1. Glow -->
+                    <div class="capcut-slider-row">
+                      <div class="slider-meta">
+                        <label for="fxGlowSlider">Glow</label>
+                      </div>
+                      <div class="slider-controls-wrap">
+                        <input type="range" id="fxGlowSlider" min="0" max="100" value="30" class="capcut-range-input">
+                        <input type="number" id="fxGlowNum" min="0" max="100" value="30" class="capcut-num-input">
+                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      </div>
+                    </div>
+
+                    <!-- 2. Blur -->
+                    <div class="capcut-slider-row">
+                      <div class="slider-meta">
+                        <label for="fxBlurSlider">Blur</label>
+                      </div>
+                      <div class="slider-controls-wrap">
+                        <input type="range" id="fxBlurSlider" min="0" max="100" value="15" class="capcut-range-input">
+                        <input type="number" id="fxBlurNum" min="0" max="100" value="15" class="capcut-num-input">
+                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      </div>
+                    </div>
+
+                    <!-- 3. Sharpen -->
+                    <div class="capcut-slider-row">
+                      <div class="slider-meta">
+                        <label for="fxSharpenSlider">Sharpen</label>
+                      </div>
+                      <div class="slider-controls-wrap">
+                        <input type="range" id="fxSharpenSlider" min="0" max="100" value="70" class="capcut-range-input">
+                        <input type="number" id="fxSharpenNum" min="0" max="100" value="70" class="capcut-num-input">
+                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      </div>
+                    </div>
+
+                    <!-- 4. Range -->
+                    <div class="capcut-slider-row">
+                      <div class="slider-meta">
+                        <label for="fxRangeSlider">Range</label>
+                      </div>
+                      <div class="slider-controls-wrap">
+                        <input type="range" id="fxRangeSlider" min="0" max="100" value="70" class="capcut-range-input">
+                        <input type="number" id="fxRangeNum" min="0" max="100" value="70" class="capcut-num-input">
+                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      </div>
+                    </div>
+
+                    <!-- 5. Size -->
+                    <div class="capcut-slider-row">
+                      <div class="slider-meta">
+                        <label for="fxSizeSlider">Size</label>
+                      </div>
+                      <div class="slider-controls-wrap">
+                        <input type="range" id="fxSizeSlider" min="0" max="100" value="50" class="capcut-range-input">
+                        <input type="number" id="fxSizeNum" min="0" max="100" value="50" class="capcut-num-input">
+                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      </div>
+                    </div>
+
+                    <!-- 6. Soft Light -->
+                    <div class="capcut-slider-row">
+                      <div class="slider-meta">
+                        <label for="fxSoftLightSlider">Soft light</label>
+                      </div>
+                      <div class="slider-controls-wrap">
+                        <input type="range" id="fxSoftLightSlider" min="0" max="100" value="33" class="capcut-range-input">
+                        <input type="number" id="fxSoftLightNum" min="0" max="100" value="33" class="capcut-num-input">
+                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      </div>
+                    </div>
+
+                    <!-- 7. Filters -->
+                    <div class="capcut-slider-row">
+                      <div class="slider-meta">
+                        <label for="fxFiltersSlider">Filters</label>
+                      </div>
+                      <div class="slider-controls-wrap">
+                        <input type="range" id="fxFiltersSlider" min="0" max="100" value="100" class="capcut-range-input">
+                        <input type="number" id="fxFiltersNum" min="0" max="100" value="100" class="capcut-num-input">
+                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Live Status Banner -->
+                  <div class="capcut-live-sync-banner">
+                    <span class="capcut-pulse-dot"></span>
+                    <span id="fxLiveDescription"><strong>Live 4K HDR:</strong> Glow 30, Sharpen 70, Range 70, Filters 100% active on Mobile Preview & Main Player!</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- YouTube Connect Channel Modal -->
+  <div class="modal-backdrop hidden" id="ytConnectModal">
+    <div class="yt-modal-card">
+      <div class="yt-modal-top">
+        <span class="yt-modal-icon">📺</span>
+        <h3>Connect YouTube Channel</h3>
+        <button class="modal-close-icon" id="closeYtModalBtn">&times;</button>
+      </div>
+      <p class="yt-modal-desc">
+        Authorize your YouTube account to automatically import all your long videos, streams, and podcasts directly into ScaleReach for free!
+      </p>
+      <div class="yt-auth-field">
+        <label>YouTube Channel URL or Handle:</label>
+        <input type="text" id="ytChannelInput" placeholder="@YourChannelName or Channel URL" value="@AJJEZ">
+      </div>
+      <button class="btn btn-primary btn-full" id="confirmYtConnectBtn">
+        Connect @AJJEZ (Free)
+      </button>
+    </div>
+  </div>
+
+  <!-- AI Video Scanning & Repurposing Modal -->
+  <div class="modal-backdrop hidden" id="aiScanModal">
+    <div class="ai-scan-card">
+      <div class="scan-header">
+        <div class="scan-spinner-ring"></div>
+        <div>
+          <h3>⚡ AI Video Analysis & Repurposing Engine</h3>
+          <p id="scanVideoTitleText">Scanning speech, energy spikes & facial retention...</p>
+        </div>
+      </div>
+      <div class="scan-progress-bar-wrap">
+        <div class="scan-progress-bar" id="scanProgressBar"></div>
+      </div>
+      <div class="scan-percentage-text" id="scanPercentText">Analyzing 0%</div>
+      <div class="scan-steps-list">
+        <div class="scan-step-row active" id="scanStep1">
+          <span class="step-check" id="stepCheck1">⏳</span>
+          <span class="step-label">🔊 Audio Spectrogram & Vocal Energy Hook Extraction</span>
+        </div>
+        <div class="scan-step-row" id="scanStep2">
+          <span class="step-check" id="stepCheck2">⏳</span>
+          <span class="step-label">👁️ Multi-Speaker Facial Retention & Scene Transition Analysis</span>
+        </div>
+        <div class="scan-step-row" id="scanStep3">
+          <span class="step-check" id="stepCheck3">⏳</span>
+          <span class="step-label">✂️ Generating 6 High-Retention 9:16 Viral Reels & Syncing Captions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div class="toast-notification hidden" id="toast">Copied to clipboard! ✓</div>
+
+  <!-- Bottom Right Floating Support Button -->
+  <div class="support-float-btn" title="AI Support">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+    </svg>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

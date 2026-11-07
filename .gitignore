@@ -1,0 +1,17 @@
+# Operating System
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Optional: Large temporary media (uncomment if you do not want sample videos in repo)
+# *.mp4

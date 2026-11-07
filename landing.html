@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ViralClip AI - Turn Long Videos into Viral Shorts in Seconds</title>
+  <meta name="description" content="AI-powered video repurposing tool. Automatically extract hooks, add animated dynamic captions, reframe to 9:16, and score viral potential.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Background Glow Orbs -->
+  <div class="bg-orb orb-1" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" aria-hidden="true"></div>
+  <div class="bg-orb orb-3" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Viral<span class="gradient-text">Clip</span></span>
+        <span class="badge-mini">AI 2.0</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#demo">Try Demo</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#captions">Styles</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#demo" class="btn btn-outline btn-sm">Try Simulator</a>
+        <a href="#pricing" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-badge">
+        <span class="sparkle">✨</span>
+        <span>Next-Gen Viral AI Engine</span>
+        <span class="dot"></span>
+        <span class="text-accent">99.4% Hook Detection</span>
+      </div>
+
+      <h1 class="hero-title">
+        Turn 1 Hour Videos into <br class="desk-break">
+        <span class="gradient-text">10 Viral Shorts</span> in Seconds
+      </h1>
+
+      <p class="hero-subtitle">
+        Automatically detect viral moments, reframe speakers to 9:16 vertical, generate kinetic subtitles, and score engagement before posting to TikTok, Reels, and Shorts.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#demo" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 3 14 9-14 9V3z"/></svg>
+          Test Live Demo
+        </a>
+        <a href="#showcase" class="btn btn-secondary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          Watch Viral Examples
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-target="1500000">1.5M+</span>
+          <span class="stat-label">Clips Generated</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="120000000">120M+</span>
+          <span class="stat-label">Views Generated</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">4.9 / 5</span>
+          <span class="stat-label">⭐ 14,000+ Creators</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Demo Simulator Section -->
+  <section class="demo-section" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Interactive Simulator</div>
+        <h2>See the Viral AI in Action</h2>
+        <p>Paste a YouTube/Podcast link or test with our sample videos to experience instant viral extraction.</p>
+      </div>
+
+      <div class="simulator-card">
+        <div class="simulator-input-bar">
+          <div class="input-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <input type="text" id="videoUrlInput" placeholder="Paste YouTube, Twitch, or podcast video link..." value="https://youtube.com/watch?v=dQw4w9WgXcQ">
+          <button id="generateBtn" class="btn btn-primary">
+            <span class="btn-text">Generate Clips</span>
+            <span class="btn-spinner hidden"></span>
+          </button>
+        </div>
+
+        <div class="sample-links">
+          <span>Or try sample:</span>
+          <button class="sample-chip active" data-title="Joe Rogan & Lex Fridman - The Future of AI" data-length="2h 14m">🎙️ Joe Rogan Podcast</button>
+          <button class="sample-chip" data-title="MrBeast - How We Built 50 Million Subscribers" data-length="48m 10s">🔥 MrBeast Interview</button>
+          <button class="sample-chip" data-title="Huberman Lab - Optimize Your Sleep & Energy" data-length="1h 45m">🧠 Huberman Health</button>
+          <button class="sample-chip" data-title="MKBHD - The Smartphone Revolution" data-length="32m 15s">📱 Tech Deep Dive</button>
+        </div>
+
+        <!-- Processing Screen -->
+        <div class="processing-container hidden" id="processingBox">
+          <div class="processing-header">
+            <div class="pulsing-radar"></div>
+            <div>
+              <h3 id="processingTitle">Analyzing Video: Joe Rogan & Lex Fridman</h3>
+              <p id="processingStatus">Scanning audio waveform for speech spikes and high-emotion hooks...</p>
+            </div>
+            <span class="progress-pct" id="progressPct">0%</span>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="processing-steps">
+            <div class="step-pill" id="step1">
+              <span class="icon">🔍</span> Hook Extraction
+            </div>
+            <div class="step-pill" id="step2">
+              <span class="icon">👤</span> 9:16 Face Reframing
+            </div>
+            <div class="step-pill" id="step3">
+              <span class="icon">💬</span> Kinetic Subtitles
+            </div>
+            <div class="step-pill" id="step4">
+              <span class="icon">📈</span> Viral Scoring
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Grid -->
+        <div class="results-container" id="resultsBox">
+          <div class="results-toolbar">
+            <div class="results-count">
+              <strong>✨ 3 Viral Clips Found</strong> (Sorted by engagement score)
+            </div>
+            <div class="filter-pills">
+              <button class="pill-active">All (3)</button>
+              <button class="pill-subtle">High Retention</button>
+              <button class="pill-subtle">Most Emotional</button>
+            </div>
+          </div>
+
+          <div class="clips-grid" id="clipsGrid">
+            <!-- Clip 1 -->
+            <div class="clip-card" data-video="1">
+              <div class="clip-thumbnail-wrapper">
+                <div class="ratio-box">
+                  <div class="clip-visual bg-gradient-v1">
+                    <div class="speaker-avatar">🎙️</div>
+                    <div class="animated-caption-sample style-hormozi">
+                      <span class="word-hl">IF YOU</span> DON'T MASTER THIS NOW...
+                    </div>
+                  </div>
+                  <div class="play-overlay">
+                    <div class="play-circle">▶</div>
+                  </div>
+                  <div class="score-badge">
+                    <span class="fire">🔥</span> 98 / 100 Viral Score
+                  </div>
+                  <div class="time-badge">0:42</div>
+                </div>
+              </div>
+              <div class="clip-details">
+                <h4 class="clip-title">"The one habit that guarantees failure"</h4>
+                <div class="clip-metrics">
+                  <span>📊 94% Retention</span>
+                  <span>🚀 1.8M Est. Reach</span>
+                </div>
+                <div class="tags-row">
+                  <span class="tag-sm">#Mindset</span>
+                  <span class="tag-sm">#Success</span>
+                  <span class="tag-sm">#AI</span>
+                </div>
+                <div class="clip-actions">
+                  <button class="btn btn-outline btn-full preview-btn" data-clip="1">Preview Clip</button>
+                  <button class="btn btn-primary btn-full download-btn">Export 1080p</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clip 2 -->
+            <div class="clip-card" data-video="2">
+              <div class="clip-thumbnail-wrapper">
+                <div class="ratio-box">
+                  <div class="clip-visual bg-gradient-v2">
+                    <div class="speaker-avatar">🧠</div>
+                    <div class="animated-caption-sample style-beast">
+                      <span class="word-glow">THE SECRET</span> BEHIND HIGH FOCUS!
+                    </div>
+                  </div>
+                  <div class="play-overlay">
+                    <div class="play-circle">▶</div>
+                  </div>
+                  <div class="score-badge">
+                    <span class="fire">⚡</span> 94 / 100 Viral Score
+                  </div>
+                  <div class="time-badge">0:35</div>
+                </div>
+              </div>
+              <div class="clip-details">
+                <h4 class="clip-title">"Do this at 8 AM and your energy triples"</h4>
+                <div class="clip-metrics">
+                  <span>📊 89% Retention</span>
+                  <span>🚀 950K Est. Reach</span>
+                </div>
+                <div class="tags-row">
+                  <span class="tag-sm">#Productivity</span>
+                  <span class="tag-sm">#Biohack</span>
+                </div>
+                <div class="clip-actions">
+                  <button class="btn btn-outline btn-full preview-btn" data-clip="2">Preview Clip</button>
+                  <button class="btn btn-primary btn-full download-btn">Export 1080p</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clip 3 -->
+            <div class="clip-card" data-video="3">
+              <div class="clip-thumbnail-wrapper">
+                <div class="ratio-box">
+                  <div class="clip-visual bg-gradient-v3">
+                    <div class="speaker-avatar">💡</div>
+                    <div class="animated-caption-sample style-neon">
+                      <span class="word-neon">NOBODY TALKS</span> ABOUT THIS PART
+                    </div>
+                  </div>
+                  <div class="play-overlay">
+                    <div class="play-circle">▶</div>
+                  </div>
+                  <div class="score-badge">
+                    <span class="fire">🚀</span> 91 / 100 Viral Score
+                  </div>
+                  <div class="time-badge">0:58</div>
+                </div>
+              </div>
+              <div class="clip-details">
+                <h4 class="clip-title">"Why 90% of startups make this mistake"</h4>
+                <div class="clip-metrics">
+                  <span>📊 86% Retention</span>
+                  <span>🚀 680K Est. Reach</span>
+                </div>
+                <div class="tags-row">
+                  <span class="tag-sm">#Business</span>
+                  <span class="tag-sm">#Growth</span>
+                </div>
+                <div class="clip-actions">
+                  <button class="btn btn-outline btn-full preview-btn" data-clip="3">Preview Clip</button>
+                  <button class="btn btn-primary btn-full download-btn">Export 1080p</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Smart Automation</div>
+        <h2>Engineered for Algorithm Dominance</h2>
+        <p>Every feature is crafted to maximize the initial 3-second hook rate and watch-through time.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">🎯</div>
+          <h3>AI Hook Detection</h3>
+          <p>Scans audio spikes, sentiment climax, and contextual keywords to identify the exact second where retention peaks.</p>
+          <ul class="feature-list">
+            <li>Identifies question-and-answer hooks</li>
+            <li>Detects emotional & contrarian statements</li>
+            <li>Calculates algorithmic virality score (0-100)</li>
+          </ul>
+        </div>
+
+        <div class="feature-card highlighted">
+          <div class="feature-tag">Creator Favorite</div>
+          <div class="feature-icon icon-cyan">📐</div>
+          <h3>Active Speaker Auto-Reframe</h3>
+          <p>Converts widescreen 16:9 videos into dynamic 9:16 vertical shorts, tracking active faces in real-time without manual keyframing.</p>
+          <ul class="feature-list">
+            <li>Dynamic split screen for podcasts & dual interviews</li>
+            <li>Smooth cinematic speaker panning</li>
+            <li>No awkward cropped heads or black letterboxing</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-emerald">✍️</div>
+          <h3>Animated Kinetic Captions</h3>
+          <p>Over 85% of social video is watched on mute. Generate word-by-word highlighted subtitles in top trending creator aesthetics.</p>
+          <ul class="feature-list">
+            <li>99.2% transcription accuracy in 58 languages</li>
+            <li>Auto-inserted emojis and sound-effect triggers</li>
+            <li>1-click Hormozi, MrBeast, and Minimalist presets</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">🎬</div>
+          <h3>Automatic AI B-Roll Inserts</h3>
+          <p>Prevents viewer drop-off by automatically inserting relevant context-aware stock footage, sound effects, and zoom cuts.</p>
+          <ul class="feature-list">
+            <li>Contextual 4K royalty-free B-roll database</li>
+            <li>Dynamic micro-zooms every 2.5 seconds</li>
+            <li>Built-in whoosh, pop, and riser sound effects</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-pink">📊</div>
+          <h3>Viral Score Analytics</h3>
+          <p>Before you publish, our predictive model evaluates pace, vocabulary, and sound dynamics against 10M+ trending videos.</p>
+          <ul class="feature-list">
+            <li>Hook retention index prediction</li>
+            <li>AI-generated SEO titles & hashtags</li>
+            <li>Scheduled auto-posting to all accounts</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">🌐</div>
+          <h3>Multi-Platform Auto Scheduler</h3>
+          <p>Distribute directly to TikTok, Instagram Reels, YouTube Shorts, and LinkedIn in one single click.</p>
+          <ul class="feature-list">
+            <li>Custom platform aspect ratios & safe zones</li>
+            <li>Best-time-to-post AI recommendations</li>
+            <li>Unified analytics dashboard</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Caption Style Tester -->
+  <section class="captions-section" id="captions">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Subtitle Studio</div>
+        <h2>Custom Dynamic Caption Styles</h2>
+        <p>Click below to preview how your subtitles render live with kinetic animations and vibrant accents.</p>
+      </div>
+
+      <div class="caption-studio">
+        <div class="caption-controls">
+          <label>Select Preset Style:</label>
+          <div class="style-buttons">
+            <button class="style-btn active" data-style="hormozi">
+              <span class="preview-swatch swatch-yellow"></span>
+              <strong>Alex Hormozi</strong>
+              <small>Yellow highlight, bold uppercase</small>
+            </button>
+            <button class="style-btn" data-style="beast">
+              <span class="preview-swatch swatch-cyan"></span>
+              <strong>MrBeast Pop</strong>
+              <small>Bouncy glow, vibrant neon cyan</small>
+            </button>
+            <button class="style-btn" data-style="minimal">
+              <span class="preview-swatch swatch-white"></span>
+              <strong>Clean Minimal</strong>
+              <small>Sleek pill box, elegant monochrome</small>
+            </button>
+            <button class="style-btn" data-style="cyberpunk">
+              <span class="preview-swatch swatch-magenta"></span>
+              <strong>Cyberpunk Glow</strong>
+              <small>Neon pink outline & glitch vibes</small>
+            </button>
+          </div>
+
+          <div class="caption-settings">
+            <div class="setting-row">
+              <span>Auto Emojis:</span>
+              <input type="checkbox" id="emojiToggle" checked>
+            </div>
+            <div class="setting-row">
+              <span>Font Size:</span>
+              <input type="range" id="captionSizeRange" min="16" max="36" value="24">
+            </div>
+            <div class="setting-row">
+              <span>Animation:</span>
+              <select id="animSelect">
+                <option value="word-pop">Word-by-word Pop</option>
+                <option value="fade-slide">Smooth Slide Up</option>
+                <option value="karaoke">Karaoke Highlight</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="caption-live-preview">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen" id="previewScreen">
+              <div class="screen-bg">
+                <div class="floating-badge">9:16 Safe Zone</div>
+                <div class="avatar-ring">
+                  <span class="avatar-emoji">🔥</span>
+                </div>
+                <div class="sound-wave-mock">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+
+              <!-- Interactive Animated Caption Text -->
+              <div class="live-subtitle-box" id="liveSubtitleBox">
+                <span class="caption-text-rendered" id="captionDisplay">
+                  "THIS <span class="highlighted-word">ONE SECRET</span> WILL DOUBLE YOUR VIEWS 🚀"
+                </span>
+              </div>
+
+              <div class="phone-ui-mock">
+                <div class="action-btn-mock">❤️ 142K</div>
+                <div class="action-btn-mock">💬 3.4K</div>
+                <div class="action-btn-mock">↗️ 28K</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Showcase Feed -->
+  <section class="showcase-section" id="showcase">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Creator Showcase</div>
+        <h2>Clips That Went Viral This Week</h2>
+        <p>Real creators using ViralClip AI to generate hundreds of millions of short-form views.</p>
+      </div>
+
+      <div class="showcase-filters">
+        <button class="filter-btn active" data-filter="all">All Niches</button>
+        <button class="filter-btn" data-filter="podcasts">Podcasts</button>
+        <button class="filter-btn" data-filter="tech">Tech & AI</button>
+        <button class="filter-btn" data-filter="gaming">Gaming</button>
+        <button class="filter-btn" data-filter="business">Business</button>
+      </div>
+
+      <div class="showcase-grid">
+        <!-- Item 1 -->
+        <div class="showcase-card" data-category="podcasts">
+          <div class="card-video-mock grad-showcase-1">
+            <span class="pill-views">👁️ 4.2M Views</span>
+            <div class="card-play-btn">▶</div>
+            <div class="card-overlay-text">
+              <p>"The biology of why you feel tired at 2pm..."</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="author-row">
+              <span class="author-name">The Neural Mind Podcast</span>
+              <span class="growth-tag">+42k Subs</span>
+            </div>
+            <div class="card-stats">
+              <span>Original: 1h 40m</span>
+              <span>•</span>
+              <span class="accent-color">Clip length: 44s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="showcase-card" data-category="tech">
+          <div class="card-video-mock grad-showcase-2">
+            <span class="pill-views">👁️ 2.7M Views</span>
+            <div class="card-play-btn">▶</div>
+            <div class="card-overlay-text">
+              <p>"They just leaked the next breakthrough model..."</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="author-row">
+              <span class="author-name">Silicon Pulse</span>
+              <span class="growth-tag">+88k Followers</span>
+            </div>
+            <div class="card-stats">
+              <span>Original: 34m</span>
+              <span>•</span>
+              <span class="accent-color">Clip length: 32s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="showcase-card" data-category="business">
+          <div class="card-video-mock grad-showcase-3">
+            <span class="pill-views">👁️ 8.9M Views</span>
+            <div class="card-play-btn">▶</div>
+            <div class="card-overlay-text">
+              <p>"How a $0 budget turned into $1M in 90 days..."</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="author-row">
+              <span class="author-name">Bootstrapped Founder</span>
+              <span class="growth-tag">+120k Followers</span>
+            </div>
+            <div class="card-stats">
+              <span>Original: 52m</span>
+              <span>•</span>
+              <span class="accent-color">Clip length: 50s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="showcase-card" data-category="gaming">
+          <div class="card-video-mock grad-showcase-4">
+            <span class="pill-views">👁️ 3.1M Views</span>
+            <div class="card-play-btn">▶</div>
+            <div class="card-overlay-text">
+              <p>"The 1-in-a-million clutch that shocked the lobby!"</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="author-row">
+              <span class="author-name">Apex Highlights</span>
+              <span class="growth-tag">+35k Subs</span>
+            </div>
+            <div class="card-stats">
+              <span>Original: 4h Stream</span>
+              <span>•</span>
+              <span class="accent-color">Clip length: 28s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Flexible Pricing</div>
+        <h2>Start Free, Scale as You Go Viral</h2>
+        <p>No credit card required to start generating clips today.</p>
+
+        <div class="billing-switch">
+          <span class="bill-label active" id="monthlyLabel">Monthly</span>
+          <label class="switch">
+            <input type="checkbox" id="billingToggle">
+            <span class="slider"></span>
+          </label>
+          <span class="bill-label" id="annualLabel">Annual <span class="badge-discount">Save 25%</span></span>
+        </div>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter Plan -->
+        <div class="pricing-card">
+          <div class="plan-header">
+            <h3>Starter</h3>
+            <p>For budding creators testing out short-form video.</p>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount" data-monthly="0" data-annual="0">0</span>
+              <span class="period">/ month</span>
+            </div>
+          </div>
+          <ul class="plan-perks">
+            <li>✔️ 60 upload minutes / month</li>
+            <li>✔️ 10 AI viral clips per month</li>
+            <li>✔️ 720p HD export</li>
+            <li>✔️ Auto 9:16 reframe</li>
+            <li>✔️ Standard subtitles</li>
+            <li class="muted">❌ Watermark-free</li>
+            <li class="muted">❌ AI B-Roll Auto inserts</li>
+          </ul>
+          <button class="btn btn-outline btn-full">Start Free Forever</button>
+        </div>
+
+        <!-- Pro Plan (Featured) -->
+        <div class="pricing-card featured">
+          <div class="featured-ribbon">Most Popular</div>
+          <div class="plan-header">
+            <h3>Creator Pro</h3>
+            <p>For serious creators looking to dominate TikTok & Shorts.</p>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount price-val" data-monthly="29" data-annual="21">29</span>
+              <span class="period">/ month</span>
+            </div>
+            <span class="billed-note" id="billedNote">Billed monthly</span>
+          </div>
+          <ul class="plan-perks">
+            <li>✔️ <strong>300 upload minutes</strong> / month</li>
+            <li>✔️ <strong>Unlimited AI clips</strong> extraction</li>
+            <li>✔️ <strong>1080p 60fps</strong> Crystal Export</li>
+            <li>✔️ <strong>No watermark</strong></li>
+            <li>✔️ All Hormozi & Beast caption presets</li>
+            <li>✔️ AI B-Roll auto inserts & sound FX</li>
+            <li>✔️ Multi-speaker dynamic split screen</li>
+            <li>✔️ Direct 1-click scheduling to socials</li>
+          </ul>
+          <button class="btn btn-primary btn-full">Get Started with Pro</button>
+        </div>
+
+        <!-- Agency / Studio Plan -->
+        <div class="pricing-card">
+          <div class="plan-header">
+            <h3>Agency & Studio</h3>
+            <p>For podcast networks, agencies & high-volume media teams.</p>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount price-val" data-monthly="79" data-annual="59">79</span>
+              <span class="period">/ month</span>
+            </div>
+            <span class="billed-note" id="billedNoteAgency">Billed monthly</span>
+          </div>
+          <ul class="plan-perks">
+            <li>✔️ <strong>1,200 upload minutes</strong> / month</li>
+            <li>✔️ <strong>4K UHD</strong> export resolution</li>
+            <li>✔️ Custom brand typography & watermarks</li>
+            <li>✔️ Up to 5 team member seats</li>
+            <li>✔️ API access for automated pipelines</li>
+            <li>✔️ Priority GPU rendering queue</li>
+            <li>✔️ Dedicated 24/7 account manager</li>
+          </ul>
+          <button class="btn btn-outline btn-full">Contact Enterprise</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section class="faq-section" id="faq">
+    <div class="container faq-container">
+      <div class="section-header">
+        <div class="tag">Got Questions?</div>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about the AI clip repurposing workflow.</p>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-question">
+            <span>How does the AI choose which parts are viral?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-answer">
+            <p>Our AI combines three layers of intelligence: natural language processing (detecting hooks, punchlines, and contrarian perspectives), audio acoustics (analyzing vocal inflection, volume emphasis, and audience reactions), and trained models on over 10 million high-performing viral videos.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-question">
+            <span>What video formats and platforms are supported?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-answer">
+            <p>You can paste direct URLs from YouTube, Twitch, Vimeo, Google Drive, or upload raw MP4, MOV, MKV, and WEBM files up to 10GB in size.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-question">
+            <span>Can I customize the captions, fonts, and colors?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-answer">
+            <p>Yes! You have full creative control. Choose from trending presets (Alex Hormozi, MrBeast, Minimalist) or customize font family, colors, stroke, position, and word-by-word animation speed.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-question">
+            <span>Does it handle multi-person podcast interviews?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-answer">
+            <p>Absolutely. The Active Speaker AI detects who is talking in real-time and either smoothly pans between speakers or generates an automated 9:16 split screen so both the question and the reaction are visible simultaneously.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <h2>Ready to Turn Your Videos into Viral Gold?</h2>
+        <p>Join over 14,000 podcasters, creators, and brands growing their audience on autopilot.</p>
+        <div class="cta-buttons">
+          <a href="#demo" class="btn btn-primary btn-lg">Generate Your First Clip Free</a>
+        </div>
+        <div class="cta-guarantee">
+          <span>⚡ No credit card required</span>
+          <span>•</span>
+          <span>⏱️ Ready in under 60 seconds</span>
+          <span>•</span>
+          <span>🔒 100% Secure</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Viral<span class="gradient-text">Clip</span></span>
+        </a>
+        <p>The all-in-one AI engine transforming long-form content into high-converting vertical shorts for modern creators.</p>
+        <p class="copyright">© 2026 ViralClip AI Inc. All rights reserved.</p>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">AI Hook Detection</a>
+          <a href="#features">9:16 Auto Reframe</a>
+          <a href="#captions">Dynamic Subtitles</a>
+          <a href="#pricing">Pricing Plans</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#showcase">Viral Showcase</a>
+          <a href="#demo">Live Demo</a>
+          <a href="#faq">FAQ</a>
+          <a href="#">Creator Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Video Preview Modal -->
+  <div class="modal-backdrop hidden" id="videoModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close Preview">&times;</button>
+      <div class="modal-phone">
+        <div class="phone-video-player" id="modalPlayerContent">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
