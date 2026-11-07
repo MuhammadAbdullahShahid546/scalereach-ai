@@ -1265,20 +1265,15 @@ class ScaleReachFullApp {
       moments = this.generateClipsForCustomVideo(title, author, url, duration);
     }
 
-    // Adapt timestamps if real video duration is loaded
-    const realDur = (this.videoDuration && isFinite(this.videoDuration) && this.videoDuration > 0) ? this.videoDuration : 90;
-    moments.forEach(m => {
-      if (m.end > realDur) {
-        const span = Math.min(30, m.end - m.start);
-        m.end = parseFloat(realDur.toFixed(1));
-        m.start = parseFloat(Math.max(0, m.end - span).toFixed(1));
-      }
-    });
-
     this.clipsMoments = moments;
+
+    // Adapt timestamps smartly so each reel has its own unique, non-overlapping timeline
+    const realDur = (this.videoDuration && isFinite(this.videoDuration) && this.videoDuration > 0) ? this.videoDuration : (duration || 90);
+    this.distributeClipsAcrossDuration(realDur);
+
     this.activeClipIndex = 0;
-    this.clipStart = moments[0].start;
-    this.clipEnd = moments[0].end;
+    this.clipStart = this.clipsMoments[0].start;
+    this.clipEnd = this.clipsMoments[0].end;
 
     // Render newly analyzed moments into UI
     this.renderSuggestedClipsUI();
@@ -2533,18 +2528,49 @@ class ScaleReachFullApp {
     });
   }
 
+  distributeClipsAcrossDuration(totalDur) {
+    if (!this.clipsMoments || !this.clipsMoments.length) return;
+    const dur = (totalDur && isFinite(totalDur) && totalDur > 10) ? totalDur : 180;
+    const count = this.clipsMoments.length;
+
+    // Check if current clips fit naturally without any overlaps and all end <= dur
+    const lastClip = this.clipsMoments[count - 1];
+    let hasCollisionOrOverflow = (!lastClip || lastClip.end > dur);
+    
+    // Check if any two adjacent clips share the exact same start or end
+    for (let i = 0; i < count - 1; i++) {
+      if (this.clipsMoments[i].start === this.clipsMoments[i + 1].start || 
+          this.clipsMoments[i].end === this.clipsMoments[i + 1].end ||
+          this.clipsMoments[i].end > dur) {
+        hasCollisionOrOverflow = true;
+        break;
+      }
+    }
+
+    if (hasCollisionOrOverflow) {
+      // Calculate intelligent, non-overlapping intervals across the whole video
+      const clipSpan = Math.max(15, Math.min(30, Math.floor((dur * 0.82) / count)));
+      const usableSpan = Math.max(0, dur - clipSpan);
+      const step = count > 1 ? usableSpan / (count - 1) : 0;
+
+      this.clipsMoments.forEach((m, idx) => {
+        let start = Math.floor(idx * step);
+        let end = Math.min(dur, start + clipSpan);
+        if (end <= start) {
+          start = Math.max(0, end - 15);
+        }
+        m.start = parseFloat(start.toFixed(1));
+        m.end = parseFloat(end.toFixed(1));
+      });
+    }
+  }
+
   recalculateMomentsForDuration() {
     const total = this.videoDuration;
     if (total <= 0 || !this.clipsMoments || !this.clipsMoments.length) return;
 
-    // Only adjust clips if their end time extends beyond the actual video duration
-    this.clipsMoments.forEach((m) => {
-      if (m.end > total) {
-        const span = Math.min(30, Math.max(5, m.end - m.start));
-        m.end = parseFloat(total.toFixed(1));
-        m.start = parseFloat(Math.max(0, m.end - span).toFixed(1));
-      }
-    });
+    // Distribute all 6 reels intelligently so each has a unique, non-overlapping timeline
+    this.distributeClipsAcrossDuration(total);
 
     this.renderSuggestedClipsUI();
     this.renderSubnavPills();
