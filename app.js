@@ -749,6 +749,32 @@ class ScaleReachFullApp {
             caption: 'WILL IT GO IN',
             tags: ['#buzzerbeater', '#wholesome', '#100000dollars', '#sportsclimax', '#fyp'],
             badgeTags: ['🏆 91% Climax', '💰 $100k Final Shot', '✨ Game Winner']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: Slow-Mo Windmill Slam Angle',
+            hookText: '🌪️ Multi-Angle Replay of LeBron\'s Ferocious Dunk',
+            viralityScore: '90% Viral',
+            start: 220,
+            end: 250,
+            hookDesc: 'Phantom high-speed camera captures LeBron hanging in the air and rattling the rim.',
+            seoTitle: 'LeBron James dunk in super slow motion looks completely unreal 🤯🏀',
+            caption: 'GRAVITY DEFIED',
+            tags: ['#lebrondunk', '#slowmo', '#kingjames', '#nbahighlights', '#shorts'],
+            badgeTags: ['🎯 90% Dunk Angle', '🌪️ Slow Motion', '⚡ High Retention']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: LeBron Teases MrBeast Blooper',
+            hookText: '😂 Hilarious Trash Talk & Court Banter',
+            viralityScore: '89% Viral',
+            start: 255,
+            end: 285,
+            hookDesc: 'LeBron jokes with MrBeast about joining his next challenge video as the gym roars with laughter.',
+            seoTitle: 'LeBron James roasting MrBeast is the funniest thing you\'ll see today 😂💀',
+            caption: 'LEBRON ROASTS MRBEAST',
+            tags: ['#mrbeast', '#lebron', '#funny', '#bloopers', '#foryou'],
+            badgeTags: ['🚀 89% Outro', '😂 Trash Talk', '💬 Comment Spike']
           }
         ]
       },
@@ -835,6 +861,32 @@ class ScaleReachFullApp {
             caption: 'LIFE CHANGING MOMENT',
             tags: ['#wholesome', '#moneygiveaway', '#100000dollars', '#emotional', '#shorts'],
             badgeTags: ['🏆 91% Climax', '💰 $100k Handover', '✨ Wholesome']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: Slow-Mo Curve Shot Masterclass',
+            hookText: '🌪️ Impossible Angle & Curving Trajectory',
+            viralityScore: '90% Viral',
+            start: 220,
+            end: 250,
+            hookDesc: 'High-speed 1000fps camera captures ball curving with extreme spin right into the postage stamp corner.',
+            seoTitle: 'Erling Haaland\'s curve shot broke the laws of physics in slow motion 🤯⚽',
+            caption: 'PHYSICS BROKEN',
+            tags: ['#haalandcurver', '#slowmotion', '#footballskills', '#viralreels', '#fyp'],
+            badgeTags: ['🎯 90% Curve Precision', '🌪️ 1000 FPS Slow-Mo', '⚡ High Retention']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Behind The Scenes Bloopers & Laughs',
+            hookText: '😂 Erling Haaland Misses Target & Bursts Out Laughing',
+            viralityScore: '89% Viral',
+            start: 255,
+            end: 285,
+            hookDesc: 'Hilarious unscripted banter between Haaland, MrBeast and the amateur keeper during break time.',
+            seoTitle: 'The funniest unscripted moment between Haaland and MrBeast 😂🎬',
+            caption: 'WAIT TILL THE END',
+            tags: ['#bloopers', '#haalandfunny', '#mrbeastouttakes', '#behindthescenes', '#shorts'],
+            badgeTags: ['🚀 89% Viral Outro', '😂 Funniest Blooper', '💬 Comment Spike']
           }
         ]
       },
@@ -921,6 +973,32 @@ class ScaleReachFullApp {
             caption: '1 SECOND LEFT TO WIN',
             tags: ['#500000dollars', '#mrbeastwinner', '#climax', '#insanefinish', '#fyp'],
             badgeTags: ['🏆 91% Climax', '💰 $500k Vault', '✨ Final Second']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: High-Speed Police PIT Maneuver Fail',
+            hookText: '🏎️ Pursuit Car Spun Out On Wet Grass Drift',
+            viralityScore: '90% Viral',
+            start: 210,
+            end: 240,
+            hookDesc: 'Police interceptor attempts PIT maneuver on wet grass and spins out into safety hay bales.',
+            seoTitle: 'The police car spinout that let the getaway van escape 😱💨',
+            caption: 'PIT MANEUVER FAILED',
+            tags: ['#carspin', '#pursuit', '#policefail', '#drift', '#shorts'],
+            badgeTags: ['🎯 90% Stunt Drama', '🏎️ Drift Out', '💥 Slow Motion']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Celebrating With 100 Cops After Stunt',
+            hookText: '😂 Handshakes & Pizza Party With The Entire Police Force',
+            viralityScore: '89% Viral',
+            start: 245,
+            end: 275,
+            hookDesc: 'All 100 officers break character and celebrate with MrBeast with pizza boxes on car hoods.',
+            seoTitle: 'What happened right after escaping 100 police officers 😂🍕',
+            caption: 'COPS GET PIZZA',
+            tags: ['#wholesome', '#behindthescenes', '#100cops', '#mrbeast', '#fyp'],
+            badgeTags: ['🚀 89% Wholesome Outro', '🍕 Pizza Party', '💬 Viral Ending']
           }
         ]
       }
@@ -1289,22 +1367,15 @@ class ScaleReachFullApp {
     const topicWord = words[0] || 'Viral';
     const tagWord = (words[1] || topicWord).toLowerCase();
 
-    // 6 non-overlapping, well-spaced reels across the video duration
-    const segDur = Math.max(12, Math.min(30, Math.floor(dur / 6)));
-    const segs = [
-      { start: 0, end: Math.min(dur, segDur) },
-      { start: Math.min(Math.max(0, dur - segDur), Math.floor(dur * 0.17)), end: Math.min(dur, Math.floor(dur * 0.17) + segDur) },
-      { start: Math.min(Math.max(0, dur - segDur), Math.floor(dur * 0.34)), end: Math.min(dur, Math.floor(dur * 0.34) + segDur) },
-      { start: Math.min(Math.max(0, dur - segDur), Math.floor(dur * 0.51)), end: Math.min(dur, Math.floor(dur * 0.51) + segDur) },
-      { start: Math.min(Math.max(0, dur - segDur), Math.floor(dur * 0.68)), end: Math.min(dur, Math.floor(dur * 0.68) + segDur) },
-      { start: Math.max(0, dur - segDur), end: dur }
-    ];
-
-    segs.forEach(s => {
-      if (s.start >= s.end) {
-        s.start = Math.max(0, s.end - 15);
-      }
-    });
+    // 8 non-overlapping, well-spaced reels across the video duration
+    const segDur = Math.max(10, Math.min(30, Math.floor((dur * 0.85) / 8)));
+    const segs = [];
+    const step = dur > segDur ? (dur - segDur) / 7 : 0;
+    for (let i = 0; i < 8; i++) {
+      const s = Math.max(0, Math.floor(i * step));
+      const e = Math.min(dur, s + segDur);
+      segs.push({ start: s, end: e });
+    }
 
     return [
       {
@@ -1340,7 +1411,7 @@ class ScaleReachFullApp {
         viralityScore: '96% Viral',
         start: segs[2].start,
         end: segs[2].end,
-        hookDesc: `Laughter and high acoustic energy cluster between ${this.formatTime(segs[2].start)} - ${this.formatTime(segs[2].end)}.`,
+        hookDesc: `Laughter and high acoustic energy cluster detected.`,
         seoTitle: `The most unexpected reaction in ${cleanTitle} caught on camera 😂💀`,
         caption: 'DID YOU SEE THAT',
         tags: [`#${tagWord}`, '#reaction', '#funny', '#viralclips', '#foryou'],
@@ -1384,6 +1455,32 @@ class ScaleReachFullApp {
         caption: 'THIS IS UNREAL',
         tags: [`#${tagWord}`, '#finale', '#bestmoments', '#shorts', '#viralvideo'],
         badgeTags: ['🏆 91% Climax', '🚀 High Share Rate', '✨ Final Punchline']
+      },
+      {
+        id: 7,
+        title: `🎯 Reel 7: Mind-Blowing Visual Masterclass`,
+        hookText: '🌪️ Slow-Mo Breakdown & Frame-by-Frame Detail',
+        viralityScore: '90% Viral',
+        start: segs[6].start,
+        end: segs[6].end,
+        hookDesc: `Visually captivating peak moment perfect for looping engagement and shares.`,
+        seoTitle: `Look at this unbelievable detail in ${cleanTitle} 🤯🔥`,
+        caption: 'UNBELIEVABLE DETAIL',
+        tags: [`#${tagWord}`, '#slowmo', '#visualmagic', '#viralreels', '#shorts'],
+        badgeTags: ['🎯 90% Visual Hit', '🌪️ Slow-Mo Peak', '⚡ High Retention']
+      },
+      {
+        id: 8,
+        title: `🚀 Reel 8: Ultimate Shareable Outro & Blooper`,
+        hookText: '😂 Hilarious Behind The Scenes Punchline',
+        viralityScore: '89% Viral',
+        start: segs[7].start,
+        end: segs[7].end,
+        hookDesc: `Unfiltered outro moment that triggers high comment velocity and repeat shares.`,
+        seoTitle: `The funniest ending of ${cleanTitle} you have ever seen 😂🎬`,
+        caption: 'WAIT FOR THE END',
+        tags: [`#${tagWord}`, '#bloopers', '#viraloutro', '#foryou', '#trending'],
+        badgeTags: ['🚀 89% Viral Outro', '😂 Funniest Cut', '💬 Comment Spike']
       }
     ];
   }
@@ -1393,52 +1490,217 @@ class ScaleReachFullApp {
     this.aiSuggestedList.innerHTML = '';
 
     if (this.aiStatusPill) {
-      this.aiStatusPill.textContent = `${this.clipsMoments.length} Viral Reels`;
+      this.aiStatusPill.textContent = `${this.clipsMoments.length} Viral Reels (2x4 Grid)`;
     }
+
+    const videoSrc = (this.sourceVideo && (this.sourceVideo.currentSrc || this.sourceVideo.src)) ? (this.sourceVideo.currentSrc || this.sourceVideo.src) : 'podcast.mp4';
 
     this.clipsMoments.forEach((moment, idx) => {
       const isActive = (idx === this.activeClipIndex);
-      const row = document.createElement('div');
-      row.className = `suggest-clip-row ${isActive ? 'active' : ''}`;
-      row.setAttribute('data-clip', (idx + 1).toString());
+      const card = document.createElement('div');
+      card.className = `suggest-reel-card ${isActive ? 'active' : ''}`;
+      card.setAttribute('data-clip', (idx + 1).toString());
+      card.setAttribute('data-index', idx.toString());
 
-      const dur = (moment.end - moment.start).toFixed(0);
+      const dur = Math.max(1, Math.round(moment.end - moment.start));
       const isHighScore = (moment.viralityScore && (moment.viralityScore.includes('99') || moment.viralityScore.includes('98') || moment.viralityScore.includes('97')));
       const scoreClass = isHighScore ? 'score-high' : 'score-mid';
+      const startStr = this.formatTime(moment.start);
+      const endStr = this.formatTime(moment.end);
+      const hookCaption = (moment.caption || 'VIRAL HOOK').toUpperCase();
+      const hookText = moment.hookText || moment.hookDesc || 'High energy retention hook';
 
-      row.innerHTML = `
-        <div class="suggest-badge-col">
-          <span class="suggest-score-badge ${scoreClass}">${moment.viralityScore || '96% Viral'}</span>
-          <span class="suggest-play-status">${isActive ? '▶ Playing' : 'Select'}</span>
-        </div>
-        <div class="suggest-info-col">
-          <div class="suggest-top-line">
-            <strong class="suggest-title">${moment.title}</strong>
-            <span class="suggest-time-pill">${this.formatTime(moment.start)} - ${this.formatTime(moment.end)} (${dur}s)</span>
+      card.innerHTML = `
+        <div class="reel-video-container">
+          <video class="reel-card-video" playsinline muted preload="metadata" loop></video>
+          <div class="reel-card-gradient"></div>
+
+          <!-- Top Floating Bar -->
+          <div class="reel-card-topbar">
+            <span class="reel-score-badge ${scoreClass}">
+              <span class="fire-icon">🔥</span> ${moment.viralityScore || '96% Viral'}
+            </span>
+            <span class="reel-time-badge">${startStr} - ${endStr} (${dur}s)</span>
           </div>
-          <p class="suggest-hook-text">"${moment.hookText || moment.hookDesc}"</p>
-          <div class="suggest-tags-row">
-            ${(moment.badgeTags || ['🔥 Viral Hook', '⚡ High Pace']).map(t => `<span class="suggest-tag-item">${t}</span>`).join('')}
-            ${isActive ? '<span class="suggest-active-pill">📱 Live on Mobile Preview</span>' : ''}
+
+          <!-- Audio Toggle Button -->
+          <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio" aria-label="Toggle Audio">
+            <span class="sound-icon">🔇</span>
+          </button>
+
+          <!-- On-Screen Viral Hook Caption Sticker -->
+          <div class="reel-hook-caption-sticker">
+            <div class="sticker-text">${hookCaption}</div>
+            <div class="sticker-subtext">${hookText}</div>
+          </div>
+
+          <!-- Center Play / Pause Glassmorphism Circle -->
+          <div class="reel-center-play">
+            <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" style="display:${isActive ? 'none' : 'block'};"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:${isActive ? 'block' : 'none'};"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="reel-playing-waveform" style="display:${isActive ? 'flex' : 'none'};"><span></span><span></span><span></span><span></span></div>
+          </div>
+
+          <!-- Bottom Meta & Actions -->
+          <div class="reel-card-footer">
+            <div class="reel-footer-title">${moment.title}</div>
+            <p class="reel-footer-desc">"${moment.hookDesc || moment.seoTitle || ''}"</p>
+            <div class="reel-footer-tags">
+              ${(moment.badgeTags || ['🔥 Viral Hook', '⚡ High Pace']).map(t => `<span class="reel-tag-chip">${t}</span>`).join('')}
+            </div>
+            <div class="reel-footer-action-bar">
+              <span class="reel-action-pill ${isActive ? 'active-pill' : ''}">
+                ${isActive ? '<span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview' : '▶ Click to Edit & Play'}
+              </span>
+            </div>
           </div>
         </div>
       `;
 
-      row.addEventListener('click', () => {
+      // Setup live video playback inside the card
+      const cardVideo = card.querySelector('.reel-card-video');
+      if (cardVideo && this.activeSourceType !== 'youtube') {
+        cardVideo.src = videoSrc;
+        cardVideo.muted = true;
+
+        const seekStart = () => {
+          try {
+            cardVideo.currentTime = moment.start;
+          } catch (e) {}
+        };
+
+        if (cardVideo.readyState >= 1) {
+          seekStart();
+        } else {
+          cardVideo.addEventListener('loadedmetadata', seekStart, { once: true });
+        }
+
+        // Loop within segment boundaries
+        cardVideo.addEventListener('timeupdate', () => {
+          if (cardVideo.currentTime >= moment.end || cardVideo.currentTime < moment.start) {
+            cardVideo.currentTime = moment.start;
+          }
+        });
+      }
+
+      // Audio Toggle Click
+      const audioBtn = card.querySelector('.reel-audio-btn');
+      if (audioBtn) {
+        audioBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (cardVideo) {
+            cardVideo.muted = !cardVideo.muted;
+            const soundIcon = audioBtn.querySelector('.sound-icon');
+            if (soundIcon) soundIcon.textContent = cardVideo.muted ? '🔇' : '🔊';
+            audioBtn.style.borderColor = cardVideo.muted ? 'rgba(255,255,255,0.2)' : '#38bdf8';
+          }
+        });
+      }
+
+      // Center Play/Pause button click
+      const playBtn = card.querySelector('.reel-play-circle-btn');
+      if (playBtn) {
+        playBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.activeClipIndex !== idx) {
+            this.activateClipByIndex(idx);
+          } else {
+            if (cardVideo && !cardVideo.paused) {
+              this.pauseCardVideo(idx);
+            } else {
+              this.playCardVideo(idx);
+            }
+          }
+        });
+      }
+
+      // Entire Card Click: Activate this reel and play
+      card.addEventListener('click', () => {
         this.activateClipByIndex(idx);
       });
 
-      this.aiSuggestedList.appendChild(row);
+      this.aiSuggestedList.appendChild(card);
     });
 
-    this.suggestClipRows = this.aiSuggestedList.querySelectorAll('.suggest-clip-row');
+    this.suggestClipRows = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
+  }
+
+  playCardVideo(idx) {
+    if (!this.aiSuggestedList) return;
+    const cards = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
+    const moment = this.clipsMoments && this.clipsMoments[idx];
+    if (!moment) return;
+
+    cards.forEach((card, i) => {
+      const v = card.querySelector('.reel-card-video');
+      const iconPlay = card.querySelector('.icon-play');
+      const iconPause = card.querySelector('.icon-pause');
+      const wave = card.querySelector('.reel-playing-waveform');
+
+      if (i === idx) {
+        if (v && this.activeSourceType !== 'youtube') {
+          if (v.currentTime < moment.start || v.currentTime >= moment.end) {
+            v.currentTime = moment.start;
+          }
+          v.play().catch(e => console.log('Reel video play note:', e));
+        }
+        if (iconPlay) iconPlay.style.display = 'none';
+        if (iconPause) iconPause.style.display = 'block';
+        if (wave) wave.style.display = 'flex';
+      } else {
+        if (v && !v.paused) {
+          v.pause();
+        }
+        if (iconPlay) iconPlay.style.display = 'block';
+        if (iconPause) iconPause.style.display = 'none';
+        if (wave) wave.style.display = 'none';
+      }
+    });
+
+    // Also sync and play main studio preview video
+    if (this.activeSourceType === 'youtube') {
+      this.syncYouTubeClipTime();
+    } else if (this.sourceVideo) {
+      if (Math.abs(this.sourceVideo.currentTime - moment.start) > 0.5) {
+        this.sourceVideo.currentTime = moment.start;
+      }
+      if (this.sourceVideo.paused) {
+        this.sourceVideo.play().catch(console.warn);
+      }
+    }
+  }
+
+  pauseCardVideo(idx) {
+    if (!this.aiSuggestedList) return;
+    const cards = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
+    const targetCard = cards[idx];
+    if (!targetCard) return;
+
+    const v = targetCard.querySelector('.reel-card-video');
+    const iconPlay = targetCard.querySelector('.icon-play');
+    const iconPause = targetCard.querySelector('.icon-pause');
+    const wave = targetCard.querySelector('.reel-playing-waveform');
+
+    if (v && !v.paused) {
+      v.pause();
+    }
+    if (iconPlay) iconPlay.style.display = 'block';
+    if (iconPause) iconPause.style.display = 'none';
+    if (wave) wave.style.display = 'none';
+
+    // Also pause main studio video
+    if (this.activeSourceType !== 'youtube' && this.sourceVideo && !this.sourceVideo.paused) {
+      this.sourceVideo.pause();
+    }
   }
 
   renderSubnavPills() {
     if (!this.clipSelectorPillsContainer) return;
     this.clipSelectorPillsContainer.innerHTML = '';
 
-    const emojis = ['🔥', '⚡', '😂', '🤯', '💡', '🏆'];
+    const emojis = ['🔥', '⚡', '😂', '🤯', '💡', '🏆', '🎯', '🚀'];
 
     this.clipsMoments.forEach((moment, idx) => {
       const isActive = (idx === this.activeClipIndex);
@@ -2029,26 +2291,23 @@ class ScaleReachFullApp {
       });
     }
 
-    // Sync Suggestion Cards
-    if (this.suggestClipRows) {
-      this.suggestClipRows.forEach((row, idx) => {
-        const playStatus = row.querySelector('.suggest-play-status');
-        const tagsRow = row.querySelector('.suggest-tags-row');
-        let activePill = row.querySelector('.suggest-active-pill');
-
+    // Sync 9:16 Video Suggestion Cards
+    if (this.aiSuggestedList) {
+      const cards = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
+      cards.forEach((card, idx) => {
+        const actionPill = card.querySelector('.reel-action-pill');
         if (idx === clipIdx) {
-          row.classList.add('active');
-          if (playStatus) playStatus.textContent = '▶ Playing';
-          if (!activePill && tagsRow) {
-            const pill = document.createElement('span');
-            pill.className = 'suggest-active-pill';
-            pill.textContent = '📱 Live on Mobile Preview';
-            tagsRow.appendChild(pill);
+          card.classList.add('active');
+          if (actionPill) {
+            actionPill.className = 'reel-action-pill active-pill';
+            actionPill.innerHTML = '<span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview';
           }
         } else {
-          row.classList.remove('active');
-          if (playStatus) playStatus.textContent = 'Select';
-          if (activePill) activePill.remove();
+          card.classList.remove('active');
+          if (actionPill) {
+            actionPill.className = 'reel-action-pill';
+            actionPill.innerHTML = '▶ Click to Edit & Play';
+          }
         }
       });
     }
@@ -2072,13 +2331,9 @@ class ScaleReachFullApp {
       this.updateTrimmerUI();
       this.renderWaveform();
 
-      // Immediately seek and play on mobile
-      if (this.activeSourceType === 'youtube') {
-        this.syncYouTubeClipTime();
-      } else {
-        this.sourceVideo.currentTime = this.clipStart;
-        if (this.sourceVideo.paused) this.sourceVideo.play().catch(console.warn);
-      }
+      // Start video playback on the card and in the studio
+      this.playCardVideo(clipIdx);
+
       this.showToast(`Selected Reel ${clipIdx + 1}: ${moment.title} 🚀`);
     }
   }
@@ -2090,13 +2345,15 @@ class ScaleReachFullApp {
     this.isCustomAdjusted = true;
 
     // Deselect suggested clip cards so user sees custom trim is now active
-    if (this.suggestClipRows) {
-      this.suggestClipRows.forEach(row => {
-        row.classList.remove('active');
-        const playStatus = row.querySelector('.suggest-play-status');
-        if (playStatus) playStatus.textContent = 'Select';
-        const activePill = row.querySelector('.suggest-active-pill');
-        if (activePill) activePill.remove();
+    if (this.aiSuggestedList) {
+      const cards = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
+      cards.forEach(card => {
+        card.classList.remove('active');
+        const actionPill = card.querySelector('.reel-action-pill');
+        if (actionPill) {
+          actionPill.className = 'reel-action-pill';
+          actionPill.innerHTML = '▶ Click to Edit & Play';
+        }
       });
     }
 

@@ -724,131 +724,297 @@
                 </div>
               </div>
 
-              <!-- 2. AI SUGGESTED CLIPS (Option 2: 6 Pre-Analyzed Viral Reels) -->
+              <!-- 2. AI SUGGESTED CLIPS (8 Pre-Analyzed 9:16 Viral Reels in 2-Column Grid) -->
               <div class="card ai-suggested-card">
                 <div class="card-header">
                   <div class="card-title">
                     <span class="dot-cyan"></span>
                     <div>
-                      <h3>⚡ Or Choose From 6 AI Suggested Reels (Crazy & Funny Hooks)</h3>
-                      <p class="section-micro-desc">AI ne video analyze karke 6 crazy viral reels detect kiye hain. Kisi bhi reel par click karke live play karein:</p>
+                      <h3>⚡ 8 AI Suggested 9:16 Viral Reels (Play & Select)</h3>
+                      <p class="section-micro-desc">AI ne video analyze karke 8 viral 9:16 vertical short reels detect kiye hain (2 cards per row). Kisi bhi card par Play click karke dekhein ya edit karein:</p>
                     </div>
                   </div>
-                  <span class="ai-status-pill" id="aiStatusPill">6 Viral Reels</span>
+                  <span class="ai-status-pill" id="aiStatusPill">8 Viral Reels (2x4 Grid)</span>
                 </div>
 
-                <div class="ai-suggested-list" id="aiSuggestedList">
+                <div class="ai-suggested-grid" id="aiSuggestedList">
                   <!-- Reel 1 (Default Active) -->
-                  <div class="suggest-clip-row active" data-clip="1">
-                    <div class="suggest-badge-col">
-                      <span class="suggest-score-badge score-high">99% Viral</span>
-                      <span class="suggest-play-status">▶ Playing</span>
-                    </div>
-                    <div class="suggest-info-col">
-                      <div class="suggest-top-line">
-                        <strong class="suggest-title">🔥 Reel 1: Striker Haaland 1-on-1 Challenge</strong>
-                        <span class="suggest-time-pill">00:15 - 00:45 (30s)</span>
+                  <div class="suggest-reel-card active" data-clip="1" data-index="0">
+                    <div class="reel-video-container">
+                      <video class="reel-card-video" src="podcast.mp4" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-gradient"></div>
+                      <div class="reel-card-topbar">
+                        <span class="reel-score-badge score-high"><span class="fire-icon">🔥</span> 99% Viral</span>
+                        <span class="reel-time-badge">00:15 - 00:45 (30s)</span>
                       </div>
-                      <p class="suggest-hook-text">"High-retention intro hook & immediate penalty confrontation."</p>
-                      <div class="suggest-tags-row">
-                        <span class="suggest-tag-item">⚡ Highest Retention</span>
-                        <span class="suggest-tag-item">⚽ High Pace</span>
-                        <span class="suggest-active-pill">📱 Live on Mobile Preview</span>
+                      <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
+                      <div class="reel-hook-caption-sticker">
+                        <div class="sticker-text">CAN HE SAVE THIS</div>
+                        <div class="sticker-subtext">⚡ High-Stakes Penalty Shootout Kickoff</div>
+                      </div>
+                      <div class="reel-center-play">
+                        <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+                          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
+                          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:block;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="reel-playing-waveform" style="display:flex;"><span></span><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="reel-card-footer">
+                        <div class="reel-footer-title">🔥 Reel 1: Striker Haaland 1-on-1 Challenge</div>
+                        <p class="reel-footer-desc">"Erling Haaland steps up against amateur goalkeeper with $100,000 in goal."</p>
+                        <div class="reel-footer-tags">
+                          <span class="reel-tag-chip">🔥 99% Stakes</span>
+                          <span class="reel-tag-chip">⚽ Haaland</span>
+                          <span class="reel-tag-chip">⚡ Instant Hook</span>
+                        </div>
+                        <div class="reel-footer-action-bar">
+                          <span class="reel-action-pill active-pill"><span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   <!-- Reel 2 -->
-                  <div class="suggest-clip-row" data-clip="2">
-                    <div class="suggest-badge-col">
-                      <span class="suggest-score-badge score-high">97% Viral</span>
-                      <span class="suggest-play-status">Select</span>
-                    </div>
-                    <div class="suggest-info-col">
-                      <div class="suggest-top-line">
-                        <strong class="suggest-title">😂 Reel 2: Insane Goalkeeper Save & Reaction</strong>
-                        <span class="suggest-time-pill">00:45 - 01:15 (30s)</span>
+                  <div class="suggest-reel-card" data-clip="2" data-index="1">
+                    <div class="reel-video-container">
+                      <video class="reel-card-video" src="podcast.mp4" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-gradient"></div>
+                      <div class="reel-card-topbar">
+                        <span class="reel-score-badge score-high"><span class="fire-icon">🔥</span> 97% Viral</span>
+                        <span class="reel-time-badge">00:45 - 01:15 (30s)</span>
                       </div>
-                      <p class="suggest-hook-text">"Laughter frequency burst & shocked goalkeeper expression."</p>
-                      <div class="suggest-tags-row">
-                        <span class="suggest-tag-item">😂 Laughter Spike</span>
-                        <span class="suggest-tag-item">🧤 Shock Moment</span>
+                      <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
+                      <div class="reel-hook-caption-sticker">
+                        <div class="sticker-text">HOW DID HE SAVE THAT</div>
+                        <div class="sticker-subtext">🧤 Impossible Reflex & Shocked Stadium</div>
+                      </div>
+                      <div class="reel-center-play">
+                        <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+                          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="reel-card-footer">
+                        <div class="reel-footer-title">😂 Reel 2: Insane Goalkeeper Save & Reaction</div>
+                        <p class="reel-footer-desc">"Goalkeeper miraculously tips the ball over the crossbar with his fingertips."</p>
+                        <div class="reel-footer-tags">
+                          <span class="reel-tag-chip">😂 97% Laughter</span>
+                          <span class="reel-tag-chip">🧤 Clutch Save</span>
+                        </div>
+                        <div class="reel-footer-action-bar">
+                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   <!-- Reel 3 -->
-                  <div class="suggest-clip-row" data-clip="3">
-                    <div class="suggest-badge-col">
-                      <span class="suggest-score-badge score-mid">96% Viral</span>
-                      <span class="suggest-play-status">Select</span>
-                    </div>
-                    <div class="suggest-info-col">
-                      <div class="suggest-top-line">
-                        <strong class="suggest-title">⚡ Reel 3: 100 MPH Rocket Kick Test</strong>
-                        <span class="suggest-time-pill">01:20 - 01:50 (30s)</span>
+                  <div class="suggest-reel-card" data-clip="3" data-index="2">
+                    <div class="reel-video-container">
+                      <video class="reel-card-video" src="podcast.mp4" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-gradient"></div>
+                      <div class="reel-card-topbar">
+                        <span class="reel-score-badge score-mid"><span class="fire-icon">⚡</span> 96% Viral</span>
+                        <span class="reel-time-badge">01:20 - 01:50 (30s)</span>
                       </div>
-                      <p class="suggest-hook-text">"Ball speed radar clocking maximum power with slow-mo impact."</p>
-                      <div class="suggest-tags-row">
-                        <span class="suggest-tag-item">⚡ High Tempo</span>
-                        <span class="suggest-tag-item">💥 Slow Motion</span>
+                      <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
+                      <div class="reel-hook-caption-sticker">
+                        <div class="sticker-text">100 MPH ROCKET KICK</div>
+                        <div class="sticker-subtext">🚀 Radar Speed Gun Clocks Unbelievable Power</div>
+                      </div>
+                      <div class="reel-center-play">
+                        <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+                          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="reel-card-footer">
+                        <div class="reel-footer-title">⚡ Reel 3: Haaland 100 MPH Rocket Kick Test</div>
+                        <p class="reel-footer-desc">"Haaland unleashes full velocity strike into target dummy that flies backward."</p>
+                        <div class="reel-footer-tags">
+                          <span class="reel-tag-chip">⚡ 96% Max Power</span>
+                          <span class="reel-tag-chip">🚀 100 MPH</span>
+                        </div>
+                        <div class="reel-footer-action-bar">
+                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   <!-- Reel 4 -->
-                  <div class="suggest-clip-row" data-clip="4">
-                    <div class="suggest-badge-col">
-                      <span class="suggest-score-badge score-mid">95% Viral</span>
-                      <span class="suggest-play-status">Select</span>
-                    </div>
-                    <div class="suggest-info-col">
-                      <div class="suggest-top-line">
-                        <strong class="suggest-title">🤯 Reel 4: Crossbar Challenge for $50,000</strong>
-                        <span class="suggest-time-pill">01:55 - 02:25 (30s)</span>
+                  <div class="suggest-reel-card" data-clip="4" data-index="3">
+                    <div class="reel-video-container">
+                      <video class="reel-card-video" src="podcast.mp4" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-gradient"></div>
+                      <div class="reel-card-topbar">
+                        <span class="reel-score-badge score-mid"><span class="fire-icon">🤯</span> 95% Viral</span>
+                        <span class="reel-time-badge">01:55 - 02:25 (30s)</span>
                       </div>
-                      <p class="suggest-hook-text">"Impossible precision attempt with crowd cheering and gasping."</p>
-                      <div class="suggest-tags-row">
-                        <span class="suggest-tag-item">🤯 Plot Twist</span>
-                        <span class="suggest-tag-item">🎯 Pure Tension</span>
+                      <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
+                      <div class="reel-hook-caption-sticker">
+                        <div class="sticker-text">PERFECT CROSSBAR PING</div>
+                        <div class="sticker-subtext">🎯 Crossbar Ping Precision from 35 Yards</div>
+                      </div>
+                      <div class="reel-center-play">
+                        <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+                          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="reel-card-footer">
+                        <div class="reel-footer-title">🤯 Reel 4: Crossbar Challenge for $50,000</div>
+                        <p class="reel-footer-desc">"Contestant hits the crossbar cleanly on second try sending the bench crazy."</p>
+                        <div class="reel-footer-tags">
+                          <span class="reel-tag-chip">🤯 95% Precision</span>
+                          <span class="reel-tag-chip">🎯 Crossbar Ping</span>
+                        </div>
+                        <div class="reel-footer-action-bar">
+                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   <!-- Reel 5 -->
-                  <div class="suggest-clip-row" data-clip="5">
-                    <div class="suggest-badge-col">
-                      <span class="suggest-score-badge score-mid">93% Viral</span>
-                      <span class="suggest-play-status">Select</span>
-                    </div>
-                    <div class="suggest-info-col">
-                      <div class="suggest-top-line">
-                        <strong class="suggest-title">💡 Reel 5: Haaland's Pre-Game Warmup Habit</strong>
-                        <span class="suggest-time-pill">02:30 - 03:00 (30s)</span>
+                  <div class="suggest-reel-card" data-clip="5" data-index="4">
+                    <div class="reel-video-container">
+                      <video class="reel-card-video" src="podcast.mp4" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-gradient"></div>
+                      <div class="reel-card-topbar">
+                        <span class="reel-score-badge score-mid"><span class="fire-icon">💡</span> 93% Viral</span>
+                        <span class="reel-time-badge">02:30 - 03:00 (30s)</span>
                       </div>
-                      <p class="suggest-hook-text">"Exclusive pro-athlete routine & tactical insight breakdown."</p>
-                      <div class="suggest-tags-row">
-                        <span class="suggest-tag-item">💡 Pro Secret</span>
-                        <span class="suggest-tag-item">🧠 High Saves</span>
+                      <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
+                      <div class="reel-hook-caption-sticker">
+                        <div class="sticker-text">HAALAND SECRET ROUTINE</div>
+                        <div class="sticker-subtext">🧘 Meditation & Blue-Light Blocking Routine</div>
+                      </div>
+                      <div class="reel-center-play">
+                        <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+                          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="reel-card-footer">
+                        <div class="reel-footer-title">💡 Reel 5: Haaland's Pre-Game Warmup Habit</div>
+                        <p class="reel-footer-desc">"Exclusive pro-athlete routine & tactical insight breakdown."</p>
+                        <div class="reel-footer-tags">
+                          <span class="reel-tag-chip">💡 93% Pro Habit</span>
+                          <span class="reel-tag-chip">🧘 Mindset</span>
+                        </div>
+                        <div class="reel-footer-action-bar">
+                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   <!-- Reel 6 -->
-                  <div class="suggest-clip-row" data-clip="6">
-                    <div class="suggest-badge-col">
-                      <span class="suggest-score-badge score-mid">91% Viral</span>
-                      <span class="suggest-play-status">Select</span>
-                    </div>
-                    <div class="suggest-info-col">
-                      <div class="suggest-top-line">
-                        <strong class="suggest-title">🏆 Reel 6: $100,000 Cash Handover & Speech</strong>
-                        <span class="suggest-time-pill">03:05 - 03:35 (30s)</span>
+                  <div class="suggest-reel-card" data-clip="6" data-index="5">
+                    <div class="reel-video-container">
+                      <video class="reel-card-video" src="podcast.mp4" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-gradient"></div>
+                      <div class="reel-card-topbar">
+                        <span class="reel-score-badge score-mid"><span class="fire-icon">🏆</span> 91% Viral</span>
+                        <span class="reel-time-badge">03:05 - 03:35 (30s)</span>
                       </div>
-                      <p class="suggest-hook-text">"Emotional climax, cash briefcase celebration and final punchline."</p>
-                      <div class="suggest-tags-row">
-                        <span class="suggest-tag-item">💰 $100k Winner</span>
-                        <span class="suggest-tag-item">🎉 Climax Peak</span>
+                      <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
+                      <div class="reel-hook-caption-sticker">
+                        <div class="sticker-text">LIFE CHANGING MOMENT</div>
+                        <div class="sticker-subtext">💰 Opening The Money Briefcase</div>
+                      </div>
+                      <div class="reel-center-play">
+                        <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+                          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="reel-card-footer">
+                        <div class="reel-footer-title">🏆 Reel 6: $100,000 Cash Handover & Speech</div>
+                        <p class="reel-footer-desc">"Emotional climax, cash briefcase celebration and final punchline."</p>
+                        <div class="reel-footer-tags">
+                          <span class="reel-tag-chip">💰 $100k Winner</span>
+                          <span class="reel-tag-chip">🎉 Climax Peak</span>
+                        </div>
+                        <div class="reel-footer-action-bar">
+                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Reel 7 -->
+                  <div class="suggest-reel-card" data-clip="7" data-index="6">
+                    <div class="reel-video-container">
+                      <video class="reel-card-video" src="podcast.mp4" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-gradient"></div>
+                      <div class="reel-card-topbar">
+                        <span class="reel-score-badge score-mid"><span class="fire-icon">🎯</span> 90% Viral</span>
+                        <span class="reel-time-badge">03:40 - 04:10 (30s)</span>
+                      </div>
+                      <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
+                      <div class="reel-hook-caption-sticker">
+                        <div class="sticker-text">PHYSICS BROKEN</div>
+                        <div class="sticker-subtext">🌪️ Impossible Angle & Curving Trajectory</div>
+                      </div>
+                      <div class="reel-center-play">
+                        <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+                          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="reel-card-footer">
+                        <div class="reel-footer-title">🎯 Reel 7: Slow-Mo Curve Shot Masterclass</div>
+                        <p class="reel-footer-desc">"High-speed 1000fps camera captures ball curving with extreme spin."</p>
+                        <div class="reel-footer-tags">
+                          <span class="reel-tag-chip">🎯 90% Curve</span>
+                          <span class="reel-tag-chip">🌪️ Slow-Mo</span>
+                        </div>
+                        <div class="reel-footer-action-bar">
+                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Reel 8 -->
+                  <div class="suggest-reel-card" data-clip="8" data-index="7">
+                    <div class="reel-video-container">
+                      <video class="reel-card-video" src="podcast.mp4" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-gradient"></div>
+                      <div class="reel-card-topbar">
+                        <span class="reel-score-badge score-mid"><span class="fire-icon">🚀</span> 89% Viral</span>
+                        <span class="reel-time-badge">04:15 - 04:45 (30s)</span>
+                      </div>
+                      <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
+                      <div class="reel-hook-caption-sticker">
+                        <div class="sticker-text">WAIT TILL THE END</div>
+                        <div class="sticker-subtext">😂 Unfiltered Celebration & Blooper</div>
+                      </div>
+                      <div class="reel-center-play">
+                        <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
+                          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="reel-card-footer">
+                        <div class="reel-footer-title">🚀 Reel 8: Behind-The-Scenes Bloopers & Fun</div>
+                        <p class="reel-footer-desc">"Hilarious unscripted banter and laugh-out-loud celebration."</p>
+                        <div class="reel-footer-tags">
+                          <span class="reel-tag-chip">🚀 89% Outro</span>
+                          <span class="reel-tag-chip">😂 Blooper</span>
+                        </div>
+                        <div class="reel-footer-action-bar">
+                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
+                        </div>
                       </div>
                     </div>
                   </div>
