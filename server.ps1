@@ -16,7 +16,6 @@ while ($listener.IsListening) {
         $filePath = Join-Path $baseDir $path
 
         if (Test-Path $filePath -PathType Leaf) {
-            $bytes = [System.IO.File]::ReadAllBytes($filePath)
             $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
             $mime = switch ($ext) {
                 ".html" { "text/html; charset=utf-8" }
@@ -29,11 +28,35 @@ while ($listener.IsListening) {
                 ".svg"  { "image/svg+xml" }
                 default { "application/octet-stream" }
             }
+
+            $bytes = [System.IO.File]::ReadAllBytes($filePath)
+            $totalLen = $bytes.Length
+            $rangeHeader = $request.Headers["Range"]
+
             $response.ContentType = $mime
-            $response.ContentLength64 = $bytes.Length
+            $response.AddHeader("Accept-Ranges", "bytes")
             $response.AddHeader("Access-Control-Allow-Origin", "*")
-            if ($request.HttpMethod -ne "HEAD") {
-                $response.OutputStream.Write($bytes, 0, $bytes.Length)
+
+            if ($rangeHeader -and ($rangeHeader -match "bytes=(\d+)-(\d*)")) {
+                $start = [int64]$matches[1]
+                $end = if ($matches[2]) { [int64]$matches[2] } else { $totalLen - 1 }
+                if ($end -ge $totalLen) { $end = $totalLen - 1 }
+                if ($start -gt $end) { $start = $end }
+                $length = $end - $start + 1
+
+                $response.StatusCode = 206
+                $response.ContentLength64 = $length
+                $response.AddHeader("Content-Range", "bytes $start-$end/$totalLen")
+
+                if ($request.HttpMethod -ne "HEAD") {
+                    $response.OutputStream.Write($bytes, [int]$start, [int]$length)
+                }
+            } else {
+                $response.StatusCode = 200
+                $response.ContentLength64 = $totalLen
+                if ($request.HttpMethod -ne "HEAD") {
+                    $response.OutputStream.Write($bytes, 0, [int]$totalLen)
+                }
             }
         } else {
             $response.StatusCode = 404

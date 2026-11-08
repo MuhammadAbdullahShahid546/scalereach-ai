@@ -1027,6 +1027,7 @@ class ScaleReachFullApp {
     // Initial render of clips UI
     this.renderSuggestedClipsUI();
     this.renderSubnavPills();
+    this.activateClipByIndex(0);
   }
 
   /* ----------------------------------------------------
@@ -1086,7 +1087,7 @@ class ScaleReachFullApp {
 
     const demoVideoFiles = {
       'https://www.youtube.com/watch?v=travel_vlogger': 'people.mp4',
-      'https://www.youtube.com/watch?v=ishowspeed_wwe': 'sample.mp4',
+      'https://www.youtube.com/watch?v=ishowspeed_wwe': 'podcast.mp4',
       'https://www.youtube.com/watch?v=mkbhd_folding': 'podcast.mp4',
       'https://www.youtube.com/watch?v=khan_sir_podcast': 'podcast.mp4',
       'https://www.youtube.com/watch?v=french_chef': 'people.mp4'
@@ -1509,10 +1510,13 @@ class ScaleReachFullApp {
       const endStr = this.formatTime(moment.end);
       const hookCaption = (moment.caption || 'VIRAL HOOK').toUpperCase();
       const hookText = moment.hookText || moment.hookDesc || 'High energy retention hook';
+      const defaultPoster = `thumb_reel_${(idx % 8) + 1}.jpg`;
+      const posterImg = moment.poster || defaultPoster;
 
       card.innerHTML = `
         <div class="reel-video-container">
-          <video class="reel-card-video" playsinline muted preload="auto" loop></video>
+          <div class="reel-card-backdrop" style="background-image: url('${posterImg}');"></div>
+          <video class="reel-card-video" src="${videoSrc}" poster="${posterImg}" playsinline muted preload="metadata" loop></video>
           <div class="reel-card-gradient"></div>
 
           <!-- Top Floating Bar -->
@@ -1563,22 +1567,25 @@ class ScaleReachFullApp {
       const cardVideo = card.querySelector('.reel-card-video');
       if (cardVideo && this.activeSourceType !== 'youtube') {
         cardVideo.src = videoSrc;
+        cardVideo.poster = posterImg;
         cardVideo.muted = true;
         cardVideo.defaultMuted = true;
         cardVideo.playsInline = true;
-        cardVideo.preload = 'auto';
+        cardVideo.preload = 'metadata';
 
-        // Error fallback
+        // Error fallback (avoid black sample.mp4)
         cardVideo.addEventListener('error', () => {
-          if (!cardVideo.src.endsWith('sample.mp4')) {
-            cardVideo.src = 'sample.mp4';
+          if (!cardVideo.src.endsWith('podcast.mp4') && !cardVideo.src.endsWith('people.mp4')) {
+            cardVideo.src = 'podcast.mp4';
             cardVideo.load();
           }
         });
 
         const seekStart = () => {
           try {
-            cardVideo.currentTime = moment.start;
+            if (moment.start > 0) {
+              cardVideo.currentTime = moment.start;
+            }
           } catch (e) {}
         };
 
@@ -1587,7 +1594,6 @@ class ScaleReachFullApp {
         } else {
           cardVideo.addEventListener('loadedmetadata', seekStart, { once: true });
         }
-        cardVideo.load();
 
         // Loop ONLY when video is actively playing and reaches moment.end
         cardVideo.addEventListener('timeupdate', () => {
@@ -2075,7 +2081,7 @@ class ScaleReachFullApp {
     if (switchToRealVideoBtn) {
       switchToRealVideoBtn.addEventListener('click', () => {
         const titleLower = (this.currentVideoTitle || '').toLowerCase();
-        const file = (titleLower.includes('lebron') || titleLower.includes('speed') || titleLower.includes('wwe') || titleLower.includes('athlete')) ? 'sample.mp4' : (titleLower.includes('travel') || titleLower.includes('chef') || titleLower.includes('people')) ? 'people.mp4' : 'podcast.mp4';
+        const file = (titleLower.includes('travel') || titleLower.includes('chef') || titleLower.includes('people')) ? 'people.mp4' : 'podcast.mp4';
         this.switchToNativeVideo(file, this.currentVideoTitle, this.currentVideoAuthor, '');
         this.showToast('Playing in Real HD Native Mode! 🎬');
       });
@@ -2805,9 +2811,9 @@ class ScaleReachFullApp {
     });
 
     this.sourceVideo.addEventListener('error', (e) => {
-      console.warn('Primary video error, falling back to sample.mp4:', e);
-      if (!this.sourceVideo.src.endsWith('sample.mp4')) {
-        this.sourceVideo.src = 'sample.mp4';
+      console.warn('Primary video error, falling back to people.mp4:', e);
+      if (!this.sourceVideo.src.endsWith('people.mp4')) {
+        this.sourceVideo.src = 'people.mp4';
         this.sourceVideo.load();
       }
     });
@@ -2872,6 +2878,7 @@ class ScaleReachFullApp {
     }
     this.updateTrimmerUI();
     this.renderWaveform();
+    this.playCardVideo(this.activeClipIndex || 0);
   }
 
   loadVideoFile(filePath, title, author, img) {
