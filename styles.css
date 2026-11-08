@@ -2154,10 +2154,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .reel-hook-caption-sticker {
   position: absolute;
   top: 19%;
-  left: 12px;
-  right: 12px;
+  left: 10px;
+  right: 10px;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
   text-align: center;
-  z-index: 5;
+  z-index: 6;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -2170,56 +2172,63 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: none !important;
 }
 
-/* Dynamic Positions across all suggested reels */
+/* 9:16 Ratio Safe Zone Positions (Never hides behind footer or overflows) */
 .reel-hook-caption-sticker.pos-top {
-  top: 14% !important;
+  top: 15% !important;
   bottom: auto !important;
   transform: none !important;
 }
 
 .reel-hook-caption-sticker.pos-center {
-  top: 50% !important;
+  top: 38% !important;
   bottom: auto !important;
   transform: translateY(-50%) !important;
 }
 
 .reel-hook-caption-sticker.pos-bottom {
   top: auto !important;
-  bottom: 22% !important;
+  bottom: 35% !important;
   transform: none !important;
 }
 
-/* Dynamic Font Sizes across all suggested reels */
+/* Dynamic Font Sizes across all suggested reels - Scaled for 9:16 safe bounds */
 .reel-hook-caption-sticker.size-s .sticker-text {
-  font-size: 0.70rem !important;
+  font-size: 0.68rem !important;
   padding: 3px 8px !important;
 }
 .reel-hook-caption-sticker.size-m .sticker-text {
-  font-size: 0.82rem !important;
-  padding: 5px 12px !important;
+  font-size: 0.78rem !important;
+  padding: 4px 10px !important;
 }
 .reel-hook-caption-sticker.size-l .sticker-text {
-  font-size: 0.94rem !important;
-  padding: 6px 14px !important;
+  font-size: 0.88rem !important;
+  padding: 5px 12px !important;
 }
 .reel-hook-caption-sticker.size-xl .sticker-text {
-  font-size: 1.08rem !important;
-  padding: 7px 18px !important;
+  font-size: 0.98rem !important;
+  padding: 6px 14px !important;
 }
 
 .sticker-text {
   display: inline-block;
+  max-width: 90% !important;
+  box-sizing: border-box !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
   background: rgba(0, 0, 0, 0.88);
   color: #facc15;
   font-weight: 900;
-  font-size: 0.82rem;
-  padding: 5px 12px;
-  border-radius: 6px;
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 8px;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(250, 204, 21, 0.35);
-  line-height: 1.25;
+  line-height: 1.35;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -2314,11 +2323,14 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   color: #f8fafc;
   font-weight: 700;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
-  max-width: 92%;
+  max-width: 90%;
   line-height: 1.25;
   background: rgba(0, 0, 0, 0.45);
   padding: 2px 8px;
   border-radius: 4px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
 }
 
 /* Center Play / Pause Glassmorphism Circle */

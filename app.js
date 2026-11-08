@@ -1322,7 +1322,7 @@ class ScaleReachFullApp {
     if (this.phoneYtWrapper && this.phoneYoutubeIframe) {
       this.phoneYtWrapper.classList.remove('hidden');
       this.phoneYoutubeIframe.style.filter = 'none';
-      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&start=${startSec}${loopParam}`;
+      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&start=${startSec}${loopParam}`;
     }
     if (this.cropCanvas) {
       this.cropCanvas.classList.add('hidden');
@@ -1410,7 +1410,7 @@ class ScaleReachFullApp {
 
       if (this.phoneYoutubeIframe) {
         this.phoneYoutubeIframe.style.filter = 'none';
-        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&start=${startSec}${loopParam}`;
+        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&start=${startSec}${loopParam}`;
       }
 
       if (this.youtubeIframe) {
@@ -1899,6 +1899,7 @@ class ScaleReachFullApp {
       this.phoneYoutubeIframe.style.filter = 'none';
       this.postYouTubeCommand(this.phoneYoutubeIframe, 'setPlaybackQuality', ['hd1080']);
       this.postYouTubeCommand(this.phoneYoutubeIframe, 'setPlaybackQualityRange', ['hd1080', 'highres']);
+      this.postYouTubeCommand(this.phoneYoutubeIframe, 'unloadModule', ['captions']);
     }
     if (this.sourceVideo) {
       this.sourceVideo.style.filter = 'none';
@@ -1951,7 +1952,7 @@ class ScaleReachFullApp {
             const startSec = Math.floor(moment.start);
             const endSec = Math.ceil(moment.end);
             const loopParam = this.isLoopEnabled ? `&loop=1&playlist=${this.currentYouTubeId}&end=${endSec}` : `&end=${endSec}`;
-            const targetSrc = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&start=${startSec}${loopParam}`;
+            const targetSrc = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&start=${startSec}${loopParam}`;
 
             if (!ytIframe || !ytIframe.src.includes(`start=${startSec}`)) {
               ytWrapper.innerHTML = `<iframe class="reel-card-yt-frame" src="${targetSrc}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
@@ -3695,7 +3696,31 @@ class ScaleReachFullApp {
   }
 
   /**
-   * Renders the 12 Creator Caption Styles on Video Canvas with Position & Size Adjustments
+   * Helper to wrap caption text into lines that strictly fit within maxW for 9:16 ratio
+   */
+  wrapCaptionLines(ctx, text, maxW) {
+    if (!text) return [];
+    const words = text.trim().split(/\s+/);
+    if (words.length <= 1) return [text.trim()];
+
+    const lines = [];
+    let curLine = words[0];
+
+    for (let i = 1; i < words.length; i++) {
+      const testLine = curLine + ' ' + words[i];
+      if (ctx.measureText(testLine).width <= maxW) {
+        curLine = testLine;
+      } else {
+        lines.push(curLine);
+        curLine = words[i];
+      }
+    }
+    lines.push(curLine);
+    return lines;
+  }
+
+  /**
+   * Renders the 8 Creator Caption Styles on Video Canvas within strict 9:16 safe ratio boundaries
    */
   renderCrazyCaptionStyle(ctx, cw, defaultPosY) {
     if (this.studioCaptionsToggle && !this.studioCaptionsToggle.checked) return;
@@ -3710,274 +3735,366 @@ class ScaleReachFullApp {
     const ch = ctx.canvas.height;
     const midX = cw / 2;
     const fontSize = this.captionFontSize || 40;
+    const maxAllowedWidth = cw * 0.82; // Strictly 82% of 9:16 canvas width (safe zone)
 
-    // Calculate dynamic Y based on chosen position: Top, Center, or Bottom
+    // Calculate dynamic Y based on chosen position: Top, Center, or Bottom in 9:16 safe area
     let posY = defaultPosY;
     if (this.captionPosition === 'top') {
       posY = ch * 0.18;
     } else if (this.captionPosition === 'center') {
-      posY = ch * 0.50;
+      posY = ch * 0.42;
     } else {
-      posY = defaultPosY || (ch * 0.76);
+      posY = defaultPosY || (ch * 0.70);
     }
 
     switch (this.selectedStyleId) {
       case 'classic': // 1. Classic (Alex Hormozi Yellow & White)
-        this.renderMultiLineClassic(ctx, midX, posY, rawText, fontSize);
+        this.renderMultiLineClassic(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
 
       case 'cyan_slide': // 2. Cyan Slide (Electric Cyan with Active Highlight)
-        this.renderCyanSlideStyle(ctx, midX, posY, rawText, fontSize);
+        this.renderCyanSlideStyle(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
 
       case 'italic_red': // 3. Italic Red (Slanted Sports Red with Highlight Box)
-        this.renderItalicRedStyle(ctx, midX, posY, rawText, fontSize);
+        this.renderItalicRedStyle(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
 
       case 'cream_blue': // 4. Cream Blue (Soft Luxury Blue Glow)
-        this.renderCreamBlueStyle(ctx, midX, posY, rawText, fontSize);
+        this.renderCreamBlueStyle(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
 
       case 'red_spin': // 5. Red Spin (Fiery Red with Black Stroke)
-        this.renderRedSpinStyle(ctx, midX, posY, rawText, fontSize);
+        this.renderRedSpinStyle(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
 
       case 'violet': // 6. Violet (Royal Purple Neon Glow)
-        this.renderVioletStyle(ctx, midX, posY, rawText, fontSize);
+        this.renderVioletStyle(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
 
       case 'blue_glow': // 7. Blue Glow (to get STARTED)
-        this.renderBlueGlowStyle(ctx, midX, posY, rawText, fontSize);
+        this.renderBlueGlowStyle(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
 
       case 'toxic_green': // 8. Toxic Green (Radioactive Neon Green)
-        this.renderToxicGreenStyle(ctx, midX, posY, rawText, fontSize);
+        this.renderToxicGreenStyle(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
 
       default:
-        this.renderMultiLineClassic(ctx, midX, posY, rawText, fontSize);
+        this.renderMultiLineClassic(ctx, midX, posY, rawText, fontSize, maxAllowedWidth);
         break;
     }
 
     ctx.restore();
   }
 
-  // 1. Classic Style (Alex Hormozi Black Rounded Box & Yellow Punchline)
-  renderMultiLineClassic(ctx, midX, posY, text, fontSize) {
-    const words = text.split(' ');
-    const size = fontSize || 40;
-    ctx.font = `800 ${size - 4}px "Plus Jakarta Sans", sans-serif`;
-    ctx.textAlign = 'center';
-
-    if (words.length > 1) {
-      const lastWord = words.pop();
-      const firstLine = words.join(' ');
-      const metrics1 = ctx.measureText(firstLine);
+  // 1. Classic Style (Alex Hormozi Black Rounded Box & Yellow Punchline - 9:16 safe)
+  renderMultiLineClassic(ctx, midX, posY, text, fontSize, maxW) {
+    let size = fontSize || 40;
+    ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    
+    // Auto-scale font down if any single word is wider than maxW
+    const words = text.split(/\s+/);
+    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
+    if (maxWordW > maxW) {
+      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
       ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-      const metrics2 = ctx.measureText(lastWord);
-      const maxW = Math.max(metrics1.width, metrics2.width);
-
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.88)';
-      ctx.roundRect(midX - maxW / 2 - 22, posY - size - 14, maxW + 44, size * 2 + 18, 12);
-      ctx.fill();
-
-      ctx.font = `800 ${size - 4}px "Plus Jakarta Sans", sans-serif`;
-      ctx.fillStyle = '#ffffff';
-      ctx.fillText(firstLine.toUpperCase(), midX, posY - 8);
-
-      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-      ctx.fillStyle = '#facc15';
-      ctx.fillText(lastWord.toUpperCase(), midX, posY + size * 0.72);
-    } else {
-      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-      const metrics = ctx.measureText(text);
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.88)';
-      ctx.roundRect(midX - metrics.width / 2 - 20, posY - size * 0.8, metrics.width + 40, size * 1.3, 10);
-      ctx.fill();
-      ctx.fillStyle = '#facc15';
-      ctx.fillText(text.toUpperCase(), midX, posY);
     }
+
+    const lines = this.wrapCaptionLines(ctx, text, maxW);
+    const lineHeight = size * 1.25;
+    const totalBlockH = lines.length * lineHeight;
+    let startY = posY - (totalBlockH / 2) + (size * 0.4);
+
+    let maxLineWidth = 0;
+    lines.forEach(line => {
+      const lw = ctx.measureText(line.toUpperCase()).width;
+      if (lw > maxLineWidth) maxLineWidth = lw;
+    });
+
+    const boxW = Math.min(maxW + 20, maxLineWidth + 32);
+    const boxH = totalBlockH + 16;
+    const boxX = midX - boxW / 2;
+    const boxY = startY - size * 0.85;
+
+    ctx.save();
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.88)';
+    ctx.roundRect(boxX, boxY, boxW, boxH, 12);
+    ctx.fill();
+
+    ctx.textAlign = 'center';
+    lines.forEach((line, idx) => {
+      const isLast = (idx === lines.length - 1);
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      ctx.fillStyle = isLast ? '#facc15' : '#ffffff';
+      ctx.fillText(line.toUpperCase(), midX, startY + (idx * lineHeight));
+    });
+    ctx.restore();
   }
 
-  // 2. Cyan Slide Style (Electric Cyan with White Highlight Pill)
-  renderCyanSlideStyle(ctx, midX, posY, text, fontSize) {
-    const size = fontSize || 40;
+  // 2. Cyan Slide Style (Electric Cyan with Active Highlight Pill - 9:16 safe)
+  renderCyanSlideStyle(ctx, midX, posY, text, fontSize, maxW) {
+    let size = fontSize || 40;
     ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    const words = text.split(/\s+/);
+    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
+    if (maxWordW > maxW) {
+      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    }
+
+    const lines = this.wrapCaptionLines(ctx, text, maxW);
+    const lineHeight = size * 1.3;
+    const totalBlockH = lines.length * lineHeight;
+    let startY = posY - (totalBlockH / 2) + (size * 0.4);
+
+    ctx.save();
     ctx.textAlign = 'center';
     ctx.shadowColor = '#00f2fe';
-    ctx.shadowBlur = 24;
+    ctx.shadowBlur = 20;
 
-    const words = text.toUpperCase().split(' ');
-    if (words.length > 1) {
-      const hlIdx = Math.floor(words.length / 2);
-      let totalWidth = 0;
-      words.forEach(w => {
-        totalWidth += ctx.measureText(w + ' ').width;
-      });
+    lines.forEach((line, idx) => {
+      const isLast = (idx === lines.length - 1);
+      const lineY = startY + (idx * lineHeight);
 
-      let curX = midX - totalWidth / 2;
-      ctx.textAlign = 'left';
+      if (isLast && lines.length > 1) {
+        const lineW = ctx.measureText(line.toUpperCase()).width;
+        ctx.save();
+        ctx.fillStyle = 'rgba(0, 242, 254, 0.35)';
+        ctx.strokeStyle = '#00f2fe';
+        ctx.lineWidth = 1.5;
+        ctx.roundRect(midX - lineW / 2 - 12, lineY - size * 0.85, lineW + 24, size * 1.25, 8);
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
 
-      words.forEach((w, i) => {
-        const wordW = ctx.measureText(w).width;
-        if (i === hlIdx) {
-          // Cyan glowing background pill behind active word
-          ctx.save();
-          ctx.fillStyle = 'rgba(0, 242, 254, 0.35)';
-          ctx.strokeStyle = '#00f2fe';
-          ctx.lineWidth = 1.5;
-          ctx.roundRect(curX - 6, posY - size * 0.85, wordW + 12, size * 1.2, 6);
-          ctx.fill();
-          ctx.stroke();
-          ctx.restore();
-
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(w, curX, posY);
-        } else {
-          ctx.fillStyle = '#00d2ff';
-          ctx.fillText(w, curX, posY);
-        }
-        curX += ctx.measureText(w + ' ').width;
-      });
-    } else {
-      ctx.fillStyle = '#00d2ff';
-      ctx.fillText(text.toUpperCase(), midX, posY);
-    }
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(line.toUpperCase(), midX, lineY);
+      } else {
+        ctx.fillStyle = '#00d2ff';
+        ctx.fillText(line.toUpperCase(), midX, lineY);
+      }
+    });
+    ctx.restore();
   }
 
-  // 3. Italic Red Style (Slanted Sports Velocity with Red Highlight Box)
-  renderItalicRedStyle(ctx, midX, posY, text, fontSize) {
-    const size = fontSize || 40;
+  // 3. Italic Red Style (Slanted Sports Red with Highlight Box - 9:16 safe)
+  renderItalicRedStyle(ctx, midX, posY, text, fontSize, maxW) {
+    let size = fontSize || 40;
     ctx.font = `italic 900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    const words = text.split(/\s+/);
+    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
+    if (maxWordW > maxW) {
+      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+      ctx.font = `italic 900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    }
+
+    const lines = this.wrapCaptionLines(ctx, text, maxW);
+    const lineHeight = size * 1.3;
+    const totalBlockH = lines.length * lineHeight;
+    let startY = posY - (totalBlockH / 2) + (size * 0.4);
+
+    ctx.save();
+    ctx.textAlign = 'center';
     ctx.shadowColor = 'rgba(255, 42, 42, 0.9)';
     ctx.shadowBlur = 20;
 
-    const words = text.toUpperCase().split(' ');
-    if (words.length > 1) {
-      const hlIdx = Math.floor(words.length / 2);
-      let totalWidth = 0;
-      words.forEach(w => {
-        totalWidth += ctx.measureText(w + ' ').width;
-      });
+    lines.forEach((line, idx) => {
+      const isLast = (idx === lines.length - 1);
+      const lineY = startY + (idx * lineHeight);
 
-      let curX = midX - totalWidth / 2;
-      ctx.textAlign = 'left';
+      if (isLast && lines.length > 1) {
+        const lineW = ctx.measureText(line.toUpperCase()).width;
+        ctx.save();
+        ctx.fillStyle = 'rgba(255, 42, 42, 0.45)';
+        ctx.strokeStyle = '#ef4444';
+        ctx.lineWidth = 1.5;
+        ctx.roundRect(midX - lineW / 2 - 12, lineY - size * 0.85, lineW + 24, size * 1.25, 8);
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
 
-      words.forEach((w, i) => {
-        const wordW = ctx.measureText(w).width;
-        if (i === hlIdx) {
-          ctx.save();
-          ctx.fillStyle = 'rgba(255, 42, 42, 0.45)';
-          ctx.roundRect(curX - 6, posY - size * 0.85, wordW + 12, size * 1.2, 6);
-          ctx.fill();
-          ctx.restore();
-
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(w, curX, posY);
-        } else {
-          ctx.fillStyle = '#ff2a2a';
-          ctx.fillText(w, curX, posY);
-        }
-        curX += ctx.measureText(w + ' ').width;
-      });
-    } else {
-      ctx.textAlign = 'center';
-      ctx.fillStyle = '#ff2a2a';
-      ctx.fillText(text.toUpperCase(), midX, posY);
-    }
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(line.toUpperCase(), midX, lineY);
+      } else {
+        ctx.fillStyle = '#ff2a2a';
+        ctx.fillText(line.toUpperCase(), midX, lineY);
+      }
+    });
+    ctx.restore();
   }
 
-  // 4. Cream Blue Style (Soft Luxury Blue Glow)
-  renderCreamBlueStyle(ctx, midX, posY, text, fontSize) {
-    const size = (fontSize || 40) - 2;
+  // 4. Cream Blue Style (Soft Luxury Blue Glow - 9:16 safe)
+  renderCreamBlueStyle(ctx, midX, posY, text, fontSize, maxW) {
+    let size = (fontSize || 40) - 2;
     ctx.font = `800 ${size}px "Plus Jakarta Sans", sans-serif`;
+    const words = text.split(/\s+/);
+    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
+    if (maxWordW > maxW) {
+      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+      ctx.font = `800 ${size}px "Plus Jakarta Sans", sans-serif`;
+    }
+
+    const lines = this.wrapCaptionLines(ctx, text, maxW);
+    const lineHeight = size * 1.25;
+    const totalBlockH = lines.length * lineHeight;
+    let startY = posY - (totalBlockH / 2) + (size * 0.4);
+
+    ctx.save();
     ctx.textAlign = 'center';
     ctx.shadowColor = 'rgba(79, 117, 255, 0.95)';
     ctx.shadowBlur = 20;
 
-    ctx.strokeStyle = 'rgba(10, 15, 30, 0.8)';
-    ctx.lineWidth = 4;
-    ctx.strokeText(text.toUpperCase(), midX, posY);
+    lines.forEach((line, idx) => {
+      const lineY = startY + (idx * lineHeight);
+      ctx.strokeStyle = 'rgba(10, 15, 30, 0.85)';
+      ctx.lineWidth = 5;
+      ctx.strokeText(line.toUpperCase(), midX, lineY);
 
-    ctx.fillStyle = '#60a5fa';
-    ctx.fillText(text.toUpperCase(), midX, posY);
+      ctx.fillStyle = (idx === lines.length - 1) ? '#60a5fa' : '#fef3c7';
+      ctx.fillText(line.toUpperCase(), midX, lineY);
+    });
+    ctx.restore();
   }
 
-  // 5. Red Spin Style (Fiery Red with Black Stroke Outline)
-  renderRedSpinStyle(ctx, midX, posY, text, fontSize) {
-    const size = fontSize || 40;
+  // 5. Red Spin Style (Fiery Red with Black Stroke Outline - 9:16 safe)
+  renderRedSpinStyle(ctx, midX, posY, text, fontSize, maxW) {
+    let size = fontSize || 40;
     ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    ctx.textAlign = 'center';
-
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 7;
-    ctx.lineJoin = 'round';
-    ctx.strokeText(text.toUpperCase(), midX, posY);
-
-    ctx.shadowColor = 'rgba(255, 31, 61, 0.95)';
-    ctx.shadowBlur = 22;
-    ctx.fillStyle = '#ff1f3d';
-    ctx.fillText(text.toUpperCase(), midX, posY);
-  }
-
-  // 6. Violet Style (Royal Electric Violet & Purple Glow)
-  renderVioletStyle(ctx, midX, posY, text, fontSize) {
-    const size = fontSize || 40;
-    ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    ctx.textAlign = 'center';
-
-    ctx.strokeStyle = '#180a2e';
-    ctx.lineWidth = 6;
-    ctx.strokeText(text.toUpperCase(), midX, posY);
-
-    ctx.shadowColor = 'rgba(139, 92, 246, 0.95)';
-    ctx.shadowBlur = 24;
-    ctx.fillStyle = '#8b5cf6';
-    ctx.fillText(text.toUpperCase(), midX, posY);
-  }
-
-  // 7. Blue Glow Style (to get STARTED)
-  renderBlueGlowStyle(ctx, midX, posY, text, fontSize) {
-    const size = fontSize || 40;
-    const words = text.split(' ');
-    ctx.textAlign = 'center';
-
-    if (words.length > 1) {
-      const lastWord = words.pop();
-      const firstLine = words.join(' ');
-
-      ctx.font = `700 ${size - 6}px "Plus Jakarta Sans", sans-serif`;
-      ctx.fillStyle = '#ffffff';
-      ctx.fillText(firstLine.toLowerCase(), midX, posY - 16);
-
-      ctx.font = `900 ${size + 4}px "Plus Jakarta Sans", sans-serif`;
-      ctx.shadowColor = '#00a2ff';
-      ctx.shadowBlur = 22;
-      ctx.fillStyle = '#00a2ff';
-      ctx.fillText(lastWord.toUpperCase(), midX, posY + size * 0.65);
-    } else {
+    const words = text.split(/\s+/);
+    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
+    if (maxWordW > maxW) {
+      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
       ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-      ctx.shadowColor = '#00a2ff';
-      ctx.shadowBlur = 22;
-      ctx.fillStyle = '#00a2ff';
-      ctx.fillText(text.toUpperCase(), midX, posY);
     }
-  }
 
-  // 8. Toxic Green Style (Radioactive Neon Green)
-  renderToxicGreenStyle(ctx, midX, posY, text, fontSize) {
-    const size = (fontSize || 40) + 2;
-    ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    const lines = this.wrapCaptionLines(ctx, text, maxW);
+    const lineHeight = size * 1.25;
+    const totalBlockH = lines.length * lineHeight;
+    let startY = posY - (totalBlockH / 2) + (size * 0.4);
+
+    ctx.save();
     ctx.textAlign = 'center';
 
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 6;
-    ctx.strokeText(text.toUpperCase(), midX, posY);
+    lines.forEach((line, idx) => {
+      const lineY = startY + (idx * lineHeight);
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = 7;
+      ctx.lineJoin = 'round';
+      ctx.strokeText(line.toUpperCase(), midX, lineY);
 
-    ctx.shadowColor = 'rgba(0, 255, 102, 0.95)';
-    ctx.shadowBlur = 22;
-    ctx.fillStyle = '#00ff66';
-    ctx.fillText(text.toUpperCase(), midX, posY);
+      ctx.shadowColor = 'rgba(255, 31, 61, 0.95)';
+      ctx.shadowBlur = 22;
+      ctx.fillStyle = '#ff1f3d';
+      ctx.fillText(line.toUpperCase(), midX, lineY);
+    });
+    ctx.restore();
+  }
+
+  // 6. Violet Style (Royal Electric Violet & Purple Glow - 9:16 safe)
+  renderVioletStyle(ctx, midX, posY, text, fontSize, maxW) {
+    let size = fontSize || 40;
+    ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    const words = text.split(/\s+/);
+    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
+    if (maxWordW > maxW) {
+      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    }
+
+    const lines = this.wrapCaptionLines(ctx, text, maxW);
+    const lineHeight = size * 1.25;
+    const totalBlockH = lines.length * lineHeight;
+    let startY = posY - (totalBlockH / 2) + (size * 0.4);
+
+    ctx.save();
+    ctx.textAlign = 'center';
+
+    lines.forEach((line, idx) => {
+      const lineY = startY + (idx * lineHeight);
+      ctx.strokeStyle = '#180a2e';
+      ctx.lineWidth = 6;
+      ctx.strokeText(line.toUpperCase(), midX, lineY);
+
+      ctx.shadowColor = 'rgba(139, 92, 246, 0.95)';
+      ctx.shadowBlur = 24;
+      ctx.fillStyle = '#c084fc';
+      ctx.fillText(line.toUpperCase(), midX, lineY);
+    });
+    ctx.restore();
+  }
+
+  // 7. Blue Glow Style (to get STARTED - 9:16 safe)
+  renderBlueGlowStyle(ctx, midX, posY, text, fontSize, maxW) {
+    let size = fontSize || 40;
+    ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    const words = text.split(/\s+/);
+    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
+    if (maxWordW > maxW) {
+      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    }
+
+    const lines = this.wrapCaptionLines(ctx, text, maxW);
+    const lineHeight = size * 1.25;
+    const totalBlockH = lines.length * lineHeight;
+    let startY = posY - (totalBlockH / 2) + (size * 0.4);
+
+    ctx.save();
+    ctx.textAlign = 'center';
+
+    lines.forEach((line, idx) => {
+      const isLast = (idx === lines.length - 1);
+      const lineY = startY + (idx * lineHeight);
+
+      if (isLast && lines.length > 1) {
+        ctx.font = `900 ${size + 2}px "Plus Jakarta Sans", sans-serif`;
+        ctx.shadowColor = '#00a2ff';
+        ctx.shadowBlur = 24;
+        ctx.fillStyle = '#00a2ff';
+        ctx.fillText(line.toUpperCase(), midX, lineY);
+      } else {
+        ctx.font = `700 ${size - 4}px "Plus Jakarta Sans", sans-serif`;
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+        ctx.shadowBlur = 10;
+        ctx.fillText(line.toLowerCase(), midX, lineY);
+      }
+    });
+    ctx.restore();
+  }
+
+  // 8. Toxic Green Style (Radioactive Neon Green - 9:16 safe)
+  renderToxicGreenStyle(ctx, midX, posY, text, fontSize, maxW) {
+    let size = (fontSize || 40) + 2;
+    ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    const words = text.split(/\s+/);
+    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
+    if (maxWordW > maxW) {
+      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    }
+
+    const lines = this.wrapCaptionLines(ctx, text, maxW);
+    const lineHeight = size * 1.25;
+    const totalBlockH = lines.length * lineHeight;
+    let startY = posY - (totalBlockH / 2) + (size * 0.4);
+
+    ctx.save();
+    ctx.textAlign = 'center';
+
+    lines.forEach((line, idx) => {
+      const lineY = startY + (idx * lineHeight);
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = 6;
+      ctx.strokeText(line.toUpperCase(), midX, lineY);
+
+      ctx.shadowColor = 'rgba(0, 255, 102, 0.95)';
+      ctx.shadowBlur = 24;
+      ctx.fillStyle = '#00ff66';
+      ctx.fillText(line.toUpperCase(), midX, lineY);
+    });
+    ctx.restore();
   }
 
   renderWordHighlight(ctx, midX, posY, text, baseColor, highlightColor) {
