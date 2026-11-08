@@ -1814,10 +1814,10 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .suggest-reel-card {
   position: relative;
   aspect-ratio: 9 / 16;
-  min-height: 380px;
+  min-height: 400px;
   border-radius: 16px;
   overflow: hidden;
-  background: #060913;
+  background: #000;
   border: 2px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
@@ -1838,15 +1838,19 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   box-shadow: 0 0 25px rgba(56, 189, 248, 0.45), 0 14px 36px rgba(0, 0, 0, 0.7);
 }
 
-/* Video inside Card */
+/* Video inside Card - Absolutely fills the entire 9:16 card */
 .reel-video-container {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 14px;
+  background: #000;
+  display: block;
 }
 
 .reel-card-video {
@@ -1856,7 +1860,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: #030509;
+  background: #000;
   z-index: 1;
   pointer-events: none;
 }
@@ -1867,10 +1871,10 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(6, 9, 19, 0.85) 0%,
-    rgba(6, 9, 19, 0.15) 25%,
-    rgba(6, 9, 19, 0.2) 55%,
-    rgba(6, 9, 19, 0.96) 100%
+    rgba(6, 9, 19, 0.75) 0%,
+    rgba(6, 9, 19, 0.08) 25%,
+    rgba(6, 9, 19, 0.12) 55%,
+    rgba(6, 9, 19, 0.92) 100%
   );
   z-index: 2;
   pointer-events: none;

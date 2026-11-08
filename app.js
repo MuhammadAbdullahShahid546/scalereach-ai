@@ -1512,7 +1512,7 @@ class ScaleReachFullApp {
 
       card.innerHTML = `
         <div class="reel-video-container">
-          <video class="reel-card-video" playsinline muted preload="metadata" loop></video>
+          <video class="reel-card-video" playsinline muted preload="auto" loop></video>
           <div class="reel-card-gradient"></div>
 
           <!-- Top Floating Bar -->
@@ -1537,10 +1537,10 @@ class ScaleReachFullApp {
           <!-- Center Play / Pause Glassmorphism Circle -->
           <div class="reel-center-play">
             <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
-              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" style="display:${isActive ? 'none' : 'block'};"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:${isActive ? 'block' : 'none'};"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
-            <div class="reel-playing-waveform" style="display:${isActive ? 'flex' : 'none'};"><span></span><span></span><span></span><span></span></div>
+            <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
           </div>
 
           <!-- Bottom Meta & Actions -->
@@ -1564,6 +1564,17 @@ class ScaleReachFullApp {
       if (cardVideo && this.activeSourceType !== 'youtube') {
         cardVideo.src = videoSrc;
         cardVideo.muted = true;
+        cardVideo.defaultMuted = true;
+        cardVideo.playsInline = true;
+        cardVideo.preload = 'auto';
+
+        // Error fallback
+        cardVideo.addEventListener('error', () => {
+          if (!cardVideo.src.endsWith('sample.mp4')) {
+            cardVideo.src = 'sample.mp4';
+            cardVideo.load();
+          }
+        });
 
         const seekStart = () => {
           try {
@@ -1576,10 +1587,11 @@ class ScaleReachFullApp {
         } else {
           cardVideo.addEventListener('loadedmetadata', seekStart, { once: true });
         }
+        cardVideo.load();
 
-        // Loop within segment boundaries
+        // Loop ONLY when video is actively playing and reaches moment.end
         cardVideo.addEventListener('timeupdate', () => {
-          if (cardVideo.currentTime >= moment.end || cardVideo.currentTime < moment.start) {
+          if (!cardVideo.paused && cardVideo.currentTime >= moment.end) {
             cardVideo.currentTime = moment.start;
           }
         });
@@ -1641,14 +1653,35 @@ class ScaleReachFullApp {
 
       if (i === idx) {
         if (v && this.activeSourceType !== 'youtube') {
-          if (v.currentTime < moment.start || v.currentTime >= moment.end) {
-            v.currentTime = moment.start;
+          v.muted = true;
+          v.defaultMuted = true;
+
+          const startPlayback = () => {
+            if (v.currentTime < moment.start || v.currentTime >= moment.end) {
+              v.currentTime = moment.start;
+            }
+            const playPromise = v.play();
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                if (iconPlay) iconPlay.style.display = 'none';
+                if (iconPause) iconPause.style.display = 'block';
+                if (wave) wave.style.display = 'flex';
+              }).catch(err => {
+                console.warn('Card video play catch:', err);
+                if (iconPlay) iconPlay.style.display = 'block';
+                if (iconPause) iconPause.style.display = 'none';
+                if (wave) wave.style.display = 'none';
+              });
+            }
+          };
+
+          if (v.readyState >= 1) {
+            startPlayback();
+          } else {
+            v.addEventListener('loadedmetadata', startPlayback, { once: true });
+            v.load();
           }
-          v.play().catch(e => console.log('Reel video play note:', e));
         }
-        if (iconPlay) iconPlay.style.display = 'none';
-        if (iconPause) iconPause.style.display = 'block';
-        if (wave) wave.style.display = 'flex';
       } else {
         if (v && !v.paused) {
           v.pause();
