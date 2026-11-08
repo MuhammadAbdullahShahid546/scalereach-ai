@@ -2163,11 +2163,53 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reel-hook-caption-sticker.is-hidden {
+  display: none !important;
+}
+
+/* Dynamic Positions across all suggested reels */
+.reel-hook-caption-sticker.pos-top {
+  top: 14% !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+
+.reel-hook-caption-sticker.pos-center {
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+}
+
+.reel-hook-caption-sticker.pos-bottom {
+  top: auto !important;
+  bottom: 22% !important;
+  transform: none !important;
+}
+
+/* Dynamic Font Sizes across all suggested reels */
+.reel-hook-caption-sticker.size-s .sticker-text {
+  font-size: 0.70rem !important;
+  padding: 3px 8px !important;
+}
+.reel-hook-caption-sticker.size-m .sticker-text {
+  font-size: 0.82rem !important;
+  padding: 5px 12px !important;
+}
+.reel-hook-caption-sticker.size-l .sticker-text {
+  font-size: 0.94rem !important;
+  padding: 6px 14px !important;
+}
+.reel-hook-caption-sticker.size-xl .sticker-text {
+  font-size: 1.08rem !important;
+  padding: 7px 18px !important;
 }
 
 .sticker-text {
   display: inline-block;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.88);
   color: #facc15;
   font-weight: 900;
   font-size: 0.82rem;
@@ -2179,6 +2221,92 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   border: 1px solid rgba(250, 204, 21, 0.35);
   line-height: 1.25;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 1. Classic Style (Alex Hormozi Yellow & White) */
+.reel-hook-caption-sticker.style-classic .sticker-text {
+  background: #000000;
+  color: #facc15;
+  border: 2px solid #facc15;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.85);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+/* 2. Cyan Slide Style (Electric Cyan Glow) */
+.reel-hook-caption-sticker.style-cyan_slide .sticker-text {
+  background: rgba(6, 23, 39, 0.92);
+  color: #22d3ee;
+  border: 1.5px solid #06b6d4;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.75), 0 4px 12px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.9);
+  font-style: italic;
+  font-weight: 900;
+}
+
+/* 3. Italic Red Style (Slanted Sports Red) */
+.reel-hook-caption-sticker.style-italic_red .sticker-text {
+  background: rgba(35, 8, 8, 0.92);
+  color: #ef4444;
+  border: 1.5px solid #ef4444;
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.75), 0 4px 12px rgba(0, 0, 0, 0.8);
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* 4. Cream Blue Style (Soft Pastel Cream with Sky Blue Glow) */
+.reel-hook-caption-sticker.style-cream_blue .sticker-text {
+  background: rgba(15, 23, 42, 0.92);
+  color: #fef3c7;
+  border: 1.5px solid #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.6), 0 4px 12px rgba(0, 0, 0, 0.8);
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 5px 15px;
+}
+
+/* 5. Red Spin Style (Fiery Crimson Badge) */
+.reel-hook-caption-sticker.style-red_spin .sticker-text {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  color: #ffffff;
+  border: 2px solid #fca5a5;
+  box-shadow: 0 0 18px rgba(220, 38, 38, 0.75), 0 4px 14px rgba(0, 0, 0, 0.9);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* 6. Violet Style (Royal Purple Neon Glow) */
+.reel-hook-caption-sticker.style-violet .sticker-text {
+  background: rgba(26, 10, 44, 0.92);
+  color: #c084fc;
+  border: 1.5px solid #a855f7;
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.75), 0 4px 12px rgba(0, 0, 0, 0.8);
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(192, 132, 252, 0.9);
+}
+
+/* 7. Blue Glow Style (Electric Royal Blue) */
+.reel-hook-caption-sticker.style-blue_glow .sticker-text {
+  background: rgba(10, 20, 42, 0.92);
+  color: #60a5fa;
+  border: 1.5px solid #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 4px 12px rgba(0, 0, 0, 0.8);
+  font-weight: 900;
+  text-shadow: 0 0 12px rgba(96, 165, 250, 0.95);
+}
+
+/* 8. Toxic Green Style (Radioactive Neon Green) */
+.reel-hook-caption-sticker.style-toxic_green .sticker-text {
+  background: rgba(5, 28, 14, 0.92);
+  color: #4ade80;
+  border: 1.5px solid #22c55e;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.85), 0 4px 12px rgba(0, 0, 0, 0.8);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.95);
 }
 
 .sticker-subtext {

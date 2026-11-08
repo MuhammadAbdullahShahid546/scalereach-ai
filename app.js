@@ -1828,6 +1828,52 @@ class ScaleReachFullApp {
     });
 
     this.suggestClipRows = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
+    this.updateSuggestedReelsCaptions();
+  }
+
+  /**
+   * Synchronizes active caption style, position, font size, and text across
+   * every single AI Suggested Reel card in real time
+   */
+  updateSuggestedReelsCaptions() {
+    if (!this.aiSuggestedList) return;
+    const cards = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
+    const sizeClass = (this.captionFontSize <= 30) ? 'size-s' :
+                      (this.captionFontSize <= 40) ? 'size-m' :
+                      (this.captionFontSize <= 48) ? 'size-l' : 'size-xl';
+    const posClass = `pos-${this.captionPosition || 'bottom'}`;
+    const styleClass = `style-${this.selectedStyleId || 'classic'}`;
+    const currentInputVal = (this.studioCaptionTextInput && this.studioCaptionTextInput.value.trim()) ||
+                            (this.customCaptionInput && this.customCaptionInput.value.trim()) || '';
+
+    cards.forEach((card, idx) => {
+      const sticker = card.querySelector('.reel-hook-caption-sticker');
+      if (!sticker) return;
+
+      // Remove previous dynamic style, pos, and size classes
+      sticker.classList.remove(
+        'style-classic', 'style-cyan_slide', 'style-italic_red', 'style-cream_blue',
+        'style-red_spin', 'style-violet', 'style-blue_glow', 'style-toxic_green',
+        'pos-top', 'pos-center', 'pos-bottom',
+        'size-s', 'size-m', 'size-l', 'size-xl',
+        'is-hidden'
+      );
+
+      if (!this.captionsEnabled) {
+        sticker.classList.add('is-hidden');
+      } else {
+        sticker.classList.add(styleClass, posClass, sizeClass);
+      }
+
+      const stickerText = sticker.querySelector('.sticker-text');
+      if (stickerText) {
+        if (idx === this.activeClipIndex && currentInputVal) {
+          stickerText.textContent = currentInputVal;
+        } else if (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) {
+          stickerText.textContent = this.clipsMoments[idx].caption;
+        }
+      }
+    });
   }
 
   postYouTubeCommand(iframe, func, args) {
@@ -2281,21 +2327,33 @@ class ScaleReachFullApp {
 
     this.captionCardItems.forEach(card => {
       card.addEventListener('click', () => {
-        this.captionCardItems.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
+        const styleId = card.getAttribute('data-id');
+        const styleName = card.querySelector('.cap-label-name') ? card.querySelector('.cap-label-name').textContent : styleId;
 
-        this.selectedStyleId = card.getAttribute('data-id');
-        this.selectedStyleName = card.querySelector('.cap-label-name').textContent;
+        this.selectedStyleId = styleId;
+        this.selectedStyleName = styleName;
+
+        // Synchronize active state across Screen 2 & Screen 3 cards
+        document.querySelectorAll('.caption-card-item').forEach(c => {
+          if (c.getAttribute('data-id') === styleId) {
+            c.classList.add('active');
+          } else {
+            c.classList.remove('active');
+          }
+        });
 
         if (this.activeStyleBadge) {
           this.activeStyleBadge.textContent = `Style: ${this.selectedStyleName}`;
         }
 
         if (this.styleSampleTexts[this.selectedStyleId]) {
-          this.customCaptionInput.value = this.styleSampleTexts[this.selectedStyleId];
+          const sample = this.styleSampleTexts[this.selectedStyleId];
+          this.customCaptionInput.value = sample;
+          if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = sample;
         }
 
-        this.showToast(`Selected: ${this.selectedStyleName} ✨`);
+        this.updateSuggestedReelsCaptions();
+        this.showToast(`Selected: ${this.selectedStyleName} ✨ (Applied to all suggested reels)`);
       });
     });
 
@@ -2701,7 +2759,9 @@ class ScaleReachFullApp {
       this.clipStart = moment.start;
       this.clipEnd = moment.end;
       if (this.seoTitleDisplay) this.seoTitleDisplay.textContent = `"${moment.seoTitle}"`;
-      if (this.customCaptionInput) this.customCaptionInput.value = moment.caption || this.styleSampleTexts[this.selectedStyleId] || 'VIRAL MOMENT';
+      const activeCaption = moment.caption || this.styleSampleTexts[this.selectedStyleId] || 'VIRAL MOMENT';
+      if (this.customCaptionInput) this.customCaptionInput.value = activeCaption;
+      if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = activeCaption;
       if (this.captionTitleTag) this.captionTitleTag.textContent = `"${this.currentVideoTitle || moment.title}"`;
       if (this.captionAuthorTag) this.captionAuthorTag.textContent = '@ajjez_clips';
       if (this.studioVideoTitle) this.studioVideoTitle.textContent = this.currentVideoTitle || moment.title;
@@ -2714,6 +2774,7 @@ class ScaleReachFullApp {
 
       this.updateTrimmerUI();
       this.renderWaveform();
+      this.updateSuggestedReelsCaptions();
 
       // Start video playback on the card and in the studio
       this.playCardVideo(clipIdx);
@@ -2723,34 +2784,64 @@ class ScaleReachFullApp {
   }
 
   /* ----------------------------------------------------
-     Handle Custom Adjustments (Step 2 - User drags/adjusts)
+     Handle Custom Adjustments (User drags trimmer, changes times or customizes clip)
   ---------------------------------------------------- */
   handleCustomAdjustment() {
     this.isCustomAdjusted = true;
+    const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
+    const durSec = Math.max(1, Math.round(this.clipEnd - this.clipStart));
 
-    // Deselect suggested clip cards so user sees custom trim is now active
+    // Update active moment start & end so loop & playback respect user adjustments
+    if (this.clipsMoments && this.clipsMoments[activeIdx]) {
+      this.clipsMoments[activeIdx].start = this.clipStart;
+      this.clipsMoments[activeIdx].end = this.clipEnd;
+    }
+
+    // Keep active card highlighted and update its time badge & action status
     if (this.aiSuggestedList) {
       const cards = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
-      cards.forEach(card => {
-        card.classList.remove('active');
+      cards.forEach((card, idx) => {
         const actionPill = card.querySelector('.reel-action-pill');
-        if (actionPill) {
-          actionPill.className = 'reel-action-pill';
-          actionPill.innerHTML = '▶ Click to Edit & Play';
+        if (idx === activeIdx) {
+          card.classList.add('active');
+          const timeBadge = card.querySelector('.reel-time-badge');
+          if (timeBadge) {
+            timeBadge.textContent = `${this.formatTime(this.clipStart)} - ${this.formatTime(this.clipEnd)} (${durSec}s)`;
+          }
+          if (actionPill) {
+            actionPill.className = 'reel-action-pill active-pill';
+            actionPill.innerHTML = `<span class="reel-pulsing-dot"></span> 📱 Adjusted (${durSec}s)`;
+          }
+          const cardVid = card.querySelector('.reel-card-video');
+          if (cardVid && this.activeSourceType !== 'youtube') {
+            cardVid.currentTime = this.clipStart;
+            if (this.isPlaying && cardVid.paused) cardVid.play().catch(console.warn);
+          }
+        } else {
+          card.classList.remove('active');
+          if (actionPill) {
+            actionPill.className = 'reel-action-pill';
+            actionPill.innerHTML = '▶ Click to Edit & Play';
+          }
         }
       });
     }
 
-    this.clipSelectorPills.forEach(p => p.classList.remove('active'));
+    if (this.clipSelectorPills) {
+      this.clipSelectorPills.forEach((p, idx) => {
+        if (idx === activeIdx) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+    }
 
     this.updateTrimmerUI();
 
-    // Immediately seek mobile preview to adjusted start time & loop
+    // Immediately seek mobile preview & main video to adjusted start time & loop
     if (this.activeSourceType === 'youtube') {
       this.syncYouTubeClipTime();
     } else {
       this.sourceVideo.currentTime = this.clipStart;
-      if (this.sourceVideo.paused) this.sourceVideo.play();
+      if (this.sourceVideo.paused) this.sourceVideo.play().catch(console.warn);
     }
   }
 
@@ -2780,6 +2871,7 @@ class ScaleReachFullApp {
           this.subnavCaptionsBtn.textContent = this.captionsEnabled ? '🔥 Captions: ON' : '⚪ Captions: OFF';
           this.subnavCaptionsBtn.style.color = this.captionsEnabled ? '#3b82f6' : '#94a3b8';
         }
+        this.updateSuggestedReelsCaptions();
         this.updateCaptionsStatusBanner();
         this.showToast(this.captionsEnabled ? 'Captions Active on 9:16 Video! ✨' : 'Captions Hidden');
       });
@@ -2788,8 +2880,21 @@ class ScaleReachFullApp {
     // 2. Custom Text Input Live Sync
     if (this.studioCaptionTextInput) {
       this.studioCaptionTextInput.addEventListener('input', () => {
+        const val = this.studioCaptionTextInput.value;
         if (this.customCaptionInput) {
-          this.customCaptionInput.value = this.studioCaptionTextInput.value;
+          this.customCaptionInput.value = val;
+        }
+        const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
+        if (this.clipsMoments && this.clipsMoments[activeIdx]) {
+          this.clipsMoments[activeIdx].caption = val || 'VIRAL HOOK';
+        }
+        // Instantly reflect typed text onto active card's on-screen sticker
+        if (this.aiSuggestedList) {
+          const activeCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${activeIdx}"]`);
+          if (activeCard) {
+            const st = activeCard.querySelector('.sticker-text');
+            if (st) st.textContent = val || 'VIRAL HOOK';
+          }
         }
         this.updateCaptionsStatusBanner();
       });
@@ -2800,6 +2905,17 @@ class ScaleReachFullApp {
       this.clearCaptionTextBtn.addEventListener('click', () => {
         this.studioCaptionTextInput.value = '';
         if (this.customCaptionInput) this.customCaptionInput.value = '';
+        const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
+        if (this.clipsMoments && this.clipsMoments[activeIdx]) {
+          this.clipsMoments[activeIdx].caption = '';
+        }
+        if (this.aiSuggestedList) {
+          const activeCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${activeIdx}"]`);
+          if (activeCard) {
+            const st = activeCard.querySelector('.sticker-text');
+            if (st) st.textContent = 'VIRAL HOOK';
+          }
+        }
         this.studioCaptionTextInput.focus();
         this.updateCaptionsStatusBanner();
       });
@@ -2815,6 +2931,17 @@ class ScaleReachFullApp {
           }
           if (this.customCaptionInput) {
             this.customCaptionInput.value = hook;
+          }
+          const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
+          if (this.clipsMoments && this.clipsMoments[activeIdx]) {
+            this.clipsMoments[activeIdx].caption = hook;
+          }
+          if (this.aiSuggestedList) {
+            const activeCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${activeIdx}"]`);
+            if (activeCard) {
+              const st = activeCard.querySelector('.sticker-text');
+              if (st) st.textContent = hook;
+            }
           }
           this.updateCaptionsStatusBanner();
           this.showToast(`Applied: "${hook}" 🔥`);
@@ -2854,10 +2981,17 @@ class ScaleReachFullApp {
           if (this.customCaptionInput) {
             this.customCaptionInput.value = this.studioCaptionTextInput ? this.studioCaptionTextInput.value : sample;
           }
+          const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
+          if (this.clipsMoments && this.clipsMoments[activeIdx]) {
+            this.clipsMoments[activeIdx].caption = this.studioCaptionTextInput ? this.studioCaptionTextInput.value : sample;
+          }
         }
 
+        // Synchronize selected style across ALL suggested clip cards instantly!
+        this.updateSuggestedReelsCaptions();
+
         this.updateCaptionsStatusBanner();
-        this.showToast(`Selected: ${styleName} ✨`);
+        this.showToast(`Applied "${styleName}" style across all suggested reels! ✨`);
       });
     });
 
@@ -2893,6 +3027,7 @@ class ScaleReachFullApp {
           this.captionPosBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           this.captionPosition = btn.getAttribute('data-pos') || 'bottom';
+          this.updateSuggestedReelsCaptions();
           this.updateCaptionsStatusBanner();
           this.showToast(`Position: ${btn.textContent.trim()} 📍`);
         });
@@ -2906,6 +3041,7 @@ class ScaleReachFullApp {
           this.captionSizeBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           this.captionFontSize = parseInt(btn.getAttribute('data-size'), 10) || 40;
+          this.updateSuggestedReelsCaptions();
           this.updateCaptionsStatusBanner();
           this.showToast(`Font Size: ${this.captionFontSize}px 🔤`);
         });
