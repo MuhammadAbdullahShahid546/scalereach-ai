@@ -616,8 +616,8 @@
               <button class="clip-pill" data-clip="6">🏆 Reel 6 (91%)</button>
             </div>
             <div class="spacer"></div>
-            <button class="btn btn-outline btn-sm capcut-subnav-btn" id="subnavEffectsBtn" title="CapCut 4K HDR Special Effects">
-              ✨ 4K HDR: ON
+            <button class="btn btn-outline btn-sm captions-subnav-btn" id="subnavCaptionsBtn" title="Jump to Viral Captions Studio">
+              🔥 Viral Captions: ON
             </button>
             <button class="btn btn-primary btn-sm" id="exportFromStudioBtn">
               ⚡ Free Export 9:16 Short (1080p)
@@ -1175,187 +1175,232 @@
 
               </div>
 
-              <!-- CapCut Style Special Effects & 4K HDR Panel -->
-              <div class="card capcut-effects-card" id="capcutEffectsCard">
-                <div class="card-header capcut-card-header">
+              <!-- Viral Captions & Subtitles Studio Card (Replaces CapCut Effects) -->
+              <div class="card viral-captions-studio-card" id="viralCaptionsStudioCard">
+                <div class="card-header captions-studio-header">
                   <div class="card-title">
-                    <span class="dot-cyan"></span>
+                    <span class="dot-pink"></span>
                     <div>
-                      <div class="capcut-title-badge-row">
-                        <h3>✨ Special Effects</h3>
-                        <span class="capcut-brand-pill">CapCut Style</span>
-                        <span class="capcut-status-badge active" id="capcutStatusBadge">4K HDR Active</span>
+                      <div class="captions-title-badge-row">
+                        <h3>🔥 Viral Captions Studio</h3>
+                        <span class="captions-brand-pill">Trending Reels & TikTok</span>
+                        <span class="captions-status-badge active" id="studioActiveCaptionBadge">🟡 Hormozi Gold</span>
                       </div>
-                      <p class="section-micro-desc">Video visuals & quality ko 4K HDR effect se enhance aur customize karein:</p>
+                      <p class="section-micro-desc">9:16 mobile video par real-time viral captions customize aur switch karein:</p>
                     </div>
                   </div>
-                  <div class="capcut-toggle-wrap">
-                    <label class="switch-toggle" title="Turn 4K HDR On/Off">
-                      <input type="checkbox" id="capcutEffectMasterToggle" checked>
+                  <div class="captions-toggle-wrap">
+                    <label class="switch-toggle" title="Captions On/Off">
+                      <input type="checkbox" id="studioCaptionsToggle" checked>
                       <span class="toggle-slider"></span>
                     </label>
                   </div>
                 </div>
 
-                <!-- CapCut Video Effects Grid / Selector -->
-                <div class="capcut-effects-tabs-row">
-                  <span class="effects-tab-title">Video Effects:</span>
-                  <div class="capcut-effects-grid" id="capcutEffectsGrid">
-                    <button class="capcut-fx-item active" data-effect="4k_hdr" title="CapCut 4K HDR AI Upscaler">
-                      <span class="fx-thumb-icon">💎</span>
-                      <span class="fx-name">4K HDR</span>
-                      <span class="fx-pro-tag">PRO</span>
-                    </button>
-                    <button class="capcut-fx-item" data-effect="dynamic_blur" title="Dynamic Blur & Focus">
-                      <span class="fx-thumb-icon">💨</span>
-                      <span class="fx-name">Dynamic Blur</span>
-                    </button>
-                    <button class="capcut-fx-item" data-effect="soft_glow" title="Dreamy Soft Glow">
-                      <span class="fx-thumb-icon">✨</span>
-                      <span class="fx-name">Soft Glow</span>
-                    </button>
-                    <button class="capcut-fx-item" data-effect="ultra_sharpen" title="Ultra 4K Crisp Edge Sharpen">
-                      <span class="fx-thumb-icon">🔪</span>
-                      <span class="fx-name">4K Sharpen</span>
-                    </button>
-                    <button class="capcut-fx-item" data-effect="flash_focus" title="Flash Focus Highlight">
-                      <span class="fx-thumb-icon">⚡</span>
-                      <span class="fx-name">Flash Focus</span>
-                    </button>
-                    <button class="capcut-fx-item" data-effect="camcorder" title="Classic DV Camcorder Retro">
-                      <span class="fx-thumb-icon">📹</span>
-                      <span class="fx-name">Classic DV</span>
-                    </button>
+                <!-- Live Caption Text Input & Viral Hook Pre-fills -->
+                <div class="studio-caption-input-box">
+                  <div class="caption-input-label-row">
+                    <label for="studioCaptionTextInput">Caption / Hook Text:</label>
+                    <span class="caption-input-hint">Live syncs with 9:16 video</span>
+                  </div>
+                  <div class="caption-input-row">
+                    <span class="caption-input-icon">💬</span>
+                    <input type="text" id="studioCaptionTextInput" class="studio-caption-input" placeholder="Type your viral caption..." value="CAN HE SAVE THIS? 😱" maxlength="80">
+                    <button class="btn-clear-caption" id="clearCaptionTextBtn" title="Clear Text">✕</button>
+                  </div>
+
+                  <!-- Quick Viral Hook Buttons -->
+                  <div class="quick-hooks-bar">
+                    <span class="quick-hooks-title">⚡ Quick Viral Hooks:</span>
+                    <div class="quick-hooks-scroll">
+                      <button class="hook-pill-btn" data-hook="CAN HE SAVE THIS? 😱">🔥 CAN HE SAVE THIS?</button>
+                      <button class="hook-pill-btn" data-hook="WATCH TILL THE END 👀">👀 WATCH TILL THE END</button>
+                      <button class="hook-pill-btn" data-hook="100 MPH ROCKET KICK 🚀">🚀 100 MPH ROCKET KICK</button>
+                      <button class="hook-pill-btn" data-hook="NEVER DO THIS 🛑">🛑 NEVER DO THIS</button>
+                      <button class="hook-pill-btn" data-hook="HOW DID HE SAVE THAT?! 🤯">🤯 HOW DID HE SAVE THAT?!</button>
+                      <button class="hook-pill-btn" data-hook="WAIT FOR IT... ⚡">⚡ WAIT FOR IT...</button>
+                      <button class="hook-pill-btn" data-hook="+$1,700,000 PROFIT 📈">📈 +$1,700,000 PROFIT</button>
+                      <button class="hook-pill-btn" data-hook="1. MENTALITY 🧠">🧠 1. MENTALITY</button>
+                      <button class="hook-pill-btn" data-hook="3-SECOND TRICK 💡">💡 3-SECOND TRICK</button>
+                    </div>
                   </div>
                 </div>
 
-                <!-- CapCut Details Panel (Matching Screenshot 1 & 2) -->
-                <div class="capcut-details-panel" id="capcutDetailsPanel">
-                  <div class="capcut-details-header">
-                    <div class="details-title-left">
-                      <span class="arrow-down-icon">▾</span>
-                      <strong>Details</strong>
-                      <span class="effect-current-name" id="effectCurrentName">4K HDR <span class="gem-icon">💎</span></span>
-                    </div>
-                    <div class="details-actions-right">
-                      <button class="btn-capcut-reset" id="reset4kEffectBtn" title="Reset to CapCut Default">
-                        ↺ Reset
-                      </button>
-                    </div>
+                <!-- 12 Viral Caption Preset Styles Grid -->
+                <div class="studio-caption-styles-section">
+                  <div class="styles-section-header">
+                    <span class="styles-section-title">✨ 12 Creator Caption Styles:</span>
+                    <span class="styles-section-sub">Click any style to apply instantly</span>
                   </div>
 
-                  <!-- Quick Presets matching user screenshots -->
-                  <div class="capcut-quick-presets">
-                    <span class="preset-label">CapCut Presets:</span>
-                    <button class="fx-preset-pill active" id="presetCapcutPunchy" title="Values from Screenshot 1 (Glow 30, Sharpen 70, Filters 100)">
-                      💎 4K Ultra HDR
-                    </button>
-                    <button class="fx-preset-pill" id="presetCapcutNatural" title="Values from Screenshot 2 (Glow 10, Sharpen 12, Filters 79)">
-                      ⚡ Natural Crisp 4K
-                    </button>
-                    <button class="fx-preset-pill" id="presetCapcutDreamy" title="Soft Light & Glow">
-                      🌟 Soft Aesthetic
-                    </button>
-                    <button class="fx-preset-pill" id="presetCapcutOriginal" title="Turn Off Effects">
-                      🚫 Original (Off)
-                    </button>
-                  </div>
-
-                  <!-- The 7 Sliders with Number Inputs matching Screenshot 1 & 2 -->
-                  <div class="capcut-sliders-list">
+                  <div class="studio-captions-preset-grid" id="studioCaptionsGrid">
                     
-                    <!-- 1. Glow -->
-                    <div class="capcut-slider-row">
-                      <div class="slider-meta">
-                        <label for="fxGlowSlider">Glow</label>
+                    <!-- 1. Hormozi Gold -->
+                    <div class="studio-caption-item active" data-id="classic" data-name="Hormozi Gold">
+                      <div class="cap-preset-preview bg-black-box">
+                        <span class="preview-white">HORMOZI</span>
+                        <span class="preview-yellow">GOLD</span>
                       </div>
-                      <div class="slider-controls-wrap">
-                        <input type="range" id="fxGlowSlider" min="0" max="100" value="30" class="capcut-range-input">
-                        <input type="number" id="fxGlowNum" min="0" max="100" value="30" class="capcut-num-input">
-                        <span class="keyframe-icon" title="Keyframe">◇</span>
-                      </div>
-                    </div>
-
-                    <!-- 2. Blur -->
-                    <div class="capcut-slider-row">
-                      <div class="slider-meta">
-                        <label for="fxBlurSlider">Blur</label>
-                      </div>
-                      <div class="slider-controls-wrap">
-                        <input type="range" id="fxBlurSlider" min="0" max="100" value="15" class="capcut-range-input">
-                        <input type="number" id="fxBlurNum" min="0" max="100" value="15" class="capcut-num-input">
-                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🟡 Hormozi Gold</span>
+                        <span class="preset-tag">High Retention</span>
                       </div>
                     </div>
 
-                    <!-- 3. Sharpen -->
-                    <div class="capcut-slider-row">
-                      <div class="slider-meta">
-                        <label for="fxSharpenSlider">Sharpen</label>
+                    <!-- 2. MrBeast Pop -->
+                    <div class="studio-caption-item" data-id="mrbeast_pop" data-name="MrBeast Pop">
+                      <div class="cap-preset-preview bg-mrbeast">
+                        <span class="preview-mrbeast">MRBEAST</span>
                       </div>
-                      <div class="slider-controls-wrap">
-                        <input type="range" id="fxSharpenSlider" min="0" max="100" value="70" class="capcut-range-input">
-                        <input type="number" id="fxSharpenNum" min="0" max="100" value="70" class="capcut-num-input">
-                        <span class="keyframe-icon" title="Keyframe">◇</span>
-                      </div>
-                    </div>
-
-                    <!-- 4. Range -->
-                    <div class="capcut-slider-row">
-                      <div class="slider-meta">
-                        <label for="fxRangeSlider">Range</label>
-                      </div>
-                      <div class="slider-controls-wrap">
-                        <input type="range" id="fxRangeSlider" min="0" max="100" value="70" class="capcut-range-input">
-                        <input type="number" id="fxRangeNum" min="0" max="100" value="70" class="capcut-num-input">
-                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🔴 MrBeast Pop</span>
+                        <span class="preset-tag">Trending Viral</span>
                       </div>
                     </div>
 
-                    <!-- 5. Size -->
-                    <div class="capcut-slider-row">
-                      <div class="slider-meta">
-                        <label for="fxSizeSlider">Size</label>
+                    <!-- 3. Cyberpunk Cyan -->
+                    <div class="studio-caption-item" data-id="cyan_slide" data-name="Neon Cyan">
+                      <div class="cap-preset-preview bg-neon-cyan">
+                        <span class="preview-cyan">CYBERPUNK</span>
                       </div>
-                      <div class="slider-controls-wrap">
-                        <input type="range" id="fxSizeSlider" min="0" max="100" value="50" class="capcut-range-input">
-                        <input type="number" id="fxSizeNum" min="0" max="100" value="50" class="capcut-num-input">
-                        <span class="keyframe-icon" title="Keyframe">◇</span>
-                      </div>
-                    </div>
-
-                    <!-- 6. Soft Light -->
-                    <div class="capcut-slider-row">
-                      <div class="slider-meta">
-                        <label for="fxSoftLightSlider">Soft light</label>
-                      </div>
-                      <div class="slider-controls-wrap">
-                        <input type="range" id="fxSoftLightSlider" min="0" max="100" value="33" class="capcut-range-input">
-                        <input type="number" id="fxSoftLightNum" min="0" max="100" value="33" class="capcut-num-input">
-                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🔵 Neon Cyan</span>
+                        <span class="preset-tag">Futuristic Glow</span>
                       </div>
                     </div>
 
-                    <!-- 7. Filters -->
-                    <div class="capcut-slider-row">
-                      <div class="slider-meta">
-                        <label for="fxFiltersSlider">Filters</label>
+                    <!-- 4. Karaoke Velocity -->
+                    <div class="studio-caption-item" data-id="toxic_green" data-name="Karaoke Velocity">
+                      <div class="cap-preset-preview bg-neon-green">
+                        <span class="preview-green">KARAOKE</span>
                       </div>
-                      <div class="slider-controls-wrap">
-                        <input type="range" id="fxFiltersSlider" min="0" max="100" value="100" class="capcut-range-input">
-                        <input type="number" id="fxFiltersNum" min="0" max="100" value="100" class="capcut-num-input">
-                        <span class="keyframe-icon" title="Keyframe">◇</span>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🟢 Karaoke Lime</span>
+                        <span class="preset-tag">Fast Word Sync</span>
                       </div>
                     </div>
 
-                  </div>
+                    <!-- 5. Ali Abdaal Minimalist -->
+                    <div class="studio-caption-item" data-id="ali_abdaal" data-name="Ali Abdaal">
+                      <div class="cap-preset-preview bg-ali-abdaal">
+                        <span class="preview-pill">ALI ABDAAL</span>
+                      </div>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🟣 Ali Abdaal</span>
+                        <span class="preset-tag">Aesthetic Minimal</span>
+                      </div>
+                    </div>
 
-                  <!-- Live Status Banner -->
-                  <div class="capcut-live-sync-banner">
-                    <span class="capcut-pulse-dot"></span>
-                    <span id="fxLiveDescription"><strong>Live 4K HDR:</strong> Glow 30, Sharpen 70, Range 70, Filters 100% active on Mobile Preview & Main Player!</span>
+                    <!-- 6. Flame Gradient -->
+                    <div class="studio-caption-item" data-id="fire_gradient" data-name="Flame Gradient">
+                      <div class="cap-preset-preview bg-flame">
+                        <span class="preview-flame">FLAME FIRE</span>
+                      </div>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🔥 Flame Gradient</span>
+                        <span class="preset-tag">High Energy</span>
+                      </div>
+                    </div>
+
+                    <!-- 7. 3D Comic Impact -->
+                    <div class="studio-caption-item" data-id="comic_boom" data-name="Comic Boom">
+                      <div class="cap-preset-preview bg-comic">
+                        <span class="preview-comic">COMIC 3D</span>
+                      </div>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">💥 3D Comic</span>
+                        <span class="preset-tag">Anime / Gaming</span>
+                      </div>
+                    </div>
+
+                    <!-- 8. Cinema Subtitle -->
+                    <div class="studio-caption-item" data-id="netflix_sub" data-name="Cinema Subtitle">
+                      <div class="cap-preset-preview bg-cinema">
+                        <span class="preview-cinema">Cinema Sub</span>
+                      </div>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🤍 Cinema Clean</span>
+                        <span class="preset-tag">Documentary</span>
+                      </div>
+                    </div>
+
+                    <!-- 9. Sunset Royal -->
+                    <div class="studio-caption-item" data-id="violet" data-name="Sunset Royal">
+                      <div class="cap-preset-preview bg-sunset">
+                        <span class="preview-sunset">ROYAL SUN</span>
+                      </div>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">👑 Sunset Royal</span>
+                        <span class="preset-tag">Vlog / Luxury</span>
+                      </div>
+                    </div>
+
+                    <!-- 10. Red Velocity -->
+                    <div class="studio-caption-item" data-id="italic_red" data-name="Red Velocity">
+                      <div class="cap-preset-preview bg-red-velocity">
+                        <span class="preview-red">VELOCITY</span>
+                      </div>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">⚡ Red Velocity</span>
+                        <span class="preset-tag">Sports & Gym</span>
+                      </div>
+                    </div>
+
+                    <!-- 11. Ocean Glow -->
+                    <div class="studio-caption-item" data-id="blue_glow" data-name="Ocean Glow">
+                      <div class="cap-preset-preview bg-ocean">
+                        <span class="preview-ocean">OCEAN GLOW</span>
+                      </div>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🌊 Ocean Glow</span>
+                        <span class="preset-tag">Podcast Duo</span>
+                      </div>
+                    </div>
+
+                    <!-- 12. Modern Luxury -->
+                    <div class="studio-caption-item" data-id="cream_blue" data-name="Modern Luxury">
+                      <div class="cap-preset-preview bg-luxury">
+                        <span class="preview-luxury">LUXURY PRO</span>
+                      </div>
+                      <div class="cap-preset-meta">
+                        <span class="preset-name">🖤 Modern Luxury</span>
+                        <span class="preset-tag">Finance / Alpha</span>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
+
+                <!-- Position & Font Size Adjustments Row -->
+                <div class="studio-caption-adjustments-row">
+                  
+                  <div class="adjustment-col">
+                    <span class="adj-label">Position on Screen:</span>
+                    <div class="adj-btn-group" id="captionPositionBtnGroup">
+                      <button class="adj-btn" data-pos="top" title="Top Screen">⬆ Top</button>
+                      <button class="adj-btn" data-pos="center" title="Center Screen">⏺ Center</button>
+                      <button class="adj-btn active" data-pos="bottom" title="Lower Third (Recommended)">⬇ Bottom</button>
+                    </div>
+                  </div>
+
+                  <div class="adjustment-col">
+                    <span class="adj-label">Font Size:</span>
+                    <div class="adj-btn-group" id="captionSizeBtnGroup">
+                      <button class="adj-btn" data-size="30" title="Small font">S</button>
+                      <button class="adj-btn active" data-size="40" title="Medium font (Default)">M</button>
+                      <button class="adj-btn" data-size="48" title="Large font">L</button>
+                      <button class="adj-btn" data-size="56" title="Viral Pop XL">XL 🔥</button>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Live Sync Status Banner -->
+                <div class="captions-live-banner">
+                  <span class="captions-live-dot"></span>
+                  <span id="studioCaptionsStatusText"><strong>Live Captions Active:</strong> Showing <strong>🟡 Hormozi Gold</strong> at <strong>Bottom (40px)</strong> on Mobile Preview!</span>
+                </div>
+
               </div>
 
             </div>

@@ -182,11 +182,12 @@ class ScaleReachFullApp {
     this.isCustomAdjusted = false;
     this.gameplayFrame = 0;
 
-    // CapCut Special Effects & 4K HDR State & Elements
+    // CapCut Special Effects & 4K HDR State & Elements (Safely checked)
     this.capcutEffectsCard = document.getElementById('capcutEffectsCard');
     this.capcutEffectMasterToggle = document.getElementById('capcutEffectMasterToggle');
     this.capcutStatusBadge = document.getElementById('capcutStatusBadge');
     this.subnavEffectsBtn = document.getElementById('subnavEffectsBtn');
+    this.subnavCaptionsBtn = document.getElementById('subnavCaptionsBtn');
     this.capcutFxItems = document.querySelectorAll('.capcut-fx-item');
     this.effectCurrentName = document.getElementById('effectCurrentName');
     this.reset4kEffectBtn = document.getElementById('reset4kEffectBtn');
@@ -213,9 +214,9 @@ class ScaleReachFullApp {
     this.fxFiltersNum = document.getElementById('fxFiltersNum');
     this.fxLiveDescription = document.getElementById('fxLiveDescription');
 
-    // Default CapCut 4K HDR parameters (Values matching Screenshot 1 & 2)
-    this.capcutEffectEnabled = true;
-    this.currentActiveEffect = '4k_hdr';
+    // Default CapCut 4K HDR parameters
+    this.capcutEffectEnabled = false;
+    this.currentActiveEffect = 'none';
     this.fxGlow = 30;
     this.fxBlur = 15;
     this.fxSharpen = 70;
@@ -224,16 +225,36 @@ class ScaleReachFullApp {
     this.fxSoftLight = 33;
     this.fxFilters = 100;
 
-    // Default sample texts corresponding to the 8 styles
+    // Viral Captions Studio (Screen 3)
+    this.viralCaptionsStudioCard = document.getElementById('viralCaptionsStudioCard');
+    this.studioCaptionsToggle = document.getElementById('studioCaptionsToggle');
+    this.studioActiveCaptionBadge = document.getElementById('studioActiveCaptionBadge');
+    this.studioCaptionTextInput = document.getElementById('studioCaptionTextInput');
+    this.clearCaptionTextBtn = document.getElementById('clearCaptionTextBtn');
+    this.hookPillBtns = document.querySelectorAll('.hook-pill-btn');
+    this.studioCaptionItems = document.querySelectorAll('.studio-caption-item');
+    this.captionPosBtns = document.querySelectorAll('#captionPositionBtnGroup .adj-btn');
+    this.captionSizeBtns = document.querySelectorAll('#captionSizeBtnGroup .adj-btn');
+    this.studioCaptionsStatusText = document.getElementById('studioCaptionsStatusText');
+
+    this.captionPosition = 'bottom';
+    this.captionFontSize = 40;
+    this.captionsEnabled = true;
+
+    // Sample texts corresponding to the 12 creator styles
     this.styleSampleTexts = {
       classic: 'TO GET STARTED',
-      cyan_slide: 'MORE FOUNDERS THAN',
-      italic_red: 'MORE FOUNDERS THAN',
-      cream_blue: 'MORE FOUNDERS THAN',
-      red_spin: 'BAD PRODUCTS OR',
-      violet: 'BAD PRODUCTS OR',
-      blue_glow: 'to get STARTED',
-      toxic_green: 'TO GET STARTED'
+      mrbeast_pop: 'CAN HE SAVE THIS? 😱',
+      cyan_slide: 'CYBERPUNK GLOW ⚡',
+      toxic_green: 'KARAOKE VELOCITY 🟢',
+      ali_abdaal: 'ALI ABDAAL MINIMAL 🧠',
+      fire_gradient: 'DON\'T BLINK NOW 🔥',
+      comic_boom: '3D COMIC IMPACT 💥',
+      netflix_sub: 'Cinema Subtitle Clean 🤍',
+      violet: 'SUNSET ROYAL GLOW 👑',
+      italic_red: '100 MPH ROCKET KICK ⚡',
+      blue_glow: 'to get STARTED 🌊',
+      cream_blue: 'MODERN LUXURY PRO 🖤'
     };
 
     // Database of Presets & Knowledge Base for AI Video Analysis (8 Viral Reels Each)
@@ -1130,6 +1151,7 @@ class ScaleReachFullApp {
     this.bindConfigureScreen();
     this.bindCrazyCaptions();
     this.bindStudioScreen();
+    this.bindViralCaptionsStudio();
     this.bindCapCutEffects();
     this.bindExport();
 
@@ -2733,6 +2755,144 @@ class ScaleReachFullApp {
   }
 
   /* ----------------------------------------------------
+     Viral Captions & Subtitles Studio Engine (Screen 3)
+  ---------------------------------------------------- */
+  bindViralCaptionsStudio() {
+    if (!this.viralCaptionsStudioCard) return;
+
+    // Subnav button to jump to Captions Studio
+    if (this.subnavCaptionsBtn) {
+      this.subnavCaptionsBtn.addEventListener('click', () => {
+        this.viralCaptionsStudioCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        this.viralCaptionsStudioCard.style.boxShadow = '0 0 25px rgba(236, 72, 153, 0.6)';
+        setTimeout(() => {
+          this.viralCaptionsStudioCard.style.boxShadow = '';
+        }, 1200);
+      });
+    }
+
+    // 1. Master Toggle for Captions
+    if (this.studioCaptionsToggle) {
+      this.studioCaptionsToggle.addEventListener('change', () => {
+        this.captionsEnabled = this.studioCaptionsToggle.checked;
+        if (this.captionsToggle) this.captionsToggle.checked = this.captionsEnabled;
+        if (this.subnavCaptionsBtn) {
+          this.subnavCaptionsBtn.textContent = this.captionsEnabled ? '🔥 Viral Captions: ON' : '⚪ Captions: OFF';
+          this.subnavCaptionsBtn.style.color = this.captionsEnabled ? '#f472b6' : '#94a3b8';
+        }
+        this.updateCaptionsStatusBanner();
+        this.showToast(this.captionsEnabled ? 'Captions Active on 9:16 Video! ✨' : 'Captions Hidden');
+      });
+    }
+
+    // 2. Custom Text Input Live Sync
+    if (this.studioCaptionTextInput) {
+      this.studioCaptionTextInput.addEventListener('input', () => {
+        if (this.customCaptionInput) {
+          this.customCaptionInput.value = this.studioCaptionTextInput.value;
+        }
+        this.updateCaptionsStatusBanner();
+      });
+    }
+
+    // Clear Text Button
+    if (this.clearCaptionTextBtn && this.studioCaptionTextInput) {
+      this.clearCaptionTextBtn.addEventListener('click', () => {
+        this.studioCaptionTextInput.value = '';
+        if (this.customCaptionInput) this.customCaptionInput.value = '';
+        this.studioCaptionTextInput.focus();
+        this.updateCaptionsStatusBanner();
+      });
+    }
+
+    // 3. Quick Viral Hook Pills
+    if (this.hookPillBtns) {
+      this.hookPillBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const hook = btn.getAttribute('data-hook') || btn.textContent.trim();
+          if (this.studioCaptionTextInput) {
+            this.studioCaptionTextInput.value = hook;
+          }
+          if (this.customCaptionInput) {
+            this.customCaptionInput.value = hook;
+          }
+          this.updateCaptionsStatusBanner();
+          this.showToast(`Applied Hook: "${hook}" 🔥`);
+        });
+      });
+    }
+
+    // 4. 12 Creator Caption Style Presets Grid
+    if (this.studioCaptionItems) {
+      this.studioCaptionItems.forEach(item => {
+        item.addEventListener('click', () => {
+          this.studioCaptionItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+
+          const styleId = item.getAttribute('data-id');
+          const styleName = item.getAttribute('data-name') || (item.querySelector('.preset-name') ? item.querySelector('.preset-name').textContent : styleId);
+          this.selectedStyleId = styleId;
+          this.selectedStyleName = styleName;
+
+          if (this.studioActiveCaptionBadge) {
+            this.studioActiveCaptionBadge.textContent = styleName;
+          }
+          if (this.activeStyleBadge) {
+            this.activeStyleBadge.textContent = `Style: ${styleName}`;
+          }
+
+          // If current text is empty or default, prefill with style's sample
+          if (this.studioCaptionTextInput && (!this.studioCaptionTextInput.value || this.studioCaptionTextInput.value === 'CAN HE SAVE THIS? 😱')) {
+            if (this.styleSampleTexts[styleId]) {
+              this.studioCaptionTextInput.value = this.styleSampleTexts[styleId];
+              if (this.customCaptionInput) this.customCaptionInput.value = this.styleSampleTexts[styleId];
+            }
+          }
+
+          this.updateCaptionsStatusBanner();
+          this.showToast(`Active Style: ${styleName} ✨`);
+        });
+      });
+    }
+
+    // 5. Caption Position Adjustment (Top, Center, Bottom)
+    if (this.captionPosBtns) {
+      this.captionPosBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          this.captionPosBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.captionPosition = btn.getAttribute('data-pos') || 'bottom';
+          this.updateCaptionsStatusBanner();
+          this.showToast(`Position: ${btn.textContent.trim()} 📍`);
+        });
+      });
+    }
+
+    // 6. Caption Size Adjustment (S, M, L, XL)
+    if (this.captionSizeBtns) {
+      this.captionSizeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          this.captionSizeBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.captionFontSize = parseInt(btn.getAttribute('data-size'), 10) || 40;
+          this.updateCaptionsStatusBanner();
+          this.showToast(`Font Size: ${this.captionFontSize}px 🔤`);
+        });
+      });
+    }
+  }
+
+  updateCaptionsStatusBanner() {
+    if (!this.studioCaptionsStatusText) return;
+    if (!this.captionsEnabled) {
+      this.studioCaptionsStatusText.innerHTML = `<strong>Captions Disabled:</strong> Toggle switch on top right to enable live captions on video.`;
+      return;
+    }
+    const posLabel = this.captionPosition === 'top' ? 'Top' : this.captionPosition === 'center' ? 'Center' : 'Bottom';
+    this.studioCaptionsStatusText.innerHTML = `<strong>Live Captions Active:</strong> Showing <strong>${this.selectedStyleName}</strong> at <strong>${posLabel} (${this.captionFontSize}px)</strong> on Mobile Preview!`;
+  }
+
+  /* ----------------------------------------------------
      CapCut Special Effects & 4K HDR Management Engine
   ---------------------------------------------------- */
   bindCapCutEffects() {
@@ -3243,11 +3403,12 @@ class ScaleReachFullApp {
         // Bottom 50% Subway Surfers Gameplay
         this.renderSubwayGameplay(ctx, 0, topH, cw, ch - topH);
 
-        if (this.autoHookToggle.checked) {
+        if (this.autoHookToggle && this.autoHookToggle.checked) {
           this.renderTopHookBanner(ctx, cw, 30);
         }
 
-        if (this.captionsToggle.checked) {
+        if ((!this.studioCaptionsToggle || this.studioCaptionsToggle.checked) &&
+            (!this.captionsToggle || this.captionsToggle.checked)) {
           this.renderCrazyCaptionStyle(ctx, cw, topH * 0.85);
         }
 
@@ -3263,11 +3424,12 @@ class ScaleReachFullApp {
           ctx.drawImage(this.sourceVideo, cropX, 0, cropW, vh, 0, 0, cw, ch);
         }
 
-        if (this.autoHookToggle.checked) {
+        if (this.autoHookToggle && this.autoHookToggle.checked) {
           this.renderTopHookBanner(ctx, cw, 60);
         }
 
-        if (this.captionsToggle.checked) {
+        if ((!this.studioCaptionsToggle || this.studioCaptionsToggle.checked) &&
+            (!this.captionsToggle || this.captionsToggle.checked)) {
           this.renderCrazyCaptionStyle(ctx, cw, ch * 0.74);
         }
       }
@@ -3281,7 +3443,8 @@ class ScaleReachFullApp {
         if (this.autoHookToggle && this.autoHookToggle.checked) {
           this.renderTopHookBanner(oCtx, oCanvas.width, 60);
         }
-        if (this.captionsToggle && this.captionsToggle.checked) {
+        if ((!this.studioCaptionsToggle || this.studioCaptionsToggle.checked) &&
+            (!this.captionsToggle || this.captionsToggle.checked)) {
           this.renderCrazyCaptionStyle(oCtx, oCanvas.width, oCanvas.height * 0.74);
         }
       }
@@ -3365,112 +3528,253 @@ class ScaleReachFullApp {
   }
 
   /**
-   * Renders the Exact 8 Crazy Caption Styles on Video Canvas
+   * Renders the 12 Creator Caption Styles on Video Canvas with Position & Size Adjustments
    */
-  renderCrazyCaptionStyle(ctx, cw, posY) {
-    const text = (this.customCaptionInput.value || 'TO GET STARTED').trim();
-    if (!text) return;
+  renderCrazyCaptionStyle(ctx, cw, defaultPosY) {
+    if (this.studioCaptionsToggle && !this.studioCaptionsToggle.checked) return;
+    if (this.captionsToggle && !this.captionsToggle.checked) return;
+
+    const rawText = ((this.studioCaptionTextInput && this.studioCaptionTextInput.value) ||
+                     (this.customCaptionInput && this.customCaptionInput.value) ||
+                     'CAN HE SAVE THIS?').trim();
+    if (!rawText) return;
 
     ctx.save();
+    const ch = ctx.canvas.height;
     const midX = cw / 2;
+    const fontSize = this.captionFontSize || 40;
+
+    // Calculate dynamic Y based on chosen position: Top, Center, or Bottom
+    let posY = defaultPosY;
+    if (this.captionPosition === 'top') {
+      posY = ch * 0.18;
+    } else if (this.captionPosition === 'center') {
+      posY = ch * 0.50;
+    } else {
+      posY = defaultPosY || (ch * 0.76);
+    }
 
     switch (this.selectedStyleId) {
-      case 'classic':
-        this.renderMultiLineClassic(ctx, midX, posY, text);
+      case 'classic': // 1. Hormozi Gold
+        this.renderMultiLineClassic(ctx, midX, posY, rawText, fontSize);
         break;
 
-      case 'cyan_slide':
-        ctx.font = '900 40px "Plus Jakarta Sans", sans-serif';
-        ctx.textAlign = 'center';
-        this.renderWordHighlight(ctx, midX, posY, text.toUpperCase(), '#00d2ff', '#ffffff');
+      case 'mrbeast_pop': // 2. MrBeast Pop
+        this.renderMrBeastStyle(ctx, midX, posY, rawText, fontSize);
         break;
 
-      case 'italic_red':
-        ctx.font = 'italic 900 40px "Plus Jakarta Sans", sans-serif';
+      case 'cyan_slide': // 3. Cyberpunk Cyan
+        ctx.font = `900 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
         ctx.textAlign = 'center';
-        this.renderWordHighlight(ctx, midX, posY, text.toUpperCase(), '#ff2a2a', '#fee2e2');
-        break;
-
-      case 'cream_blue':
-        ctx.font = '800 38px "Plus Jakarta Sans", sans-serif';
-        ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(79, 117, 255, 0.8)';
-        ctx.shadowBlur = 14;
-        ctx.fillStyle = '#4f75ff';
-        ctx.fillText(text.toUpperCase(), midX, posY);
-        break;
-
-      case 'red_spin':
-        ctx.font = '900 40px "Plus Jakarta Sans", sans-serif';
-        ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(255, 31, 61, 0.95)';
+        ctx.shadowColor = '#00f2fe';
         ctx.shadowBlur = 20;
-        ctx.fillStyle = '#ff1f3d';
-        ctx.fillText(text.toUpperCase(), midX, posY);
+        this.renderWordHighlight(ctx, midX, posY, rawText.toUpperCase(), '#00f2fe', '#ffffff');
         break;
 
-      case 'violet':
-        ctx.font = '900 40px "Plus Jakarta Sans", sans-serif';
+      case 'toxic_green': // 4. Karaoke Velocity Lime
+        ctx.font = `900 ${fontSize + 2}px "Plus Jakarta Sans", sans-serif`;
         ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(99, 102, 241, 0.95)';
+        ctx.shadowColor = 'rgba(34, 197, 94, 0.95)';
+        ctx.shadowBlur = 20;
+        ctx.fillStyle = '#22c55e';
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = 6;
+        ctx.strokeText(rawText.toUpperCase(), midX, posY);
+        ctx.fillText(rawText.toUpperCase(), midX, posY);
+        break;
+
+      case 'ali_abdaal': // 5. Ali Abdaal Minimalist Pill
+        this.renderAliAbdaalStyle(ctx, midX, posY, rawText, fontSize);
+        break;
+
+      case 'fire_gradient': // 6. Flame Gradient Fire
+        this.renderFlameStyle(ctx, midX, posY, rawText, fontSize);
+        break;
+
+      case 'comic_boom': // 7. 3D Comic Impact
+        this.renderComicStyle(ctx, midX, posY, rawText, fontSize);
+        break;
+
+      case 'netflix_sub': // 8. Cinema Clean Subtitle
+        this.renderCinemaSubtitle(ctx, midX, posY, rawText, fontSize);
+        break;
+
+      case 'violet': // 9. Sunset Royal
+        ctx.font = `900 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(192, 132, 252, 0.95)';
         ctx.shadowBlur = 22;
-        ctx.fillStyle = '#6366f1';
-        ctx.fillText(text.toUpperCase(), midX, posY);
+        ctx.fillStyle = '#c084fc';
+        ctx.strokeStyle = '#1e053a';
+        ctx.lineWidth = 5;
+        ctx.strokeText(rawText.toUpperCase(), midX, posY);
+        ctx.fillText(rawText.toUpperCase(), midX, posY);
         break;
 
-      case 'blue_glow':
-        this.renderBlueGlowStyle(ctx, midX, posY, text);
-        break;
-
-      case 'toxic_green':
-        ctx.font = '900 42px "Plus Jakarta Sans", sans-serif';
+      case 'italic_red': // 10. Red Velocity
+        ctx.font = `italic 900 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
         ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(0, 255, 102, 0.9)';
+        ctx.shadowColor = 'rgba(239, 68, 68, 0.9)';
         ctx.shadowBlur = 18;
-        ctx.fillStyle = '#00ff66';
-        ctx.fillText(text.toUpperCase(), midX, posY);
+        this.renderWordHighlight(ctx, midX, posY, rawText.toUpperCase(), '#ef4444', '#ffffff');
+        break;
+
+      case 'blue_glow': // 11. Ocean Glow
+        this.renderBlueGlowStyle(ctx, midX, posY, rawText, fontSize);
+        break;
+
+      case 'cream_blue': // 12. Modern Luxury
+        this.renderModernLuxuryStyle(ctx, midX, posY, rawText, fontSize);
         break;
 
       default:
-        ctx.font = '800 36px "Plus Jakarta Sans", sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#ffffff';
-        ctx.fillText(text, midX, posY);
+        this.renderMultiLineClassic(ctx, midX, posY, rawText, fontSize);
         break;
     }
 
     ctx.restore();
   }
 
-  renderMultiLineClassic(ctx, midX, posY, text) {
+  // 1. Alex Hormozi Gold Style
+  renderMultiLineClassic(ctx, midX, posY, text, fontSize) {
     const words = text.split(' ');
-    ctx.font = '800 36px "Plus Jakarta Sans", sans-serif';
+    const size = fontSize || 40;
+    ctx.font = `800 ${size - 4}px "Plus Jakarta Sans", sans-serif`;
     ctx.textAlign = 'center';
 
     if (words.length > 1) {
       const lastWord = words.pop();
       const firstLine = words.join(' ');
       const metrics1 = ctx.measureText(firstLine);
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
       const metrics2 = ctx.measureText(lastWord);
       const maxW = Math.max(metrics1.width, metrics2.width);
 
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-      ctx.roundRect(midX - maxW / 2 - 20, posY - 55, maxW + 40, 80, 10);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.88)';
+      ctx.roundRect(midX - maxW / 2 - 22, posY - size - 14, maxW + 44, size * 2 + 18, 12);
       ctx.fill();
 
+      ctx.font = `800 ${size - 4}px "Plus Jakarta Sans", sans-serif`;
       ctx.fillStyle = '#ffffff';
-      ctx.fillText(firstLine.toUpperCase(), midX, posY - 15);
+      ctx.fillText(firstLine.toUpperCase(), midX, posY - 8);
 
-      ctx.font = '900 40px "Plus Jakarta Sans", sans-serif';
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
       ctx.fillStyle = '#facc15';
-      ctx.fillText(lastWord.toUpperCase(), midX, posY + 25);
+      ctx.fillText(lastWord.toUpperCase(), midX, posY + size * 0.72);
     } else {
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      const metrics = ctx.measureText(text);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.88)';
+      ctx.roundRect(midX - metrics.width / 2 - 20, posY - size * 0.8, metrics.width + 40, size * 1.3, 10);
+      ctx.fill();
       ctx.fillStyle = '#facc15';
       ctx.fillText(text.toUpperCase(), midX, posY);
     }
   }
 
-  renderBlueGlowStyle(ctx, midX, posY, text) {
+  // 2. MrBeast Pop Style (Bold Stroke & Bright Pop)
+  renderMrBeastStyle(ctx, midX, posY, text, fontSize) {
+    const size = (fontSize || 40) + 4;
+    ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center';
+
+    // Heavy Black Stroke Outline
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = Math.max(7, size * 0.18);
+    ctx.lineJoin = 'round';
+    ctx.strokeText(text.toUpperCase(), midX, posY);
+
+    // Deep Shadow Pop
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetY = 4;
+
+    // Bright Vivid Yellow Fill
+    ctx.fillStyle = '#ffea00';
+    ctx.fillText(text.toUpperCase(), midX, posY);
+  }
+
+  // 5. Ali Abdaal Minimalist Pill Style
+  renderAliAbdaalStyle(ctx, midX, posY, text, fontSize) {
+    const size = Math.max(26, (fontSize || 40) - 6);
+    ctx.font = `700 ${size}px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center';
+
+    const metrics = ctx.measureText(text);
+    const boxW = metrics.width + 40;
+    const boxH = size * 1.6;
+
+    // Translucent dark pill with subtle lavender border
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+    ctx.strokeStyle = 'rgba(168, 85, 247, 0.6)';
+    ctx.lineWidth = 2;
+    ctx.roundRect(midX - boxW / 2, posY - boxH * 0.65, boxW, boxH, boxH / 2);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#f3e8ff';
+    ctx.fillText(text, midX, posY);
+  }
+
+  // 6. Flame Gradient Fire Style
+  renderFlameStyle(ctx, midX, posY, text, fontSize) {
+    const size = (fontSize || 40) + 2;
+    ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center';
+
+    const grad = ctx.createLinearGradient(0, posY - size, 0, posY + 6);
+    grad.addColorStop(0, '#ff9068');
+    grad.addColorStop(1, '#ff4b1f');
+
+    ctx.strokeStyle = '#180400';
+    ctx.lineWidth = Math.max(6, size * 0.16);
+    ctx.strokeText(text.toUpperCase(), midX, posY);
+
+    ctx.shadowColor = 'rgba(255, 75, 31, 0.85)';
+    ctx.shadowBlur = 16;
+    ctx.fillStyle = grad;
+    ctx.fillText(text.toUpperCase(), midX, posY);
+  }
+
+  // 7. 3D Comic Impact Style
+  renderComicStyle(ctx, midX, posY, text, fontSize) {
+    const size = (fontSize || 40) + 2;
+    ctx.font = `italic 900 ${size}px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center';
+
+    // 3D Offset Black Shadow
+    ctx.fillStyle = '#000000';
+    ctx.fillText(text.toUpperCase(), midX + 6, posY + 6);
+
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = Math.max(6, size * 0.15);
+    ctx.strokeText(text.toUpperCase(), midX, posY);
+
+    ctx.fillStyle = '#fde047';
+    ctx.fillText(text.toUpperCase(), midX, posY);
+  }
+
+  // 8. Netflix / Cinema Clean Subtitle
+  renderCinemaSubtitle(ctx, midX, posY, text, fontSize) {
+    const size = Math.max(24, (fontSize || 40) - 8);
+    ctx.font = `600 ${size}px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center';
+
+    const metrics = ctx.measureText(text);
+    const boxW = metrics.width + 30;
+    const boxH = size * 1.5;
+
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.78)';
+    ctx.roundRect(midX - boxW / 2, posY - boxH * 0.65, boxW, boxH, 6);
+    ctx.fill();
+
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillText(text, midX, posY);
+  }
+
+  // 11. Ocean Glow Style
+  renderBlueGlowStyle(ctx, midX, posY, text, fontSize) {
+    const size = fontSize || 40;
     const words = text.split(' ');
     ctx.textAlign = 'center';
 
@@ -3478,22 +3782,43 @@ class ScaleReachFullApp {
       const lastWord = words.pop();
       const firstLine = words.join(' ');
 
-      ctx.font = '700 32px "Plus Jakarta Sans", sans-serif';
+      ctx.font = `700 ${size - 6}px "Plus Jakarta Sans", sans-serif`;
       ctx.fillStyle = '#ffffff';
-      ctx.fillText(firstLine.toLowerCase(), midX, posY - 15);
+      ctx.fillText(firstLine.toLowerCase(), midX, posY - 16);
 
-      ctx.font = '900 42px "Plus Jakarta Sans", sans-serif';
+      ctx.font = `900 ${size + 4}px "Plus Jakarta Sans", sans-serif`;
       ctx.shadowColor = '#00a2ff';
-      ctx.shadowBlur = 18;
+      ctx.shadowBlur = 20;
       ctx.fillStyle = '#00a2ff';
-      ctx.fillText(lastWord.toUpperCase(), midX, posY + 25);
+      ctx.fillText(lastWord.toUpperCase(), midX, posY + size * 0.65);
     } else {
-      ctx.font = '900 40px "Plus Jakarta Sans", sans-serif';
+      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
       ctx.shadowColor = '#00a2ff';
-      ctx.shadowBlur = 18;
+      ctx.shadowBlur = 20;
       ctx.fillStyle = '#00a2ff';
       ctx.fillText(text.toUpperCase(), midX, posY);
     }
+  }
+
+  // 12. Modern Luxury Style
+  renderModernLuxuryStyle(ctx, midX, posY, text, fontSize) {
+    const size = Math.max(26, (fontSize || 40) - 4);
+    ctx.font = `800 ${size}px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center';
+
+    const metrics = ctx.measureText(text.toUpperCase());
+    const boxW = metrics.width + 36;
+    const boxH = size * 1.5;
+
+    ctx.fillStyle = 'rgba(12, 14, 20, 0.92)';
+    ctx.strokeStyle = 'rgba(254, 240, 138, 0.45)';
+    ctx.lineWidth = 1.5;
+    ctx.roundRect(midX - boxW / 2, posY - boxH * 0.65, boxW, boxH, 8);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#fef08a';
+    ctx.fillText(text.toUpperCase(), midX, posY);
   }
 
   renderWordHighlight(ctx, midX, posY, text, baseColor, highlightColor) {
