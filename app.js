@@ -154,9 +154,9 @@ class ScaleReachFullApp {
     this.stepCheck3 = document.getElementById('stepCheck3');
 
     // Video Tracking
-    this.currentVideoTitle = 'Beat Professional Athlete, Win $100,000';
-    this.currentVideoAuthor = 'MrBeast • 22:28';
-    this.currentVideoUrl = '';
+    this.currentVideoTitle = 'Communication & Psychology Deep-Dive Podcast';
+    this.currentVideoAuthor = 'The Mindset Studio • 02:23';
+    this.currentVideoUrl = 'podcast.mp4';
 
     // Toast
     this.toast = document.getElementById('toast');
@@ -234,8 +234,120 @@ class ScaleReachFullApp {
       toxic_green: 'TO GET STARTED'
     };
 
-    // Database of Presets & Knowledge Base for AI Video Analysis (6 Viral Reels Each)
+    // Database of Presets & Knowledge Base for AI Video Analysis (8 Viral Reels Each)
     this.videoAnalysisDatabase = [
+      {
+        id: 'real_podcast_interview',
+        matchKeywords: ['podcast', 'interview', 'psychology', 'mindset', 'talk', 'conversation', 'body language'],
+        title: 'Communication & Psychology Deep-Dive Podcast',
+        author: 'The Mindset Studio • 02:23',
+        clips: [
+          {
+            id: 1,
+            title: '🔥 Reel 1: The Hidden Body Language Sign Nobody Notices',
+            hookText: '⚡ Eye Contact & Micro-Expression Breakdown',
+            viralityScore: '99% Viral',
+            start: 0,
+            end: 15,
+            hookDesc: 'Speaker explains the subconscious reason people look away during serious conversations.',
+            seoTitle: 'Notice what happens when she looks away? Psychology expert explains 😳🧠',
+            caption: 'BODY LANGUAGE SECRET',
+            tags: ['#psychology', '#podcast', '#bodylanguage', '#communication', '#viral'],
+            badgeTags: ['🔥 99% Viral Hook', '🧠 Psychology', '👁️ Micro-Expressions']
+          },
+          {
+            id: 2,
+            title: '💡 Reel 2: The 3-Second Head Tilt Trick For Active Listening',
+            hookText: '💡 How Small Posture Adjustments Win Any Negotiation',
+            viralityScore: '97% Viral',
+            start: 18,
+            end: 33,
+            hookDesc: 'Simple behavioral hack that makes anyone feel instantly understood and open up.',
+            seoTitle: 'This 3-second psychological trick works on literally everyone 🤯✨',
+            caption: 'TRY THIS TODAY',
+            tags: ['#mindset', '#communicationhacks', '#negotiation', '#lifeadvice', '#fyp'],
+            badgeTags: ['😂 97% Retention', '💡 Life Hack', '🤝 Instant Rapport']
+          },
+          {
+            id: 3,
+            title: '⚡ Reel 3: The Fatal Mistake In Difficult Conversations',
+            hookText: '🛑 Why Defensiveness Destroys 90% Of Relationships',
+            viralityScore: '96% Viral',
+            start: 36,
+            end: 51,
+            hookDesc: 'Host breaks down why reacting immediately escalates conflict and how to pause effectively.',
+            seoTitle: 'If you argue like this, stop immediately ⚠️ Here is what to do instead',
+            caption: 'NEVER SAY THIS',
+            tags: ['#relationships', '#conflictresolution', '#mentalhealth', '#couplesadvice', '#shorts'],
+            badgeTags: ['⚡ 96% Relationship Hook', '🛑 Warning Sign', '📈 High Engagement']
+          },
+          {
+            id: 4,
+            title: '🤯 Reel 4: How To Disagree Without Being Disrespectful',
+            hookText: '🎯 The De-escalation Protocol In 15 Seconds',
+            viralityScore: '95% Viral',
+            start: 54,
+            end: 69,
+            hookDesc: 'Step-by-step psychological framework for sharing opposing viewpoints with zero drama.',
+            seoTitle: 'The most mature way to handle someone who disagrees with you 👏💯',
+            caption: 'CALM COMMUNICATION',
+            tags: ['#stoicism', '#emotionalintelligence', '#communication', '#growth', '#reels'],
+            badgeTags: ['🤯 95% High Value', '🛡️ De-Escalate', '💬 High Comments']
+          },
+          {
+            id: 5,
+            title: '💡 Reel 5: The Difference Between Hearing And Truly Listening',
+            hookText: '👂 The Emotional Validation Technique',
+            viralityScore: '93% Viral',
+            start: 72,
+            end: 87,
+            hookDesc: 'Insightful discussion on reflective listening and why people crave feeling heard over solutions.',
+            seoTitle: 'Stop giving solutions and start doing this one thing instead 🧠💡',
+            caption: 'LISTEN CAREFULLY',
+            tags: ['#activelearning', '#empathy', '#lifelessons', '#talkshow', '#deepconversations'],
+            badgeTags: ['💡 93% Emotional Hook', '👂 Empathy', '🚀 High Saves']
+          },
+          {
+            id: 6,
+            title: '🏆 Reel 6: Unspoken Rules Of Long-Term Trust',
+            hookText: '🔒 The Foundation That Keeps Strong Bonds Intact',
+            viralityScore: '91% Viral',
+            start: 90,
+            end: 105,
+            hookDesc: 'Closing philosophy on consistency, micro-actions, and emotional security in modern life.',
+            seoTitle: 'This is the only real foundation of trust that actually lasts 🥹❤️',
+            caption: 'THE CORE TRUTH',
+            tags: ['#trust', '#lifelessons', '#podcastmoment', '#inspirational', '#foryou'],
+            badgeTags: ['🏆 91% Climax', '🔒 Trust Secret', '✨ High Share Rate']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: The Micro-Pause That Commands Respect',
+            hookText: '⏳ The 2-Second Silence Rule Before Replying',
+            viralityScore: '90% Viral',
+            start: 108,
+            end: 123,
+            hookDesc: 'How taking a deliberate breath before responding projects supreme confidence.',
+            seoTitle: 'Do this 2-second pause before answering to sound 10x more confident 🗣️⚡',
+            caption: 'POWER OF SILENCE',
+            tags: ['#confidence', '#publicspeaking', '#charismatips', '#viralreels', '#shorts'],
+            badgeTags: ['🎯 90% Charisma Hack', '⏳ 2-Sec Rule', '⚡ High Retention']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Behind-The-Scenes Banter & Wrap-Up',
+            hookText: '😂 Candid Outtakes & Funniest Off-Script Moment',
+            viralityScore: '89% Viral',
+            start: 126,
+            end: 141,
+            hookDesc: 'Host and guest burst into genuine laughter breaking character at the recording wrap.',
+            seoTitle: 'The candid blooper at the end of the recording was the best part 😂🎬',
+            caption: 'UNFILTERED LAUGHS',
+            tags: ['#bloopers', '#behindthescenes', '#outtakes', '#podcastfunny', '#trending'],
+            badgeTags: ['🚀 89% Viral Outro', '😂 Blooper', '💬 Comment Spike']
+          }
+        ]
+      },
       {
         id: 'khan_sir_podcast',
         matchKeywords: ['khan', 'sir', 'geopolitics', 'pakistan', 'real talks', 'podcast'],
@@ -1004,8 +1116,8 @@ class ScaleReachFullApp {
       }
     ];
 
-    // Initial Active Moments (Default to Haaland 6 Viral Reels preset)
-    const initialPreset = this.videoAnalysisDatabase.find(p => p.id === 'mrbeast_haaland') || this.videoAnalysisDatabase[0];
+    // Initial Active Moments (Default to Real Podcast Interview 8 Viral Reels preset)
+    const initialPreset = this.videoAnalysisDatabase.find(p => p.id === 'real_podcast_interview') || this.videoAnalysisDatabase[0];
     this.clipsMoments = JSON.parse(JSON.stringify(initialPreset.clips));
   }
 
@@ -1159,6 +1271,8 @@ class ScaleReachFullApp {
   loadYouTubeVideo(videoId, fullUrl) {
     this.activeSourceType = 'youtube';
     this.currentYouTubeId = videoId;
+    const targetUrl = fullUrl || `https://www.youtube.com/watch?v=${videoId}`;
+    this.currentVideoUrl = targetUrl;
 
     const startSec = Math.floor(this.clipStart);
     const endSec = Math.floor(this.clipEnd);
@@ -1193,18 +1307,20 @@ class ScaleReachFullApp {
       this.sourceVideo.pause();
     }
 
+    // Immediately analyze with generic YouTube title while fetching metadata
+    this.applyVideoMeta(targetUrl, `YouTube Video (${videoId})`, '@YouTube Creator • Online', `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+
     // 3. Fetch Real YouTube Title & Thumbnail via noembed
-    const targetUrl = fullUrl || `https://www.youtube.com/watch?v=${videoId}`;
     fetch(`https://noembed.com/embed?url=${encodeURIComponent(targetUrl)}`)
       .then(res => res.json())
       .then(data => {
         if (data && data.title) {
-          this.applyVideoMeta(targetUrl, data.title, `${data.author_name || 'YouTube Creator'} • Online`, data.thumbnail_url || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
+          this.applyVideoMeta(targetUrl, data.title, `${data.author_name || 'YouTube Creator'} • Online`, data.thumbnail_url || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
           this.showToast(`Loaded Real YouTube Video: ${data.title} 🎬`);
         }
       })
       .catch(() => {
-        this.applyVideoMeta(targetUrl, 'YouTube Video Stream', '@Creator • Online', `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
+        this.applyVideoMeta(targetUrl, 'YouTube Video Stream', '@Creator • Online', `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
       });
   }
 
@@ -1317,6 +1433,15 @@ class ScaleReachFullApp {
 
     const dur = (author && author.includes('•')) ? author.split('•')[1].trim() : '20:00';
     if (this.videoDurationBadge) this.videoDurationBadge.textContent = dur;
+
+    const sourceUrlText = document.getElementById('studioSourceUrlText');
+    if (sourceUrlText) {
+      sourceUrlText.textContent = (url && url.startsWith('http')) ? url : `Local Video: ${url || 'podcast.mp4'}`;
+    }
+    const studioQuickInput = document.getElementById('studioQuickUrlInput');
+    if (studioQuickInput && url && url.startsWith('http')) {
+      studioQuickInput.value = url;
+    }
 
     // Immediately analyze video and generate dynamic tailored viral clips!
     this.analyzeVideoAndGenerateClips(title, author, url, this.videoDuration);
@@ -1511,12 +1636,15 @@ class ScaleReachFullApp {
       const hookCaption = (moment.caption || 'VIRAL HOOK').toUpperCase();
       const hookText = moment.hookText || moment.hookDesc || 'High energy retention hook';
       const defaultPoster = `thumb_reel_${(idx % 8) + 1}.jpg`;
-      const posterImg = moment.poster || defaultPoster;
+      let posterImg = moment.poster || defaultPoster;
+      if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
+        posterImg = `https://img.youtube.com/vi/${this.currentYouTubeId}/hqdefault.jpg`;
+      }
 
       card.innerHTML = `
         <div class="reel-video-container">
           <div class="reel-card-backdrop" style="background-image: url('${posterImg}');"></div>
-          <video class="reel-card-video" src="${videoSrc}" poster="${posterImg}" playsinline muted preload="metadata" loop></video>
+          <video class="reel-card-video" src="${this.activeSourceType === 'youtube' ? '' : videoSrc}" poster="${posterImg}" style="${this.activeSourceType === 'youtube' ? 'display:none;' : ''}" playsinline muted preload="metadata" loop></video>
           <div class="reel-card-gradient"></div>
 
           <!-- Top Floating Bar -->
@@ -1687,6 +1815,10 @@ class ScaleReachFullApp {
             v.addEventListener('loadedmetadata', startPlayback, { once: true });
             v.load();
           }
+        } else if (this.activeSourceType === 'youtube') {
+          if (iconPlay) iconPlay.style.display = 'none';
+          if (iconPause) iconPause.style.display = 'block';
+          if (wave) wave.style.display = 'flex';
         }
       } else {
         if (v && !v.paused) {
@@ -2076,6 +2208,26 @@ class ScaleReachFullApp {
     this.backToConfigureBtn.addEventListener('click', () => {
       this.showConfigureView();
     });
+
+    const studioQuickExtractBtn = document.getElementById('studioQuickExtractBtn');
+    const studioQuickUrlInput = document.getElementById('studioQuickUrlInput');
+    if (studioQuickExtractBtn && studioQuickUrlInput) {
+      const handleStudioQuickExtract = () => {
+        const url = studioQuickUrlInput.value.trim();
+        if (!url) {
+          this.showToast('Please paste a YouTube video URL first!');
+          return;
+        }
+        this.loadVideoAndAutoExtractClips(url);
+      };
+      studioQuickExtractBtn.addEventListener('click', handleStudioQuickExtract);
+      studioQuickUrlInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleStudioQuickExtract();
+        }
+      });
+    }
 
     const switchToRealVideoBtn = document.getElementById('switchToRealVideoBtn');
     if (switchToRealVideoBtn) {
