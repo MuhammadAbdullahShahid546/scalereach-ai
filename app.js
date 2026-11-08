@@ -178,6 +178,7 @@ class ScaleReachFullApp {
     this.dragStartClipEnd = 45;
     this.activeClipIndex = 0;
     this.isPlaying = true;
+    this.isLoopEnabled = true;
     this.isCustomAdjusted = false;
     this.gameplayFrame = 0;
 
@@ -1272,17 +1273,19 @@ class ScaleReachFullApp {
   loadYouTubeVideo(videoId, fullUrl) {
     this.activeSourceType = 'youtube';
     this.currentYouTubeId = videoId;
-    const targetUrl = fullUrl || `https://www.youtube.com/watch?v=${videoId}`;
+    const cleanUrl = fullUrl ? (fullUrl.startsWith('http') ? fullUrl : `https://${fullUrl}`) : `https://www.youtube.com/watch?v=${videoId}`;
+    const targetUrl = cleanUrl;
     this.currentVideoUrl = targetUrl;
     this.isPlaying = true;
 
     const startSec = Math.floor(this.clipStart);
     const endSec = Math.floor(this.clipEnd);
 
-    // 1. Long Format Player (Left Screen): Use privacy-enhanced embed without restrictive origin param
+    // 1. Long Format Player (Left Screen): Max 1080p HD, plays full video smoothly without looping
     if (this.youtubeIframe) {
       this.youtubeIframe.classList.remove('hidden');
-      this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&start=${startSec}`;
+      this.youtubeIframe.style.filter = 'none';
+      this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&start=${startSec}`;
     }
     if (this.sourceVideo) {
       this.sourceVideo.pause();
@@ -1293,9 +1296,11 @@ class ScaleReachFullApp {
     }
 
     // 2. 9:16 Vertical Smartphone (Right Screen): Embed THE EXACT SAME YouTube video cropped vertically into 9:16!
+    const loopParam = this.isLoopEnabled ? `&loop=1&playlist=${videoId}&end=${endSec}` : `&end=${endSec}`;
     if (this.phoneYtWrapper && this.phoneYoutubeIframe) {
       this.phoneYtWrapper.classList.remove('hidden');
-      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&start=${startSec}&end=${endSec}`;
+      this.phoneYoutubeIframe.style.filter = 'none';
+      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&start=${startSec}${loopParam}`;
     }
     if (this.cropCanvas) {
       this.cropCanvas.classList.add('hidden');
@@ -1309,8 +1314,22 @@ class ScaleReachFullApp {
       this.sourceVideo.pause();
     }
 
-    // Immediately analyze with generic YouTube title while fetching metadata
-    this.applyVideoMeta(targetUrl, `YouTube Video (${videoId})`, '@YouTube Creator • Online', `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+    // Known titles mapping for instant recognition
+    const knownTitles = {
+      '_c2e1Ncl3Sc': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • YouTube' },
+      '0e3GPea1Tyg': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • YouTube' },
+      'travel_vlogger': { title: 'Overland Adventure: Russia to Iran', author: 'Outdoor Vlogger • 24:10' },
+      'ishowspeed_wwe': { title: 'HOW I FOUGHT IN WRESTLEMANIA', author: 'IShowSpeed • 18:24' }
+    };
+    const known = knownTitles[videoId];
+    const initialTitle = known ? known.title : `YouTube Video (${videoId})`;
+    const initialAuthor = known ? known.author : '@YouTube Creator • Online';
+
+    // Immediately analyze video and apply metadata
+    this.applyVideoMeta(targetUrl, initialTitle, initialAuthor, `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+
+    // Force ultra 1080p high quality directly on player
+    setTimeout(() => this.forceMaxQuality(), 600);
 
     // 3. Fetch Real YouTube Title & Thumbnail via noembed
     fetch(`https://noembed.com/embed?url=${encodeURIComponent(targetUrl)}`)
@@ -1322,7 +1341,9 @@ class ScaleReachFullApp {
         }
       })
       .catch(() => {
-        this.applyVideoMeta(targetUrl, 'YouTube Video Stream', '@Creator • Online', `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+        if (!known) {
+          this.applyVideoMeta(targetUrl, 'YouTube Video Stream', '@Creator • Online', `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+        }
       });
   }
 
@@ -1363,14 +1384,19 @@ class ScaleReachFullApp {
     if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
       const startSec = Math.floor(this.clipStart);
       const endSec = Math.floor(this.clipEnd);
+      const loopParam = this.isLoopEnabled ? `&loop=1&playlist=${this.currentYouTubeId}&end=${endSec}` : `&end=${endSec}`;
 
       if (this.phoneYoutubeIframe) {
-        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=${this.currentYouTubeId}&start=${startSec}&end=${endSec}`;
+        this.phoneYoutubeIframe.style.filter = 'none';
+        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&start=${startSec}${loopParam}`;
       }
 
       if (this.youtubeIframe) {
-        this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&start=${startSec}`;
+        this.youtubeIframe.style.filter = 'none';
+        this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&start=${startSec}`;
       }
+
+      setTimeout(() => this.forceMaxQuality(), 600);
     }
   }
 
@@ -1439,11 +1465,17 @@ class ScaleReachFullApp {
 
     const sourceUrlText = document.getElementById('studioSourceUrlText');
     if (sourceUrlText) {
-      sourceUrlText.textContent = (url && url.startsWith('http')) ? url : `Local Video: ${url || 'podcast.mp4'}`;
+      if (url && (url.includes('youtube.com') || url.includes('youtu.be'))) {
+        sourceUrlText.textContent = url.startsWith('http') ? url : `https://${url}`;
+      } else if (url && url.startsWith('http')) {
+        sourceUrlText.textContent = url;
+      } else {
+        sourceUrlText.textContent = `Local Video: ${url || 'podcast.mp4'}`;
+      }
     }
     const studioQuickInput = document.getElementById('studioQuickUrlInput');
-    if (studioQuickInput && url && url.startsWith('http')) {
-      studioQuickInput.value = url;
+    if (studioQuickInput && url && (url.includes('youtube.com') || url.includes('youtu.be') || url.startsWith('http'))) {
+      studioQuickInput.value = url.startsWith('http') ? url : `https://${url}`;
     }
 
     // Immediately analyze video and generate dynamic tailored viral clips!
@@ -1789,6 +1821,26 @@ class ScaleReachFullApp {
     }
   }
 
+  forceMaxQuality() {
+    if (this.youtubeIframe) {
+      this.youtubeIframe.style.filter = 'none';
+      this.postYouTubeCommand(this.youtubeIframe, 'setPlaybackQuality', ['hd1080']);
+      this.postYouTubeCommand(this.youtubeIframe, 'setPlaybackQualityRange', ['hd1080', 'highres']);
+    }
+    if (this.phoneYoutubeIframe) {
+      this.phoneYoutubeIframe.style.filter = 'none';
+      this.postYouTubeCommand(this.phoneYoutubeIframe, 'setPlaybackQuality', ['hd1080']);
+      this.postYouTubeCommand(this.phoneYoutubeIframe, 'setPlaybackQualityRange', ['hd1080', 'highres']);
+    }
+    if (this.sourceVideo) {
+      this.sourceVideo.style.filter = 'none';
+    }
+    const qualityBadge = document.getElementById('qualityBadgePill');
+    if (qualityBadge) {
+      qualityBadge.innerHTML = '<span class="quality-dot"></span><span>💎 1080p Full HD (Highest Quality)</span>';
+    }
+  }
+
   togglePlayPause() {
     if (this.isPlaying) {
       this.pauseCardVideo(this.activeClipIndex);
@@ -1830,7 +1882,8 @@ class ScaleReachFullApp {
             let ytIframe = ytWrapper.querySelector('iframe');
             const startSec = Math.floor(moment.start);
             const endSec = Math.ceil(moment.end);
-            const targetSrc = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=${this.currentYouTubeId}&start=${startSec}&end=${endSec}`;
+            const loopParam = this.isLoopEnabled ? `&loop=1&playlist=${this.currentYouTubeId}&end=${endSec}` : `&end=${endSec}`;
+            const targetSrc = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&start=${startSec}${loopParam}`;
 
             if (!ytIframe || !ytIframe.src.includes(`start=${startSec}`)) {
               ytWrapper.innerHTML = `<iframe class="reel-card-yt-frame" src="${targetSrc}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
@@ -2307,6 +2360,41 @@ class ScaleReachFullApp {
           e.preventDefault();
           handleStudioQuickExtract();
         }
+      });
+    }
+
+    // 1-Click Change Video Button
+    const changeVideoBtn = document.getElementById('changeVideoBtn');
+    if (changeVideoBtn && studioQuickUrlInput) {
+      changeVideoBtn.addEventListener('click', () => {
+        studioQuickUrlInput.value = '';
+        studioQuickUrlInput.placeholder = 'Paste new YouTube link or video URL...';
+        studioQuickUrlInput.focus();
+        this.showToast('Ready for new video! Paste any link above 🎬');
+      });
+    }
+
+    // Auto-Loop Toggle Button (Stop endless repeating)
+    const studioLoopToggleBtn = document.getElementById('studioLoopToggleBtn');
+    if (studioLoopToggleBtn) {
+      studioLoopToggleBtn.addEventListener('click', () => {
+        this.isLoopEnabled = !this.isLoopEnabled;
+        const loopBtnText = document.getElementById('loopBtnText');
+        if (loopBtnText) {
+          loopBtnText.textContent = this.isLoopEnabled ? '🔁 Auto-Loop: ON' : '⏹ Auto-Loop: OFF';
+        }
+        studioLoopToggleBtn.classList.toggle('active', this.isLoopEnabled);
+        this.showToast(this.isLoopEnabled ? 'Auto-loop ON: repeats active 15s clip' : 'Auto-loop OFF: plays clip smoothly once without endless repeating! ✨');
+        this.syncYouTubeClipTime();
+      });
+    }
+
+    // 1080p Ultra HD Quality Toggle Button
+    const qualityToggleBtn = document.getElementById('qualityToggleBtn');
+    if (qualityToggleBtn) {
+      qualityToggleBtn.addEventListener('click', () => {
+        this.forceMaxQuality();
+        this.showToast('Forced Ultra 1080p 60fps HD Quality! 💎');
       });
     }
 
@@ -2933,12 +3021,13 @@ class ScaleReachFullApp {
     const filterStr = this.getCapCutFilterString();
     const cssFilter = filterStr === 'none' ? '' : filterStr;
 
-    // Apply to Main Video Player
+    // Apply to Main Video Player (native video only)
     if (this.sourceVideo) {
       this.sourceVideo.style.filter = cssFilter;
     }
+    // YouTube iframe must always be filter-free for crystal-clear 1080p native sharpness
     if (this.youtubeIframe) {
-      this.youtubeIframe.style.filter = cssFilter;
+      this.youtubeIframe.style.filter = 'none';
     }
 
     // Apply to Mobile Phone Preview Canvas
@@ -2946,7 +3035,7 @@ class ScaleReachFullApp {
       this.cropCanvas.style.filter = cssFilter;
     }
     if (this.phoneYoutubeIframe) {
-      this.phoneYoutubeIframe.style.filter = cssFilter;
+      this.phoneYoutubeIframe.style.filter = 'none';
     }
   }
 

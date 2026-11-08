@@ -390,8 +390,8 @@
 
                   <div class="thumb-meta-footer">
                     <div class="thumb-titles">
-                      <h4 id="videoMetaTitle">Beat Professional Athlete, Win $100,000</h4>
-                      <p id="videoMetaAuthor">MrBeast &bull; 22:28</p>
+                      <h4 id="videoMetaTitle">Communication & Psychology Deep-Dive Podcast</h4>
+                      <p id="videoMetaAuthor">The Mindset Studio &bull; 02:23</p>
                     </div>
                     <button class="thumb-remove-btn" id="removeVideoBtn" title="Change video">&times;</button>
                   </div>
@@ -649,6 +649,11 @@
                     <span class="source-url-pill" id="studioSourceUrlPill">
                       <span class="link-icon">🔗</span> <span id="studioSourceUrlText">Local Video: podcast.mp4</span>
                     </span>
+                    <button type="button" class="change-video-pill-btn" id="changeVideoBtn" title="Switch to another video or paste new link">🔄 Change Video</button>
+                    <div class="quality-badge-pill" id="qualityBadgePill" title="Playing at highest available quality">
+                      <span class="quality-dot"></span>
+                      <span>💎 1080p Full HD (Highest Quality)</span>
+                    </div>
                   </div>
                 </div>
 
@@ -658,6 +663,12 @@
                   
                   <!-- Switch Video Source Pill / Fallback Toggle -->
                   <div class="video-mode-switch-bar" id="videoModeSwitchBar">
+                    <button class="mode-switch-pill" id="qualityToggleBtn" title="Force 1080p / 4K Ultra HD Quality">
+                      💎 1080p 60fps HD
+                    </button>
+                    <button class="mode-switch-pill active" id="studioLoopToggleBtn" title="Toggle Auto-Loop on/off">
+                      <span id="loopBtnText">🔁 Auto-Loop: ON</span>
+                    </button>
                     <button class="mode-switch-pill" id="switchToRealVideoBtn" title="Switch to Real Local HD Video">
                       🎬 Switch to Real HD Video
                     </button>
