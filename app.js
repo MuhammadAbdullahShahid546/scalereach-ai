@@ -177,6 +177,7 @@ class ScaleReachFullApp {
     this.dragStartClipStart = 15;
     this.dragStartClipEnd = 45;
     this.activeClipIndex = 0;
+    this.isPlaying = true;
     this.isCustomAdjusted = false;
     this.gameplayFrame = 0;
 
@@ -1273,6 +1274,7 @@ class ScaleReachFullApp {
     this.currentYouTubeId = videoId;
     const targetUrl = fullUrl || `https://www.youtube.com/watch?v=${videoId}`;
     this.currentVideoUrl = targetUrl;
+    this.isPlaying = true;
 
     const startSec = Math.floor(this.clipStart);
     const endSec = Math.floor(this.clipEnd);
@@ -1280,20 +1282,20 @@ class ScaleReachFullApp {
     // 1. Long Format Player (Left Screen): Use privacy-enhanced embed without restrictive origin param
     if (this.youtubeIframe) {
       this.youtubeIframe.classList.remove('hidden');
-      this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=0&controls=1&rel=0&start=${startSec}`;
+      this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&start=${startSec}`;
     }
     if (this.sourceVideo) {
       this.sourceVideo.pause();
       this.sourceVideo.style.display = 'none';
     }
     if (this.videoControlsOverlay) {
-      this.videoControlsOverlay.classList.add('hidden');
+      this.videoControlsOverlay.classList.remove('hidden');
     }
 
     // 2. 9:16 Vertical Smartphone (Right Screen): Embed THE EXACT SAME YouTube video cropped vertically into 9:16!
     if (this.phoneYtWrapper && this.phoneYoutubeIframe) {
       this.phoneYtWrapper.classList.remove('hidden');
-      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&start=${startSec}&end=${endSec}`;
+      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&start=${startSec}&end=${endSec}`;
     }
     if (this.cropCanvas) {
       this.cropCanvas.classList.add('hidden');
@@ -1327,6 +1329,7 @@ class ScaleReachFullApp {
   switchToNativeVideo(src, title, author, img) {
     this.activeSourceType = 'native';
     this.currentYouTubeId = null;
+    this.isPlaying = true;
 
     if (this.youtubeIframe) {
       this.youtubeIframe.src = '';
@@ -1362,11 +1365,11 @@ class ScaleReachFullApp {
       const endSec = Math.floor(this.clipEnd);
 
       if (this.phoneYoutubeIframe) {
-        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${this.currentYouTubeId}&start=${startSec}&end=${endSec}`;
+        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=${this.currentYouTubeId}&start=${startSec}&end=${endSec}`;
       }
 
       if (this.youtubeIframe) {
-        this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?autoplay=1&mute=0&controls=1&rel=0&start=${startSec}`;
+        this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&start=${startSec}`;
       }
     }
   }
@@ -1644,7 +1647,8 @@ class ScaleReachFullApp {
       card.innerHTML = `
         <div class="reel-video-container">
           <div class="reel-card-backdrop" style="background-image: url('${posterImg}');"></div>
-          <video class="reel-card-video" src="${this.activeSourceType === 'youtube' ? '' : videoSrc}" poster="${posterImg}" style="${this.activeSourceType === 'youtube' ? 'display:none;' : ''}" playsinline muted preload="metadata" loop></video>
+          <video class="reel-card-video" src="${videoSrc}" poster="${posterImg}" playsinline muted preload="metadata" loop></video>
+          <div class="reel-card-yt-wrapper" style="display:none;"></div>
           <div class="reel-card-gradient"></div>
 
           <!-- Top Floating Bar -->
@@ -1691,7 +1695,7 @@ class ScaleReachFullApp {
         </div>
       `;
 
-      // Setup live video playback inside the card
+      // Setup native video playback element inside card
       const cardVideo = card.querySelector('.reel-card-video');
       if (cardVideo && this.activeSourceType !== 'youtube') {
         cardVideo.src = videoSrc;
@@ -1701,7 +1705,6 @@ class ScaleReachFullApp {
         cardVideo.playsInline = true;
         cardVideo.preload = 'metadata';
 
-        // Error fallback (avoid black sample.mp4)
         cardVideo.addEventListener('error', () => {
           if (!cardVideo.src.endsWith('podcast.mp4') && !cardVideo.src.endsWith('people.mp4')) {
             cardVideo.src = 'podcast.mp4';
@@ -1711,9 +1714,7 @@ class ScaleReachFullApp {
 
         const seekStart = () => {
           try {
-            if (moment.start > 0) {
-              cardVideo.currentTime = moment.start;
-            }
+            if (moment.start > 0) cardVideo.currentTime = moment.start;
           } catch (e) {}
         };
 
@@ -1723,7 +1724,7 @@ class ScaleReachFullApp {
           cardVideo.addEventListener('loadedmetadata', seekStart, { once: true });
         }
 
-        // Loop ONLY when video is actively playing and reaches moment.end
+        // Loop clip within boundaries when playing
         cardVideo.addEventListener('timeupdate', () => {
           if (!cardVideo.paused && cardVideo.currentTime >= moment.end) {
             cardVideo.currentTime = moment.start;
@@ -1736,41 +1737,64 @@ class ScaleReachFullApp {
       if (audioBtn) {
         audioBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          if (cardVideo) {
+          const soundIcon = audioBtn.querySelector('.sound-icon');
+          if (this.activeSourceType === 'youtube') {
+            const ytFrame = card.querySelector('.reel-card-yt-frame');
+            card.dataset.muted = (card.dataset.muted === 'false') ? 'true' : 'false';
+            const isMuted = card.dataset.muted === 'true';
+            this.postYouTubeCommand(ytFrame, isMuted ? 'mute' : 'unMute');
+            if (soundIcon) soundIcon.textContent = isMuted ? '🔇' : '🔊';
+            audioBtn.style.borderColor = isMuted ? 'rgba(255,255,255,0.2)' : '#38bdf8';
+          } else if (cardVideo) {
             cardVideo.muted = !cardVideo.muted;
-            const soundIcon = audioBtn.querySelector('.sound-icon');
             if (soundIcon) soundIcon.textContent = cardVideo.muted ? '🔇' : '🔊';
             audioBtn.style.borderColor = cardVideo.muted ? 'rgba(255,255,255,0.2)' : '#38bdf8';
           }
         });
       }
 
-      // Center Play/Pause button click
+      // Central unified play/pause toggle click for this card
+      const handleCardClick = (e) => {
+        if (e.target.closest('.reel-audio-btn')) return;
+
+        if (this.activeClipIndex !== idx) {
+          this.activateClipByIndex(idx);
+        } else {
+          this.togglePlayPause();
+        }
+      };
+
       const playBtn = card.querySelector('.reel-play-circle-btn');
       if (playBtn) {
-        playBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (this.activeClipIndex !== idx) {
-            this.activateClipByIndex(idx);
-          } else {
-            if (cardVideo && !cardVideo.paused) {
-              this.pauseCardVideo(idx);
-            } else {
-              this.playCardVideo(idx);
-            }
-          }
-        });
+        playBtn.addEventListener('click', handleCardClick);
       }
-
-      // Entire Card Click: Activate this reel and play
-      card.addEventListener('click', () => {
-        this.activateClipByIndex(idx);
-      });
+      card.addEventListener('click', handleCardClick);
 
       this.aiSuggestedList.appendChild(card);
     });
 
     this.suggestClipRows = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
+  }
+
+  postYouTubeCommand(iframe, func, args) {
+    if (!iframe || !iframe.contentWindow) return;
+    try {
+      iframe.contentWindow.postMessage(JSON.stringify({
+        event: 'command',
+        func: func,
+        args: args || ''
+      }), '*');
+    } catch (e) {
+      console.warn('YouTube postMessage warning:', e);
+    }
+  }
+
+  togglePlayPause() {
+    if (this.isPlaying) {
+      this.pauseCardVideo(this.activeClipIndex);
+    } else {
+      this.playCardVideo(this.activeClipIndex);
+    }
   }
 
   playCardVideo(idx) {
@@ -1779,48 +1803,83 @@ class ScaleReachFullApp {
     const moment = this.clipsMoments && this.clipsMoments[idx];
     if (!moment) return;
 
+    this.isPlaying = true;
+    this.activeClipIndex = idx;
+
     cards.forEach((card, i) => {
       const v = card.querySelector('.reel-card-video');
       const iconPlay = card.querySelector('.icon-play');
       const iconPause = card.querySelector('.icon-pause');
       const wave = card.querySelector('.reel-playing-waveform');
+      const ytWrapper = card.querySelector('.reel-card-yt-wrapper');
+      const actionPill = card.querySelector('.reel-action-pill');
 
       if (i === idx) {
-        if (v && this.activeSourceType !== 'youtube') {
-          v.muted = true;
-          v.defaultMuted = true;
-
-          const startPlayback = () => {
-            if (v.currentTime < moment.start || v.currentTime >= moment.end) {
-              v.currentTime = moment.start;
-            }
-            const playPromise = v.play();
-            if (playPromise !== undefined) {
-              playPromise.then(() => {
-                if (iconPlay) iconPlay.style.display = 'none';
-                if (iconPause) iconPause.style.display = 'block';
-                if (wave) wave.style.display = 'flex';
-              }).catch(err => {
-                console.warn('Card video play catch:', err);
-                if (iconPlay) iconPlay.style.display = 'block';
-                if (iconPause) iconPause.style.display = 'none';
-                if (wave) wave.style.display = 'none';
-              });
-            }
-          };
-
-          if (v.readyState >= 1) {
-            startPlayback();
-          } else {
-            v.addEventListener('loadedmetadata', startPlayback, { once: true });
-            v.load();
-          }
-        } else if (this.activeSourceType === 'youtube') {
-          if (iconPlay) iconPlay.style.display = 'none';
-          if (iconPause) iconPause.style.display = 'block';
-          if (wave) wave.style.display = 'flex';
+        card.classList.add('active', 'is-playing');
+        card.classList.remove('is-paused');
+        if (actionPill) {
+          actionPill.className = 'reel-action-pill active-pill';
+          actionPill.innerHTML = '<span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview';
         }
+
+        if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
+          // 1. YouTube Mode: Embed and play real YouTube video directly in the card!
+          if (v) v.style.display = 'none';
+          if (ytWrapper) {
+            ytWrapper.style.display = 'block';
+            let ytIframe = ytWrapper.querySelector('iframe');
+            const startSec = Math.floor(moment.start);
+            const endSec = Math.ceil(moment.end);
+            const targetSrc = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=${this.currentYouTubeId}&start=${startSec}&end=${endSec}`;
+
+            if (!ytIframe || !ytIframe.src.includes(`start=${startSec}`)) {
+              ytWrapper.innerHTML = `<iframe class="reel-card-yt-frame" src="${targetSrc}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+              this.postYouTubeCommand(ytIframe, 'playVideo');
+            }
+          }
+        } else {
+          // 2. Native Mode: Play local video inside the card
+          if (ytWrapper) {
+            ytWrapper.style.display = 'none';
+            ytWrapper.innerHTML = '';
+          }
+          if (v) {
+            v.style.display = 'block';
+            v.muted = true;
+            v.defaultMuted = true;
+
+            const startPlayback = () => {
+              if (v.currentTime < moment.start || v.currentTime >= moment.end) {
+                v.currentTime = moment.start;
+              }
+              v.play().catch(console.warn);
+            };
+
+            if (v.readyState >= 1) {
+              startPlayback();
+            } else {
+              v.addEventListener('loadedmetadata', startPlayback, { once: true });
+              v.load();
+            }
+          }
+        }
+
+        if (iconPlay) iconPlay.style.display = 'none';
+        if (iconPause) iconPause.style.display = 'block';
+        if (wave) wave.style.display = 'flex';
       } else {
+        card.classList.remove('active', 'is-playing', 'is-paused');
+        if (actionPill) {
+          actionPill.className = 'reel-action-pill';
+          actionPill.innerHTML = '▶ Click to Edit & Play';
+        }
+
+        // Clean up other cards
+        if (ytWrapper) {
+          ytWrapper.style.display = 'none';
+          ytWrapper.innerHTML = '';
+        }
         if (v && !v.paused) {
           v.pause();
         }
@@ -1830,9 +1889,14 @@ class ScaleReachFullApp {
       }
     });
 
+    // Update main studio play/pause button
+    if (this.playPauseBtn) this.playPauseBtn.textContent = '⏸';
+
     // Also sync and play main studio preview video
     if (this.activeSourceType === 'youtube') {
       this.syncYouTubeClipTime();
+      this.postYouTubeCommand(this.youtubeIframe, 'playVideo');
+      this.postYouTubeCommand(this.phoneYoutubeIframe, 'playVideo');
     } else if (this.sourceVideo) {
       if (Math.abs(this.sourceVideo.currentTime - moment.start) > 0.5) {
         this.sourceVideo.currentTime = moment.start;
@@ -1846,25 +1910,42 @@ class ScaleReachFullApp {
   pauseCardVideo(idx) {
     if (!this.aiSuggestedList) return;
     const cards = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
-    const targetCard = cards[idx];
+    const targetIdx = (idx !== undefined) ? idx : this.activeClipIndex;
+    const targetCard = cards[targetIdx];
     if (!targetCard) return;
+
+    this.isPlaying = false;
+    targetCard.classList.remove('is-playing');
+    targetCard.classList.add('is-paused');
 
     const v = targetCard.querySelector('.reel-card-video');
     const iconPlay = targetCard.querySelector('.icon-play');
     const iconPause = targetCard.querySelector('.icon-pause');
     const wave = targetCard.querySelector('.reel-playing-waveform');
+    const ytWrapper = targetCard.querySelector('.reel-card-yt-wrapper');
 
-    if (v && !v.paused) {
-      v.pause();
+    if (this.activeSourceType === 'youtube') {
+      if (ytWrapper) {
+        const ytIframe = ytWrapper.querySelector('iframe');
+        this.postYouTubeCommand(ytIframe, 'pauseVideo');
+      }
+      this.postYouTubeCommand(this.youtubeIframe, 'pauseVideo');
+      this.postYouTubeCommand(this.phoneYoutubeIframe, 'pauseVideo');
+    } else {
+      if (v && !v.paused) {
+        v.pause();
+      }
+      if (this.sourceVideo && !this.sourceVideo.paused) {
+        this.sourceVideo.pause();
+      }
     }
+
     if (iconPlay) iconPlay.style.display = 'block';
     if (iconPause) iconPause.style.display = 'none';
     if (wave) wave.style.display = 'none';
 
-    // Also pause main studio video
-    if (this.activeSourceType !== 'youtube' && this.sourceVideo && !this.sourceVideo.paused) {
-      this.sourceVideo.pause();
-    }
+    // Update main studio play/pause button
+    if (this.playPauseBtn) this.playPauseBtn.textContent = '▶';
   }
 
   renderSubnavPills() {
@@ -2380,12 +2461,14 @@ class ScaleReachFullApp {
 
     // Studio Player controls
     this.playPauseBtn.addEventListener('click', () => {
-      if (this.sourceVideo.paused) {
-        this.sourceVideo.play().catch(console.warn);
-        this.playPauseBtn.textContent = '⏸';
-      } else {
-        this.sourceVideo.pause();
-        this.playPauseBtn.textContent = '▶';
+      this.togglePlayPause();
+    });
+
+    // Spacebar shortcut to play/pause
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+        e.preventDefault();
+        this.togglePlayPause();
       }
     });
 

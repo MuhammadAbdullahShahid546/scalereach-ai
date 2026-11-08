@@ -1943,6 +1943,53 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   transition: opacity 0.3s ease;
 }
 
+/* YouTube Embedded Live Player inside 9:16 Card */
+.reel-card-yt-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  z-index: 2;
+  pointer-events: none;
+  background: #000;
+}
+
+.reel-card-yt-frame {
+  width: 320%;
+  height: 100%;
+  max-width: none;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  border: none;
+  pointer-events: none;
+}
+
+.suggest-reel-card.is-playing .reel-play-circle-btn {
+  opacity: 0.35;
+  transform: scale(0.92);
+}
+
+.suggest-reel-card.is-playing:hover .reel-play-circle-btn {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.suggest-reel-card.is-paused .reel-play-circle-btn {
+  opacity: 1;
+  border-color: #38bdf8;
+  animation: reelPulsePause 1.5s infinite ease-in-out;
+}
+
+@keyframes reelPulsePause {
+  0%, 100% { box-shadow: 0 0 14px rgba(56, 189, 248, 0.4); }
+  50% { box-shadow: 0 0 28px rgba(56, 189, 248, 0.85); transform: scale(1.06); }
+}
+
 /* Gradient Vignette */
 .reel-card-gradient {
   position: absolute;
