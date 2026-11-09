@@ -1615,17 +1615,17 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   z-index: 1;
   pointer-events: none;
 }
-/* Safe Fit 9:16 (Default) - 100% of widescreen video & all text/captions stay strictly inside screen */
+/* Full Screen 9:16 Vertical Video in Mobile Preview (Zero Black Bars) */
 .phone-yt-wrapper iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  height: auto;
+  width: 316.5% !important;
+  height: 100% !important;
+  max-width: none !important;
   border: none;
   pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  position: absolute !important;
+  left: 50% !important;
+  top: 0 !important;
+  transform: translateX(-50%) !important;
   z-index: 2;
 }
 /* Fill mode - 320% zoomed vertical crop */
@@ -2056,23 +2056,32 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   justify-content: center;
 }
 
-/* Safe Fit YouTube Player (Default): 100% visible inside 9:16 card, zero text or lower-third cut off */
+/* Full Screen 9:16 Vertical Video (Edge-to-Edge Fill, Zero Black Bars) */
 .reel-card-yt-frame {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  height: auto;
+  width: 316.5% !important;
+  height: 100% !important;
+  max-width: none !important;
   border: none;
   pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  position: absolute !important;
+  left: 50% !important;
+  top: 0 !important;
+  transform: translateX(-50%) !important;
+  object-fit: cover !important;
+}
+
+.reel-card-video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  position: absolute !important;
+  inset: 0 !important;
 }
 
 /* Full Fill Mode (320% Zoom for Edge-to-Edge Crop) */
 .ai-suggested-grid.mode-fill .reel-card-yt-frame,
 .suggest-reel-card.mode-fill .reel-card-yt-frame {
-  width: 320% !important;
+  width: 316.5% !important;
   height: 100% !important;
   max-width: none !important;
   position: absolute !important;
@@ -2264,64 +2273,53 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: none !important;
 }
 
-/* 9:16 Ratio Safe Zone Positions (Never hides behind footer or overflows) */
+/* 9:16 Ratio Safe Zone Positions (Never hides behind footer or overlaps center) */
 .reel-hook-caption-sticker.pos-top {
-  top: 14% !important;
+  top: 15% !important;
   bottom: auto !important;
   transform: none !important;
 }
 
 .reel-hook-caption-sticker.pos-center {
-  top: 38% !important;
+  top: 50% !important;
   bottom: auto !important;
   transform: translateY(-50%) !important;
 }
 
 .reel-hook-caption-sticker.pos-bottom {
   top: auto !important;
-  bottom: 34% !important;
+  bottom: 22% !important;
   transform: none !important;
 }
 
-/* Dynamic Font Sizes across all suggested reels - Scaled for Viral TikTok/Reels Impact */
-.reel-hook-caption-sticker.size-s .sticker-text {
-  font-size: 1.15rem !important;
-  padding: 6px 14px !important;
-  letter-spacing: 0.5px !important;
+/* Hide any subtext badge completely from the on-video sticker (Hook scores belong in footer) */
+.sticker-subtext {
+  display: none !important;
 }
-.reel-hook-caption-sticker.size-s .sticker-subtext {
-  font-size: 0.76rem !important;
-  padding: 3px 8px !important;
+
+/* Dynamic Font Sizes across all suggested reels - Scaled for Clean Viral TikTok/Reels Impact */
+.reel-hook-caption-sticker.size-s .sticker-text {
+  font-size: 1.05rem !important;
+  padding: 5px 12px !important;
+  letter-spacing: 0.5px !important;
 }
 
 .reel-hook-caption-sticker.size-m .sticker-text {
-  font-size: 1.45rem !important;
-  padding: 8px 18px !important;
+  font-size: 1.25rem !important;
+  padding: 6px 14px !important;
   letter-spacing: 0.8px !important;
-}
-.reel-hook-caption-sticker.size-m .sticker-subtext {
-  font-size: 0.86rem !important;
-  padding: 4px 10px !important;
 }
 
 .reel-hook-caption-sticker.size-l .sticker-text {
-  font-size: 1.85rem !important;
-  padding: 10px 22px !important;
+  font-size: 1.55rem !important;
+  padding: 8px 18px !important;
   letter-spacing: 1px !important;
-}
-.reel-hook-caption-sticker.size-l .sticker-subtext {
-  font-size: 0.96rem !important;
-  padding: 4px 12px !important;
 }
 
 .reel-hook-caption-sticker.size-xl .sticker-text {
-  font-size: 2.35rem !important;
-  padding: 12px 26px !important;
+  font-size: 1.95rem !important;
+  padding: 10px 22px !important;
   letter-spacing: 1.2px !important;
-}
-.reel-hook-caption-sticker.size-xl .sticker-subtext {
-  font-size: 1.1rem !important;
-  padding: 5px 14px !important;
 }
 
 .sticker-text {
@@ -2468,11 +2466,24 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   align-items: center;
   gap: 8px;
   pointer-events: auto;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* While video is playing, HIDE the center pause button completely so the video and caption are 100% visible! */
+.suggest-reel-card.is-playing .reel-center-play {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Show only on mouse hover so user can easily click to pause */
+.suggest-reel-card.is-playing:hover .reel-center-play {
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 .reel-play-circle-btn {
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: rgba(15, 23, 42, 0.78);
   backdrop-filter: blur(12px);

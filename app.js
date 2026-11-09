@@ -240,6 +240,7 @@ class ScaleReachFullApp {
     this.captionPosition = 'bottom';
     this.captionFontSize = 40;
     this.captionsEnabled = true;
+    this.userSelectedCaption = 'TO GET STARTED';
 
     // Sample texts corresponding to the 12 creator styles
     this.styleSampleTexts = {
@@ -1890,12 +1891,10 @@ class ScaleReachFullApp {
 
       const stickerText = sticker.querySelector('.sticker-text');
       if (stickerText) {
-        let textVal = '';
-        if (currentInputVal) {
-          textVal = currentInputVal;
-        } else if (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) {
-          textVal = this.clipsMoments[idx].caption;
-        }
+        const textVal = (this.userSelectedCaption && this.userSelectedCaption.trim()) ||
+                        currentInputVal ||
+                        (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) ||
+                        'TO GET STARTED';
         if (textVal) {
           const words = textVal.trim().split(/\s+/);
           // If caption does not fit comfortably in 1 line, auto-balance into 2 lines
@@ -1905,21 +1904,16 @@ class ScaleReachFullApp {
           } else {
             stickerText.textContent = textVal;
           }
+        } else {
+          stickerText.textContent = '';
         }
       }
 
+      // Completely hide any subtext from on-screen video (only user selected caption shows!)
       const stickerSubtext = sticker.querySelector('.sticker-subtext');
       if (stickerSubtext) {
-        const subVal = (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].hookText) || '';
-        if (subVal) {
-          const subWords = subVal.trim().split(/\s+/);
-          if (subWords.length >= 4 && subVal.length > 22) {
-            const mid = Math.ceil(subWords.length / 2);
-            stickerSubtext.innerHTML = `${subWords.slice(0, mid).join(' ')}<br>${subWords.slice(mid).join(' ')}`;
-          } else {
-            stickerSubtext.textContent = subVal;
-          }
-        }
+        stickerSubtext.style.display = 'none';
+        stickerSubtext.textContent = '';
       }
     });
   }
@@ -2422,13 +2416,12 @@ class ScaleReachFullApp {
           this.activeStyleBadge.textContent = `Style: ${this.selectedStyleName}`;
         }
 
-        if (this.styleSampleTexts[this.selectedStyleId]) {
-          const sample = this.styleSampleTexts[this.selectedStyleId];
-          this.customCaptionInput.value = sample;
+        // Preserve user's caption text, only set fallback if empty
+        if (!this.userSelectedCaption && (!this.studioCaptionTextInput || !this.studioCaptionTextInput.value.trim())) {
+          const sample = this.styleSampleTexts[this.selectedStyleId] || 'TO GET STARTED';
+          this.userSelectedCaption = sample;
+          if (this.customCaptionInput) this.customCaptionInput.value = sample;
           if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = sample;
-          if (this.clipsMoments) {
-            this.clipsMoments.forEach(m => { if (m) m.caption = sample; });
-          }
         }
 
         this.updateSuggestedReelsCaptions();
@@ -2874,7 +2867,9 @@ class ScaleReachFullApp {
       this.clipStart = moment.start;
       this.clipEnd = moment.end;
       if (this.seoTitleDisplay) this.seoTitleDisplay.textContent = `"${moment.seoTitle}"`;
-      const activeCaption = moment.caption || this.styleSampleTexts[this.selectedStyleId] || 'VIRAL MOMENT';
+      const userText = (this.userSelectedCaption && this.userSelectedCaption.trim()) ||
+                       (this.studioCaptionTextInput && this.studioCaptionTextInput.value.trim());
+      const activeCaption = userText || moment.caption || 'TO GET STARTED';
       if (this.customCaptionInput) this.customCaptionInput.value = activeCaption;
       if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = activeCaption;
       if (this.captionTitleTag) this.captionTitleTag.textContent = `"${this.currentVideoTitle || moment.title}"`;
@@ -2995,12 +2990,14 @@ class ScaleReachFullApp {
     // 2. Custom Text Input Live Sync
     if (this.studioCaptionTextInput) {
       this.studioCaptionTextInput.addEventListener('input', () => {
+        if (this.hookPillBtns) this.hookPillBtns.forEach(b => b.classList.remove('active'));
         const val = this.studioCaptionTextInput.value;
+        this.userSelectedCaption = val;
         if (this.customCaptionInput) {
           this.customCaptionInput.value = val;
         }
         if (this.clipsMoments) {
-          this.clipsMoments.forEach(m => { if (m) m.caption = val || 'VIRAL HOOK'; });
+          this.clipsMoments.forEach(m => { if (m) m.caption = val; });
         }
         this.updateSuggestedReelsCaptions();
         this.updateCaptionsStatusBanner();
@@ -3010,11 +3007,13 @@ class ScaleReachFullApp {
     // Clear Text Button
     if (this.clearCaptionTextBtn && this.studioCaptionTextInput) {
       this.clearCaptionTextBtn.addEventListener('click', () => {
+        this.userSelectedCaption = '';
         this.studioCaptionTextInput.value = '';
         if (this.customCaptionInput) this.customCaptionInput.value = '';
         if (this.clipsMoments) {
           this.clipsMoments.forEach(m => { if (m) m.caption = ''; });
         }
+        if (this.hookPillBtns) this.hookPillBtns.forEach(b => b.classList.remove('active'));
         this.updateSuggestedReelsCaptions();
         this.studioCaptionTextInput.focus();
         this.updateCaptionsStatusBanner();
@@ -3025,7 +3024,10 @@ class ScaleReachFullApp {
     if (this.hookPillBtns) {
       this.hookPillBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+          this.hookPillBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
           const hook = btn.getAttribute('data-hook') || btn.textContent.trim();
+          this.userSelectedCaption = hook;
           if (this.studioCaptionTextInput) {
             this.studioCaptionTextInput.value = hook;
           }
@@ -3065,26 +3067,20 @@ class ScaleReachFullApp {
           this.activeStyleBadge.textContent = `Style: ${styleName}`;
         }
 
-        // Prefill default sample text for this style if input is empty or has another style's default
-        if (this.styleSampleTexts[styleId]) {
-          const sample = this.styleSampleTexts[styleId];
-          if (this.studioCaptionTextInput && (!this.studioCaptionTextInput.value || Object.values(this.styleSampleTexts).includes(this.studioCaptionTextInput.value))) {
-            this.studioCaptionTextInput.value = sample;
-          }
-          if (this.customCaptionInput) {
-            this.customCaptionInput.value = this.studioCaptionTextInput ? this.studioCaptionTextInput.value : sample;
-          }
-          if (this.clipsMoments) {
-            const appliedVal = this.studioCaptionTextInput ? this.studioCaptionTextInput.value : sample;
-            this.clipsMoments.forEach(m => { if (m) m.caption = appliedVal; });
-          }
+        // Keep the user's selected caption text! NEVER overwrite user caption when switching styles
+        if (!this.userSelectedCaption && (!this.studioCaptionTextInput || !this.studioCaptionTextInput.value.trim())) {
+          const sample = this.styleSampleTexts[styleId] || 'TO GET STARTED';
+          this.userSelectedCaption = sample;
+          if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = sample;
+          if (this.customCaptionInput) this.customCaptionInput.value = sample;
+          if (this.clipsMoments) this.clipsMoments.forEach(m => { if (m) m.caption = sample; });
         }
 
         // Synchronize selected style across ALL suggested clip cards instantly!
         this.updateSuggestedReelsCaptions();
 
         this.updateCaptionsStatusBanner();
-        this.showToast(`Applied "${styleName}" style across all suggested reels! ✨`);
+        this.showToast(`Applied "${styleName}" style across all reels! ✨`);
       });
     });
 
@@ -3909,9 +3905,10 @@ class ScaleReachFullApp {
     if (this.studioCaptionsToggle && !this.studioCaptionsToggle.checked) return;
     if (this.captionsToggle && !this.captionsToggle.checked) return;
 
-    const rawText = ((this.studioCaptionTextInput && this.studioCaptionTextInput.value) ||
+    const rawText = ((this.userSelectedCaption && this.userSelectedCaption.trim()) ||
+                     (this.studioCaptionTextInput && this.studioCaptionTextInput.value) ||
                      (this.customCaptionInput && this.customCaptionInput.value) ||
-                     'CAN HE SAVE THIS?').trim();
+                     'TO GET STARTED').trim();
     if (!rawText) return;
 
     ctx.save();
@@ -3923,11 +3920,11 @@ class ScaleReachFullApp {
     // Calculate dynamic Y based on chosen position: Top, Center, or Bottom in 9:16 safe area
     let posY = defaultPosY;
     if (this.captionPosition === 'top') {
-      posY = ch * 0.18;
+      posY = ch * 0.16;
     } else if (this.captionPosition === 'center') {
-      posY = ch * 0.42;
+      posY = ch * 0.48;
     } else {
-      posY = defaultPosY || (ch * 0.70);
+      posY = ch * 0.76;
     }
 
     switch (this.selectedStyleId) {
