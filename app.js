@@ -2069,6 +2069,22 @@ class ScaleReachFullApp {
       moments = this.generateClipsForCustomVideo(title, author, url, duration || this.videoDuration);
     }
 
+    // When "Funny Moments & Reactions" mode is active, prioritize laughter bursts, roasts, and bloopers
+    if (this.selectedClipMode === 'funny') {
+      moments.sort((a, b) => {
+        const isFunnyA = (a.badgeTags && a.badgeTags.some(t => /laugh|humor|comedy|blooper|funny|joke|roast|prank|fail/i.test(t))) ||
+                         /laugh|funny|blooper|roast|reaction|joke|comedy/i.test(a.title || '');
+        const isFunnyB = (b.badgeTags && b.badgeTags.some(t => /laugh|humor|comedy|blooper|funny|joke|roast|prank|fail/i.test(t))) ||
+                         /laugh|funny|blooper|roast|reaction|joke|comedy/i.test(b.title || '');
+        if (isFunnyA && !isFunnyB) return -1;
+        if (!isFunnyA && isFunnyB) return 1;
+        return 0;
+      });
+      moments.forEach((m, idx) => {
+        m.id = idx + 1;
+      });
+    }
+
     this.clipsMoments = moments;
 
     // Adapt timestamps smartly so each reel has its own unique, non-overlapping timeline across video
@@ -2104,6 +2120,155 @@ class ScaleReachFullApp {
       const s = Math.max(0, Math.floor(usableStart + i * step));
       const e = Math.min(dur, s + segDur);
       segs.push({ start: s, end: e });
+    }
+
+    if (this.selectedClipMode === 'funny') {
+      return [
+        {
+          id: 1,
+          title: `😂 Reel 1: Craziest Fail & Instant Laughter Spike`,
+          hookText: '😂 High Acoustic Frequency Laugh Burst',
+          viralityScore: '99% Viral',
+          start: segs[0].start,
+          end: segs[0].end,
+          hookDesc: `AI detected peak laughter frequencies and unexpected comedic timing in ${cleanTitle}.`,
+          seoTitle: `The funniest moment in ${cleanTitle} caught on camera 😂💀`,
+          caption: 'I CANNOT STOP LAUGHING AT THIS!',
+          subtitles: [
+            'I CANNOT STOP LAUGHING AT THIS!',
+            'DID HE ACTUALLY JUST DO THAT?!',
+            'THIS IS THE FUNNIEST THING EVER!'
+          ],
+          tags: [`#${tagWord}`, '#comedy', '#funny', '#hilarious', '#bloopers', '#shorts'],
+          badgeTags: ['😂 99% Laughter Spike', '🤣 Pure Comedy', '💥 Viral Humor']
+        },
+        {
+          id: 2,
+          title: `🤣 Reel 2: Unfiltered Laughter Burst & Savage Roast`,
+          hookText: '🔥 Savage Roast & Unexpected Comedic Punchline',
+          viralityScore: '98% Viral',
+          start: segs[1].start,
+          end: segs[1].end,
+          hookDesc: `Sudden speech decibel increase and high laughter resonance cluster detected.`,
+          seoTitle: `When the roast was too brutal to handle in ${cleanTitle} 😭🔥`,
+          caption: 'HE DID NOT JUST SAY THAT!',
+          subtitles: [
+            'HE DID NOT JUST SAY THAT!',
+            'THE ENTIRE ROOM BURST OUT LAUGHING!',
+            'NOBODY WAS READY FOR THAT ROAST!'
+          ],
+          tags: [`#${tagWord}`, '#savage', '#roast', '#comedyclips', '#reels'],
+          badgeTags: ['🤣 98% Laughter', '🎙️ Savage Punchline', '🔥 High Energy']
+        },
+        {
+          id: 3,
+          title: `💀 Reel 3: Funniest Facial Reaction Caught On Camera`,
+          hookText: '💀 Visual Expression Tracking Detected Comedic Shock',
+          viralityScore: '97% Viral',
+          start: segs[2].start,
+          end: segs[2].end,
+          hookDesc: `Facial muscle tracking detected extreme surprise and instant smile outbreak.`,
+          seoTitle: `His facial expression when this happened is priceless 😂⚰️`,
+          caption: 'LOOK AT HIS FACE RIGHT NOW!',
+          subtitles: [
+            'LOOK AT HIS FACE RIGHT NOW!',
+            'HE WAS IN COMPLETE DISBELIEF!',
+            'BEST REACTION OF THE YEAR!'
+          ],
+          tags: [`#${tagWord}`, '#funnyreaction', '#facefail', '#shortsfeed', '#fyp'],
+          badgeTags: ['💀 97% Reaction', '😂 Priceless Face', '💬 Comment Magnet']
+        },
+        {
+          id: 4,
+          title: `😂 Reel 4: Unexpected Blooper & Unscripted Banter`,
+          hookText: '🎬 Authentic Unscripted Outtake & Breaking Character',
+          viralityScore: '95% Viral',
+          start: segs[3].start,
+          end: segs[3].end,
+          hookDesc: 'Speakers broke character laughing in genuine unscripted moment.',
+          seoTitle: `The unscripted blooper everyone is talking about in ${cleanTitle} 😂🎬`,
+          caption: 'THIS WAS NOT SCRIPTED AT ALL!',
+          subtitles: [
+            'THIS WAS NOT SCRIPTED AT ALL!',
+            'THEY COULD NOT STOP LAUGHING!',
+            'WE HAD TO KEEP THIS IN THE CUT!'
+          ],
+          tags: [`#${tagWord}`, '#blooper', '#outtakes', '#behindthescenes', '#trending'],
+          badgeTags: ['😂 95% Blooper', '🎬 Breaking Character', '❤️ Wholesome Laugh']
+        },
+        {
+          id: 5,
+          title: `🎭 Reel 5: Pure Comedy Timing & Sarcastic Joke`,
+          hookText: '💡 Perfect Deadpan Silence Followed By Punchline',
+          viralityScore: '94% Viral',
+          start: segs[4].start,
+          end: segs[4].end,
+          hookDesc: 'Acoustic micro-pause followed by high retention humorous statement.',
+          seoTitle: `The comedic timing in this part of ${cleanTitle} was pure perfection 🧠😂`,
+          caption: 'THE TIMING WAS TOO PERFECT!',
+          subtitles: [
+            'THE TIMING WAS TOO PERFECT!',
+            'DEADPAN HUMOR AT ITS ABSOLUTE BEST!',
+            'YOU CANNOT WRITE THIS STUFF!'
+          ],
+          tags: [`#${tagWord}`, '#comedytiming', '#deadpan', '#sarcasm', '#reels'],
+          badgeTags: ['🎭 94% Comedy Timing', '💡 Sharp Humor', '🚀 High Saves']
+        },
+        {
+          id: 6,
+          title: `💥 Reel 6: Hilarious Misunderstanding & Room Laugh`,
+          hookText: '😂 Total Confusion Resulting in Massive Laughs',
+          viralityScore: '92% Viral',
+          start: segs[5].start,
+          end: segs[5].end,
+          hookDesc: 'Funny miscommunication between participants leads to uncontrollable laughter.',
+          seoTitle: `When nobody understood what was happening and everyone lost it 😂🤦`,
+          caption: 'WORST MISUNDERSTANDING EVER!',
+          subtitles: [
+            'WORST MISUNDERSTANDING EVER!',
+            'HOW DID WE EVEN GET HERE?!',
+            'EVERYBODY LOST THEIR MINDS!'
+          ],
+          tags: [`#${tagWord}`, '#confusion', '#funnymoments', '#shorts', '#viral'],
+          badgeTags: ['💥 92% Humor Spike', '😂 Room Laughter', '✨ Pure Joy']
+        },
+        {
+          id: 7,
+          title: `😭 Reel 7: Awkward Silence Turned Into Comedy Gold`,
+          hookText: '🦗 3 Seconds of Awkward Silence Then Explosive Punchline',
+          viralityScore: '91% Viral',
+          start: segs[6].start,
+          end: segs[6].end,
+          hookDesc: 'Dramatic acoustic dip followed by high-energy punchline retention spike.',
+          seoTitle: `That awkward silence before the funniest joke in ${cleanTitle} 😭💀`,
+          caption: 'THE MOST AWKWARD MOMENT EVER!',
+          subtitles: [
+            'THE MOST AWKWARD MOMENT EVER!',
+            'WAIT FOR IT... DO NOT BLINK!',
+            'AND THEN HE SAID THAT!'
+          ],
+          tags: [`#${tagWord}`, '#awkwardfunny', '#humor', '#comedygold', '#shorts'],
+          badgeTags: ['😭 91% Comedy Gold', '🦗 Awkward Silence', '⚡ High Retention']
+        },
+        {
+          id: 8,
+          title: `🎬 Reel 8: Behind-The-Scenes Outtakes & Final Giggles`,
+          hookText: '😂 Uncut Recording Wrap Bloopers & Giggles',
+          viralityScore: '90% Viral',
+          start: segs[7].start,
+          end: segs[7].end,
+          hookDesc: 'Final candid bloopers with crew laughing behind camera as credits roll.',
+          seoTitle: `The end credits bloopers are funnier than the entire video 😂🎬`,
+          caption: 'BEST OUTTAKE OF THE DAY!',
+          subtitles: [
+            'BEST OUTTAKE OF THE DAY!',
+            'THE CAMERA CREW WAS DYING LAUGHING!',
+            'SUBSCRIBE FOR MORE FUNNY MOMENTS!'
+          ],
+          tags: [`#${tagWord}`, '#endbloopers', '#outtakes', '#funnyvideo', '#fyp'],
+          badgeTags: ['🎬 90% Blooper Outro', '😂 Crew Laughter', '💬 Comment Magnet']
+        }
+      ];
     }
 
     return [
@@ -2986,15 +3151,18 @@ class ScaleReachFullApp {
         this.selectedClipTypeDesc.textContent = desc;
 
         const val = item.getAttribute('data-val');
+        this.selectedClipMode = val;
         if (val === 'split') {
           this.activeLayout = 'split';
           this.syncLayoutBtnState('split');
         } else {
-          this.activeLayout = 'standard';
-          this.syncLayoutBtnState('standard');
+          this.activeLayout = 'fit';
+          this.syncLayoutBtnState('fit');
         }
 
-        this.showToast(`Clip Mode: ${title}`);
+        // Re-analyze and highlight clips tailored to the chosen mode (e.g. Funny Moments & Reactions)
+        this.analyzeVideoAndGenerateClips(this.currentVideoTitle, this.currentVideoAuthor, this.currentVideoUrl, this.videoDuration);
+        this.showToast(`AI Clip Mode: ${title}`);
       });
     });
 
