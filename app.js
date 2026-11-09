@@ -1402,6 +1402,22 @@ class ScaleReachFullApp {
       this.showHomeScreen();
     });
 
+    const sideNavLogoBrand = document.getElementById('sideNavLogoBrand');
+    if (sideNavLogoBrand) {
+      sideNavLogoBrand.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.showHomeScreen();
+      });
+    }
+
+    const topNavBrandLogo = document.getElementById('topNavBrandLogo');
+    if (topNavBrandLogo) {
+      topNavBrandLogo.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.showHomeScreen();
+      });
+    }
+
     this.sideNavAllClips.addEventListener('click', () => {
       this.showStudioView();
       this.showToast('Opened Clips Library');
