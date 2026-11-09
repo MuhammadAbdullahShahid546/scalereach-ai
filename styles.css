@@ -2263,13 +2263,14 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   transform: scale(1.1);
 }
 
-/* On-Screen Caption Sticker (Matching TikTok/Reels viral format) */
+/* On-Screen Caption Subtitles (Modern Viral TikTok/ScaleReach format) */
 .reel-hook-caption-sticker {
   position: absolute;
-  top: 19%;
-  left: 12px;
-  right: 12px;
-  width: calc(100% - 24px);
+  bottom: 20%;
+  top: auto;
+  left: 10px;
+  right: 10px;
+  width: calc(100% - 20px);
   box-sizing: border-box;
   text-align: center;
   z-index: 6;
@@ -2286,7 +2287,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: none !important;
 }
 
-/* 9:16 Ratio Safe Zone Positions (Never hides behind footer or overlaps center) */
+/* 9:16 Ratio Safe Zone Positions (Never hides behind footer or overlaps speaker face) */
 .reel-hook-caption-sticker.pos-top {
   top: 15% !important;
   bottom: auto !important;
@@ -2301,11 +2302,11 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .reel-hook-caption-sticker.pos-bottom {
   top: auto !important;
-  bottom: 22% !important;
+  bottom: 20% !important;
   transform: none !important;
 }
 
-/* Hide any subtext badge completely from the on-video sticker (Hook scores belong in footer) */
+/* Hide any subtext badge completely from the on-video sticker */
 .sticker-subtext {
   display: none !important;
 }
@@ -2320,24 +2321,24 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .reel-hook-caption-sticker.size-m .sticker-text {
   font-size: 1.25rem !important;
   padding: 6px 14px !important;
-  letter-spacing: 0.8px !important;
+  letter-spacing: 0.6px !important;
 }
 
 .reel-hook-caption-sticker.size-l .sticker-text {
-  font-size: 1.55rem !important;
-  padding: 8px 18px !important;
-  letter-spacing: 1px !important;
+  font-size: 1.45rem !important;
+  padding: 8px 16px !important;
+  letter-spacing: 0.8px !important;
 }
 
 .reel-hook-caption-sticker.size-xl .sticker-text {
-  font-size: 1.95rem !important;
-  padding: 10px 22px !important;
-  letter-spacing: 1.2px !important;
+  font-size: 1.8rem !important;
+  padding: 10px 20px !important;
+  letter-spacing: 1px !important;
 }
 
 .sticker-text {
   display: inline-block !important;
-  max-width: 88% !important;
+  max-width: 90% !important;
   width: auto !important;
   box-sizing: border-box !important;
   word-wrap: break-word !important;
@@ -2347,103 +2348,129 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   text-align: center !important;
   margin: 0 auto !important;
   font-weight: 900 !important;
-  font-size: 1.45rem;
-  padding: 8px 18px;
-  border-radius: 12px;
+  font-size: 1.35rem;
+  padding: 6px 14px;
+  border-radius: 8px;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
+  letter-spacing: 0.6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
   line-height: 1.25 !important;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.95);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  transition: all 0.2s ease;
+}
+
+.sticker-text .cap-highlight,
+.cap-highlight {
+  display: inline-block;
+  font-weight: 900 !important;
+  transition: color 0.2s ease;
 }
 
 /* 1. Classic Style (Alex Hormozi Yellow & White) */
 .reel-hook-caption-sticker.style-classic .sticker-text {
-  background: #000000 !important;
-  color: #facc15 !important;
-  border: 3px solid #facc15 !important;
-  box-shadow: 0 0 24px rgba(250, 204, 21, 0.7), 0 8px 20px rgba(0, 0, 0, 0.95) !important;
-  text-transform: uppercase !important;
-  font-weight: 900 !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95) !important;
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255, 230, 0, 0.25) !important;
+}
+.reel-hook-caption-sticker.style-classic .sticker-text .cap-highlight,
+.reel-hook-caption-sticker.style-classic .cap-highlight {
+  color: #ffe600 !important;
+  text-shadow: 0 0 14px rgba(255, 230, 0, 0.9), 0 2px 4px #000 !important;
 }
 
 /* 2. Cyan Slide Style (Electric Cyan Glow) */
 .reel-hook-caption-sticker.style-cyan_slide .sticker-text {
-  background: rgba(4, 18, 32, 0.94) !important;
-  color: #00f2fe !important;
-  border: 2.5px solid #00f2fe !important;
-  box-shadow: 0 0 28px rgba(0, 242, 254, 0.85), 0 8px 20px rgba(0, 0, 0, 0.9) !important;
-  text-shadow: 0 0 16px rgba(0, 242, 254, 1), 0 2px 4px #000 !important;
+  color: #ffffff !important;
+  background: rgba(4, 18, 32, 0.65) !important;
+  border: 1px solid rgba(0, 242, 254, 0.3) !important;
   font-style: italic !important;
-  font-weight: 900 !important;
+}
+.reel-hook-caption-sticker.style-cyan_slide .sticker-text .cap-highlight,
+.reel-hook-caption-sticker.style-cyan_slide .cap-highlight {
+  color: #00f2fe !important;
+  text-shadow: 0 0 16px rgba(0, 242, 254, 1), 0 2px 4px #000 !important;
 }
 
 /* 3. Italic Red Style (Slanted Sports Red) */
 .reel-hook-caption-sticker.style-italic_red .sticker-text {
-  background: rgba(30, 4, 4, 0.94) !important;
-  color: #ff2a2a !important;
-  border: 2.5px solid #ff2a2a !important;
-  box-shadow: 0 0 28px rgba(255, 42, 42, 0.85), 0 8px 20px rgba(0, 0, 0, 0.9) !important;
-  text-shadow: 0 0 16px rgba(255, 42, 42, 1), 0 2px 4px #000 !important;
+  color: #ffffff !important;
+  background: rgba(30, 4, 4, 0.65) !important;
+  border: 1px solid rgba(255, 42, 42, 0.3) !important;
   font-style: italic !important;
-  font-weight: 900 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.8px !important;
+}
+.reel-hook-caption-sticker.style-italic_red .sticker-text .cap-highlight,
+.reel-hook-caption-sticker.style-italic_red .cap-highlight {
+  color: #ff2a2a !important;
+  text-shadow: 0 0 16px rgba(255, 42, 42, 1), 0 2px 4px #000 !important;
 }
 
 /* 4. Cream Blue Style (Soft Pastel Cream with Sky Blue Glow) */
 .reel-hook-caption-sticker.style-cream_blue .sticker-text {
-  background: rgba(10, 18, 36, 0.94) !important;
-  color: #38bdf8 !important;
-  border: 2.5px solid #38bdf8 !important;
-  box-shadow: 0 0 24px rgba(56, 189, 248, 0.8), 0 8px 20px rgba(0, 0, 0, 0.9) !important;
-  font-weight: 800 !important;
+  color: #f1f5f9 !important;
+  background: rgba(10, 18, 36, 0.65) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
   border-radius: 999px !important;
-  padding: 8px 22px !important;
+  padding: 6px 18px !important;
+}
+.reel-hook-caption-sticker.style-cream_blue .sticker-text .cap-highlight,
+.reel-hook-caption-sticker.style-cream_blue .cap-highlight {
+  color: #38bdf8 !important;
   text-shadow: 0 0 14px rgba(56, 189, 248, 0.9) !important;
 }
 
 /* 5. Red Spin Style (Fiery Crimson Badge) */
 .reel-hook-caption-sticker.style-red_spin .sticker-text {
-  background: linear-gradient(135deg, #ff1f3d, #b91c1c) !important;
   color: #ffffff !important;
-  border: 2.5px solid #fecaca !important;
-  box-shadow: 0 0 28px rgba(255, 31, 61, 0.9), 0 8px 20px rgba(0, 0, 0, 0.95) !important;
-  font-weight: 900 !important;
-  text-transform: uppercase !important;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9) !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+  border: 1px solid rgba(255, 31, 61, 0.3) !important;
+}
+.reel-hook-caption-sticker.style-red_spin .sticker-text .cap-highlight,
+.reel-hook-caption-sticker.style-red_spin .cap-highlight {
+  background: #ff1f3d !important;
+  color: #ffffff !important;
+  padding: 2px 7px !important;
+  border-radius: 5px !important;
+  box-shadow: 0 0 14px rgba(255, 31, 61, 0.8) !important;
 }
 
-/* 6. Violet Style (Royal Purple Neon Glow - Matches Thumbnail Perfectly) */
+/* 6. Violet Style (Royal Purple Neon Glow) */
 .reel-hook-caption-sticker.style-violet .sticker-text {
-  background: rgba(18, 5, 34, 0.94) !important;
+  color: #ffffff !important;
+  background: rgba(18, 5, 34, 0.65) !important;
+  border: 1px solid rgba(216, 70, 239, 0.3) !important;
+}
+.reel-hook-caption-sticker.style-violet .sticker-text .cap-highlight,
+.reel-hook-caption-sticker.style-violet .cap-highlight {
   color: #e879f9 !important;
-  border: 2.5px solid #c084fc !important;
-  box-shadow: 0 0 28px rgba(216, 70, 239, 0.85), 0 8px 20px rgba(0, 0, 0, 0.9) !important;
-  font-weight: 900 !important;
   text-shadow: 0 0 16px rgba(232, 121, 249, 1), 0 2px 4px #000 !important;
 }
 
 /* 7. Blue Glow Style (Electric Royal Blue) */
 .reel-hook-caption-sticker.style-blue_glow .sticker-text {
-  background: rgba(8, 16, 36, 0.94) !important;
+  color: #ffffff !important;
+  background: rgba(8, 16, 36, 0.65) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+.reel-hook-caption-sticker.style-blue_glow .sticker-text .cap-highlight,
+.reel-hook-caption-sticker.style-blue_glow .cap-highlight {
   color: #60a5fa !important;
-  border: 2.5px solid #3b82f6 !important;
-  box-shadow: 0 0 28px rgba(59, 130, 246, 0.9), 0 8px 20px rgba(0, 0, 0, 0.9) !important;
-  font-weight: 900 !important;
   text-shadow: 0 0 16px rgba(96, 165, 250, 1), 0 2px 4px #000 !important;
 }
 
 /* 8. Toxic Green Style (Radioactive Neon Green) */
 .reel-hook-caption-sticker.style-toxic_green .sticker-text {
-  background: rgba(3, 24, 10, 0.94) !important;
+  color: #ffffff !important;
+  background: rgba(3, 24, 10, 0.65) !important;
+  border: 1px solid rgba(0, 255, 102, 0.3) !important;
+}
+.reel-hook-caption-sticker.style-toxic_green .sticker-text .cap-highlight,
+.reel-hook-caption-sticker.style-toxic_green .cap-highlight {
   color: #00ff66 !important;
-  border: 2.5px solid #00ff66 !important;
-  box-shadow: 0 0 28px rgba(0, 255, 102, 0.9), 0 8px 20px rgba(0, 0, 0, 0.9) !important;
-  font-weight: 900 !important;
-  text-transform: uppercase !important;
   text-shadow: 0 0 16px rgba(0, 255, 102, 1), 0 2px 4px #000 !important;
 }
 

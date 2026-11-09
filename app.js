@@ -1179,6 +1179,166 @@ class ScaleReachFullApp {
             badgeTags: ['🚀 89% Wholesome Outro', '🍕 Pizza Party', '💬 Viral Ending']
           }
         ]
+      },
+      {
+        id: 'mrbeast_100_million',
+        matchKeywords: ['100000000', '1 vs 100', '100 million', '$1 vs', '100,000,000', 'house', 'mansion', 'expensive'],
+        title: '$1 vs $100,000,000 House / Car Challenge',
+        author: 'MrBeast • 100M+ Views',
+        clips: [
+          {
+            id: 1,
+            title: '🔥 Reel 1: Stepping Inside A $100,000,000 House',
+            hookText: '⚡ High Retention Opener & Shocked Reaction',
+            viralityScore: '99% Viral',
+            start: 10,
+            end: 38,
+            hookDesc: 'MrBeast and crew run up the driveway shouting in disbelief at the 100 million dollar mansion.',
+            seoTitle: 'I just stepped inside a $100,000,000 mega mansion 🤯🏠',
+            caption: 'I JUST BOUGHT A $100,000,000 HOUSE!',
+            subtitles: [
+              'I JUST BOUGHT A $100,000,000 HOUSE!',
+              'LOOK AT THIS CRAZY WATER SLIDE!',
+              'ARE YOU KIDDING ME RIGHT NOW?!',
+              'THIS IS THE MOST EXPENSIVE ROOM!'
+            ],
+            tags: ['#mrbeast', '#100million', '#mansion', '#expensive', '#viral', '#shorts'],
+            badgeTags: ['🔥 99% Hook Score', '🏠 $100M Mansion', '⚡ Immediate Hook']
+          },
+          {
+            id: 2,
+            title: '⚡ Reel 2: Jumping Off The 3rd Story Balcony',
+            hookText: '📈 High-Altitude Leap Into The Massive Pool',
+            viralityScore: '98% Viral',
+            start: 42,
+            end: 70,
+            hookDesc: 'Karl jumps off the third story balcony straight into the infinity pool below.',
+            seoTitle: 'He actually jumped off the $100M mansion roof 😱🏊',
+            caption: 'HE LITERALLY JUMPED OFF THE ROOF!',
+            subtitles: [
+              'HE LITERALLY JUMPED OFF THE ROOF!',
+              'WAIT, DID HE ACTUALLY SURVIVE THAT?!',
+              'LOOK AT THE POOL DOWN THERE!',
+              'ABSOLUTELY INSANE DROP!'
+            ],
+            tags: ['#stunt', '#jump', '#roofjump', '#mrbeastchallenge', '#fyp'],
+            badgeTags: ['⚡ 98% High Pace', '🏃 Quick Cuts', '🔥 High Energy']
+          },
+          {
+            id: 3,
+            title: '😂 Reel 3: The 24K Solid Gold Master Bedroom',
+            hookText: '😂 Shocking Tour of The Billionaire Master Suite',
+            viralityScore: '96% Viral',
+            start: 75,
+            end: 102,
+            hookDesc: 'The master bedroom has solid gold faucets and a bed that rotates 360 degrees.',
+            seoTitle: 'This bedroom costs more than my entire life 😂💀',
+            caption: 'THIS BEDROOM COSTS MORE THAN MY LIFE!',
+            subtitles: [
+              'THIS BEDROOM COSTS MORE THAN MY LIFE!',
+              'THE ENTIRE FLOOR IS SOLID GOLD!',
+              'I CANNOT BELIEVE SOMEONE LIVES HERE!',
+              'LOOK AT THIS ROTATING BED!'
+            ],
+            tags: ['#luxury', '#goldroom', '#billionaire', '#mrbeasthumor', '#foryou'],
+            badgeTags: ['😂 96% Energy Spike', '💰 Solid Gold', '💥 Plot Twist']
+          },
+          {
+            id: 4,
+            title: '🤯 Reel 4: The $1 Abandoned House Shock',
+            hookText: '🤯 Hilarious Comparison to The Crumbling $1 Property',
+            viralityScore: '95% Viral',
+            start: 108,
+            end: 135,
+            hookDesc: 'Cutting immediately to the $1 house where the door falls off its hinges when pushed.',
+            seoTitle: 'We bought a house for literally ONE DOLLAR 🤯🏚️',
+            caption: 'AND THIS HOUSE WAS ONLY ONE DOLLAR!',
+            subtitles: [
+              'AND THIS HOUSE WAS ONLY ONE DOLLAR!',
+              'THE WALLS ARE LITERALLY FALLING APART!',
+              'LOOK AT THIS CRUMBLING CEILING!',
+              'COMPARE THIS TO THE $100M MANSION!'
+            ],
+            tags: ['#1dollar', '#cheapvsexpensive', '#abandoned', '#comparison', '#trending'],
+            badgeTags: ['🤯 95% Twist', '🏚️ $1 House', '💬 Viral Debate']
+          },
+          {
+            id: 5,
+            title: '💡 Reel 5: Secret Underground Panic Bunker',
+            hookText: '💡 Pulling The Secret Bookshelf Door',
+            viralityScore: '93% Viral',
+            start: 140,
+            end: 168,
+            hookDesc: 'Behind a library bookcase is a steel vault door leading to an underground fortress.',
+            seoTitle: 'We found a secret underground bunker inside the mansion 🧠✨',
+            caption: 'THERE IS A SECRET UNDERGROUND TUNNEL!',
+            subtitles: [
+              'THERE IS A SECRET UNDERGROUND TUNNEL!',
+              'PULL THIS BOOKCASE OPEN RIGHT NOW!',
+              'WHERE DOES THIS STAIRCASE LEAD TO?!',
+              'IT IS A COMPLETE SUBTERRANEAN FORTRESS!'
+            ],
+            tags: ['#secretroom', '#bunker', '#hiddenpassage', '#curiosity', '#reels'],
+            badgeTags: ['💡 93% Curiosity', '🚪 Secret Door', '🚀 High Saves']
+          },
+          {
+            id: 6,
+            title: '🏆 Reel 6: Full Sized Living Room Bowling Alley',
+            hookText: '🎯 Bowling a Strike Inside The Living Room',
+            viralityScore: '91% Viral',
+            start: 172,
+            end: 200,
+            hookDesc: 'Testing the 4-lane regulation bowling alley and IMAX theater inside the basement.',
+            seoTitle: 'This mansion literally has a bowling alley inside 🏆💯',
+            caption: 'A FULL SIZED BOWLING ALLEY INSIDE!',
+            subtitles: [
+              'A FULL SIZED BOWLING ALLEY INSIDE!',
+              'AND A 100-SEAT PRIVATE MOVIE THEATER!',
+              'THIS HOUSE IS BIGGER THAN A MALL!',
+              'FIRST PERSON TO BOWL A STRIKE WINS!'
+            ],
+            tags: ['#bowlingalley', '#movietheater', '#luxurylife', '#shorts', '#viralvideo'],
+            badgeTags: ['🏆 91% Climax', '🎳 Bowling Alley', '✨ Final Punchline']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: Rooftop Helipad & Hypercar Garage',
+            hookText: '🌪️ Bugatti & Helicopter Landed On The Property',
+            viralityScore: '90% Viral',
+            start: 205,
+            end: 232,
+            hookDesc: 'A helicopter lands on the private roof pad while five hypercars park out front.',
+            seoTitle: 'The rooftop helipad on this $100,000,000 mansion is unreal 🤯🚁',
+            caption: 'THE HELICOPTER JUST LANDED ON THE ROOF!',
+            subtitles: [
+              'THE HELICOPTER JUST LANDED ON THE ROOF!',
+              'FIVE HYPERCARS IN THE PRIVATE GARAGE!',
+              'THIS IS TOTAL UNREAL LUXURY!',
+              'LOOK AT THAT DUAL-ROTOR CHOPPER!'
+            ],
+            tags: ['#helicopter', '#hypercars', '#bugatti', '#viralreels', '#shorts'],
+            badgeTags: ['🎯 90% Visual Hit', '🚁 Rooftop Helipad', '⚡ High Retention']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Giving Away The Mansion To A Subscriber',
+            hookText: '😂 The Grand Prize Giveaway Announcement',
+            viralityScore: '89% Viral',
+            start: 238,
+            end: 265,
+            hookDesc: 'MrBeast reveals the keys and challenges one lucky subscriber to stay overnight to win.',
+            seoTitle: 'We are giving away this entire property to a subscriber 😂🎬',
+            caption: 'WE ARE GIVING THIS AWAY TO A SUBSCRIBER!',
+            subtitles: [
+              'WE ARE GIVING THIS AWAY TO A SUBSCRIBER!',
+              'MAKE SURE YOU HIT SUBSCRIBE RIGHT NOW!',
+              'LAST PERSON TO LEAVE THE MANSION KEEPS IT!',
+              'SEE YOU GUYS IN THE NEXT CRAZY VIDEO!'
+            ],
+            tags: ['#giveaway', '#subscriberwin', '#mrbeastoutro', '#foryou', '#trending'],
+            badgeTags: ['🚀 89% Viral Outro', '🔑 House Keys', '💬 Comment Spike']
+          }
+        ]
       }
     ];
 
@@ -1636,11 +1796,11 @@ class ScaleReachFullApp {
         end: segs[0].end,
         hookDesc: `AI detected peak speech cadence and high visual movement in ${cleanTitle}. Perfect 9:16 opener.`,
         seoTitle: `Wait till you see what happens in this ${cleanTitle} clip 😱🔥`,
-        caption: 'WAIT TILL YOU SEE THIS 😱',
+        caption: 'I CANNOT BELIEVE THIS JUST HAPPENED!',
         subtitles: [
-          'WAIT TILL YOU SEE THIS!',
-          'THE HOOK THAT SURPRISED EVERYONE',
-          'PAY CLOSE ATTENTION RIGHT HERE!'
+          'I CANNOT BELIEVE THIS JUST HAPPENED!',
+          'WE JUST STARTED AND LOOK AT THIS!',
+          'THIS IS GOING TO BE TOTALLY INSANE!'
         ],
         tags: [`#${tagWord}`, '#shorts', '#viral', '#trending', '#fyp', '#reels'],
         badgeTags: ['🔥 99% Hook Score', '⚡ Fast Pacing', '🎯 High Retention']
@@ -1654,11 +1814,11 @@ class ScaleReachFullApp {
         end: segs[1].end,
         hookDesc: `Acoustic frequency jump detected. Rapid editing pace keeps retention curve above 85%.`,
         seoTitle: `The pacing in this part of ${cleanTitle} is totally insane ⚡🏎️`,
-        caption: 'DON\'T BLINK NOW ⚡',
+        caption: 'LOOK AT WHAT HE IS DOING RIGHT HERE!',
         subtitles: [
-          'DON\'T BLINK FOR A SECOND!',
-          'THE FASTEST PACING IN THE VIDEO',
-          'WATCH THIS RAPID TRANSITION!'
+          'LOOK AT WHAT HE IS DOING RIGHT HERE!',
+          'THERE IS NO WAY HE PULLS THIS OFF!',
+          'HOLD ON TO YOUR SEATS RIGHT NOW!'
         ],
         tags: [`#${tagWord}`, '#highaction', '#viralmoments', '#shortsfeed', '#fyp'],
         badgeTags: ['⚡ 98% High Pace', '🏃 Quick Cuts', '🔥 High Energy']
@@ -1672,11 +1832,11 @@ class ScaleReachFullApp {
         end: segs[2].end,
         hookDesc: `Laughter and high acoustic energy cluster detected.`,
         seoTitle: `The most unexpected reaction in ${cleanTitle} caught on camera 😂💀`,
-        caption: 'DID YOU SEE THAT?! 😂',
+        caption: 'ARE YOU KIDDING ME RIGHT NOW?!',
         subtitles: [
-          'DID YOU SEE HIS REACTION?!',
-          'NOBODY EXPECTED THAT TO HAPPEN',
-          'PURE UNFILTERED MOMENT!'
+          'ARE YOU KIDDING ME RIGHT NOW?!',
+          'THAT WAS THE CRAZIEST REACTION EVER!',
+          'I DID NOT EXPECT THAT AT ALL!'
         ],
         tags: [`#${tagWord}`, '#reaction', '#funny', '#viralclips', '#foryou'],
         badgeTags: ['😂 96% Energy Spike', '💬 Comment Magnet', '💥 Plot Twist']
@@ -1690,11 +1850,11 @@ class ScaleReachFullApp {
         end: segs[3].end,
         hookDesc: `Visual expression tracking detected sudden micro-expressions and tone shift.`,
         seoTitle: `Nobody saw this coming during ${cleanTitle} 🤯👀`,
-        caption: 'NOBODY SAW THIS COMING 🤯',
+        caption: 'WAIT, DID YOU JUST SEE THAT?!',
         subtitles: [
-          'NOBODY SAW THIS COMING!',
-          'THE BIGGEST UNEXPECTED TWIST',
-          'EVERYONE WAS IN COMPLETE SHOCK!'
+          'WAIT, DID YOU JUST SEE THAT?!',
+          'THIS WAS NOT SUPPOSED TO HAPPEN!',
+          'EVERYONE IN THE ROOM WAS SHOCKED!'
         ],
         tags: [`#${tagWord}`, '#plottwist', '#shocking', '#reaction', '#trending'],
         badgeTags: ['🤯 95% Twist', '🎭 High Drama', '💬 Viral Debate']
@@ -1708,11 +1868,11 @@ class ScaleReachFullApp {
         end: segs[4].end,
         hookDesc: `High value knowledge drop with focused speaker framing. Proven shareable format.`,
         seoTitle: `This one secret from ${cleanTitle} will completely change your perspective 🧠✨`,
-        caption: 'LISTEN VERY CAREFULLY 🧠',
+        caption: 'THIS IS THE ONE THING NOBODY TELLS YOU!',
         subtitles: [
-          'LISTEN VERY CAREFULLY!',
-          'THE GOLDEN INSIGHT HERE',
-          'THIS CHANGES EVERYTHING!'
+          'THIS IS THE ONE THING NOBODY TELLS YOU!',
+          'PAY VERY CLOSE ATTENTION TO THIS!',
+          'IT WILL COMPLETELY CHANGE YOUR MIND!'
         ],
         tags: [`#${tagWord}`, '#knowledge', '#mindset', '#curiosity', '#reels'],
         badgeTags: ['💡 93% Curiosity', '📚 Key Takeaway', '🚀 High Saves']
@@ -1726,11 +1886,11 @@ class ScaleReachFullApp {
         end: segs[5].end,
         hookDesc: `High emotional finish and concluding statement ideal for driving profile follows and shares.`,
         seoTitle: `The ending of this video surprised everyone who watched 🏆💯`,
-        caption: 'THIS IS UNREAL 🏆',
+        caption: 'LOOK AT THE FINAL RESULT OF THIS!',
         subtitles: [
-          'THIS IS ABSOLUTELY UNREAL!',
-          'THE PEAK VIRAL CLIMAX',
-          'WAIT TILL THE VERY FINISH!'
+          'LOOK AT THE FINAL RESULT OF THIS!',
+          'WE ACTUALLY DID IT AGAINST ALL ODDS!',
+          'THIS TURNED OUT ABSOLUTELY INCREDIBLE!'
         ],
         tags: [`#${tagWord}`, '#finale', '#bestmoments', '#shorts', '#viralvideo'],
         badgeTags: ['🏆 91% Climax', '🚀 High Share Rate', '✨ Final Punchline']
@@ -1744,11 +1904,11 @@ class ScaleReachFullApp {
         end: segs[6].end,
         hookDesc: `Visually captivating peak moment perfect for looping engagement and shares.`,
         seoTitle: `Look at this unbelievable detail in ${cleanTitle} 🤯🔥`,
-        caption: 'LOOK AT THIS DETAIL 🔥',
+        caption: 'CHECK OUT THIS UNBELIEVABLE DETAIL!',
         subtitles: [
-          'LOOK AT THIS CRAZY DETAIL!',
-          'BREAKING IT DOWN FRAME BY FRAME',
-          'PURE VISUAL PERFECTION!'
+          'CHECK OUT THIS UNBELIEVABLE DETAIL!',
+          'IN SLOW MOTION THIS LOOKS UNREAL!',
+          'EVERY SINGLE FRAME IS TOTAL PERFECTION!'
         ],
         tags: [`#${tagWord}`, '#slowmo', '#visualmagic', '#viralreels', '#shorts'],
         badgeTags: ['🎯 90% Visual Hit', '🌪️ Slow-Mo Peak', '⚡ High Retention']
@@ -1762,11 +1922,11 @@ class ScaleReachFullApp {
         end: segs[7].end,
         hookDesc: `Unfiltered outro moment that triggers high comment velocity and repeat shares.`,
         seoTitle: `The funniest ending of ${cleanTitle} you have ever seen 😂🎬`,
-        caption: 'THE FUNNIEST OUTRO 😂',
+        caption: 'MAKE SURE TO DROP A LIKE AND FOLLOW!',
         subtitles: [
-          'THE FUNNIEST OUTRO EVER!',
-          'BEST BLOOPER AT THE END',
-          'DON\'T FORGET TO SHARE THIS!'
+          'MAKE SURE TO DROP A LIKE AND FOLLOW!',
+          'BEST MOMENT WE CAUGHT ON CAMERA!',
+          'SEE YOU GUYS IN THE NEXT ONE!'
         ],
         tags: [`#${tagWord}`, '#bloopers', '#viraloutro', '#foryou', '#trending'],
         badgeTags: ['🚀 89% Viral Outro', '😂 Funniest Cut', '💬 Comment Spike']
@@ -1824,9 +1984,9 @@ class ScaleReachFullApp {
             <span class="sound-icon">🔇</span>
           </button>
 
-          <!-- On-Screen Viral Caption Sticker (Clean & Focused) -->
-          <div class="reel-hook-caption-sticker">
-            <div class="sticker-text">${hookCaption}</div>
+          <!-- On-Screen Viral Caption Subtitles (Lower Third) -->
+          <div class="reel-hook-caption-sticker style-${this.selectedStyleId || 'classic'} pos-${this.captionPosition || 'bottom'}">
+            <div class="sticker-text">${this.formatSpokenSubtitleHTML(hookCaption)}</div>
           </div>
 
           <!-- Center Play / Pause Glassmorphism Circle -->
@@ -1937,6 +2097,48 @@ class ScaleReachFullApp {
   }
 
   /**
+   * Formats spoken dialogue subtitles into cinematic viral TikTok/ScaleReach layout
+   * with active keyword highlight and automatic 2-line balancing
+   */
+  formatSpokenSubtitleHTML(text) {
+    if (!text) return '';
+    const clean = text.trim();
+    if (clean.includes('<span') || clean.includes('<br')) return clean;
+
+    const words = clean.split(/\s+/);
+    if (words.length <= 1) {
+      return `<span class="cap-highlight">${clean}</span>`;
+    }
+
+    // Identify power word to highlight (numbers, $, !, ?, or the longest punchiest word)
+    let highlightIdx = words.findIndex(w => w.includes('$') || /\d/.test(w) || w.includes('!') || w.includes('?'));
+    if (highlightIdx === -1) {
+      let maxLen = 0;
+      words.forEach((w, i) => {
+        const cleanW = w.replace(/[^a-zA-Z]/g, '');
+        if (cleanW.length > maxLen) {
+          maxLen = cleanW.length;
+          highlightIdx = i;
+        }
+      });
+    }
+    if (highlightIdx === -1) highlightIdx = Math.floor(words.length / 2);
+
+    const formattedWords = words.map((w, i) => {
+      if (i === highlightIdx) {
+        return `<span class="cap-highlight">${w}</span>`;
+      }
+      return w;
+    });
+
+    if (words.length >= 4 && clean.length > 15) {
+      const mid = Math.ceil(words.length / 2);
+      return `${formattedWords.slice(0, mid).join(' ')}<br>${formattedWords.slice(mid).join(' ')}`;
+    }
+    return formattedWords.join(' ');
+  }
+
+  /**
    * Synchronizes active caption style, position, font size, and text across
    * every single AI Suggested Reel card in real time
    */
@@ -1976,16 +2178,9 @@ class ScaleReachFullApp {
         // Otherwise, each clip displays its OWN unique analyzed viral moment caption!
         const textVal = (this.userAppliedCaption && this.userAppliedCaption.trim()) ||
                         (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) ||
-                        'VIRAL CLIP';
+                        '';
         if (textVal) {
-          const words = textVal.trim().split(/\s+/);
-          // If caption does not fit comfortably in 1 line, auto-balance into 2 lines
-          if (words.length >= 3 && textVal.length > 14) {
-            const mid = Math.ceil(words.length / 2);
-            stickerText.innerHTML = `${words.slice(0, mid).join(' ')}<br>${words.slice(mid).join(' ')}`;
-          } else {
-            stickerText.textContent = textVal;
-          }
+          stickerText.innerHTML = this.formatSpokenSubtitleHTML(textVal);
         } else {
           stickerText.textContent = '';
         }
@@ -2192,15 +2387,9 @@ class ScaleReachFullApp {
         const stickerText = card.querySelector('.reel-hook-caption-sticker .sticker-text');
         if (stickerText && !this.userAppliedCaption) {
           const text = moment.subtitles[subIdx];
-          const words = text.trim().split(/\s+/);
-          if (words.length >= 3 && text.length > 14) {
-            const mid = Math.ceil(words.length / 2);
-            stickerText.innerHTML = `${words.slice(0, mid).join(' ')}<br>${words.slice(mid).join(' ')}`;
-          } else {
-            stickerText.textContent = text;
-          }
+          stickerText.innerHTML = this.formatSpokenSubtitleHTML(text);
         }
-      }, 2200);
+      }, 2000);
     }
 
     // Also sync and play main studio preview video
@@ -2266,14 +2455,7 @@ class ScaleReachFullApp {
     if (!this.userAppliedCaption && moment && moment.caption) {
       const stickerText = targetCard.querySelector('.reel-hook-caption-sticker .sticker-text');
       if (stickerText) {
-        const text = moment.caption;
-        const words = text.trim().split(/\s+/);
-        if (words.length >= 3 && text.length > 14) {
-          const mid = Math.ceil(words.length / 2);
-          stickerText.innerHTML = `${words.slice(0, mid).join(' ')}<br>${words.slice(mid).join(' ')}`;
-        } else {
-          stickerText.textContent = text;
-        }
+        stickerText.innerHTML = this.formatSpokenSubtitleHTML(moment.caption);
       }
     }
 
