@@ -931,7 +931,12 @@ class ScaleReachFullApp {
             end: 45,
             hookDesc: 'Erling Haaland steps up against amateur goalkeeper with $100,000 briefcase in goal.',
             seoTitle: 'He tried to stop Erling Haaland\'s penalty shot for $100,000 ⚽️😱',
-            caption: 'CAN HE SAVE THIS',
+            caption: 'CAN HE SAVE THIS?! ⚽',
+            subtitles: [
+              'CAN HE SCORE ON A PRO GOALIE?!',
+              'THE $100,000 PENALTY SHOT!',
+              'WATCH THIS IMPOSSIBLE SAVE!'
+            ],
             tags: ['#mrbeast', '#haaland', '#football', '#challenge', '#100k', '#viral'],
             badgeTags: ['🔥 99% High Stakes', '⚽ Haaland Strike', '⚡ Immediate Hook']
           },
@@ -944,7 +949,12 @@ class ScaleReachFullApp {
             end: 75,
             hookDesc: 'Goalkeeper miraculously tips the ball over the crossbar with his fingertips.',
             seoTitle: 'Nobody expected the goalkeeper to actually save Haaland\'s shot 🤯🔥',
-            caption: 'HOW DID HE SAVE THAT',
+            caption: 'HOW DID HE SAVE THAT?! 🤯',
+            subtitles: [
+              'HE ACTUALLY SAVED IT?!',
+              'OFF THE CROSSBAR WITH FINGERTIPS!',
+              'THE STADIUM IS IN COMPLETE SHOCK!'
+            ],
             tags: ['#insanesave', '#footballskills', '#mrbeastchallenge', '#clutch', '#fyp'],
             badgeTags: ['😂 97% Laughter Spike', '🧤 Clutch Save', '🎉 Stadium Shock']
           },
@@ -957,7 +967,12 @@ class ScaleReachFullApp {
             end: 110,
             hookDesc: 'Haaland unleashes full velocity strike into target dummy that flies 10 meters backward.',
             seoTitle: 'Erling Haaland\'s kick speed broke the speedometer radar 😱⚽',
-            caption: '100 MPH ROCKET KICK',
+            caption: '100 MPH ROCKET KICK ⚡',
+            subtitles: [
+              '100 MPH ROCKET KICK!',
+              'THAT BALL BROKE THE SPEED RADAR!',
+              'AN ABSOLUTE MISSILE STRIKE!'
+            ],
             tags: ['#haalandpower', '#footballradar', '#mancity', '#mrbeast', '#shortsfeed'],
             badgeTags: ['⚡ 96% Max Power', '🚀 100 MPH', '💥 Impact Slow-Mo']
           },
@@ -970,7 +985,12 @@ class ScaleReachFullApp {
             end: 145,
             hookDesc: 'Contestant hits the crossbar cleanly on second try sending the bench into absolute delirium.',
             seoTitle: 'He actually hit the crossbar against Haaland for $50,000 cash 🤯🎯',
-            caption: 'PERFECT CROSSBAR PING',
+            caption: 'PERFECT CROSSBAR PING 🎯',
+            subtitles: [
+              'CROSSBAR CHALLENGE FOR $50,000!',
+              'SECOND TRY CLEAN PING!',
+              'HE ACTUALLY HIT IT!'
+            ],
             tags: ['#crossbarchallenge', '#impossible', '#footballtrick', '#viralvideo', '#reels'],
             badgeTags: ['🤯 95% Precision', '🎯 Crossbar Ping', '🎉 Pure Hype']
           },
@@ -983,7 +1003,12 @@ class ScaleReachFullApp {
             end: 180,
             hookDesc: 'Haaland shares his famous lotus meditation pose and special glasses routine with the contestant.',
             seoTitle: 'Haaland reveals the exact morning routine that made him world\'s best striker 🧠✨',
-            caption: 'HAALAND SECRET ROUTINE',
+            caption: 'HAALAND SECRET HABIT 🧠',
+            subtitles: [
+              'THE PRE-GAME WARMUP SECRET',
+              'BLUE-LIGHT BLOCKING ROUTINE',
+              'THIS IS WHY HE SCORES GOALS!'
+            ],
             tags: ['#athletehabits', '#mindset', '#strikerroutine', '#footballpro', '#foryou'],
             badgeTags: ['💡 93% Pro Habit', '🧘 Mindset', '🚀 High Saves']
           },
@@ -996,7 +1021,12 @@ class ScaleReachFullApp {
             end: 215,
             hookDesc: 'Contestant breaks into happy tears hugging MrBeast and Haaland as confetti rains down.',
             seoTitle: 'His emotional reaction to winning $100,000 will make your day 🥹💰',
-            caption: 'LIFE CHANGING MOMENT',
+            caption: 'LIFE CHANGING MOMENT 🏆',
+            subtitles: [
+              'THE $100,000 IS YOURS!',
+              'PURE EMOTIONAL WIN',
+              'HE CANNOT BELIEVE IT HAPPENED!'
+            ],
             tags: ['#wholesome', '#moneygiveaway', '#100000dollars', '#emotional', '#shorts'],
             badgeTags: ['🏆 91% Climax', '💰 $100k Handover', '✨ Wholesome']
           },
@@ -1009,7 +1039,12 @@ class ScaleReachFullApp {
             end: 250,
             hookDesc: 'High-speed 1000fps camera captures ball curving with extreme spin right into the postage stamp corner.',
             seoTitle: 'Erling Haaland\'s curve shot broke the laws of physics in slow motion 🤯⚽',
-            caption: 'PHYSICS BROKEN',
+            caption: 'PHYSICS BROKEN 🌪️',
+            subtitles: [
+              '1000 FPS SLOW MOTION REPLAY',
+              'LOOK AT THAT BALL SPIN & CURVE',
+              'PHYSICS LAWS COMPLETELY BROKEN!'
+            ],
             tags: ['#haalandcurver', '#slowmotion', '#footballskills', '#viralreels', '#fyp'],
             badgeTags: ['🎯 90% Curve Precision', '🌪️ 1000 FPS Slow-Mo', '⚡ High Retention']
           },
@@ -1022,7 +1057,12 @@ class ScaleReachFullApp {
             end: 285,
             hookDesc: 'Hilarious unscripted banter between Haaland, MrBeast and the amateur keeper during break time.',
             seoTitle: 'The funniest unscripted moment between Haaland and MrBeast 😂🎬',
-            caption: 'WAIT TILL THE END',
+            caption: 'WAIT TILL THE END 😂',
+            subtitles: [
+              'UNFILTERED BEHIND THE SCENES BLOOPER',
+              'HAALAND BURSTS OUT LAUGHING',
+              'BEST UNEXPECTED CAMERA MOMENT!'
+            ],
             tags: ['#bloopers', '#haalandfunny', '#mrbeastouttakes', '#behindthescenes', '#shorts'],
             badgeTags: ['🚀 89% Viral Outro', '😂 Funniest Blooper', '💬 Comment Spike']
           }
@@ -1367,8 +1407,8 @@ class ScaleReachFullApp {
     const initialTitle = known ? known.title : `YouTube Video (${videoId})`;
     const initialAuthor = known ? known.author : '@YouTube Creator • Online';
 
-    // Immediately analyze video and apply metadata
-    this.applyVideoMeta(targetUrl, initialTitle, initialAuthor, `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+    // Immediately analyze video and apply metadata with 1080p Ultra HD thumbnail
+    this.applyVideoMeta(targetUrl, initialTitle, initialAuthor, `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
 
     // Force ultra 1080p high quality directly on player
     setTimeout(() => this.forceMaxQuality(), 600);
@@ -1378,13 +1418,13 @@ class ScaleReachFullApp {
       .then(res => res.json())
       .then(data => {
         if (data && data.title) {
-          this.applyVideoMeta(targetUrl, data.title, `${data.author_name || 'YouTube Creator'} • Online`, data.thumbnail_url || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+          this.applyVideoMeta(targetUrl, data.title, `${data.author_name || 'YouTube Creator'} • Online`, data.thumbnail_url || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
           this.showToast(`Loaded Real YouTube Video: ${data.title} 🎬`);
         }
       })
       .catch(() => {
         if (!known) {
-          this.applyVideoMeta(targetUrl, 'YouTube Video Stream', '@Creator • Online', `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+          this.applyVideoMeta(targetUrl, 'YouTube Video Stream', '@Creator • Online', `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
         }
       });
   }
@@ -1596,7 +1636,12 @@ class ScaleReachFullApp {
         end: segs[0].end,
         hookDesc: `AI detected peak speech cadence and high visual movement in ${cleanTitle}. Perfect 9:16 opener.`,
         seoTitle: `Wait till you see what happens in this ${cleanTitle} clip 😱🔥`,
-        caption: 'WATCH TILL THE END',
+        caption: 'WAIT TILL YOU SEE THIS 😱',
+        subtitles: [
+          'WAIT TILL YOU SEE THIS!',
+          'THE HOOK THAT SURPRISED EVERYONE',
+          'PAY CLOSE ATTENTION RIGHT HERE!'
+        ],
         tags: [`#${tagWord}`, '#shorts', '#viral', '#trending', '#fyp', '#reels'],
         badgeTags: ['🔥 99% Hook Score', '⚡ Fast Pacing', '🎯 High Retention']
       },
@@ -1609,7 +1654,12 @@ class ScaleReachFullApp {
         end: segs[1].end,
         hookDesc: `Acoustic frequency jump detected. Rapid editing pace keeps retention curve above 85%.`,
         seoTitle: `The pacing in this part of ${cleanTitle} is totally insane ⚡🏎️`,
-        caption: 'DON\'T BLINK',
+        caption: 'DON\'T BLINK NOW ⚡',
+        subtitles: [
+          'DON\'T BLINK FOR A SECOND!',
+          'THE FASTEST PACING IN THE VIDEO',
+          'WATCH THIS RAPID TRANSITION!'
+        ],
         tags: [`#${tagWord}`, '#highaction', '#viralmoments', '#shortsfeed', '#fyp'],
         badgeTags: ['⚡ 98% High Pace', '🏃 Quick Cuts', '🔥 High Energy']
       },
@@ -1622,7 +1672,12 @@ class ScaleReachFullApp {
         end: segs[2].end,
         hookDesc: `Laughter and high acoustic energy cluster detected.`,
         seoTitle: `The most unexpected reaction in ${cleanTitle} caught on camera 😂💀`,
-        caption: 'DID YOU SEE THAT',
+        caption: 'DID YOU SEE THAT?! 😂',
+        subtitles: [
+          'DID YOU SEE HIS REACTION?!',
+          'NOBODY EXPECTED THAT TO HAPPEN',
+          'PURE UNFILTERED MOMENT!'
+        ],
         tags: [`#${tagWord}`, '#reaction', '#funny', '#viralclips', '#foryou'],
         badgeTags: ['😂 96% Energy Spike', '💬 Comment Magnet', '💥 Plot Twist']
       },
@@ -1635,7 +1690,12 @@ class ScaleReachFullApp {
         end: segs[3].end,
         hookDesc: `Visual expression tracking detected sudden micro-expressions and tone shift.`,
         seoTitle: `Nobody saw this coming during ${cleanTitle} 🤯👀`,
-        caption: 'NO WAY THIS HAPPENED',
+        caption: 'NOBODY SAW THIS COMING 🤯',
+        subtitles: [
+          'NOBODY SAW THIS COMING!',
+          'THE BIGGEST UNEXPECTED TWIST',
+          'EVERYONE WAS IN COMPLETE SHOCK!'
+        ],
         tags: [`#${tagWord}`, '#plottwist', '#shocking', '#reaction', '#trending'],
         badgeTags: ['🤯 95% Twist', '🎭 High Drama', '💬 Viral Debate']
       },
@@ -1648,7 +1708,12 @@ class ScaleReachFullApp {
         end: segs[4].end,
         hookDesc: `High value knowledge drop with focused speaker framing. Proven shareable format.`,
         seoTitle: `This one secret from ${cleanTitle} will completely change your perspective 🧠✨`,
-        caption: 'LISTEN CLOSELY',
+        caption: 'LISTEN VERY CAREFULLY 🧠',
+        subtitles: [
+          'LISTEN VERY CAREFULLY!',
+          'THE GOLDEN INSIGHT HERE',
+          'THIS CHANGES EVERYTHING!'
+        ],
         tags: [`#${tagWord}`, '#knowledge', '#mindset', '#curiosity', '#reels'],
         badgeTags: ['💡 93% Curiosity', '📚 Key Takeaway', '🚀 High Saves']
       },
@@ -1661,7 +1726,12 @@ class ScaleReachFullApp {
         end: segs[5].end,
         hookDesc: `High emotional finish and concluding statement ideal for driving profile follows and shares.`,
         seoTitle: `The ending of this video surprised everyone who watched 🏆💯`,
-        caption: 'THIS IS UNREAL',
+        caption: 'THIS IS UNREAL 🏆',
+        subtitles: [
+          'THIS IS ABSOLUTELY UNREAL!',
+          'THE PEAK VIRAL CLIMAX',
+          'WAIT TILL THE VERY FINISH!'
+        ],
         tags: [`#${tagWord}`, '#finale', '#bestmoments', '#shorts', '#viralvideo'],
         badgeTags: ['🏆 91% Climax', '🚀 High Share Rate', '✨ Final Punchline']
       },
@@ -1674,7 +1744,12 @@ class ScaleReachFullApp {
         end: segs[6].end,
         hookDesc: `Visually captivating peak moment perfect for looping engagement and shares.`,
         seoTitle: `Look at this unbelievable detail in ${cleanTitle} 🤯🔥`,
-        caption: 'UNBELIEVABLE DETAIL',
+        caption: 'LOOK AT THIS DETAIL 🔥',
+        subtitles: [
+          'LOOK AT THIS CRAZY DETAIL!',
+          'BREAKING IT DOWN FRAME BY FRAME',
+          'PURE VISUAL PERFECTION!'
+        ],
         tags: [`#${tagWord}`, '#slowmo', '#visualmagic', '#viralreels', '#shorts'],
         badgeTags: ['🎯 90% Visual Hit', '🌪️ Slow-Mo Peak', '⚡ High Retention']
       },
@@ -1687,7 +1762,12 @@ class ScaleReachFullApp {
         end: segs[7].end,
         hookDesc: `Unfiltered outro moment that triggers high comment velocity and repeat shares.`,
         seoTitle: `The funniest ending of ${cleanTitle} you have ever seen 😂🎬`,
-        caption: 'WAIT FOR THE END',
+        caption: 'THE FUNNIEST OUTRO 😂',
+        subtitles: [
+          'THE FUNNIEST OUTRO EVER!',
+          'BEST BLOOPER AT THE END',
+          'DON\'T FORGET TO SHARE THIS!'
+        ],
         tags: [`#${tagWord}`, '#bloopers', '#viraloutro', '#foryou', '#trending'],
         badgeTags: ['🚀 89% Viral Outro', '😂 Funniest Cut', '💬 Comment Spike']
       }
@@ -1721,7 +1801,7 @@ class ScaleReachFullApp {
       const defaultPoster = `thumb_reel_${(idx % 8) + 1}.jpg`;
       let posterImg = moment.poster || defaultPoster;
       if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
-        posterImg = `https://img.youtube.com/vi/${this.currentYouTubeId}/hqdefault.jpg`;
+        posterImg = `https://img.youtube.com/vi/${this.currentYouTubeId}/maxresdefault.jpg`;
       }
 
       card.innerHTML = `
@@ -1744,10 +1824,9 @@ class ScaleReachFullApp {
             <span class="sound-icon">🔇</span>
           </button>
 
-          <!-- On-Screen Viral Hook Caption Sticker -->
+          <!-- On-Screen Viral Caption Sticker (Clean & Focused) -->
           <div class="reel-hook-caption-sticker">
             <div class="sticker-text">${hookCaption}</div>
-            <div class="sticker-subtext">${hookText}</div>
           </div>
 
           <!-- Center Play / Pause Glassmorphism Circle -->
@@ -1912,11 +1991,10 @@ class ScaleReachFullApp {
         }
       }
 
-      // Completely hide any subtext from on-screen video (only user selected caption shows!)
+      // Completely remove any subtext from on-screen video (only viral speech caption shows!)
       const stickerSubtext = sticker.querySelector('.sticker-subtext');
       if (stickerSubtext) {
-        stickerSubtext.style.display = 'none';
-        stickerSubtext.textContent = '';
+        stickerSubtext.remove();
       }
     });
   }
@@ -1954,19 +2032,19 @@ class ScaleReachFullApp {
   }
 
   forceMaxQuality() {
-    if (this.youtubeIframe) {
-      this.youtubeIframe.style.filter = 'none';
-      this.postYouTubeCommand(this.youtubeIframe, 'setPlaybackQuality', ['hd1080']);
-      this.postYouTubeCommand(this.youtubeIframe, 'setPlaybackQualityRange', ['hd1080', 'highres']);
-      this.disableYouTubeCaptions(this.youtubeIframe);
-    }
-    if (this.phoneYoutubeIframe) {
-      this.phoneYoutubeIframe.style.filter = 'none';
-      this.postYouTubeCommand(this.phoneYoutubeIframe, 'setPlaybackQuality', ['hd1080']);
-      this.postYouTubeCommand(this.phoneYoutubeIframe, 'setPlaybackQualityRange', ['hd1080', 'highres']);
-      this.disableYouTubeCaptions(this.phoneYoutubeIframe);
-    }
-    document.querySelectorAll('.reel-card-yt-frame').forEach(f => this.disableYouTubeCaptions(f));
+    const applyToFrame = (frame) => {
+      if (!frame) return;
+      frame.style.filter = 'none';
+      this.postYouTubeCommand(frame, 'setPlaybackQuality', ['hd1080']);
+      this.postYouTubeCommand(frame, 'setPlaybackQualityRange', ['hd1080', 'highres']);
+      this.postYouTubeCommand(frame, 'setSuggestedQuality', ['hd1080']);
+      this.disableYouTubeCaptions(frame);
+    };
+
+    if (this.youtubeIframe) applyToFrame(this.youtubeIframe);
+    if (this.phoneYoutubeIframe) applyToFrame(this.phoneYoutubeIframe);
+    document.querySelectorAll('.reel-card-yt-frame').forEach(f => applyToFrame(f));
+
     if (this.sourceVideo) {
       this.sourceVideo.style.filter = 'none';
     }
@@ -2024,11 +2102,21 @@ class ScaleReachFullApp {
               ytWrapper.innerHTML = `<iframe class="reel-card-yt-frame" src="${targetSrc}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
               const newFrame = ytWrapper.querySelector('iframe');
               if (newFrame) {
-                newFrame.onload = () => this.disableYouTubeCaptions(newFrame);
-                this.disableYouTubeCaptions(newFrame);
+                const enforceQuality = () => {
+                  this.postYouTubeCommand(newFrame, 'setPlaybackQuality', ['hd1080']);
+                  this.postYouTubeCommand(newFrame, 'setPlaybackQualityRange', ['hd1080', 'highres']);
+                  this.postYouTubeCommand(newFrame, 'setSuggestedQuality', ['hd1080']);
+                  this.disableYouTubeCaptions(newFrame);
+                };
+                newFrame.onload = enforceQuality;
+                enforceQuality();
+                setTimeout(enforceQuality, 400);
+                setTimeout(enforceQuality, 1200);
               }
             } else {
               this.postYouTubeCommand(ytIframe, 'playVideo');
+              this.postYouTubeCommand(ytIframe, 'setPlaybackQuality', ['hd1080']);
+              this.postYouTubeCommand(ytIframe, 'setPlaybackQualityRange', ['hd1080', 'highres']);
               this.disableYouTubeCaptions(ytIframe);
             }
           }
@@ -2086,6 +2174,35 @@ class ScaleReachFullApp {
     // Update main studio play/pause button
     if (this.playPauseBtn) this.playPauseBtn.textContent = '⏸';
 
+    // Start dynamic speech subtitles cycling during video playback
+    if (this.cardSubtitleTimer) {
+      clearInterval(this.cardSubtitleTimer);
+      this.cardSubtitleTimer = null;
+    }
+    if (moment && moment.subtitles && moment.subtitles.length > 0 && !this.userAppliedCaption) {
+      let subIdx = 0;
+      this.cardSubtitleTimer = setInterval(() => {
+        const card = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`);
+        if (!card || !card.classList.contains('is-playing')) {
+          clearInterval(this.cardSubtitleTimer);
+          this.cardSubtitleTimer = null;
+          return;
+        }
+        subIdx = (subIdx + 1) % moment.subtitles.length;
+        const stickerText = card.querySelector('.reel-hook-caption-sticker .sticker-text');
+        if (stickerText && !this.userAppliedCaption) {
+          const text = moment.subtitles[subIdx];
+          const words = text.trim().split(/\s+/);
+          if (words.length >= 3 && text.length > 14) {
+            const mid = Math.ceil(words.length / 2);
+            stickerText.innerHTML = `${words.slice(0, mid).join(' ')}<br>${words.slice(mid).join(' ')}`;
+          } else {
+            stickerText.textContent = text;
+          }
+        }
+      }, 2200);
+    }
+
     // Also sync and play main studio preview video
     if (this.activeSourceType === 'youtube') {
       this.syncYouTubeClipTime();
@@ -2137,6 +2254,28 @@ class ScaleReachFullApp {
     if (iconPlay) iconPlay.style.display = 'block';
     if (iconPause) iconPause.style.display = 'none';
     if (wave) wave.style.display = 'none';
+
+    // Clear dynamic subtitles timer
+    if (this.cardSubtitleTimer) {
+      clearInterval(this.cardSubtitleTimer);
+      this.cardSubtitleTimer = null;
+    }
+
+    // Revert sticker back to main moment caption when paused
+    const moment = this.clipsMoments && this.clipsMoments[targetIdx];
+    if (!this.userAppliedCaption && moment && moment.caption) {
+      const stickerText = targetCard.querySelector('.reel-hook-caption-sticker .sticker-text');
+      if (stickerText) {
+        const text = moment.caption;
+        const words = text.trim().split(/\s+/);
+        if (words.length >= 3 && text.length > 14) {
+          const mid = Math.ceil(words.length / 2);
+          stickerText.innerHTML = `${words.slice(0, mid).join(' ')}<br>${words.slice(mid).join(' ')}`;
+        } else {
+          stickerText.textContent = text;
+        }
+      }
+    }
 
     // Update main studio play/pause button
     if (this.playPauseBtn) this.playPauseBtn.textContent = '▶';
@@ -2402,33 +2541,7 @@ class ScaleReachFullApp {
       card.addEventListener('click', () => {
         const styleId = card.getAttribute('data-id');
         const styleName = card.querySelector('.cap-label-name') ? card.querySelector('.cap-label-name').textContent : styleId;
-
-        this.selectedStyleId = styleId;
-        this.selectedStyleName = styleName;
-
-        // Synchronize active state across Screen 2 & Screen 3 cards
-        document.querySelectorAll('.caption-card-item').forEach(c => {
-          if (c.getAttribute('data-id') === styleId) {
-            c.classList.add('active');
-          } else {
-            c.classList.remove('active');
-          }
-        });
-
-        if (this.activeStyleBadge) {
-          this.activeStyleBadge.textContent = `Style: ${this.selectedStyleName}`;
-        }
-
-        // Preserve user's caption text, only set fallback if empty
-        if (!this.userSelectedCaption && (!this.studioCaptionTextInput || !this.studioCaptionTextInput.value.trim())) {
-          const sample = this.styleSampleTexts[this.selectedStyleId] || 'TO GET STARTED';
-          this.userSelectedCaption = sample;
-          if (this.customCaptionInput) this.customCaptionInput.value = sample;
-          if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = sample;
-        }
-
-        this.updateSuggestedReelsCaptions();
-        this.showToast(`Selected: ${this.selectedStyleName} ✨ (Applied to all suggested reels)`);
+        this.selectCaptionStyle(styleId, styleName);
       });
     });
 
@@ -3076,28 +3189,7 @@ class ScaleReachFullApp {
       item.addEventListener('click', () => {
         const styleId = item.getAttribute('data-id');
         const styleName = item.getAttribute('data-name') || (item.querySelector('.cap-label-name') ? item.querySelector('.cap-label-name').textContent : styleId);
-        
-        this.selectedStyleId = styleId;
-        this.selectedStyleName = styleName;
-
-        // Synchronize active class across both Screen 2 and Screen 3 cards
-        allCaptionCards.forEach(c => {
-          if (c.getAttribute('data-id') === styleId) {
-            c.classList.add('active');
-          } else {
-            c.classList.remove('active');
-          }
-        });
-
-        if (this.activeStyleBadge) {
-          this.activeStyleBadge.textContent = `Style: ${styleName}`;
-        }
-
-        // Synchronize selected style across ALL suggested clip cards instantly!
-        this.updateSuggestedReelsCaptions();
-
-        this.updateCaptionsStatusBanner();
-        this.showToast(`Applied "${styleName}" style across all reels! ✨`);
+        this.selectCaptionStyle(styleId, styleName);
       });
     });
 
@@ -3153,6 +3245,29 @@ class ScaleReachFullApp {
         });
       });
     }
+  }
+
+  selectCaptionStyle(styleId, styleName) {
+    if (!styleId) return;
+    this.selectedStyleId = styleId;
+    this.selectedStyleName = styleName || styleId;
+
+    document.querySelectorAll('.caption-card-item').forEach(c => {
+      if (c.getAttribute('data-id') === styleId) {
+        c.classList.add('active');
+      } else {
+        c.classList.remove('active');
+      }
+    });
+
+    if (this.activeStyleBadge) {
+      this.activeStyleBadge.textContent = `Style: ${this.selectedStyleName}`;
+    }
+
+    // Never overwrite the caption text - only update the visual style!
+    this.updateSuggestedReelsCaptions();
+    this.updateCaptionsStatusBanner();
+    this.showToast(`Active Style: ${this.selectedStyleName} ✨ (Applied to all suggested reels)`);
   }
 
   updateCaptionsStatusBanner() {
@@ -3925,8 +4040,6 @@ class ScaleReachFullApp {
     const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
     const rawText = ((this.userAppliedCaption && this.userAppliedCaption.trim()) ||
                      (this.clipsMoments && this.clipsMoments[activeIdx] && this.clipsMoments[activeIdx].caption) ||
-                     (this.studioCaptionTextInput && this.studioCaptionTextInput.value) ||
-                     (this.customCaptionInput && this.customCaptionInput.value) ||
                      'VIRAL MOMENT').trim();
     if (!rawText) return;
 

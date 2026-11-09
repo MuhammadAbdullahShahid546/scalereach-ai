@@ -1625,8 +1625,13 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   position: absolute !important;
   left: 50% !important;
   top: 0 !important;
-  transform: translateX(-50%) !important;
+  transform: translateX(-50%) translateZ(0) !important;
   z-index: 2;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  filter: contrast(1.04) saturate(1.05) brightness(1.01);
 }
 /* Fill mode - 320% zoomed vertical crop */
 .phone-yt-wrapper.layout-fill iframe {
@@ -2066,8 +2071,13 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   position: absolute !important;
   left: 50% !important;
   top: 0 !important;
-  transform: translateX(-50%) !important;
+  transform: translateX(-50%) translateZ(0) !important;
   object-fit: cover !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  filter: contrast(1.04) saturate(1.05) brightness(1.01);
 }
 
 .reel-card-video {
@@ -2076,6 +2086,9 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   object-fit: cover !important;
   position: absolute !important;
   inset: 0 !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.04) saturate(1.05) brightness(1.01);
 }
 
 /* Full Fill Mode (320% Zoom for Edge-to-Edge Crop) */
@@ -2435,23 +2448,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 .sticker-subtext {
-  display: inline-block !important;
-  font-size: 0.68rem;
-  color: #f8fafc;
-  font-weight: 700;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
-  max-width: 86% !important;
-  width: auto !important;
-  line-height: 1.25 !important;
-  background: rgba(0, 0, 0, 0.55);
-  padding: 3px 10px;
-  border-radius: 6px;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  white-space: normal !important;
-  text-align: center !important;
-  margin: 0 auto !important;
-  box-sizing: border-box !important;
+  display: none !important;
 }
 
 /* Center Play / Pause Glassmorphism Circle */
@@ -2469,16 +2466,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* While video is playing, HIDE the center pause button completely so the video and caption are 100% visible! */
-.suggest-reel-card.is-playing .reel-center-play {
+/* While video is playing, HIDE the center pause button completely so video and captions are never obstructed! */
+.suggest-reel-card.is-playing .reel-center-play,
+.suggest-reel-card.is-playing:hover .reel-center-play {
   opacity: 0 !important;
   pointer-events: none !important;
-}
-
-/* Show only on mouse hover so user can easily click to pause */
-.suggest-reel-card.is-playing:hover .reel-center-play {
-  opacity: 1 !important;
-  pointer-events: auto !important;
+  display: none !important;
 }
 
 .reel-play-circle-btn {
