@@ -1605,10 +1605,26 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   overflow: hidden; display: flex; align-items: center; justify-content: center; z-index: 2;
   border-radius: 28px;
+  background: #000;
 }
+.phone-yt-backdrop {
+  position: absolute; inset: -15px;
+  background-size: cover; background-position: center;
+  filter: blur(24px) brightness(0.6);
+  transform: scale(1.12);
+  z-index: 1;
+  pointer-events: none;
+}
+/* Safe Fit 9:16 (Default) - 100% of widescreen video & all text/captions stay strictly inside screen */
 .phone-yt-wrapper iframe {
+  width: 100%; height: 100%; object-fit: contain; border: none; pointer-events: none;
+  position: relative; z-index: 2;
+}
+/* Fill mode - 320% zoomed vertical crop */
+.phone-yt-wrapper.layout-fill iframe {
   width: 320%; height: 100%; object-fit: cover; border: none; pointer-events: none; max-width: none;
   position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+  z-index: 2;
 }
 
 #phoneCaptionsOverlayCanvas {
@@ -1977,31 +1993,31 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: block;
 }
 
-/* Real Video Poster Backdrop - Guarantees the card NEVER shows an empty black screen */
+/* Real Video Poster Backdrop - Guarantees cinematic blurred background when letterboxing */
 .reel-card-backdrop {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: -10px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  filter: blur(18px) brightness(0.65);
+  transform: scale(1.1);
   z-index: 1;
   transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
 }
 
 .suggest-reel-card:hover .reel-card-backdrop {
-  transform: scale(1.06);
+  transform: scale(1.15);
 }
 
+/* Safe Fit Native Video (Default) - 100% of video content and text stays within 9:16 borders */
 .reel-card-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   background: transparent;
   z-index: 2;
   pointer-events: none;
@@ -2011,8 +2027,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 /* YouTube Embedded Live Player inside 9:16 Card */
 .reel-card-yt-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -2020,18 +2035,77 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   z-index: 2;
   pointer-events: none;
   background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Safe Fit YouTube Player (Default): 100% visible inside 9:16 card, zero text or lower-third cut off */
 .reel-card-yt-frame {
-  width: 320%;
+  width: 100%;
   height: 100%;
-  max-width: none;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
+  object-fit: contain;
   border: none;
   pointer-events: none;
+  position: absolute;
+  inset: 0;
+  transform: none;
+}
+
+/* Full Fill Mode (320% Zoom for Edge-to-Edge Crop) */
+.ai-suggested-grid.mode-fill .reel-card-yt-frame,
+.suggest-reel-card.mode-fill .reel-card-yt-frame {
+  width: 320% !important;
+  height: 100% !important;
+  max-width: none !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 0 !important;
+  transform: translateX(-50%) !important;
+}
+
+.ai-suggested-grid.mode-fill .reel-card-video,
+.suggest-reel-card.mode-fill .reel-card-video {
+  object-fit: cover !important;
+}
+
+/* Framing Controls in AI Suggested Card Header */
+.card-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reel-framing-pill-group {
+  display: flex;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.reel-framing-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reel-framing-btn:hover {
+  color: #fff;
+}
+
+.reel-framing-btn.active {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
 }
 
 .suggest-reel-card.is-playing .reel-play-circle-btn {
@@ -2154,9 +2228,9 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .reel-hook-caption-sticker {
   position: absolute;
   top: 19%;
-  left: 10px;
-  right: 10px;
-  width: calc(100% - 20px);
+  left: 12px;
+  right: 12px;
+  width: calc(100% - 24px);
   box-sizing: border-box;
   text-align: center;
   z-index: 6;
@@ -2164,7 +2238,8 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 5px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2174,7 +2249,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 /* 9:16 Ratio Safe Zone Positions (Never hides behind footer or overflows) */
 .reel-hook-caption-sticker.pos-top {
-  top: 15% !important;
+  top: 14% !important;
   bottom: auto !important;
   transform: none !important;
 }
@@ -2187,7 +2262,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .reel-hook-caption-sticker.pos-bottom {
   top: auto !important;
-  bottom: 35% !important;
+  bottom: 34% !important;
   transform: none !important;
 }
 
@@ -2210,25 +2285,27 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 .sticker-text {
-  display: inline-block;
-  max-width: 90% !important;
+  display: inline-block !important;
+  max-width: 86% !important;
+  width: auto !important;
   box-sizing: border-box !important;
   word-wrap: break-word !important;
   overflow-wrap: break-word !important;
   word-break: normal !important;
   white-space: normal !important;
   text-align: center !important;
+  margin: 0 auto !important;
   background: rgba(0, 0, 0, 0.88);
   color: #facc15;
   font-weight: 900;
   font-size: 0.78rem;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(250, 204, 21, 0.35);
-  line-height: 1.35;
+  line-height: 1.3 !important;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -2319,18 +2396,23 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 .sticker-subtext {
+  display: inline-block !important;
   font-size: 0.68rem;
   color: #f8fafc;
   font-weight: 700;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
-  max-width: 90%;
-  line-height: 1.25;
-  background: rgba(0, 0, 0, 0.45);
-  padding: 2px 8px;
-  border-radius: 4px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  text-align: center;
+  max-width: 86% !important;
+  width: auto !important;
+  line-height: 1.25 !important;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 3px 10px;
+  border-radius: 6px;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
 }
 
 /* Center Play / Pause Glassmorphism Circle */

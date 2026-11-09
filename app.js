@@ -164,7 +164,7 @@ class ScaleReachFullApp {
     // State Variables
     this.selectedStyleId = 'classic';
     this.selectedStyleName = 'Classic';
-    this.activeLayout = 'standard';
+    this.activeLayout = 'fit';
     this.activePan = 0.5;
     this.clipStart = 15;
     this.clipEnd = 45;
@@ -1479,6 +1479,10 @@ class ScaleReachFullApp {
     if (this.studioVideoTitle) this.studioVideoTitle.textContent = title;
     if (this.studioChannelPill) this.studioChannelPill.textContent = author;
     if (img && this.videoThumbImg) this.videoThumbImg.src = img;
+    const phoneYtBackdrop = document.getElementById('phoneYtBackdrop');
+    if (phoneYtBackdrop && img) {
+      phoneYtBackdrop.style.backgroundImage = `url('${img}')`;
+    }
     if (this.captionTitleTag) this.captionTitleTag.textContent = `"${title}"`;
     if (this.captionAuthorTag) this.captionAuthorTag.textContent = '@ajjez_clips';
 
@@ -1867,10 +1871,35 @@ class ScaleReachFullApp {
 
       const stickerText = sticker.querySelector('.sticker-text');
       if (stickerText) {
+        let textVal = '';
         if (idx === this.activeClipIndex && currentInputVal) {
-          stickerText.textContent = currentInputVal;
+          textVal = currentInputVal;
         } else if (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) {
-          stickerText.textContent = this.clipsMoments[idx].caption;
+          textVal = this.clipsMoments[idx].caption;
+        }
+        if (textVal) {
+          const words = textVal.trim().split(/\s+/);
+          // If caption does not fit comfortably in 1 line, auto-balance into 2 lines
+          if (words.length >= 3 && textVal.length > 16) {
+            const mid = Math.ceil(words.length / 2);
+            stickerText.innerHTML = `${words.slice(0, mid).join(' ')}<br>${words.slice(mid).join(' ')}`;
+          } else {
+            stickerText.textContent = textVal;
+          }
+        }
+      }
+
+      const stickerSubtext = sticker.querySelector('.sticker-subtext');
+      if (stickerSubtext) {
+        const subVal = (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].hookText) || '';
+        if (subVal) {
+          const subWords = subVal.trim().split(/\s+/);
+          if (subWords.length >= 4 && subVal.length > 22) {
+            const mid = Math.ceil(subWords.length / 2);
+            stickerSubtext.innerHTML = `${subWords.slice(0, mid).join(' ')}<br>${subWords.slice(mid).join(' ')}`;
+          } else {
+            stickerSubtext.textContent = subVal;
+          }
         }
       }
     });
@@ -2674,20 +2703,56 @@ class ScaleReachFullApp {
       this.muteBtn.textContent = this.sourceVideo.muted ? '🔇' : '🔊';
     });
 
-    // Layout toggles (Full 9:16 vs Split-screen)
+    // Layout toggles (Safe Fit 9:16 vs Full 9:16 vs Split-screen vs Square)
     this.layoutBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         this.layoutBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         this.activeLayout = btn.getAttribute('data-layout');
-        if (this.activeLayout === 'split') {
+        if (this.phoneYtWrapper) {
+          if (this.activeLayout === 'standard') {
+            this.phoneYtWrapper.classList.add('layout-fill');
+            this.phoneYtWrapper.classList.remove('mode-fit');
+          } else {
+            this.phoneYtWrapper.classList.remove('layout-fill');
+            this.phoneYtWrapper.classList.add('mode-fit');
+          }
+        }
+
+        if (this.activeLayout === 'fit') {
+          this.showToast('Safe Fit 9:16: Video fits 100% with zero text cut off 📐');
+        } else if (this.activeLayout === 'split') {
           this.showToast('Split-Screen: Top Video + Bottom Subway Surfers! 🎮');
+        } else if (this.activeLayout === 'square') {
+          this.showToast('Square 1:1 format for Instagram 🔲');
         } else {
           this.showToast('Full 9:16 Video Reframe 📱');
         }
       });
     });
+
+    // Suggested Reel Cards Framing Toggles (Safe Fit vs Full Fill)
+    const cardFramingFitBtn = document.getElementById('cardFramingFitBtn');
+    const cardFramingFillBtn = document.getElementById('cardFramingFillBtn');
+    if (cardFramingFitBtn && cardFramingFillBtn) {
+      cardFramingFitBtn.addEventListener('click', () => {
+        cardFramingFitBtn.classList.add('active');
+        cardFramingFillBtn.classList.remove('active');
+        if (this.aiSuggestedList) {
+          this.aiSuggestedList.classList.remove('mode-fill');
+        }
+        this.showToast('Cards: Safe Fit 9:16 active - No text or captions cut off 📐');
+      });
+      cardFramingFillBtn.addEventListener('click', () => {
+        cardFramingFillBtn.classList.add('active');
+        cardFramingFitBtn.classList.remove('active');
+        if (this.aiSuggestedList) {
+          this.aiSuggestedList.classList.add('mode-fill');
+        }
+        this.showToast('Cards: Full Fill 9:16 zoom active 📱');
+      });
+    }
 
     if (this.panSlider) {
       this.panSlider.addEventListener('input', (e) => {
@@ -3580,8 +3645,63 @@ class ScaleReachFullApp {
           this.renderCrazyCaptionStyle(ctx, cw, topH * 0.85);
         }
 
+      } else if (this.activeLayout === 'fit') {
+        // Fit 9:16: Full 16:9 widescreen video centered with blurred backdrop (Zero text or captions cut off!)
+        if (this.sourceVideo.readyState >= 2 || this.sourceVideo.srcObject) {
+          const vw = this.sourceVideo.videoWidth || 1280;
+          const vh = this.sourceVideo.videoHeight || 720;
+
+          // Blurred Background to fill 9:16 frame
+          ctx.save();
+          ctx.filter = 'blur(28px) brightness(0.65)';
+          ctx.drawImage(this.sourceVideo, 0, 0, vw, vh, -30, -30, cw + 60, ch + 60);
+          ctx.restore();
+
+          // Centered 16:9 Video (Guarantees all text and faces fit 100% inside screen)
+          const fitH = cw * (vh / vw);
+          const fitY = (ch - fitH) / 2;
+          ctx.drawImage(this.sourceVideo, 0, 0, vw, vh, 0, fitY, cw, fitH);
+        }
+
+        if (this.autoHookToggle && this.autoHookToggle.checked) {
+          this.renderTopHookBanner(ctx, cw, 60);
+        }
+
+        if ((!this.studioCaptionsToggle || this.studioCaptionsToggle.checked) &&
+            (!this.captionsToggle || this.captionsToggle.checked)) {
+          this.renderCrazyCaptionStyle(ctx, cw, ch * 0.72);
+        }
+
+      } else if (this.activeLayout === 'square') {
+        // 1:1 Square centered inside 9:16 frame
+        if (this.sourceVideo.readyState >= 2 || this.sourceVideo.srcObject) {
+          const vw = this.sourceVideo.videoWidth || 1280;
+          const vh = this.sourceVideo.videoHeight || 720;
+          const squareSize = vh;
+          const maxOffset = vw - squareSize;
+          const cropX = Math.max(0, maxOffset * this.activePan);
+
+          // Blurred Background
+          ctx.save();
+          ctx.filter = 'blur(28px) brightness(0.65)';
+          ctx.drawImage(this.sourceVideo, 0, 0, vw, vh, -30, -30, cw + 60, ch + 60);
+          ctx.restore();
+
+          const targetY = (ch - cw) / 2;
+          ctx.drawImage(this.sourceVideo, cropX, 0, squareSize, squareSize, 0, targetY, cw, cw);
+        }
+
+        if (this.autoHookToggle && this.autoHookToggle.checked) {
+          this.renderTopHookBanner(ctx, cw, 60);
+        }
+
+        if ((!this.studioCaptionsToggle || this.studioCaptionsToggle.checked) &&
+            (!this.captionsToggle || this.captionsToggle.checked)) {
+          this.renderCrazyCaptionStyle(ctx, cw, ch * 0.74);
+        }
+
       } else {
-        // Full 9:16 Video Reframe
+        // Full 9:16 Video Reframe (Standard Zoom)
         if (this.sourceVideo.readyState >= 2 || this.sourceVideo.srcObject) {
           const vw = this.sourceVideo.videoWidth || 1280;
           const vh = this.sourceVideo.videoHeight || 720;
@@ -3629,16 +3749,37 @@ class ScaleReachFullApp {
     if (!hookText) return;
 
     ctx.save();
-    ctx.font = '800 28px "Plus Jakarta Sans", sans-serif';
+    let size = 26;
+    ctx.font = `800 ${size}px "Plus Jakarta Sans", sans-serif`;
     ctx.textAlign = 'center';
-    const metrics = ctx.measureText(hookText);
+    const maxW = cw * 0.78;
+    let lines = this.wrapCaptionLines(ctx, hookText, maxW);
+    while (size > 16 && lines.some(l => ctx.measureText(l).width > maxW)) {
+      size -= 2;
+      ctx.font = `800 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, hookText, maxW);
+    }
+
+    const lineH = size * 1.3;
+    const totalH = lines.length * lineH + 16;
+    let maxLW = 0;
+    lines.forEach(l => {
+      const w = ctx.measureText(l).width;
+      if (w > maxLW) maxLW = w;
+    });
+
+    const boxW = Math.min(maxW + 24, maxLW + 36);
+    const boxX = (cw - boxW) / 2;
+    const boxY = y - 20;
 
     ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-    ctx.roundRect(cw / 2 - metrics.width / 2 - 20, y - 24, metrics.width + 40, 48, 24);
+    ctx.roundRect(boxX, boxY, boxW, totalH, 20);
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
-    ctx.fillText(hookText, cw / 2, y + 10);
+    lines.forEach((l, i) => {
+      ctx.fillText(l, cw / 2, y + 10 + (i * lineH));
+    });
     ctx.restore();
   }
 
@@ -3696,27 +3837,42 @@ class ScaleReachFullApp {
   }
 
   /**
-   * Helper to wrap caption text into lines that strictly fit within maxW for 9:16 ratio
+   * Helper to wrap caption text into lines that strictly fit within maxW for 9:16 ratio.
+   * If caption fits in 1 line, returns [1 line].
+   * If caption does not fit in 1 line, automatically balances into exactly 2 lines so it never overflows.
    */
   wrapCaptionLines(ctx, text, maxW) {
     if (!text) return [];
-    const words = text.trim().split(/\s+/);
-    if (words.length <= 1) return [text.trim()];
+    const trimmed = text.trim();
+    if (!trimmed) return [];
 
-    const lines = [];
-    let curLine = words[0];
+    // 1. If text fits completely on 1 single line inside maxW, keep on 1 line
+    if (ctx.measureText(trimmed.toUpperCase()).width <= maxW) {
+      return [trimmed];
+    }
 
+    // 2. If it does NOT fit on 1 line -> Auto-adjust into 2 balanced lines
+    const words = trimmed.split(/\s+/);
+    if (words.length <= 1) {
+      return [trimmed];
+    }
+
+    // Find the most balanced split point for 2 lines
+    let bestSplitIdx = Math.ceil(words.length / 2);
+    let minDiff = Infinity;
     for (let i = 1; i < words.length; i++) {
-      const testLine = curLine + ' ' + words[i];
-      if (ctx.measureText(testLine).width <= maxW) {
-        curLine = testLine;
-      } else {
-        lines.push(curLine);
-        curLine = words[i];
+      const lineA = words.slice(0, i).join(' ').toUpperCase();
+      const lineB = words.slice(i).join(' ').toUpperCase();
+      const diff = Math.abs(ctx.measureText(lineA).width - ctx.measureText(lineB).width);
+      if (diff < minDiff) {
+        minDiff = diff;
+        bestSplitIdx = i;
       }
     }
-    lines.push(curLine);
-    return lines;
+
+    const line1 = words.slice(0, bestSplitIdx).join(' ');
+    const line2 = words.slice(bestSplitIdx).join(' ');
+    return [line1, line2];
   }
 
   /**
@@ -3735,7 +3891,7 @@ class ScaleReachFullApp {
     const ch = ctx.canvas.height;
     const midX = cw / 2;
     const fontSize = this.captionFontSize || 40;
-    const maxAllowedWidth = cw * 0.82; // Strictly 82% of 9:16 canvas width (safe zone)
+    const maxAllowedWidth = cw * 0.78; // Strictly 78% of 9:16 canvas width (safe zone - never overflows)
 
     // Calculate dynamic Y based on chosen position: Top, Center, or Bottom in 9:16 safe area
     let posY = defaultPosY;
@@ -3792,16 +3948,14 @@ class ScaleReachFullApp {
   renderMultiLineClassic(ctx, midX, posY, text, fontSize, maxW) {
     let size = fontSize || 40;
     ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    
-    // Auto-scale font down if any single word is wider than maxW
-    const words = text.split(/\s+/);
-    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
-    if (maxWordW > maxW) {
-      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+
+    let lines = this.wrapCaptionLines(ctx, text, maxW);
+    while (size > 18 && lines.some(line => ctx.measureText(line.toUpperCase()).width > maxW)) {
+      size -= 2;
       ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, text, maxW);
     }
 
-    const lines = this.wrapCaptionLines(ctx, text, maxW);
     const lineHeight = size * 1.25;
     const totalBlockH = lines.length * lineHeight;
     let startY = posY - (totalBlockH / 2) + (size * 0.4);
@@ -3836,14 +3990,14 @@ class ScaleReachFullApp {
   renderCyanSlideStyle(ctx, midX, posY, text, fontSize, maxW) {
     let size = fontSize || 40;
     ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    const words = text.split(/\s+/);
-    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
-    if (maxWordW > maxW) {
-      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+
+    let lines = this.wrapCaptionLines(ctx, text, maxW);
+    while (size > 18 && lines.some(line => ctx.measureText(line.toUpperCase()).width > maxW)) {
+      size -= 2;
       ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, text, maxW);
     }
 
-    const lines = this.wrapCaptionLines(ctx, text, maxW);
     const lineHeight = size * 1.3;
     const totalBlockH = lines.length * lineHeight;
     let startY = posY - (totalBlockH / 2) + (size * 0.4);
@@ -3882,14 +4036,14 @@ class ScaleReachFullApp {
   renderItalicRedStyle(ctx, midX, posY, text, fontSize, maxW) {
     let size = fontSize || 40;
     ctx.font = `italic 900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    const words = text.split(/\s+/);
-    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
-    if (maxWordW > maxW) {
-      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+
+    let lines = this.wrapCaptionLines(ctx, text, maxW);
+    while (size > 18 && lines.some(line => ctx.measureText(line.toUpperCase()).width > maxW)) {
+      size -= 2;
       ctx.font = `italic 900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, text, maxW);
     }
 
-    const lines = this.wrapCaptionLines(ctx, text, maxW);
     const lineHeight = size * 1.3;
     const totalBlockH = lines.length * lineHeight;
     let startY = posY - (totalBlockH / 2) + (size * 0.4);
@@ -3928,14 +4082,14 @@ class ScaleReachFullApp {
   renderCreamBlueStyle(ctx, midX, posY, text, fontSize, maxW) {
     let size = (fontSize || 40) - 2;
     ctx.font = `800 ${size}px "Plus Jakarta Sans", sans-serif`;
-    const words = text.split(/\s+/);
-    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
-    if (maxWordW > maxW) {
-      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+
+    let lines = this.wrapCaptionLines(ctx, text, maxW);
+    while (size > 18 && lines.some(line => ctx.measureText(line.toUpperCase()).width > maxW)) {
+      size -= 2;
       ctx.font = `800 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, text, maxW);
     }
 
-    const lines = this.wrapCaptionLines(ctx, text, maxW);
     const lineHeight = size * 1.25;
     const totalBlockH = lines.length * lineHeight;
     let startY = posY - (totalBlockH / 2) + (size * 0.4);
@@ -3961,14 +4115,14 @@ class ScaleReachFullApp {
   renderRedSpinStyle(ctx, midX, posY, text, fontSize, maxW) {
     let size = fontSize || 40;
     ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    const words = text.split(/\s+/);
-    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
-    if (maxWordW > maxW) {
-      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+
+    let lines = this.wrapCaptionLines(ctx, text, maxW);
+    while (size > 18 && lines.some(line => ctx.measureText(line.toUpperCase()).width > maxW)) {
+      size -= 2;
       ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, text, maxW);
     }
 
-    const lines = this.wrapCaptionLines(ctx, text, maxW);
     const lineHeight = size * 1.25;
     const totalBlockH = lines.length * lineHeight;
     let startY = posY - (totalBlockH / 2) + (size * 0.4);
@@ -3995,14 +4149,14 @@ class ScaleReachFullApp {
   renderVioletStyle(ctx, midX, posY, text, fontSize, maxW) {
     let size = fontSize || 40;
     ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    const words = text.split(/\s+/);
-    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
-    if (maxWordW > maxW) {
-      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+
+    let lines = this.wrapCaptionLines(ctx, text, maxW);
+    while (size > 18 && lines.some(line => ctx.measureText(line.toUpperCase()).width > maxW)) {
+      size -= 2;
       ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, text, maxW);
     }
 
-    const lines = this.wrapCaptionLines(ctx, text, maxW);
     const lineHeight = size * 1.25;
     const totalBlockH = lines.length * lineHeight;
     let startY = posY - (totalBlockH / 2) + (size * 0.4);
@@ -4028,14 +4182,14 @@ class ScaleReachFullApp {
   renderBlueGlowStyle(ctx, midX, posY, text, fontSize, maxW) {
     let size = fontSize || 40;
     ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    const words = text.split(/\s+/);
-    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
-    if (maxWordW > maxW) {
-      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+
+    let lines = this.wrapCaptionLines(ctx, text, maxW);
+    while (size > 18 && lines.some(line => ctx.measureText(line.toUpperCase()).width > maxW)) {
+      size -= 2;
       ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, text, maxW);
     }
 
-    const lines = this.wrapCaptionLines(ctx, text, maxW);
     const lineHeight = size * 1.25;
     const totalBlockH = lines.length * lineHeight;
     let startY = posY - (totalBlockH / 2) + (size * 0.4);
@@ -4068,14 +4222,14 @@ class ScaleReachFullApp {
   renderToxicGreenStyle(ctx, midX, posY, text, fontSize, maxW) {
     let size = (fontSize || 40) + 2;
     ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-    const words = text.split(/\s+/);
-    const maxWordW = Math.max(...words.map(w => ctx.measureText(w).width));
-    if (maxWordW > maxW) {
-      size = Math.max(20, Math.floor(size * (maxW / maxWordW)));
+
+    let lines = this.wrapCaptionLines(ctx, text, maxW);
+    while (size > 18 && lines.some(line => ctx.measureText(line.toUpperCase()).width > maxW)) {
+      size -= 2;
       ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
+      lines = this.wrapCaptionLines(ctx, text, maxW);
     }
 
-    const lines = this.wrapCaptionLines(ctx, text, maxW);
     const lineHeight = size * 1.25;
     const totalBlockH = lines.length * lineHeight;
     let startY = posY - (totalBlockH / 2) + (size * 0.4);

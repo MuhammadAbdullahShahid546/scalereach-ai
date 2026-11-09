@@ -740,7 +740,13 @@
                       <p class="section-micro-desc">AI ne video analyze karke 8 viral 9:16 vertical short reels detect kiye hain (2 cards per row). Kisi bhi card par Play click karke dekhein ya edit karein:</p>
                     </div>
                   </div>
-                  <span class="ai-status-pill" id="aiStatusPill">8 Viral Reels (2x4 Grid)</span>
+                  <div class="card-header-controls">
+                    <div class="reel-framing-pill-group" title="Widescreen video framing mode">
+                      <button type="button" class="reel-framing-btn active" id="cardFramingFitBtn" data-framing="fit" title="Fit 16:9 Video Inside 9:16 - Zero text or captions cut off">📐 Safe Fit (No Cut)</button>
+                      <button type="button" class="reel-framing-btn" id="cardFramingFillBtn" data-framing="fill" title="Fill 9:16 Screen Edge-to-Edge">📱 Full Fill</button>
+                    </div>
+                    <span class="ai-status-pill" id="aiStatusPill">8 Viral Reels (2x4 Grid)</span>
+                  </div>
                 </div>
 
                 <div class="ai-suggested-grid" id="aiSuggestedList">
@@ -1095,8 +1101,11 @@
                 <div class="top-ratio-selector-bar">
                   <span class="ratio-label">Framing Ratio:</span>
                   <div class="top-ratio-btn-group">
-                    <button class="layout-btn active" data-layout="standard" title="Full 9:16 Auto Reframe">
-                      <span>📱 9:16 Full</span>
+                    <button class="layout-btn active" data-layout="fit" title="Fit 9:16 Video - Safe bounds, captions & text never cut off">
+                      <span>📐 9:16 Safe Fit</span>
+                    </button>
+                    <button class="layout-btn" data-layout="standard" title="Full 9:16 Auto Reframe">
+                      <span>📱 9:16 Full Fill</span>
                     </button>
                     <button class="layout-btn" data-layout="split" title="Split-Screen: Top Video + Subway Gameplay">
                       <span>🎮 Split-Screen</span>
@@ -1115,7 +1124,8 @@
                       <canvas id="cropCanvas" width="720" height="1280"></canvas>
                       
                       <!-- YouTube Live Embed in Mobile Preview -->
-                      <div class="phone-yt-wrapper hidden" id="phoneYtWrapper">
+                      <div class="phone-yt-wrapper mode-fit hidden" id="phoneYtWrapper">
+                        <div class="phone-yt-backdrop" id="phoneYtBackdrop"></div>
                         <iframe id="phoneYoutubeIframe" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                       </div>
 
