@@ -231,6 +231,7 @@ class ScaleReachFullApp {
     this.studioActiveCaptionBadge = document.getElementById('studioActiveCaptionBadge');
     this.studioCaptionTextInput = document.getElementById('studioCaptionTextInput');
     this.clearCaptionTextBtn = document.getElementById('clearCaptionTextBtn');
+    this.applyCaptionBtn = document.getElementById('applyCaptionBtn');
     this.hookPillBtns = document.querySelectorAll('.hook-pill-btn');
     this.studioCaptionItems = document.querySelectorAll('.studio-caption-item');
     this.captionPosBtns = document.querySelectorAll('#captionPositionBtnGroup .adj-btn');
@@ -240,7 +241,8 @@ class ScaleReachFullApp {
     this.captionPosition = 'bottom';
     this.captionFontSize = 40;
     this.captionsEnabled = true;
-    this.userSelectedCaption = 'TO GET STARTED';
+    this.userAppliedCaption = null;
+    this.pendingCaptionText = '';
 
     // Sample texts corresponding to the 12 creator styles
     this.styleSampleTexts = {
@@ -1891,10 +1893,11 @@ class ScaleReachFullApp {
 
       const stickerText = sticker.querySelector('.sticker-text');
       if (stickerText) {
-        const textVal = (this.userSelectedCaption && this.userSelectedCaption.trim()) ||
-                        currentInputVal ||
+        // If user explicitly applied a caption via "Apply" button, use that across all clips!
+        // Otherwise, each clip displays its OWN unique analyzed viral moment caption!
+        const textVal = (this.userAppliedCaption && this.userAppliedCaption.trim()) ||
                         (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) ||
-                        'TO GET STARTED';
+                        'VIRAL CLIP';
         if (textVal) {
           const words = textVal.trim().split(/\s+/);
           // If caption does not fit comfortably in 1 line, auto-balance into 2 lines
@@ -2867,11 +2870,13 @@ class ScaleReachFullApp {
       this.clipStart = moment.start;
       this.clipEnd = moment.end;
       if (this.seoTitleDisplay) this.seoTitleDisplay.textContent = `"${moment.seoTitle}"`;
-      const userText = (this.userSelectedCaption && this.userSelectedCaption.trim()) ||
-                       (this.studioCaptionTextInput && this.studioCaptionTextInput.value.trim());
-      const activeCaption = userText || moment.caption || 'TO GET STARTED';
+      const activeCaption = (this.userAppliedCaption && this.userAppliedCaption.trim()) ||
+                            moment.caption ||
+                            'VIRAL MOMENT';
       if (this.customCaptionInput) this.customCaptionInput.value = activeCaption;
-      if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = activeCaption;
+      if (this.studioCaptionTextInput && !this.userAppliedCaption) {
+        this.studioCaptionTextInput.placeholder = `Active: "${activeCaption}" (or pick hook below)`;
+      }
       if (this.captionTitleTag) this.captionTitleTag.textContent = `"${this.currentVideoTitle || moment.title}"`;
       if (this.captionAuthorTag) this.captionAuthorTag.textContent = '@ajjez_clips';
       if (this.studioVideoTitle) this.studioVideoTitle.textContent = this.currentVideoTitle || moment.title;
@@ -2992,31 +2997,22 @@ class ScaleReachFullApp {
       this.studioCaptionTextInput.addEventListener('input', () => {
         if (this.hookPillBtns) this.hookPillBtns.forEach(b => b.classList.remove('active'));
         const val = this.studioCaptionTextInput.value;
-        this.userSelectedCaption = val;
-        if (this.customCaptionInput) {
-          this.customCaptionInput.value = val;
-        }
-        if (this.clipsMoments) {
-          this.clipsMoments.forEach(m => { if (m) m.caption = val; });
-        }
-        this.updateSuggestedReelsCaptions();
-        this.updateCaptionsStatusBanner();
+        this.pendingCaptionText = val;
       });
     }
 
     // Clear Text Button
     if (this.clearCaptionTextBtn && this.studioCaptionTextInput) {
       this.clearCaptionTextBtn.addEventListener('click', () => {
-        this.userSelectedCaption = '';
         this.studioCaptionTextInput.value = '';
+        this.pendingCaptionText = '';
+        this.userAppliedCaption = null;
         if (this.customCaptionInput) this.customCaptionInput.value = '';
-        if (this.clipsMoments) {
-          this.clipsMoments.forEach(m => { if (m) m.caption = ''; });
-        }
         if (this.hookPillBtns) this.hookPillBtns.forEach(b => b.classList.remove('active'));
         this.updateSuggestedReelsCaptions();
         this.studioCaptionTextInput.focus();
         this.updateCaptionsStatusBanner();
+        this.showToast('Reverted to original clip captions');
       });
     }
 
@@ -3027,24 +3023,54 @@ class ScaleReachFullApp {
           this.hookPillBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           const hook = btn.getAttribute('data-hook') || btn.textContent.trim();
-          this.userSelectedCaption = hook;
+          this.pendingCaptionText = hook;
           if (this.studioCaptionTextInput) {
             this.studioCaptionTextInput.value = hook;
           }
           if (this.customCaptionInput) {
             this.customCaptionInput.value = hook;
           }
-          if (this.clipsMoments) {
-            this.clipsMoments.forEach(m => { if (m) m.caption = hook; });
-          }
-          this.updateSuggestedReelsCaptions();
-          this.updateCaptionsStatusBanner();
-          this.showToast(`Applied hook "${hook}" to all reels! ⚡`);
+          this.showToast(`Selected "${hook}" — Click "Apply Caption to Videos" to apply! ✨`);
         });
       });
     }
 
-    // 4. 8 Caption Style Cards in Screen 3 (and sync with Screen 2)
+    // 4. Apply Caption to Videos Button (Applies chosen caption to all suggested clips & active playing video)
+    if (this.applyCaptionBtn) {
+      this.applyCaptionBtn.addEventListener('click', () => {
+        const textToApply = (this.studioCaptionTextInput && this.studioCaptionTextInput.value.trim()) ||
+                            this.pendingCaptionText ||
+                            'VIRAL MOMENT';
+        this.userAppliedCaption = textToApply;
+        if (this.customCaptionInput) this.customCaptionInput.value = textToApply;
+        if (this.clipsMoments) {
+          this.clipsMoments.forEach(m => { if (m) m.caption = textToApply; });
+        }
+        
+        // 1. Instantly update all suggested clip cards
+        this.updateSuggestedReelsCaptions();
+        this.updateCaptionsStatusBanner();
+
+        // 2. Button green feedback animation
+        this.applyCaptionBtn.classList.add('applied-success');
+        const origContent = this.applyCaptionBtn.innerHTML;
+        this.applyCaptionBtn.innerHTML = `
+          <span class="btn-apply-icon">✓</span>
+          <span class="btn-apply-label">Caption Applied!</span>
+          <span class="btn-apply-hint">(Applied to all clips & live video)</span>
+        `;
+        setTimeout(() => {
+          if (this.applyCaptionBtn) {
+            this.applyCaptionBtn.classList.remove('applied-success');
+            this.applyCaptionBtn.innerHTML = origContent;
+          }
+        }, 1800);
+
+        this.showToast(`Applied "${textToApply}" (${this.selectedStyleName}) to all clips & active video! ⚡`);
+      });
+    }
+
+    // 5. 8 Caption Style Cards in Screen 3 (and sync with Screen 2)
     const allCaptionCards = document.querySelectorAll('.caption-card-item');
     allCaptionCards.forEach(item => {
       item.addEventListener('click', () => {
@@ -3065,15 +3091,6 @@ class ScaleReachFullApp {
 
         if (this.activeStyleBadge) {
           this.activeStyleBadge.textContent = `Style: ${styleName}`;
-        }
-
-        // Keep the user's selected caption text! NEVER overwrite user caption when switching styles
-        if (!this.userSelectedCaption && (!this.studioCaptionTextInput || !this.studioCaptionTextInput.value.trim())) {
-          const sample = this.styleSampleTexts[styleId] || 'TO GET STARTED';
-          this.userSelectedCaption = sample;
-          if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = sample;
-          if (this.customCaptionInput) this.customCaptionInput.value = sample;
-          if (this.clipsMoments) this.clipsMoments.forEach(m => { if (m) m.caption = sample; });
         }
 
         // Synchronize selected style across ALL suggested clip cards instantly!
@@ -3905,10 +3922,12 @@ class ScaleReachFullApp {
     if (this.studioCaptionsToggle && !this.studioCaptionsToggle.checked) return;
     if (this.captionsToggle && !this.captionsToggle.checked) return;
 
-    const rawText = ((this.userSelectedCaption && this.userSelectedCaption.trim()) ||
+    const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
+    const rawText = ((this.userAppliedCaption && this.userAppliedCaption.trim()) ||
+                     (this.clipsMoments && this.clipsMoments[activeIdx] && this.clipsMoments[activeIdx].caption) ||
                      (this.studioCaptionTextInput && this.studioCaptionTextInput.value) ||
                      (this.customCaptionInput && this.customCaptionInput.value) ||
-                     'TO GET STARTED').trim();
+                     'VIRAL MOMENT').trim();
     if (!rawText) return;
 
     ctx.save();
