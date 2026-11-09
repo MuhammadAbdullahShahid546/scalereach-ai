@@ -1160,6 +1160,19 @@ class ScaleReachFullApp {
     this.start9x16RenderEngine();
     this.applyCapCutFiltersToElements();
 
+    // Global listener to proactively neutralize YouTube CC across all embeds
+    window.addEventListener('message', (event) => {
+      if (!event || !event.data) return;
+      try {
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        if (data && (data.event === 'initialDelivery' || data.event === 'onReady' || data.infoDelivery)) {
+          if (this.youtubeIframe) this.disableYouTubeCaptions(this.youtubeIframe);
+          if (this.phoneYoutubeIframe) this.disableYouTubeCaptions(this.phoneYoutubeIframe);
+          document.querySelectorAll('.reel-card-yt-frame').forEach(f => this.disableYouTubeCaptions(f));
+        }
+      } catch (e) {}
+    });
+
     // Initial render of clips UI
     this.renderSuggestedClipsUI();
     this.renderSubnavPills();
@@ -1307,7 +1320,9 @@ class ScaleReachFullApp {
     if (this.youtubeIframe) {
       this.youtubeIframe.classList.remove('hidden');
       this.youtubeIframe.style.filter = 'none';
-      this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&start=${startSec}`;
+      this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}`;
+      this.youtubeIframe.onload = () => this.disableYouTubeCaptions(this.youtubeIframe);
+      this.disableYouTubeCaptions(this.youtubeIframe);
     }
     if (this.sourceVideo) {
       this.sourceVideo.pause();
@@ -1322,7 +1337,9 @@ class ScaleReachFullApp {
     if (this.phoneYtWrapper && this.phoneYoutubeIframe) {
       this.phoneYtWrapper.classList.remove('hidden');
       this.phoneYoutubeIframe.style.filter = 'none';
-      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&start=${startSec}${loopParam}`;
+      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${loopParam}`;
+      this.phoneYoutubeIframe.onload = () => this.disableYouTubeCaptions(this.phoneYoutubeIframe);
+      this.disableYouTubeCaptions(this.phoneYoutubeIframe);
     }
     if (this.cropCanvas) {
       this.cropCanvas.classList.add('hidden');
@@ -1410,12 +1427,14 @@ class ScaleReachFullApp {
 
       if (this.phoneYoutubeIframe) {
         this.phoneYoutubeIframe.style.filter = 'none';
-        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&start=${startSec}${loopParam}`;
+        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${loopParam}`;
+        this.disableYouTubeCaptions(this.phoneYoutubeIframe);
       }
 
       if (this.youtubeIframe) {
         this.youtubeIframe.style.filter = 'none';
-        this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&start=${startSec}`;
+        this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}`;
+        this.disableYouTubeCaptions(this.youtubeIframe);
       }
 
       setTimeout(() => this.forceMaxQuality(), 600);
@@ -1872,7 +1891,7 @@ class ScaleReachFullApp {
       const stickerText = sticker.querySelector('.sticker-text');
       if (stickerText) {
         let textVal = '';
-        if (idx === this.activeClipIndex && currentInputVal) {
+        if (currentInputVal) {
           textVal = currentInputVal;
         } else if (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) {
           textVal = this.clipsMoments[idx].caption;
@@ -1880,7 +1899,7 @@ class ScaleReachFullApp {
         if (textVal) {
           const words = textVal.trim().split(/\s+/);
           // If caption does not fit comfortably in 1 line, auto-balance into 2 lines
-          if (words.length >= 3 && textVal.length > 16) {
+          if (words.length >= 3 && textVal.length > 14) {
             const mid = Math.ceil(words.length / 2);
             stickerText.innerHTML = `${words.slice(0, mid).join(' ')}<br>${words.slice(mid).join(' ')}`;
           } else {
@@ -1918,18 +1937,39 @@ class ScaleReachFullApp {
     }
   }
 
+  disableYouTubeCaptions(iframe) {
+    if (!iframe || !iframe.contentWindow) return;
+    const killCC = () => {
+      try {
+        this.postYouTubeCommand(iframe, 'unloadModule', ['captions']);
+        this.postYouTubeCommand(iframe, 'unloadModule', ['cc']);
+        this.postYouTubeCommand(iframe, 'setOption', ['captions', 'track', {}]);
+        this.postYouTubeCommand(iframe, 'setOption', ['cc', 'track', {}]);
+        this.postYouTubeCommand(iframe, 'setOption', ['captions', 'reload', false]);
+        this.postYouTubeCommand(iframe, 'setOption', ['captions', 'fontSize', -1]);
+      } catch (e) {}
+    };
+    killCC();
+    setTimeout(killCC, 250);
+    setTimeout(killCC, 600);
+    setTimeout(killCC, 1200);
+    setTimeout(killCC, 2500);
+  }
+
   forceMaxQuality() {
     if (this.youtubeIframe) {
       this.youtubeIframe.style.filter = 'none';
       this.postYouTubeCommand(this.youtubeIframe, 'setPlaybackQuality', ['hd1080']);
       this.postYouTubeCommand(this.youtubeIframe, 'setPlaybackQualityRange', ['hd1080', 'highres']);
+      this.disableYouTubeCaptions(this.youtubeIframe);
     }
     if (this.phoneYoutubeIframe) {
       this.phoneYoutubeIframe.style.filter = 'none';
       this.postYouTubeCommand(this.phoneYoutubeIframe, 'setPlaybackQuality', ['hd1080']);
       this.postYouTubeCommand(this.phoneYoutubeIframe, 'setPlaybackQualityRange', ['hd1080', 'highres']);
-      this.postYouTubeCommand(this.phoneYoutubeIframe, 'unloadModule', ['captions']);
+      this.disableYouTubeCaptions(this.phoneYoutubeIframe);
     }
+    document.querySelectorAll('.reel-card-yt-frame').forEach(f => this.disableYouTubeCaptions(f));
     if (this.sourceVideo) {
       this.sourceVideo.style.filter = 'none';
     }
@@ -1981,12 +2021,18 @@ class ScaleReachFullApp {
             const startSec = Math.floor(moment.start);
             const endSec = Math.ceil(moment.end);
             const loopParam = this.isLoopEnabled ? `&loop=1&playlist=${this.currentYouTubeId}&end=${endSec}` : `&end=${endSec}`;
-            const targetSrc = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&start=${startSec}${loopParam}`;
+            const targetSrc = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${loopParam}`;
 
             if (!ytIframe || !ytIframe.src.includes(`start=${startSec}`)) {
               ytWrapper.innerHTML = `<iframe class="reel-card-yt-frame" src="${targetSrc}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+              const newFrame = ytWrapper.querySelector('iframe');
+              if (newFrame) {
+                newFrame.onload = () => this.disableYouTubeCaptions(newFrame);
+                this.disableYouTubeCaptions(newFrame);
+              }
             } else {
               this.postYouTubeCommand(ytIframe, 'playVideo');
+              this.disableYouTubeCaptions(ytIframe);
             }
           }
         } else {
@@ -2380,6 +2426,9 @@ class ScaleReachFullApp {
           const sample = this.styleSampleTexts[this.selectedStyleId];
           this.customCaptionInput.value = sample;
           if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = sample;
+          if (this.clipsMoments) {
+            this.clipsMoments.forEach(m => { if (m) m.caption = sample; });
+          }
         }
 
         this.updateSuggestedReelsCaptions();
@@ -2950,18 +2999,10 @@ class ScaleReachFullApp {
         if (this.customCaptionInput) {
           this.customCaptionInput.value = val;
         }
-        const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
-        if (this.clipsMoments && this.clipsMoments[activeIdx]) {
-          this.clipsMoments[activeIdx].caption = val || 'VIRAL HOOK';
+        if (this.clipsMoments) {
+          this.clipsMoments.forEach(m => { if (m) m.caption = val || 'VIRAL HOOK'; });
         }
-        // Instantly reflect typed text onto active card's on-screen sticker
-        if (this.aiSuggestedList) {
-          const activeCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${activeIdx}"]`);
-          if (activeCard) {
-            const st = activeCard.querySelector('.sticker-text');
-            if (st) st.textContent = val || 'VIRAL HOOK';
-          }
-        }
+        this.updateSuggestedReelsCaptions();
         this.updateCaptionsStatusBanner();
       });
     }
@@ -2971,17 +3012,10 @@ class ScaleReachFullApp {
       this.clearCaptionTextBtn.addEventListener('click', () => {
         this.studioCaptionTextInput.value = '';
         if (this.customCaptionInput) this.customCaptionInput.value = '';
-        const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
-        if (this.clipsMoments && this.clipsMoments[activeIdx]) {
-          this.clipsMoments[activeIdx].caption = '';
+        if (this.clipsMoments) {
+          this.clipsMoments.forEach(m => { if (m) m.caption = ''; });
         }
-        if (this.aiSuggestedList) {
-          const activeCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${activeIdx}"]`);
-          if (activeCard) {
-            const st = activeCard.querySelector('.sticker-text');
-            if (st) st.textContent = 'VIRAL HOOK';
-          }
-        }
+        this.updateSuggestedReelsCaptions();
         this.studioCaptionTextInput.focus();
         this.updateCaptionsStatusBanner();
       });
@@ -2998,19 +3032,12 @@ class ScaleReachFullApp {
           if (this.customCaptionInput) {
             this.customCaptionInput.value = hook;
           }
-          const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
-          if (this.clipsMoments && this.clipsMoments[activeIdx]) {
-            this.clipsMoments[activeIdx].caption = hook;
+          if (this.clipsMoments) {
+            this.clipsMoments.forEach(m => { if (m) m.caption = hook; });
           }
-          if (this.aiSuggestedList) {
-            const activeCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${activeIdx}"]`);
-            if (activeCard) {
-              const st = activeCard.querySelector('.sticker-text');
-              if (st) st.textContent = hook;
-            }
-          }
+          this.updateSuggestedReelsCaptions();
           this.updateCaptionsStatusBanner();
-          this.showToast(`Applied: "${hook}" 🔥`);
+          this.showToast(`Applied hook "${hook}" to all reels! ⚡`);
         });
       });
     }
@@ -3047,9 +3074,9 @@ class ScaleReachFullApp {
           if (this.customCaptionInput) {
             this.customCaptionInput.value = this.studioCaptionTextInput ? this.studioCaptionTextInput.value : sample;
           }
-          const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
-          if (this.clipsMoments && this.clipsMoments[activeIdx]) {
-            this.clipsMoments[activeIdx].caption = this.studioCaptionTextInput ? this.studioCaptionTextInput.value : sample;
+          if (this.clipsMoments) {
+            const appliedVal = this.studioCaptionTextInput ? this.studioCaptionTextInput.value : sample;
+            this.clipsMoments.forEach(m => { if (m) m.caption = appliedVal; });
           }
         }
 
