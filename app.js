@@ -1628,10 +1628,17 @@ class ScaleReachFullApp {
     const endSec = Math.floor(this.clipEnd);
 
     // 1. Long Format Player (Left Screen): Max 1080p HD, plays full video smoothly without looping
+    const originParam = (typeof window !== 'undefined' && window.location && window.location.origin) ? `&origin=${encodeURIComponent(window.location.origin)}` : '';
     if (this.youtubeIframe) {
       this.youtubeIframe.classList.remove('hidden');
       this.youtubeIframe.style.filter = 'none';
-      this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}`;
+      const targetMain = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${originParam}`;
+      if (!this.youtubeIframe.src || !this.youtubeIframe.src.includes(videoId)) {
+        this.youtubeIframe.src = targetMain;
+      } else {
+        this.postYouTubeCommand(this.youtubeIframe, 'seekTo', [startSec, true]);
+        this.postYouTubeCommand(this.youtubeIframe, 'playVideo');
+      }
       this.youtubeIframe.onload = () => this.disableYouTubeCaptions(this.youtubeIframe);
       this.disableYouTubeCaptions(this.youtubeIframe);
     }
@@ -1648,7 +1655,13 @@ class ScaleReachFullApp {
     if (this.phoneYtWrapper && this.phoneYoutubeIframe) {
       this.phoneYtWrapper.classList.remove('hidden');
       this.phoneYoutubeIframe.style.filter = 'none';
-      this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${loopParam}`;
+      const targetPhone = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${originParam}${loopParam}`;
+      if (!this.phoneYoutubeIframe.src || !this.phoneYoutubeIframe.src.includes(videoId)) {
+        this.phoneYoutubeIframe.src = targetPhone;
+      } else {
+        this.postYouTubeCommand(this.phoneYoutubeIframe, 'seekTo', [startSec, true]);
+        this.postYouTubeCommand(this.phoneYoutubeIframe, 'playVideo');
+      }
       this.phoneYoutubeIframe.onload = () => this.disableYouTubeCaptions(this.phoneYoutubeIframe);
       this.disableYouTubeCaptions(this.phoneYoutubeIframe);
     }
@@ -1735,16 +1748,28 @@ class ScaleReachFullApp {
       const startSec = Math.floor(this.clipStart);
       const endSec = Math.floor(this.clipEnd);
       const loopParam = this.isLoopEnabled ? `&loop=1&playlist=${this.currentYouTubeId}&end=${endSec}` : `&end=${endSec}`;
+      const originParam = (typeof window !== 'undefined' && window.location && window.location.origin) ? `&origin=${encodeURIComponent(window.location.origin)}` : '';
 
       if (this.phoneYoutubeIframe) {
         this.phoneYoutubeIframe.style.filter = 'none';
-        this.phoneYoutubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${loopParam}`;
+        if (this.phoneYoutubeIframe.src && this.phoneYoutubeIframe.src.includes(this.currentYouTubeId)) {
+          // Seek without reloading whole iframe - prevents bot triggers!
+          this.postYouTubeCommand(this.phoneYoutubeIframe, 'seekTo', [startSec, true]);
+          this.postYouTubeCommand(this.phoneYoutubeIframe, 'playVideo');
+        } else {
+          this.phoneYoutubeIframe.src = `https://www.youtube.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${originParam}${loopParam}`;
+        }
         this.disableYouTubeCaptions(this.phoneYoutubeIframe);
       }
 
       if (this.youtubeIframe) {
         this.youtubeIframe.style.filter = 'none';
-        this.youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}`;
+        if (this.youtubeIframe.src && this.youtubeIframe.src.includes(this.currentYouTubeId)) {
+          this.postYouTubeCommand(this.youtubeIframe, 'seekTo', [startSec, true]);
+          this.postYouTubeCommand(this.youtubeIframe, 'playVideo');
+        } else {
+          this.youtubeIframe.src = `https://www.youtube.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=0&controls=1&rel=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${originParam}`;
+        }
         this.disableYouTubeCaptions(this.youtubeIframe);
       }
 
@@ -2407,7 +2432,8 @@ class ScaleReachFullApp {
             const startSec = Math.floor(moment.start);
             const endSec = Math.ceil(moment.end);
             const loopParam = this.isLoopEnabled ? `&loop=1&playlist=${this.currentYouTubeId}&end=${endSec}` : `&end=${endSec}`;
-            const targetSrc = `https://www.youtube-nocookie.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${loopParam}`;
+            const originParam = (typeof window !== 'undefined' && window.location && window.location.origin) ? `&origin=${encodeURIComponent(window.location.origin)}` : '';
+            const targetSrc = `https://www.youtube.com/embed/${this.currentYouTubeId}?enablejsapi=1&autoplay=1&mute=1&controls=0&vq=hd1080&hd=1&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=off&hl=en&start=${startSec}${originParam}${loopParam}`;
 
             if (!ytIframe || !ytIframe.src.includes(`start=${startSec}`)) {
               ytWrapper.innerHTML = `<iframe class="reel-card-yt-frame" src="${targetSrc}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
