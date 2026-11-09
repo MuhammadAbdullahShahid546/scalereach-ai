@@ -1493,16 +1493,102 @@ class ScaleReachFullApp {
 
     this.homeFileInput.addEventListener('change', (e) => {
       if (e.target.files.length) {
-        const file = e.target.files[0];
+        const rawFile = e.target.files[0];
+        const sanitized = this.validateAndSanitizeUploadedFile(rawFile);
+        if (!sanitized) {
+          e.target.value = '';
+          return;
+        }
+        const file = sanitized.file;
+        const safeTitle = sanitized.safeTitle;
         const url = URL.createObjectURL(file);
         this.sourceVideo.src = url;
         this.sourceVideo.load();
         this.sourceVideo.play().catch(console.warn);
-        this.applyVideoMeta(url, file.name, 'Local File • Custom', 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&auto=format&fit=crop&q=80');
+        this.applyVideoMeta(url, safeTitle, 'Local File • Custom', 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&auto=format&fit=crop&q=80');
         this.showConfigureView();
-        this.showToast(`Uploaded Real Video: ${file.name} 🎬`);
+        this.showToast(`🛡️ Verified & Loaded Real Video: ${safeTitle} 🎬`);
       }
     });
+  }
+
+  /* ----------------------------------------------------
+     Z++ Security Validation & Anti-Malware Shield
+  ---------------------------------------------------- */
+  validateAndSanitizeUploadedFile(file) {
+    if (!file) return null;
+
+    // 1. File Extension Whitelist (Anti-Malware & Anti-Virus Execution Shield)
+    const allowedExtensions = ['.mp4', '.webm', '.mov', '.mkv'];
+    const fileName = file.name || 'video.mp4';
+    const lowerName = fileName.toLowerCase();
+    const hasValidExt = allowedExtensions.some(ext => lowerName.endsWith(ext));
+
+    if (!hasValidExt) {
+      this.showToast('🛡️ Security Block: Executables and non-video files are strictly blocked!');
+      return null;
+    }
+
+    // 2. MIME Type Validation
+    if (file.type && !file.type.startsWith('video/') && !file.type.startsWith('application/octet-stream')) {
+      this.showToast('🛡️ Security Block: Invalid media MIME type detected!');
+      return null;
+    }
+
+    // 3. File Size Safety Limit (Prevents DoS memory attack, max 800MB)
+    const maxSizeBytes = 800 * 1024 * 1024;
+    if (file.size > maxSizeBytes) {
+      this.showToast('🛡️ Security Limit: File size exceeds 800MB safety threshold!');
+      return null;
+    }
+
+    // 4. File Name Sanitization (Eliminates HTML/XSS injection)
+    const safeTitle = fileName.replace(/[<>'"`;()&$*\\/]/g, '').trim().slice(0, 80) || 'Uploaded Video';
+
+    return {
+      file: file,
+      safeTitle: safeTitle
+    };
+  }
+
+  validateAndSanitizeUrl(rawUrl) {
+    if (!rawUrl || typeof rawUrl !== 'string') return '';
+    const trimmed = rawUrl.trim();
+
+    // Prevent dangerous pseudo-protocols like javascript:, data:, vbscript:, file:
+    const dangerousProtocols = ['javascript:', 'data:', 'vbscript:', 'file:', 'blob:'];
+    const lower = trimmed.toLowerCase();
+    for (const proto of dangerousProtocols) {
+      if (lower.startsWith(proto)) {
+        this.showToast('🛡️ Security Alert: Malicious URL protocol blocked by Z++ Security!');
+        return '';
+      }
+    }
+
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+      try {
+        const parsed = new URL(trimmed);
+        return parsed.href;
+      } catch (e) {
+        return '';
+      }
+    }
+
+    if (lower.startsWith('youtube.com/') || lower.startsWith('www.youtube.com/') || lower.startsWith('youtu.be/')) {
+      return `https://${trimmed}`;
+    }
+
+    return trimmed.replace(/[<>'"]/g, '');
+  }
+
+  escapeHTML(str) {
+    if (!str || typeof str !== 'string') return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
   }
 
   extractYouTubeId(url) {
@@ -1650,7 +1736,8 @@ class ScaleReachFullApp {
     }
   }
 
-  loadVideoAndAutoExtractClips(url) {
+  loadVideoAndAutoExtractClips(rawUrl) {
+    const url = this.validateAndSanitizeUrl(rawUrl);
     this.youtubeUrlInput.value = url || '';
     this.youtubeUrlInput.placeholder = 'Enter URL';
 
@@ -1673,7 +1760,8 @@ class ScaleReachFullApp {
     });
   }
 
-  loadVideoToConfigure(url) {
+  loadVideoToConfigure(rawUrl) {
+    const url = this.validateAndSanitizeUrl(rawUrl);
     this.youtubeUrlInput.value = url || '';
     this.youtubeUrlInput.placeholder = 'Enter URL';
 
@@ -2110,8 +2198,9 @@ class ScaleReachFullApp {
    */
   formatSpokenSubtitleHTML(text) {
     if (!text) return '';
-    const clean = text.trim();
-    if (clean.includes('<span') || clean.includes('<br')) return clean;
+    // Z++ Security: Strip any raw tags & HTML escape to completely prevent XSS
+    const clean = this.escapeHTML(text.replace(/<[^>]*>/g, '')).trim();
+    if (!clean) return '';
 
     const words = clean.split(/\s+/);
     if (words.length <= 1) {
@@ -2634,10 +2723,17 @@ class ScaleReachFullApp {
 
     this.localFileInput.addEventListener('change', (e) => {
       if (e.target.files.length) {
-        const file = e.target.files[0];
+        const rawFile = e.target.files[0];
+        const sanitized = this.validateAndSanitizeUploadedFile(rawFile);
+        if (!sanitized) {
+          e.target.value = '';
+          return;
+        }
+        const file = sanitized.file;
+        const safeTitle = sanitized.safeTitle;
         const url = URL.createObjectURL(file);
-        this.switchToNativeVideo(url, file.name, 'Local File • Custom', '');
-        this.showToast(`Loaded ${file.name}`);
+        this.switchToNativeVideo(url, safeTitle, 'Local File • Custom', '');
+        this.showToast(`🛡️ Verified & Loaded ${safeTitle}`);
       }
     });
 

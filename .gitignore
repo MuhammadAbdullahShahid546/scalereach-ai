@@ -1,17 +1,68 @@
-# Operating System
+# ==========================================================
+# Z++ SECURITY .GITIGNORE (Anti-Virus, Anti-Leak & Privacy Shield)
+# ==========================================================
+
+# 1. Operating System Metadata & Cache (Prevents OS Info Leak)
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 .DS_Store
+.AppleDouble
+.LSOverride
+*.lnk
 
-# Editor & IDE
+# 2. Secret Credentials & Security Keys (Strictly Prohibited from Git)
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+id_rsa*
+id_ed25519*
+*.token
+*.auth
+credentials.json
+secrets.json
+*.kdbx
+
+# 3. Executable Binaries & Malware Vectors (Never commit executables)
+*.exe
+*.bat
+*.cmd
+*.vbs
+*.msi
+*.scr
+*.pif
+*.com
+*.dll
+*.iso
+*.sys
+
+# 4. Editor & IDE Metadata
 .vscode/
 .idea/
 *.swp
 *.swo
+*.bak
+*.orig
+*~
 
-# Logs
+# 5. Logs, Dumps & Temp Files
 *.log
+*.tmp
+*.temp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.stackdump
+core.*
 
-# Optional: Large temporary media (uncomment if you do not want sample videos in repo)
-# *.mp4
+# 6. Build & Dependency Artifacts
+node_modules/
+dist/
+build/
+.history/
