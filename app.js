@@ -169,16 +169,16 @@ class ScaleReachFullApp {
     this.selectedStyleName = 'Classic';
     this.activeLayout = 'fit';
     this.activePan = 0.5;
-    this.clipStart = 15;
-    this.clipEnd = 45;
-    this.videoDuration = 90;
+    this.clipStart = 35;
+    this.clipEnd = 85;
+    this.videoDuration = 1348;
     this.isRecording = false;
     this.isDraggingLeft = false;
     this.isDraggingRight = false;
     this.isDraggingZone = false;
     this.dragStartX = 0;
-    this.dragStartClipStart = 15;
-    this.dragStartClipEnd = 45;
+    this.dragStartClipStart = 35;
+    this.dragStartClipEnd = 85;
     this.activeClipIndex = 0;
     this.isPlaying = true;
     this.isLoopEnabled = true;
@@ -270,6 +270,7 @@ class ScaleReachFullApp {
         matchKeywords: ['podcast', 'interview', 'psychology', 'mindset', 'talk', 'conversation', 'body language'],
         title: 'Communication & Psychology Deep-Dive Podcast',
         author: 'The Mindset Studio • 02:23',
+        duration: 143,
         clips: [
           {
             id: 1,
@@ -381,15 +382,16 @@ class ScaleReachFullApp {
         id: 'khan_sir_podcast',
         matchKeywords: ['khan', 'sir', 'geopolitics', 'pakistan', 'real talks', 'podcast'],
         title: 'KHAN SIR ON PAKISTAN & GEOPOLITICS',
-        author: 'The Real Talks • 35M+ Views',
+        author: 'The Real Talks • 1h 12m',
+        duration: 4320,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: Khan Sir\'s Bold Geopolitics Truth',
             hookText: '⚡ Powerful Hook: The reality of borders & defense budgets',
             viralityScore: '99% Viral',
-            start: 5,
-            end: 35,
+            start: 75,
+            end: 125,
             hookDesc: 'Khan Sir explains economic realities with historical facts. Instant audience silence and maximum retention.',
             seoTitle: 'Khan Sir exposed the harsh geopolitical truth and everyone went silent 😳🇮🇳',
             caption: 'THE HARSH TRUTH',
@@ -401,8 +403,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 2: Savage Roast on Border Management',
             hookText: '😂 Laughter Spike & Sarcastic Mic-Drop',
             viralityScore: '97% Viral',
-            start: 40,
-            end: 70,
+            start: 630,
+            end: 685,
             hookDesc: 'Audience erupted in laughter at Khan Sir\'s witty analogy comparing budget allocations.',
             seoTitle: 'When Khan Sir dropped the most savage roast on live podcast 😂🔥',
             caption: 'HE DID NOT HOLD BACK',
@@ -414,8 +416,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 3: Global Trade & Dollar Reserve Truth',
             hookText: '📈 High-Pace Economic Mechanism Breakdown',
             viralityScore: '96% Viral',
-            start: 75,
-            end: 105,
+            start: 1260,
+            end: 1315,
             hookDesc: 'Breaking down international currency flows in 30 seconds with simple whiteboard style explanation.',
             seoTitle: 'Khan Sir explains how the global dollar reserve actually controls small economies 💵📉',
             caption: 'HOW THE DOLLAR WORKS',
@@ -427,8 +429,8 @@ class ScaleReachFullApp {
             title: '🤯 Reel 4: The Untold 1971 Defense Strategy Secret',
             hookText: '🤯 Declassified Historical Insight & Plot Twist',
             viralityScore: '95% Viral',
-            start: 110,
-            end: 140,
+            start: 1940,
+            end: 1995,
             hookDesc: 'A shocking historical document revealed live on the show that completely stunned the host.',
             seoTitle: 'The 1971 strategy detail that history books completely skipped over 🤯📜',
             caption: 'DEEP SECRET EXPOSED',
@@ -440,8 +442,8 @@ class ScaleReachFullApp {
             title: '💡 Reel 5: Golden Advice Every Student Must Hear',
             hookText: '🎯 High Emotional Resonance & Motivation',
             viralityScore: '93% Viral',
-            start: 145,
-            end: 175,
+            start: 2655,
+            end: 2710,
             hookDesc: 'Khan Sir\'s passionate message to students about hard work, self-reliance, and national pride.',
             seoTitle: 'Every young student needs to listen to this before it\'s too late 🧠✨',
             caption: 'REMEMBER THIS FOREVER',
@@ -453,13 +455,39 @@ class ScaleReachFullApp {
             title: '🏆 Reel 6: Future of Youth & Nation Warning',
             hookText: '🏆 Powerful Concluding Call to Action',
             viralityScore: '91% Viral',
-            start: 180,
-            end: 210,
+            start: 3220,
+            end: 3275,
             hookDesc: 'Concluding mic drop challenging the youth to build domestic manufacturing and tech independence.',
             seoTitle: 'Khan Sir\'s final 30 seconds will give you absolute goosebumps 🇮🇳🔥',
             caption: 'WAKE UP CALL',
             tags: ['#youthpower', '#indiafuture', '#khansirspeech', '#motivation', '#fyp'],
             badgeTags: ['🏆 91% Climax', '🔥 Goosebumps', '✨ High Share Rate']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: The Superpower Economic Blueprint',
+            hookText: '📊 5 Key Industries That Determine World Order',
+            viralityScore: '90% Viral',
+            start: 3730,
+            end: 3785,
+            hookDesc: 'Khan Sir draws out the future of semiconductor chips, solar power and water supply reserves.',
+            seoTitle: 'Why the next world war will be fought over microchips and fresh water 🧠🌍',
+            caption: 'FUTURE WORLD ORDER',
+            tags: ['#geopolitics', '#khansir', '#futuretech', '#upscprep', '#shorts'],
+            badgeTags: ['🎯 90% Strategic', '📊 Economic Blueprint', '💡 High Retention']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Funniest Student Classroom Anecdote',
+            hookText: '😂 Khan Sir\'s Witty Reply to Student Asking for Life Shortcuts',
+            viralityScore: '89% Viral',
+            start: 4170,
+            end: 4225,
+            hookDesc: 'Khan Sir delivers a hilarious punchline about discipline and shortcuts that leaves the studio crew in stitches.',
+            seoTitle: 'Khan Sir\'s hilarious response to student looking for easy success 😂🎓',
+            caption: 'NO SHORTCUTS IN LIFE',
+            tags: ['#khansircomedy', '#bloopers', '#motivation', '#reels', '#shorts'],
+            badgeTags: ['🚀 89% Comedy Outro', '😂 Funniest Story', '💬 Comment Magnet']
           }
         ]
       },
@@ -467,15 +495,16 @@ class ScaleReachFullApp {
         id: 'ishowspeed_wwe',
         matchKeywords: ['speed', 'ishowspeed', 'wrestlemania', 'wwe', 'randy', 'orton', 'fought'],
         title: 'HOW I FOUGHT IN WRESTLEMANIA',
-        author: 'IShowSpeed • 18M+ Views',
+        author: 'IShowSpeed • 18:24',
+        duration: 1104,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: Speed Infiltrates The WrestleMania Ring',
             hookText: '⚡ Adrenaline Shock & Prime Bottle Mascot Reveal',
             viralityScore: '99% Viral',
-            start: 4,
-            end: 34,
+            start: 30,
+            end: 75,
             hookDesc: 'Speed disguised as Prime mascot surprisingly reveals himself in the middle of Logan Paul\'s match.',
             seoTitle: 'IShowSpeed really snuck into WrestleMania and the crowd went crazy 💀😭',
             caption: 'HE ACTUALLY DID IT',
@@ -487,8 +516,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 2: Barking at Randy Orton & Table Slam',
             hookText: '💀 Peak Screaming & Reflexive Comedy',
             viralityScore: '98% Viral',
-            start: 38,
-            end: 68,
+            start: 185,
+            end: 230,
             hookDesc: 'Speed barks at Randy Orton right before getting RKO\'d through the announce table.',
             seoTitle: 'Speed barking at Randy Orton seconds before disaster strikes 😭⚰️',
             caption: 'WORST MISTAKE EVER',
@@ -500,8 +529,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 3: Logan Paul Brass Knuckles Sneak',
             hookText: '⚡ Unbelievable Ring Intervention Chaos',
             viralityScore: '96% Viral',
-            start: 72,
-            end: 102,
+            start: 345,
+            end: 390,
             hookDesc: 'Speed slides brass knuckles across the canvas while referee is completely distracted.',
             seoTitle: 'IShowSpeed saved Logan Paul with this illegal move at WrestleMania 😱🏆',
             caption: 'LOGAN PAUL SAVED',
@@ -513,8 +542,8 @@ class ScaleReachFullApp {
             title: '🤯 Reel 4: 70,000 People Screaming SUI With Speed',
             hookText: '🤯 Stadium-Wide Echo & Unmatched Energy Spike',
             viralityScore: '95% Viral',
-            start: 106,
-            end: 136,
+            start: 515,
+            end: 560,
             hookDesc: 'Speed climbs the ropes and the entire 70,000 fan stadium shouts Ronaldo\'s iconic celebration.',
             seoTitle: 'IShowSpeed got 70,000 wrestling fans to scream SIUUU at once 🐐🔥',
             caption: '70,000 PEOPLE SIUU',
@@ -526,8 +555,8 @@ class ScaleReachFullApp {
             title: '💡 Reel 5: Triple H Backstage Confrontation',
             hookText: '🤝 WWE Boss Face-to-Face & Contract Tease',
             viralityScore: '93% Viral',
-            start: 140,
-            end: 170,
+            start: 680,
+            end: 725,
             hookDesc: 'Triple H stops Speed in the gorilla position hallway: "Are you crazy or are you a genius?"',
             seoTitle: 'Triple H had this to say to Speed right after the match 🤯👀',
             caption: 'TRIPLE H WAS WAITING',
@@ -539,13 +568,39 @@ class ScaleReachFullApp {
             title: '🏆 Reel 6: Post-Match Locker Room Freakout',
             hookText: '🎉 Victory Celebration & Ice Pack Rant',
             viralityScore: '91% Viral',
-            start: 174,
-            end: 204,
+            start: 840,
+            end: 885,
             hookDesc: 'Speed holding ice to his neck while screaming at the livestream chat in disbelief.',
             seoTitle: 'Speed\'s honest reaction after getting slammed by Randy Orton 😂',
             caption: 'MY NECK IS BROKEN',
             tags: ['#ishowspeedlive', '#aftermath', '#streaming', '#speedlive', '#fyp'],
             badgeTags: ['🏆 91% Climax', '🔥 Post-Match', '💬 High Comments']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: The Announce Table Slow-Mo Impact Angle',
+            hookText: '🌪️ 1000 FPS Slow Motion Table Shatter',
+            viralityScore: '90% Viral',
+            start: 980,
+            end: 1025,
+            hookDesc: 'Multi-angle cinematic slow motion of the exact split second the wooden announce table explodes.',
+            seoTitle: 'Randy Orton RKO on IShowSpeed in ultra slow motion looks brutal 🤯💀',
+            caption: 'IMPACT IN SLOW MOTION',
+            tags: ['#slowmotion', '#wweaction', '#speedrko', '#viralreels', '#shorts'],
+            badgeTags: ['🎯 90% Impact', '🌪️ Slow Motion', '⚡ Maximum Hype']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Sneaking Out In Security Disguise',
+            hookText: '😂 Speed Escapes WrestleMania Stadium In Security Uniform',
+            viralityScore: '89% Viral',
+            start: 1045,
+            end: 1090,
+            hookDesc: 'Speed puts on a neon security vest and runs past screaming fans into the getaway sprinter van.',
+            seoTitle: 'How IShowSpeed actually escaped the arena without getting arrested 😂🏃',
+            caption: 'MISSION ACCOMPLISHED',
+            tags: ['#speedescape', '#bloopers', '#stealth', '#wrestlemania', '#trending'],
+            badgeTags: ['🚀 89% Chaos Outro', '🏃 Getaway Van', '💬 Huge Comments']
           }
         ]
       },
@@ -554,14 +609,15 @@ class ScaleReachFullApp {
         matchKeywords: ['mkbhd', 'folding', 'revolution', 'phone', 'crease', 'dual screen'],
         title: 'The Dual Screen Folding Revolution',
         author: 'MKBHD • 16:40',
+        duration: 1000,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: The 100,000 Fold Stress Machine Test',
             hookText: '⚡ Micro-Hinge Titanium Gear Durability Reveal',
             viralityScore: '98% Viral',
-            start: 5,
-            end: 35,
+            start: 30,
+            end: 75,
             hookDesc: 'MKBHD inspects the micro-hinge titanium gears and explains why folding displays crack.',
             seoTitle: 'Is the folding screen crease finally gone forever? MKBHD explains 📱🤯',
             caption: 'LOOK AT THIS CREASE',
@@ -573,8 +629,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 2: Why Apple Refuses To Build A Foldable Yet',
             hookText: '🍏 Industry Secret & Ultra-Thin Glass Physics',
             viralityScore: '96% Viral',
-            start: 40,
-            end: 70,
+            start: 170,
+            end: 215,
             hookDesc: 'Marques breaks down Cupertino supply chain limitations and ultra-thin flexible glass.',
             seoTitle: 'The real reason Apple hasn\'t made a folding iPhone yet will surprise you 🍎👀',
             caption: 'APPLE\'S SECRET REASON',
@@ -586,8 +642,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 3: JerryRigEverything Scratch & Sand Torture',
             hookText: '💥 Dirt In The Hinge & Cringe-Worthy Sound',
             viralityScore: '95% Viral',
-            start: 75,
-            end: 105,
+            start: 315,
+            end: 360,
             hookDesc: 'Pouring fine pocket sand into the hinge mechanism to see if it grinds or snaps.',
             seoTitle: 'What happens when you drop an $1,800 foldable phone directly in the sand 😱⚠️',
             caption: 'LISTEN TO THE CRUNCH',
@@ -599,8 +655,8 @@ class ScaleReachFullApp {
             title: '🤯 Reel 4: The Dual Battery Power Architecture',
             hookText: '🔋 How 2 Split Batteries Work as 1 Cell',
             viralityScore: '94% Viral',
-            start: 110,
-            end: 140,
+            start: 460,
+            end: 505,
             hookDesc: 'Detailed transparent teardown showing ribbon cables connecting two independent batteries across the hinge.',
             seoTitle: 'The insane battery trick folding phones use to stay ultra-thin 🤯🔌',
             caption: 'TWO BATTERIES IN ONE',
@@ -612,8 +668,8 @@ class ScaleReachFullApp {
             title: '💡 Reel 5: Multitasking Workflow vs Normal Phones',
             hookText: '📲 3 Apps Open Side-by-Side In Real Life',
             viralityScore: '93% Viral',
-            start: 145,
-            end: 175,
+            start: 605,
+            end: 650,
             hookDesc: 'Editing video, answering emails, and watching YouTube simultaneously on the inner display.',
             seoTitle: 'This is the only feature that makes folding phones genuinely worth buying 📱⚡',
             caption: 'PRODUCTIVITY BEAST',
@@ -625,13 +681,39 @@ class ScaleReachFullApp {
             title: '🏆 Reel 6: The Brutal 2-Year Long-Term Verdict',
             hookText: '🎯 Honest Buying Advice & Pocket Drop Scorecard',
             viralityScore: '91% Viral',
-            start: 180,
-            end: 210,
+            start: 745,
+            end: 790,
             hookDesc: 'After 24 months of real-world pocket drops: Should you actually spend $1,800 on this?',
             seoTitle: 'Don\'t buy a folding phone until you see what happens after 2 years ⚠️📉',
             caption: 'DON\'T BUY THIS YET',
             tags: ['#techwarning', '#foldables', '#buyersguide', '#phonecomparison', '#fyp'],
             badgeTags: ['🏆 91% Buying Guide', '⚠️ Warning Hook', '💡 Value Test']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: Macro 8K Zoom On The Crease Mechanism',
+            hookText: '🔬 8K Probe Lens Captures Microscopic Gears Moving',
+            viralityScore: '90% Viral',
+            start: 870,
+            end: 915,
+            hookDesc: 'Special probe camera slides inside the open hinge showing 4 tiny water-resistant rubber gaskets in motion.',
+            seoTitle: 'Looking inside a folding phone hinge with an 8K probe lens is wild 🔬📱',
+            caption: '8K PROBE LENS ZOOM',
+            tags: ['#macrophotography', '#teardown', '#mkbhd', '#engineering', '#shorts'],
+            badgeTags: ['🎯 90% Macro Zoom', '🔬 8K Probe Lens', '⚡ High Retention']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Smartphone of The Year Final Scorecard',
+            hookText: '🏆 MKBHD Reveals The Blind Smartphone Winner',
+            viralityScore: '89% Viral',
+            start: 945,
+            end: 990,
+            hookDesc: 'Marques reveals the community voting results from 10 million blind photo and battery test submissions.',
+            seoTitle: 'The smartphone that actually won blind test will shock fanboys 🏆👑',
+            caption: 'THE UNEXPECTED WINNER',
+            tags: ['#smartphoneawards', '#mkbhd', '#blindtest', '#techreview', '#fyp'],
+            badgeTags: ['🚀 89% Final Winner', '🏆 Golden Trophy', '💬 Tech Debate']
           }
         ]
       },
@@ -640,14 +722,15 @@ class ScaleReachFullApp {
         matchKeywords: ['travel', 'vlog', 'overland', 'russia', 'iran', 'nomad', 'bus', 'adventure'],
         title: 'Overland Adventure: Russia to Iran',
         author: 'Outdoor Vlogger • 24:10',
+        duration: 1450,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: Stranded at Siberian Border at -20°C',
             hookText: '⚡ Dramatic Suspense & Frozen Engine Sound',
             viralityScore: '98% Viral',
-            start: 5,
-            end: 35,
+            start: 35,
+            end: 80,
             hookDesc: 'The converted bus engine freezes overnight in a remote snow pass with no cellular signal.',
             seoTitle: 'Our overland bus broke down at the Russian border in -20°C blizzard 🥶🚌',
             caption: 'THE ENGINE IS FROZEN',
@@ -659,8 +742,8 @@ class ScaleReachFullApp {
             title: '😱 Reel 2: The Heartwarming Stranger in Nowhere',
             hookText: '🤝 Emotional Rescue & Shared Warm Diesel Generator',
             viralityScore: '96% Viral',
-            start: 40,
-            end: 70,
+            start: 235,
+            end: 280,
             hookDesc: 'A local truck driver stops with a diesel generator and warm homemade soup to save the crew.',
             seoTitle: 'This stranger saved our lives in the middle of nowhere 🥺❤️',
             caption: 'FAITH IN HUMANITY',
@@ -672,8 +755,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 3: Crossing the Frozen Lake Baikal Ice Highway',
             hookText: '🧊 1-Meter Thick Transparent Black Ice Driving',
             viralityScore: '95% Viral',
-            start: 75,
-            end: 105,
+            start: 440,
+            end: 485,
             hookDesc: 'Driving heavy bus over transparent black ice with frightening cracking sounds echoing under wheels.',
             seoTitle: 'Driving a 5-ton bus across the world\'s deepest frozen lake 😱🧊',
             caption: 'THE ICE IS CRACKING',
@@ -685,8 +768,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 4: Trying Local Street Food at 3 AM',
             hookText: '🍜 Spicy Dumplings & Language Barrier Comedy',
             viralityScore: '94% Viral',
-            start: 110,
-            end: 140,
+            start: 660,
+            end: 705,
             hookDesc: 'Trying spicy Central Asian mutton dumplings with comical facial reactions and friendly vendor smiles.',
             seoTitle: 'We ordered mystery street food in Siberia at 3am and this happened 😂🥟',
             caption: 'TOO SPICY TO HANDLE',
@@ -698,8 +781,8 @@ class ScaleReachFullApp {
             title: '💡 Reel 5: How We Finance Full-Time Van Life',
             hookText: '💰 Exact Monthly Budget & Starlink Remote Work',
             viralityScore: '92% Viral',
-            start: 145,
-            end: 175,
+            start: 875,
+            end: 920,
             hookDesc: 'Transparent breakdown of fuel, visas, solar power, and Starlink internet costs for full-time overland nomad life.',
             seoTitle: 'How much traveling the world in an overland bus actually costs every month 🚌💵',
             caption: 'REAL COSTS REVEALED',
@@ -711,13 +794,39 @@ class ScaleReachFullApp {
             title: '🌅 Reel 6: Reaching the Iranian Mountain Pass',
             hookText: '🏔️ Breathtaking 4K Landscape Drone Reveal',
             viralityScore: '90% Viral',
-            start: 180,
-            end: 210,
+            start: 1075,
+            end: 1120,
             hookDesc: 'Descending out of snow into lush green subtropical hills of northern Iran at golden hour.',
             seoTitle: 'After 3,000 miles of driving, this view made all the pain worth it 🌄✨',
             caption: 'LOOK AT THIS VIEW',
             tags: ['#iranianmountains', '#landscape', '#roadtrip', '#epicview', '#wanderlust'],
             badgeTags: ['🌅 90% Visual ASMR', '🏔️ Epic Scenery', '🎉 Triumph']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: Midnight Desert Campfire Under Milky Way',
+            hookText: '🌌 4K Astrophotography Time-Lapse In The Karakum Desert',
+            viralityScore: '89% Viral',
+            start: 1245,
+            end: 1290,
+            hookDesc: 'Total silence in the desert with shooting stars and nomadic campfire tea ritual under brilliant stars.',
+            seoTitle: 'Camping under 100,000 stars in the middle of the desert 🌌✨',
+            caption: 'STARRY DESERT NIGHT',
+            tags: ['#milkyway', '#astrophotography', '#desertcamp', '#vanlife', '#shorts'],
+            badgeTags: ['🎯 89% Star ASMR', '🌌 4K Timelapse', '⚡ High Retention']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Crossing Into Tehran & Final Celebration',
+            hookText: '🎉 Welcomed By Local Drivers Beeping Horns In Tehran',
+            viralityScore: '88% Viral',
+            start: 1395,
+            end: 1440,
+            hookDesc: 'The overland bus rolls into Azadi Square with Persian hospitality, tea invitations and celebratory cheers.',
+            seoTitle: 'We drove from Siberia to Tehran and this was the reception 🇮🇷❤️',
+            caption: 'WE MADE IT ACROSS',
+            tags: ['#tehran', '#persianhospitality', '#travelvlog', '#journeyend', '#viral'],
+            badgeTags: ['🚀 88% Final Triumph', '🎉 Tehran Welcome', '💬 Wholesome Spike']
           }
         ]
       },
@@ -726,14 +835,15 @@ class ScaleReachFullApp {
         matchKeywords: ['chef', 'pierre', 'baguette', 'paris', 'cooking', 'baking', 'bread'],
         title: 'Cooking 1,000 Baguettes in Paris',
         author: 'Chef Pierre • 14:50',
+        duration: 890,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: The 72-Hour Sourdough Fermentation Secret',
             hookText: '⚡ ASMR Crisp Crust Crackling & Steam Blast',
             viralityScore: '98% Viral',
-            start: 5,
-            end: 35,
+            start: 25,
+            end: 70,
             hookDesc: 'Chef Pierre pulls out a golden blistered baguette from the stone oven with sizzling sound.',
             seoTitle: 'The 100-year-old French bakery secret for the crunchiest baguette 🥖🤤',
             caption: 'LISTEN TO THIS CRUNCH',
@@ -745,8 +855,8 @@ class ScaleReachFullApp {
             title: '🥐 Reel 2: Why Supermarket Bread Is A Lie',
             hookText: '🧪 Chemical Additives vs 4 Natural Ingredients',
             viralityScore: '96% Viral',
-            start: 40,
-            end: 70,
+            start: 145,
+            end: 190,
             hookDesc: 'Chef explains why industrial bread uses bleach and enzyme packs while traditional uses only 4 natural ingredients.',
             seoTitle: 'French Master Chef exposes why supermarket bread ruins your stomach 🤯🥖',
             caption: 'NEVER EAT THIS AGAIN',
@@ -758,8 +868,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 3: The Secret Stone Oven Steam Blast',
             hookText: '💨 High-Pressure Steam Creates The Blister Crust',
             viralityScore: '95% Viral',
-            start: 75,
-            end: 105,
+            start: 280,
+            end: 325,
             hookDesc: 'Showing the internal brick boiler injecting steam into the sealed chamber for 12 seconds.',
             seoTitle: 'This single step gives French baguettes that legendary shiny crust 🥖✨',
             caption: 'STEAM INJECTION SECRET',
@@ -771,8 +881,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 4: American Tourist Tries Real Paris Croissant',
             hookText: '🥐 Mind-Blowing Reaction to 81 Layers of Butter',
             viralityScore: '94% Viral',
-            start: 110,
-            end: 140,
+            start: 415,
+            end: 460,
             hookDesc: 'Tourist takes first bite, eyes widen in shock: "I will never eat bread in America again!"',
             seoTitle: 'His reaction to tasting a fresh Paris croissant for the first time 😂🥐',
             caption: 'MIND TOTALLY BLOWN',
@@ -784,8 +894,8 @@ class ScaleReachFullApp {
             title: '😋 Reel 5: The Salted Normandy Butter Taste Test',
             hookText: '🧈 Melting Salted Butter on Steaming Hot Crumb',
             viralityScore: '93% Viral',
-            start: 145,
-            end: 175,
+            start: 550,
+            end: 595,
             hookDesc: 'Slathering yellow Normandy churned butter on steaming crumb with loud satisfying crunch.',
             seoTitle: 'Nothing on Earth tastes better than fresh Paris baguette with salted butter 🧈🇫🇷',
             caption: 'PURE PERFECTION',
@@ -796,14 +906,40 @@ class ScaleReachFullApp {
             id: 6,
             title: '🏆 Reel 6: Baking 1,000 Baguettes Before Sunrise',
             hookText: '⏰ 4 AM Rush & The Smell of Paris Awakening',
-            viralityScore: '90% Viral',
-            start: 180,
-            end: 210,
+            viralityScore: '91% Viral',
+            start: 685,
+            end: 730,
             hookDesc: 'The bakers stack fresh baguettes in wicker baskets as the early morning Paris street market opens.',
             seoTitle: 'Inside Paris\'s oldest bakery at 4am: Preparing 1,000 baguettes before dawn 🥖🌙',
             caption: 'PARIS MORNING ROUTINE',
             tags: ['#bakeryroutine', '#earlymorning', '#parisvibes', '#bakerlife', '#shorts'],
-            badgeTags: ['🏆 90% Cozy ASMR', '🥖 1000 Loaves', '✨ Morning Vibe']
+            badgeTags: ['🏆 91% Cozy ASMR', '🥖 1000 Loaves', '✨ Morning Vibe']
+          },
+          {
+            id: 7,
+            title: '🎯 Reel 7: The Bread Scoring Blade Art Masterclass',
+            hookText: '🔪 Razor Lame Razor Technique Creates Perfect Ears',
+            viralityScore: '90% Viral',
+            start: 775,
+            end: 820,
+            hookDesc: 'Macro view of Chef Pierre slashing the dough at 30 degree angle in rapid rhythmic strokes.',
+            seoTitle: 'How French bakers cut baguettes with razor blades is pure satisfying art 🔪🥖',
+            caption: 'SATISFYING CUTS',
+            tags: ['#oddlysatisfying', '#doughscoring', '#bakerart', '#pastryskills', '#reels'],
+            badgeTags: ['🎯 90% Satisfying', '🔪 Razor Scoring', '⚡ High Retention']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: Customers Queuing Down The Paris Boulevard',
+            hookText: '🥖 200 People Line Up In The Morning Rain For Fresh Loaves',
+            viralityScore: '89% Viral',
+            start: 840,
+            end: 885,
+            hookDesc: 'Door opens at 6:30 AM and the entire neighborhood rushes in with joyful greetings.',
+            seoTitle: 'Why French people wait 45 minutes in line every morning for fresh bread 🥖🇫🇷',
+            caption: 'PARIS WAKES UP',
+            tags: ['#parisianlife', '#bakeryline', '#frenchculture', '#foodtravel', '#viral'],
+            badgeTags: ['🚀 89% Cultural Outro', '🥖 Morning Rush', '💬 Food Debate']
           }
         ]
       },
@@ -811,15 +947,16 @@ class ScaleReachFullApp {
         id: 'mrbeast_lebron',
         matchKeywords: ['lebron', 'basketball', 'nba', 'james'],
         title: 'Beat LeBron, Win $100,000',
-        author: 'MrBeast • Online',
+        author: 'MrBeast • 16:00',
+        duration: 960,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: The $100,000 1-on-1 LeBron Shootout',
             hookText: '⚡ High-Stakes Opening Shot vs Basketball Legend',
             viralityScore: '99% Viral',
-            start: 12,
-            end: 42,
+            start: 30,
+            end: 75,
             hookDesc: 'Contestant challenges LeBron James to a 3-point shootout with $100,000 cash on the line.',
             seoTitle: 'He really challenged LeBron James to a 1v1 for $100,000 🏀😱',
             caption: 'CAN HE BEAT LEBRON',
@@ -831,8 +968,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 2: LeBron\'s Hilarious Reaction & Savage Block',
             hookText: '😂 Laughter Spike & Savage Defensive Block',
             viralityScore: '97% Viral',
-            start: 45,
-            end: 75,
+            start: 160,
+            end: 205,
             hookDesc: 'LeBron swats the basketball away with a funny grin and the entire gym goes wild.',
             seoTitle: 'LeBron James did not let this slide for a second 😂💀',
             caption: 'GET THAT OUT OF HERE',
@@ -844,8 +981,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 3: Half-Court Trick Shot for $50,000',
             hookText: '🎯 Desperate Hail Mary Shot from Mid-Court',
             viralityScore: '96% Viral',
-            start: 80,
-            end: 110,
+            start: 300,
+            end: 345,
             hookDesc: 'Contestant gets one single attempt from mid-court logo with MrBeast holding the countdown buzzer.',
             seoTitle: 'He attempted a half-court shot against LeBron for $50,000 🤯🏀',
             caption: 'HALF COURT HAIL MARY',
@@ -857,8 +994,8 @@ class ScaleReachFullApp {
             title: '🤯 Reel 4: LeBron Dunks Over The Camera Crew',
             hookText: '🤯 Windmill 360 Dunk Shakes The Backboard',
             viralityScore: '95% Viral',
-            start: 115,
-            end: 145,
+            start: 450,
+            end: 495,
             hookDesc: 'LeBron takes flight from the free throw line and hammers down a ferocious windmill slam.',
             seoTitle: 'LeBron James pulled off an NBA Finals dunk in a MrBeast video 😱🔥',
             caption: 'THE KING TAKES FLIGHT',
@@ -870,8 +1007,8 @@ class ScaleReachFullApp {
             title: '💡 Reel 5: Secret NBA Shooting Technique Tip',
             hookText: '🏀 LeBron Teaches Proper Release Mechanics',
             viralityScore: '93% Viral',
-            start: 150,
-            end: 180,
+            start: 590,
+            end: 635,
             hookDesc: 'LeBron pauses the challenge to give the contestant personalized elbow alignment and wrist flick coaching.',
             seoTitle: 'LeBron James broke down his exact shooting secret in 30 seconds 🧠🏀',
             caption: 'COACH LEBRON',
@@ -883,8 +1020,8 @@ class ScaleReachFullApp {
             title: '🏆 Reel 6: $100,000 Final Buzzer Shot & Climax',
             hookText: '💰 The Final Second Shot for $100,000',
             viralityScore: '91% Viral',
-            start: 185,
-            end: 215,
+            start: 720,
+            end: 765,
             hookDesc: 'Tense countdown with crowd holding breath as the final basketball shot arcs through the air.',
             seoTitle: 'The final shot for $100,000 had everyone holding their breath 🥹🏀',
             caption: 'WILL IT GO IN',
@@ -896,8 +1033,8 @@ class ScaleReachFullApp {
             title: '🎯 Reel 7: Slow-Mo Windmill Slam Angle',
             hookText: '🌪️ Multi-Angle Replay of LeBron\'s Ferocious Dunk',
             viralityScore: '90% Viral',
-            start: 220,
-            end: 250,
+            start: 840,
+            end: 885,
             hookDesc: 'Phantom high-speed camera captures LeBron hanging in the air and rattling the rim.',
             seoTitle: 'LeBron James dunk in super slow motion looks completely unreal 🤯🏀',
             caption: 'GRAVITY DEFIED',
@@ -909,8 +1046,8 @@ class ScaleReachFullApp {
             title: '🚀 Reel 8: LeBron Teases MrBeast Blooper',
             hookText: '😂 Hilarious Trash Talk & Court Banter',
             viralityScore: '89% Viral',
-            start: 255,
-            end: 285,
+            start: 905,
+            end: 950,
             hookDesc: 'LeBron jokes with MrBeast about joining his next challenge video as the gym roars with laughter.',
             seoTitle: 'LeBron James roasting MrBeast is the funniest thing you\'ll see today 😂💀',
             caption: 'LEBRON ROASTS MRBEAST',
@@ -924,14 +1061,15 @@ class ScaleReachFullApp {
         matchKeywords: ['_c2e1ncl3sc', '0e3gpea1tyg', 'haaland', 'striker', 'erling', 'penalty', 'beat professional athlete', 'athlete', 'soccer', 'football', 'pro athlete', 'goalie', 'goalkeeper', 'mrbeast', '100000', '100,000'],
         title: 'Beat Professional Athlete, Win $100,000',
         author: 'MrBeast • 22:28',
+        duration: 1348,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: Striker Haaland 1-on-1 Challenge',
             hookText: '⚡ High-Stakes Penalty Shootout Kickoff',
             viralityScore: '99% Viral',
-            start: 15,
-            end: 45,
+            start: 35,
+            end: 85,
             hookDesc: 'Erling Haaland steps up against amateur goalkeeper with $100,000 briefcase in goal.',
             seoTitle: 'He tried to stop Erling Haaland\'s penalty shot for $100,000 ⚽️😱',
             caption: 'CAN HE SAVE THIS?! ⚽',
@@ -948,8 +1086,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 2: Insane Goalkeeper Save & Reaction',
             hookText: '🧤 Impossible Reflex & Shocked Stadium',
             viralityScore: '97% Viral',
-            start: 45,
-            end: 75,
+            start: 195,
+            end: 250,
             hookDesc: 'Goalkeeper miraculously tips the ball over the crossbar with his fingertips.',
             seoTitle: 'Nobody expected the goalkeeper to actually save Haaland\'s shot 🤯🔥',
             caption: 'HOW DID HE SAVE THAT?! 🤯',
@@ -966,8 +1104,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 3: Haaland 100 MPH Rocket Kick Test',
             hookText: '🚀 Radar Speed Gun Clocks Unbelievable Power',
             viralityScore: '96% Viral',
-            start: 80,
-            end: 110,
+            start: 410,
+            end: 465,
             hookDesc: 'Haaland unleashes full velocity strike into target dummy that flies 10 meters backward.',
             seoTitle: 'Erling Haaland\'s kick speed broke the speedometer radar 😱⚽',
             caption: '100 MPH ROCKET KICK ⚡',
@@ -984,8 +1122,8 @@ class ScaleReachFullApp {
             title: '🤯 Reel 4: Crossbar Challenge for $50,000',
             hookText: '🎯 Crossbar Ping Precision from 35 Yards',
             viralityScore: '95% Viral',
-            start: 115,
-            end: 145,
+            start: 620,
+            end: 675,
             hookDesc: 'Contestant hits the crossbar cleanly on second try sending the bench into absolute delirium.',
             seoTitle: 'He actually hit the crossbar against Haaland for $50,000 cash 🤯🎯',
             caption: 'PERFECT CROSSBAR PING 🎯',
@@ -1002,8 +1140,8 @@ class ScaleReachFullApp {
             title: '💡 Reel 5: Haaland\'s Secret Pre-Game Warmup Habit',
             hookText: '🧘 Meditation & Blue-Light Blocking Routine',
             viralityScore: '93% Viral',
-            start: 150,
-            end: 180,
+            start: 820,
+            end: 875,
             hookDesc: 'Haaland shares his famous lotus meditation pose and special glasses routine with the contestant.',
             seoTitle: 'Haaland reveals the exact morning routine that made him world\'s best striker 🧠✨',
             caption: 'HAALAND SECRET HABIT 🧠',
@@ -1017,11 +1155,29 @@ class ScaleReachFullApp {
           },
           {
             id: 6,
-            title: '🏆 Reel 6: $100,000 Cash Handover & Speech',
+            title: '🏆 Reel 6: Sudden Death Final Shootout Decider',
+            hookText: '🎯 Everything on The Line in Sudden Death Penalty',
+            viralityScore: '92% Viral',
+            start: 990,
+            end: 1045,
+            hookDesc: 'Final shot under massive stadium lights to decide if the amateur goalkeeper takes home the $100,000.',
+            seoTitle: 'Sudden death penalty decider against Erling Haaland for $100k ⚽🔥',
+            caption: 'SUDDEN DEATH DECIDER ⚽',
+            subtitles: [
+              'SUDDEN DEATH PENALTY DECIDER!',
+              'EVERYTHING IS ON THE LINE RIGHT NOW!',
+              'WILL HE MAKE THE WINNING SAVE?!'
+            ],
+            tags: ['#suddendeath', '#footballpenalty', '#championsleague', '#100000dollars', '#shorts'],
+            badgeTags: ['🏆 92% Climax', '⚽ Sudden Death', '🔥 Peak Drama']
+          },
+          {
+            id: 7,
+            title: '💰 Reel 7: $100,000 Cash Handover & Speech',
             hookText: '💰 Opening The Money Briefcase',
             viralityScore: '91% Viral',
-            start: 185,
-            end: 215,
+            start: 1155,
+            end: 1210,
             hookDesc: 'Contestant breaks into happy tears hugging MrBeast and Haaland as confetti rains down.',
             seoTitle: 'His emotional reaction to winning $100,000 will make your day 🥹💰',
             caption: 'LIFE CHANGING MOMENT 🏆',
@@ -1031,33 +1187,15 @@ class ScaleReachFullApp {
               'HE CANNOT BELIEVE IT HAPPENED!'
             ],
             tags: ['#wholesome', '#moneygiveaway', '#100000dollars', '#emotional', '#shorts'],
-            badgeTags: ['🏆 91% Climax', '💰 $100k Handover', '✨ Wholesome']
-          },
-          {
-            id: 7,
-            title: '🎯 Reel 7: Slow-Mo Curve Shot Masterclass',
-            hookText: '🌪️ Impossible Angle & Curving Trajectory',
-            viralityScore: '90% Viral',
-            start: 220,
-            end: 250,
-            hookDesc: 'High-speed 1000fps camera captures ball curving with extreme spin right into the postage stamp corner.',
-            seoTitle: 'Erling Haaland\'s curve shot broke the laws of physics in slow motion 🤯⚽',
-            caption: 'PHYSICS BROKEN 🌪️',
-            subtitles: [
-              '1000 FPS SLOW MOTION REPLAY',
-              'LOOK AT THAT BALL SPIN & CURVE',
-              'PHYSICS LAWS COMPLETELY BROKEN!'
-            ],
-            tags: ['#haalandcurver', '#slowmotion', '#footballskills', '#viralreels', '#fyp'],
-            badgeTags: ['🎯 90% Curve Precision', '🌪️ 1000 FPS Slow-Mo', '⚡ High Retention']
+            badgeTags: ['💰 91% Climax', '🎉 $100k Handover', '✨ Wholesome']
           },
           {
             id: 8,
             title: '🚀 Reel 8: Behind The Scenes Bloopers & Laughs',
             hookText: '😂 Erling Haaland Misses Target & Bursts Out Laughing',
             viralityScore: '89% Viral',
-            start: 255,
-            end: 285,
+            start: 1270,
+            end: 1325,
             hookDesc: 'Hilarious unscripted banter between Haaland, MrBeast and the amateur keeper during break time.',
             seoTitle: 'The funniest unscripted moment between Haaland and MrBeast 😂🎬',
             caption: 'WAIT TILL THE END 😂',
@@ -1075,15 +1213,16 @@ class ScaleReachFullApp {
         id: 'mrbeast_escape_cops',
         matchKeywords: ['escape', '100 cops', '500,000', '500k', 'cops'],
         title: 'Escape 100 Cops, Win $500,000',
-        author: 'MrBeast • Online',
+        author: 'MrBeast • 18:00',
+        duration: 1080,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: The 100 Cop Perimeter Chase Begins',
             hookText: '⚡ 100 Squad Cars Surround The Cornfield Perimeter',
             viralityScore: '99% Viral',
-            start: 0,
-            end: 30,
+            start: 30,
+            end: 75,
             hookDesc: '100 police squad cars turn on sirens simultaneously across the open farm perimeter with van speeding off.',
             seoTitle: '100 police cars chased us through a farm for $500,000 🚔💨',
             caption: 'THE CHASE BEGINS',
@@ -1095,8 +1234,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 2: Tactical Decoy & Smoke Screen Escape',
             hookText: '💨 Pink Smoke Bombs Blind Police Interceptors',
             viralityScore: '98% Viral',
-            start: 35,
-            end: 65,
+            start: 175,
+            end: 220,
             hookDesc: 'MrBeast deploys a massive pink smoke cloud from the trunk, causing police pursuit cars to brake hard.',
             seoTitle: 'The smoke grenade trick that saved us from 20 police cruisers 😱💨',
             caption: 'DEPLOYING SMOKE SCREEN',
@@ -1108,8 +1247,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 3: Cop Falls For Cardboard Dummy Van',
             hookText: '😂 Officer Arrests A Cardboard Box Painted Like A Car',
             viralityScore: '97% Viral',
-            start: 70,
-            end: 100,
+            start: 335,
+            end: 380,
             hookDesc: 'Police surround a hay bale painted like a van while the real escape crew slips past on foot.',
             seoTitle: 'Police officers actually surrounded a cardboard fake car 😂💀',
             caption: 'WORST COP BAIT EVER',
@@ -1121,8 +1260,8 @@ class ScaleReachFullApp {
             title: '🤯 Reel 4: Thermal Radar Military Helicopter Search',
             hookText: '🚁 Night-Vision Infrared Drone Spots Hiding Spot',
             viralityScore: '95% Viral',
-            start: 105,
-            end: 135,
+            start: 505,
+            end: 550,
             hookDesc: 'Aerial infrared chopper locks onto thermal heat signatures hiding inside a drainage pipe.',
             seoTitle: 'The police helicopter thermal camera almost caught us right here 🚁👀',
             caption: 'HELICOPTER RIGHT ABOVE US',
@@ -1134,8 +1273,8 @@ class ScaleReachFullApp {
             title: '💡 Reel 5: Secret Underground Sewage Escape Route',
             hookText: '🕳️ Crawling Through 200ft Pipe To Bypass Barricade',
             viralityScore: '93% Viral',
-            start: 140,
-            end: 170,
+            start: 660,
+            end: 705,
             hookDesc: 'Using blueprints of the underground stormwater pipes to crawl right under the police roadblock.',
             seoTitle: 'This underground tunnel plan was pure genius 🕳️🧠',
             caption: 'UNDERGROUND BYPASS',
@@ -1147,8 +1286,8 @@ class ScaleReachFullApp {
             title: '🏆 Reel 6: The $500,000 Bank Safe Climax',
             hookText: '💰 Touching The Red Safe Button Seconds Before Arrest',
             viralityScore: '91% Viral',
-            start: 175,
-            end: 205,
+            start: 810,
+            end: 855,
             hookDesc: 'Sprinting across the final courtyard and slamming the buzzer to claim $500,000 with 1 second remaining.',
             seoTitle: 'He touched the safe 1 second before getting tackled for $500,000 😱💰',
             caption: '1 SECOND LEFT TO WIN',
@@ -1160,8 +1299,8 @@ class ScaleReachFullApp {
             title: '🎯 Reel 7: High-Speed Police PIT Maneuver Fail',
             hookText: '🏎️ Pursuit Car Spun Out On Wet Grass Drift',
             viralityScore: '90% Viral',
-            start: 210,
-            end: 240,
+            start: 955,
+            end: 1000,
             hookDesc: 'Police interceptor attempts PIT maneuver on wet grass and spins out into safety hay bales.',
             seoTitle: 'The police car spinout that let the getaway van escape 😱💨',
             caption: 'PIT MANEUVER FAILED',
@@ -1173,8 +1312,8 @@ class ScaleReachFullApp {
             title: '🚀 Reel 8: Celebrating With 100 Cops After Stunt',
             hookText: '😂 Handshakes & Pizza Party With The Entire Police Force',
             viralityScore: '89% Viral',
-            start: 245,
-            end: 275,
+            start: 1025,
+            end: 1070,
             hookDesc: 'All 100 officers break character and celebrate with MrBeast with pizza boxes on car hoods.',
             seoTitle: 'What happened right after escaping 100 police officers 😂🍕',
             caption: 'COPS GET PIZZA',
@@ -1187,15 +1326,16 @@ class ScaleReachFullApp {
         id: 'mrbeast_100_million',
         matchKeywords: ['100000000', '1 vs 100', '100 million', '$1 vs', '100,000,000', 'house', 'mansion', 'expensive'],
         title: '$1 vs $100,000,000 House / Car Challenge',
-        author: 'MrBeast • 100M+ Views',
+        author: 'MrBeast • 20:00',
+        duration: 1200,
         clips: [
           {
             id: 1,
             title: '🔥 Reel 1: Stepping Inside A $100,000,000 House',
             hookText: '⚡ High Retention Opener & Shocked Reaction',
             viralityScore: '99% Viral',
-            start: 10,
-            end: 38,
+            start: 25,
+            end: 75,
             hookDesc: 'MrBeast and crew run up the driveway shouting in disbelief at the 100 million dollar mansion.',
             seoTitle: 'I just stepped inside a $100,000,000 mega mansion 🤯🏠',
             caption: 'I JUST BOUGHT A $100,000,000 HOUSE!',
@@ -1213,8 +1353,8 @@ class ScaleReachFullApp {
             title: '⚡ Reel 2: Jumping Off The 3rd Story Balcony',
             hookText: '📈 High-Altitude Leap Into The Massive Pool',
             viralityScore: '98% Viral',
-            start: 42,
-            end: 70,
+            start: 175,
+            end: 225,
             hookDesc: 'Karl jumps off the third story balcony straight into the infinity pool below.',
             seoTitle: 'He actually jumped off the $100M mansion roof 😱🏊',
             caption: 'HE LITERALLY JUMPED OFF THE ROOF!',
@@ -1232,8 +1372,8 @@ class ScaleReachFullApp {
             title: '😂 Reel 3: The 24K Solid Gold Master Bedroom',
             hookText: '😂 Shocking Tour of The Billionaire Master Suite',
             viralityScore: '96% Viral',
-            start: 75,
-            end: 102,
+            start: 350,
+            end: 400,
             hookDesc: 'The master bedroom has solid gold faucets and a bed that rotates 360 degrees.',
             seoTitle: 'This bedroom costs more than my entire life 😂💀',
             caption: 'THIS BEDROOM COSTS MORE THAN MY LIFE!',
@@ -1251,8 +1391,8 @@ class ScaleReachFullApp {
             title: '🤯 Reel 4: The $1 Abandoned House Shock',
             hookText: '🤯 Hilarious Comparison to The Crumbling $1 Property',
             viralityScore: '95% Viral',
-            start: 108,
-            end: 135,
+            start: 535,
+            end: 585,
             hookDesc: 'Cutting immediately to the $1 house where the door falls off its hinges when pushed.',
             seoTitle: 'We bought a house for literally ONE DOLLAR 🤯🏚️',
             caption: 'AND THIS HOUSE WAS ONLY ONE DOLLAR!',
@@ -1270,8 +1410,8 @@ class ScaleReachFullApp {
             title: '💡 Reel 5: Secret Underground Panic Bunker',
             hookText: '💡 Pulling The Secret Bookshelf Door',
             viralityScore: '93% Viral',
-            start: 140,
-            end: 168,
+            start: 720,
+            end: 770,
             hookDesc: 'Behind a library bookcase is a steel vault door leading to an underground fortress.',
             seoTitle: 'We found a secret underground bunker inside the mansion 🧠✨',
             caption: 'THERE IS A SECRET UNDERGROUND TUNNEL!',
@@ -1289,8 +1429,8 @@ class ScaleReachFullApp {
             title: '🏆 Reel 6: Full Sized Living Room Bowling Alley',
             hookText: '🎯 Bowling a Strike Inside The Living Room',
             viralityScore: '91% Viral',
-            start: 172,
-            end: 200,
+            start: 900,
+            end: 950,
             hookDesc: 'Testing the 4-lane regulation bowling alley and IMAX theater inside the basement.',
             seoTitle: 'This mansion literally has a bowling alley inside 🏆💯',
             caption: 'A FULL SIZED BOWLING ALLEY INSIDE!',
@@ -1308,8 +1448,8 @@ class ScaleReachFullApp {
             title: '🎯 Reel 7: Rooftop Helipad & Hypercar Garage',
             hookText: '🌪️ Bugatti & Helicopter Landed On The Property',
             viralityScore: '90% Viral',
-            start: 205,
-            end: 232,
+            start: 1055,
+            end: 1105,
             hookDesc: 'A helicopter lands on the private roof pad while five hypercars park out front.',
             seoTitle: 'The rooftop helipad on this $100,000,000 mansion is unreal 🤯🚁',
             caption: 'THE HELICOPTER JUST LANDED ON THE ROOF!',
@@ -1327,8 +1467,8 @@ class ScaleReachFullApp {
             title: '🚀 Reel 8: Giving Away The Mansion To A Subscriber',
             hookText: '😂 The Grand Prize Giveaway Announcement',
             viralityScore: '89% Viral',
-            start: 238,
-            end: 265,
+            start: 1140,
+            end: 1190,
             hookDesc: 'MrBeast reveals the keys and challenges one lucky subscriber to stay overnight to win.',
             seoTitle: 'We are giving away this entire property to a subscriber 😂🎬',
             caption: 'WE ARE GIVING THIS AWAY TO A SUBSCRIBER!',
@@ -1348,6 +1488,11 @@ class ScaleReachFullApp {
     // Initial Active Moments (Default to MrBeast Beat Pro Athlete 8 Viral Reels preset)
     const initialPreset = this.videoAnalysisDatabase.find(p => p.id === 'mrbeast_haaland') || this.videoAnalysisDatabase[0];
     this.clipsMoments = JSON.parse(JSON.stringify(initialPreset.clips));
+    if (initialPreset && initialPreset.duration) {
+      this.videoDuration = initialPreset.duration;
+      this.clipStart = initialPreset.clips[0].start;
+      this.clipEnd = initialPreset.clips[0].end;
+    }
   }
 
   init() {
@@ -1679,17 +1824,21 @@ class ScaleReachFullApp {
 
     // Known titles mapping for instant recognition
     const knownTitles = {
-      '_c2e1Ncl3Sc': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • YouTube' },
-      '0e3GPea1Tyg': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • YouTube' },
-      'travel_vlogger': { title: 'Overland Adventure: Russia to Iran', author: 'Outdoor Vlogger • 24:10' },
-      'ishowspeed_wwe': { title: 'HOW I FOUGHT IN WRESTLEMANIA', author: 'IShowSpeed • 18:24' }
+      '_c2e1Ncl3Sc': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • 22:28', duration: 1348 },
+      '0e3GPea1Tyg': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • 22:28', duration: 1348 },
+      'travel_vlogger': { title: 'Overland Adventure: Russia to Iran', author: 'Outdoor Vlogger • 24:10', duration: 1450 },
+      'ishowspeed_wwe': { title: 'HOW I FOUGHT IN WRESTLEMANIA', author: 'IShowSpeed • 18:24', duration: 1104 },
+      'mkbhd_folding': { title: 'The Dual Screen Folding Revolution', author: 'MKBHD • 16:40', duration: 1000 },
+      'khan_sir_podcast': { title: 'KHAN SIR ON PAKISTAN & GEOPOLITICS', author: 'The Real Talks • 1h 12m', duration: 4320 },
+      'french_chef': { title: 'Cooking 1,000 Baguettes in Paris', author: 'Chef Pierre • 14:50', duration: 890 }
     };
     const known = knownTitles[videoId];
     const initialTitle = known ? known.title : `YouTube Video (${videoId})`;
-    const initialAuthor = known ? known.author : '@YouTube Creator • Online';
+    const initialAuthor = known ? known.author : '@YouTube Creator • 20:00';
+    const initialDuration = known ? known.duration : 1200;
 
     // Immediately analyze video and apply metadata with 1080p Ultra HD thumbnail
-    this.applyVideoMeta(targetUrl, initialTitle, initialAuthor, `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
+    this.applyVideoMeta(targetUrl, initialTitle, initialAuthor, `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`, initialDuration);
 
     // Force ultra 1080p high quality directly on player
     setTimeout(() => this.forceMaxQuality(), 600);
@@ -1699,13 +1848,14 @@ class ScaleReachFullApp {
       .then(res => res.json())
       .then(data => {
         if (data && data.title) {
-          this.applyVideoMeta(targetUrl, data.title, `${data.author_name || 'YouTube Creator'} • Online`, data.thumbnail_url || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
+          const authorText = `${data.author_name || 'YouTube Creator'} • ${this.formatTime(this.videoDuration || initialDuration)}`;
+          this.applyVideoMeta(targetUrl, data.title, authorText, data.thumbnail_url || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`, this.videoDuration || initialDuration);
           this.showToast(`Loaded Real YouTube Video: ${data.title} 🎬`);
         }
       })
       .catch(() => {
         if (!known) {
-          this.applyVideoMeta(targetUrl, 'YouTube Video Stream', '@Creator • Online', `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
+          this.applyVideoMeta(targetUrl, 'YouTube Video Stream', '@Creator • 20:00', `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`, 1200);
         }
       });
   }
@@ -1825,7 +1975,7 @@ class ScaleReachFullApp {
     this.showConfigureView();
   }
 
-  applyVideoMeta(url, title, author, img) {
+  applyVideoMeta(url, title, author, img, explicitDuration) {
     this.currentVideoUrl = url || '';
     this.currentVideoTitle = title || 'Selected Video';
     this.currentVideoAuthor = author || 'Creator';
@@ -1843,8 +1993,37 @@ class ScaleReachFullApp {
     if (this.captionTitleTag) this.captionTitleTag.textContent = `"${title}"`;
     if (this.captionAuthorTag) this.captionAuthorTag.textContent = '@ajjez_clips';
 
-    const dur = (author && author.includes('•')) ? author.split('•')[1].trim() : '20:00';
-    if (this.videoDurationBadge) this.videoDurationBadge.textContent = dur;
+    // 1. Determine accurate video duration
+    let detectedDuration = 0;
+    if (explicitDuration && isFinite(explicitDuration) && explicitDuration > 0) {
+      detectedDuration = explicitDuration;
+    } else {
+      detectedDuration = this.parseDurationToSeconds(author);
+    }
+
+    // 2. If duration not in author string (e.g. "MrBeast • Online"), search profile database
+    if (!detectedDuration || detectedDuration <= 0) {
+      const searchStr = `${title || ''} ${author || ''} ${url || ''}`.toLowerCase();
+      const matched = this.videoAnalysisDatabase.find(p => p.matchKeywords && p.matchKeywords.some(kw => searchStr.includes(kw)));
+      if (matched && matched.duration) {
+        detectedDuration = matched.duration;
+      }
+    }
+
+    // 3. If native video has duration loaded, use it
+    if ((!detectedDuration || detectedDuration <= 0) && this.sourceVideo && isFinite(this.sourceVideo.duration) && this.sourceVideo.duration > 10 && this.activeSourceType !== 'youtube') {
+      detectedDuration = this.sourceVideo.duration;
+    }
+
+    // 4. Default to realistic long video duration (20 minutes = 1200s)
+    if (!detectedDuration || detectedDuration <= 0) {
+      detectedDuration = 1200;
+    }
+
+    this.videoDuration = detectedDuration;
+    if (this.videoDurationBadge) {
+      this.videoDurationBadge.textContent = this.formatTime(this.videoDuration);
+    }
 
     const sourceUrlText = document.getElementById('studioSourceUrlText');
     if (sourceUrlText) {
@@ -1883,14 +2062,17 @@ class ScaleReachFullApp {
     let moments = [];
     if (matchedProfile) {
       moments = JSON.parse(JSON.stringify(matchedProfile.clips));
+      if (matchedProfile.duration) {
+        this.videoDuration = matchedProfile.duration;
+      }
     } else {
-      moments = this.generateClipsForCustomVideo(title, author, url, duration);
+      moments = this.generateClipsForCustomVideo(title, author, url, duration || this.videoDuration);
     }
 
     this.clipsMoments = moments;
 
-    // Adapt timestamps smartly so each reel has its own unique, non-overlapping timeline
-    const realDur = (this.videoDuration && isFinite(this.videoDuration) && this.videoDuration > 0) ? this.videoDuration : (duration || 90);
+    // Adapt timestamps smartly so each reel has its own unique, non-overlapping timeline across video
+    const realDur = (this.videoDuration && isFinite(this.videoDuration) && this.videoDuration > 0) ? this.videoDuration : (duration || 1200);
     this.distributeClipsAcrossDuration(realDur);
 
     this.activeClipIndex = 0;
@@ -1905,18 +2087,21 @@ class ScaleReachFullApp {
   }
 
   generateClipsForCustomVideo(title, author, url, duration) {
-    const dur = (duration && isFinite(duration) && duration > 10) ? duration : 180;
+    const dur = (duration && isFinite(duration) && duration > 10) ? duration : 1200;
     const cleanTitle = (title || 'Video Moment').replace(/[^\w\s-]/gi, '').trim();
     const words = cleanTitle.split(/\s+/).filter(w => w.length > 3 && !['with', 'from', 'this', 'that', 'your', 'have', 'more', 'what', 'video', 'stream'].includes(w.toLowerCase()));
     const topicWord = words[0] || 'Viral';
     const tagWord = (words[1] || topicWord).toLowerCase();
 
-    // 8 non-overlapping, well-spaced reels across the video duration
-    const segDur = Math.max(10, Math.min(30, Math.floor((dur * 0.85) / 8)));
+    // 8 non-overlapping, well-spaced reels across the video duration (start to finish)
+    const segDur = Math.max(30, Math.min(55, Math.floor((dur * 0.25) / 2)));
     const segs = [];
-    const step = dur > segDur ? (dur - segDur) / 7 : 0;
+    const usableStart = Math.min(30, Math.floor(dur * 0.03));
+    const usableEnd = Math.max(usableStart + segDur, dur - 15);
+    const step = (usableEnd - segDur - usableStart) / 7;
+
     for (let i = 0; i < 8; i++) {
-      const s = Math.max(0, Math.floor(i * step));
+      const s = Math.max(0, Math.floor(usableStart + i * step));
       const e = Math.min(dur, s + segDur);
       segs.push({ start: s, end: e });
     }
@@ -4029,9 +4214,11 @@ class ScaleReachFullApp {
     this.sourceVideo.loop = false; // Looping handled via timeupdate for precise trimmer boundaries
 
     this.sourceVideo.addEventListener('loadedmetadata', () => {
-      if (isFinite(this.sourceVideo.duration) && this.sourceVideo.duration > 0) {
-        this.videoDuration = this.sourceVideo.duration;
-        this.recalculateMomentsForDuration();
+      if (this.activeSourceType !== 'youtube' && (!this.currentVideoUrl || this.currentVideoUrl.endsWith('podcast.mp4'))) {
+        if (isFinite(this.sourceVideo.duration) && this.sourceVideo.duration > 0) {
+          this.videoDuration = this.sourceVideo.duration;
+          this.recalculateMomentsForDuration();
+        }
       }
       this.updateTrimmerUI();
     });
@@ -4052,7 +4239,7 @@ class ScaleReachFullApp {
 
   distributeClipsAcrossDuration(totalDur) {
     if (!this.clipsMoments || !this.clipsMoments.length) return;
-    const dur = (totalDur && isFinite(totalDur) && totalDur > 10) ? totalDur : 180;
+    const dur = (totalDur && isFinite(totalDur) && totalDur > 10) ? totalDur : 1200;
     const count = this.clipsMoments.length;
 
     // Check if current clips fit naturally without any overlaps and all end <= dur
@@ -4071,7 +4258,7 @@ class ScaleReachFullApp {
 
     if (hasCollisionOrOverflow) {
       // Calculate intelligent, non-overlapping intervals across the whole video
-      const clipSpan = Math.max(15, Math.min(30, Math.floor((dur * 0.82) / count)));
+      const clipSpan = Math.max(30, Math.min(55, Math.floor((dur * 0.85) / count)));
       const usableSpan = Math.max(0, dur - clipSpan);
       const step = count > 1 ? usableSpan / (count - 1) : 0;
 
@@ -4079,7 +4266,7 @@ class ScaleReachFullApp {
         let start = Math.floor(idx * step);
         let end = Math.min(dur, start + clipSpan);
         if (end <= start) {
-          start = Math.max(0, end - 15);
+          start = Math.max(0, end - 30);
         }
         m.start = parseFloat(start.toFixed(1));
         m.end = parseFloat(end.toFixed(1));
@@ -4885,14 +5072,62 @@ class ScaleReachFullApp {
 
   formatTime(seconds) {
     if (isNaN(seconds) || !isFinite(seconds) || seconds < 0) return '00:00';
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
+    const totalSec = Math.floor(seconds);
+    const hrs = Math.floor(totalSec / 3600);
+    const mins = Math.floor((totalSec % 3600) / 60);
+    const secs = totalSec % 60;
+    if (hrs > 0) {
+      return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   }
 
   parseTime(str) {
-    if (!str || !str.includes(':')) return 0;
-    const parts = str.split(':');
-    return parseInt(parts[0], 10) * 60 + parseFloat(parts[1]);
+    if (!str) return 0;
+    if (typeof str === 'number') return str;
+    const clean = str.toString().trim();
+    if (!clean.includes(':')) {
+      const val = parseFloat(clean);
+      return (!isNaN(val) && isFinite(val) && val >= 0) ? val : 0;
+    }
+    const parts = clean.split(':').map(p => parseFloat(p));
+    if (parts.length === 3 && !parts.some(isNaN)) {
+      return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    }
+    if (parts.length === 2 && !parts.some(isNaN)) {
+      return parts[0] * 60 + parts[1];
+    }
+    return 0;
+  }
+
+  parseDurationToSeconds(input) {
+    if (!input) return 0;
+    if (typeof input === 'number') return input;
+    let str = input.toString().trim();
+
+    if (str.includes('•')) {
+      const parts = str.split('•');
+      for (const p of parts) {
+        const trimmed = p.trim();
+        if (/\d+:\d+|\d+\s*[hms]/i.test(trimmed)) {
+          str = trimmed;
+          break;
+        }
+      }
+    }
+
+    const lower = str.toLowerCase();
+    if (lower.includes('h') || lower.includes('m') || lower.includes('s')) {
+      let total = 0;
+      const hMatch = lower.match(/(\d+)\s*h/);
+      const mMatch = lower.match(/(\d+)\s*m/);
+      const sMatch = lower.match(/(\d+)\s*s/);
+      if (hMatch) total += parseInt(hMatch[1], 10) * 3600;
+      if (mMatch) total += parseInt(mMatch[1], 10) * 60;
+      if (sMatch) total += parseInt(sMatch[1], 10);
+      if (total > 0) return total;
+    }
+
+    return this.parseTime(str);
   }
 }
