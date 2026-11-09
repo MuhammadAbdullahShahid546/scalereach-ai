@@ -117,8 +117,11 @@ class ScaleReachFullApp {
     this.phoneYoutubeIframe = document.getElementById('phoneYoutubeIframe');
     this.phoneCaptionsOverlayCanvas = document.getElementById('phoneCaptionsOverlayCanvas');
     this.ctxPhoneOverlay = this.phoneCaptionsOverlayCanvas ? this.phoneCaptionsOverlayCanvas.getContext('2d') : null;
-    this.activeSourceType = 'native';
-    this.currentYouTubeId = null;
+    const storedYtId = (typeof localStorage !== 'undefined') ? localStorage.getItem('scalereach_yt_id') : null;
+    this.currentYouTubeId = storedYtId || '_c2e1Ncl3Sc';
+    this.activeSourceType = 'youtube';
+    this.currentVideoTitle = 'Beat Professional Athlete, Win $100,000';
+    this.currentVideoAuthor = 'MrBeast • YouTube';
     this.layoutBtns = document.querySelectorAll('.layout-btn');
     this.panSlider = document.getElementById('panSlider');
     this.panValDisplay = document.getElementById('panValDisplay');
@@ -918,7 +921,7 @@ class ScaleReachFullApp {
       },
       {
         id: 'mrbeast_haaland',
-        matchKeywords: ['haaland', 'striker', 'erling', 'penalty'],
+        matchKeywords: ['_c2e1ncl3sc', '0e3gpea1tyg', 'haaland', 'striker', 'erling', 'penalty', 'beat professional athlete', 'athlete', 'soccer', 'football', 'pro athlete', 'goalie', 'goalkeeper', 'mrbeast', '100000', '100,000'],
         title: 'Beat Professional Athlete, Win $100,000',
         author: 'MrBeast • 22:28',
         clips: [
@@ -1342,8 +1345,8 @@ class ScaleReachFullApp {
       }
     ];
 
-    // Initial Active Moments (Default to Real Podcast Interview 8 Viral Reels preset)
-    const initialPreset = this.videoAnalysisDatabase.find(p => p.id === 'real_podcast_interview') || this.videoAnalysisDatabase[0];
+    // Initial Active Moments (Default to MrBeast Beat Pro Athlete 8 Viral Reels preset)
+    const initialPreset = this.videoAnalysisDatabase.find(p => p.id === 'mrbeast_haaland') || this.videoAnalysisDatabase[0];
     this.clipsMoments = JSON.parse(JSON.stringify(initialPreset.clips));
   }
 
@@ -1438,11 +1441,11 @@ class ScaleReachFullApp {
     });
 
     const demoVideoFiles = {
-      'https://www.youtube.com/watch?v=travel_vlogger': 'people.mp4',
+      'https://www.youtube.com/watch?v=travel_vlogger': 'podcast.mp4',
       'https://www.youtube.com/watch?v=ishowspeed_wwe': 'podcast.mp4',
       'https://www.youtube.com/watch?v=mkbhd_folding': 'podcast.mp4',
       'https://www.youtube.com/watch?v=khan_sir_podcast': 'podcast.mp4',
-      'https://www.youtube.com/watch?v=french_chef': 'people.mp4'
+      'https://www.youtube.com/watch?v=french_chef': 'podcast.mp4'
     };
 
     // Selecting a sample from the dropdown
@@ -1511,6 +1514,9 @@ class ScaleReachFullApp {
   loadYouTubeVideo(videoId, fullUrl) {
     this.activeSourceType = 'youtube';
     this.currentYouTubeId = videoId;
+    if (typeof localStorage !== 'undefined') {
+      try { localStorage.setItem('scalereach_yt_id', videoId); } catch(e) {}
+    }
     const cleanUrl = fullUrl ? (fullUrl.startsWith('http') ? fullUrl : `https://${fullUrl}`) : `https://www.youtube.com/watch?v=${videoId}`;
     const targetUrl = cleanUrl;
     this.currentVideoUrl = targetUrl;
@@ -1956,18 +1962,20 @@ class ScaleReachFullApp {
       const scoreClass = isHighScore ? 'score-high' : 'score-mid';
       const startStr = this.formatTime(moment.start);
       const endStr = this.formatTime(moment.end);
-      const hookCaption = (moment.caption || 'VIRAL HOOK').toUpperCase();
+      const rawCaption = (moment.caption || (moment.subtitles && moment.subtitles[0]) || '').trim();
+      const hookCaption = rawCaption.toUpperCase();
       const hookText = moment.hookText || moment.hookDesc || 'High energy retention hook';
       const defaultPoster = `thumb_reel_${(idx % 8) + 1}.jpg`;
+      const isYt = (this.activeSourceType === 'youtube' || Boolean(this.currentYouTubeId)) && Boolean(this.currentYouTubeId);
       let posterImg = moment.poster || defaultPoster;
-      if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
+      if (isYt) {
         posterImg = `https://img.youtube.com/vi/${this.currentYouTubeId}/maxresdefault.jpg`;
       }
 
       card.innerHTML = `
         <div class="reel-video-container">
           <div class="reel-card-backdrop" style="background-image: url('${posterImg}');"></div>
-          <video class="reel-card-video" src="${videoSrc}" poster="${posterImg}" playsinline muted preload="metadata" loop></video>
+          <video class="reel-card-video" src="${videoSrc}" poster="${posterImg}" playsinline muted preload="metadata" loop style="${isYt ? 'display:none;' : ''}"></video>
           <div class="reel-card-yt-wrapper" style="display:none;"></div>
           <div class="reel-card-gradient"></div>
 
@@ -2025,7 +2033,7 @@ class ScaleReachFullApp {
         cardVideo.preload = 'metadata';
 
         cardVideo.addEventListener('error', () => {
-          if (!cardVideo.src.endsWith('podcast.mp4') && !cardVideo.src.endsWith('people.mp4')) {
+          if (!cardVideo.src.endsWith('podcast.mp4')) {
             cardVideo.src = 'podcast.mp4';
             cardVideo.load();
           }
@@ -2178,6 +2186,7 @@ class ScaleReachFullApp {
         // Otherwise, each clip displays its OWN unique analyzed viral moment caption!
         const textVal = (this.userAppliedCaption && this.userAppliedCaption.trim()) ||
                         (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) ||
+                        (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].subtitles && this.clipsMoments[idx].subtitles[0]) ||
                         '';
         if (textVal) {
           stickerText.innerHTML = this.formatSpokenSubtitleHTML(textVal);
@@ -2282,7 +2291,9 @@ class ScaleReachFullApp {
           actionPill.innerHTML = '<span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview';
         }
 
-        if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
+        const isYouTube = (this.activeSourceType === 'youtube' || Boolean(this.currentYouTubeId)) && Boolean(this.currentYouTubeId);
+        if (isYouTube) {
+          this.activeSourceType = 'youtube';
           // 1. YouTube Mode: Embed and play real YouTube video directly in the card!
           if (v) v.style.display = 'none';
           if (ytWrapper) {
@@ -2852,7 +2863,7 @@ class ScaleReachFullApp {
     if (switchToRealVideoBtn) {
       switchToRealVideoBtn.addEventListener('click', () => {
         const titleLower = (this.currentVideoTitle || '').toLowerCase();
-        const file = (titleLower.includes('travel') || titleLower.includes('chef') || titleLower.includes('people')) ? 'people.mp4' : 'podcast.mp4';
+        const file = 'podcast.mp4';
         this.switchToNativeVideo(file, this.currentVideoTitle, this.currentVideoAuthor, '');
         this.showToast('Playing in Real HD Native Mode! 🎬');
       });
@@ -3167,10 +3178,11 @@ class ScaleReachFullApp {
       if (this.seoTitleDisplay) this.seoTitleDisplay.textContent = `"${moment.seoTitle}"`;
       const activeCaption = (this.userAppliedCaption && this.userAppliedCaption.trim()) ||
                             moment.caption ||
-                            'VIRAL MOMENT';
+                            (moment.subtitles && moment.subtitles[0]) ||
+                            '';
       if (this.customCaptionInput) this.customCaptionInput.value = activeCaption;
       if (this.studioCaptionTextInput && !this.userAppliedCaption) {
-        this.studioCaptionTextInput.placeholder = `Active: "${activeCaption}" (or pick hook below)`;
+        this.studioCaptionTextInput.placeholder = activeCaption ? `Active: "${activeCaption}" (or pick hook below)` : 'Type custom caption or pick hook below...';
       }
       if (this.captionTitleTag) this.captionTitleTag.textContent = `"${this.currentVideoTitle || moment.title}"`;
       if (this.captionAuthorTag) this.captionAuthorTag.textContent = '@ajjez_clips';
@@ -3296,7 +3308,7 @@ class ScaleReachFullApp {
       });
     }
 
-    // Clear Text Button
+    // Clear Text Button (Restores spoken speech dialogue on all cards)
     if (this.clearCaptionTextBtn && this.studioCaptionTextInput) {
       this.clearCaptionTextBtn.addEventListener('click', () => {
         this.studioCaptionTextInput.value = '';
@@ -3304,10 +3316,17 @@ class ScaleReachFullApp {
         this.userAppliedCaption = null;
         if (this.customCaptionInput) this.customCaptionInput.value = '';
         if (this.hookPillBtns) this.hookPillBtns.forEach(b => b.classList.remove('active'));
+        if (this.clipsMoments) {
+          this.clipsMoments.forEach((m) => {
+            if (m && m.subtitles && m.subtitles[0]) {
+              m.caption = m.subtitles[0];
+            }
+          });
+        }
         this.updateSuggestedReelsCaptions();
         this.studioCaptionTextInput.focus();
         this.updateCaptionsStatusBanner();
-        this.showToast('Reverted to original clip captions');
+        this.showToast('Restored authentic spoken dialogue captions! 🎙️');
       });
     }
 
@@ -3333,14 +3352,29 @@ class ScaleReachFullApp {
     // 4. Apply Caption to Videos Button (Applies chosen caption to all suggested clips & active playing video)
     if (this.applyCaptionBtn) {
       this.applyCaptionBtn.addEventListener('click', () => {
-        const textToApply = (this.studioCaptionTextInput && this.studioCaptionTextInput.value.trim()) ||
-                            this.pendingCaptionText ||
-                            'VIRAL MOMENT';
-        this.userAppliedCaption = textToApply;
-        if (this.customCaptionInput) this.customCaptionInput.value = textToApply;
-        if (this.clipsMoments) {
-          this.clipsMoments.forEach(m => { if (m) m.caption = textToApply; });
+        const customText = (this.studioCaptionTextInput && this.studioCaptionTextInput.value.trim()) || '';
+        const pendingHook = (this.pendingCaptionText && this.pendingCaptionText.trim()) || '';
+        const currentMoment = this.clipsMoments && this.clipsMoments[this.activeClipIndex];
+        const spokenDialogue = (currentMoment && (currentMoment.caption || (currentMoment.subtitles && currentMoment.subtitles[0]))) || '';
+
+        const textToApply = customText || pendingHook || spokenDialogue;
+
+        if (!textToApply) {
+          this.showToast('Please type a caption or select a hook to apply! 💬');
+          return;
         }
+
+        if (customText || pendingHook) {
+          this.userAppliedCaption = textToApply;
+          if (this.clipsMoments) {
+            this.clipsMoments.forEach(m => { if (m) m.caption = textToApply; });
+          }
+        } else {
+          // If no custom text was typed, preserve authentic spoken dialogues
+          this.userAppliedCaption = null;
+        }
+
+        if (this.customCaptionInput) this.customCaptionInput.value = textToApply;
         
         // 1. Instantly update all suggested clip cards
         this.updateSuggestedReelsCaptions();
@@ -3865,9 +3899,9 @@ class ScaleReachFullApp {
     });
 
     this.sourceVideo.addEventListener('error', (e) => {
-      console.warn('Primary video error, falling back to people.mp4:', e);
-      if (!this.sourceVideo.src.endsWith('people.mp4')) {
-        this.sourceVideo.src = 'people.mp4';
+      console.warn('Primary video error, ensuring podcast.mp4 fallback:', e);
+      if (!this.sourceVideo.src.endsWith('podcast.mp4')) {
+        this.sourceVideo.src = 'podcast.mp4';
         this.sourceVideo.load();
       }
     });
@@ -4222,7 +4256,8 @@ class ScaleReachFullApp {
     const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
     const rawText = ((this.userAppliedCaption && this.userAppliedCaption.trim()) ||
                      (this.clipsMoments && this.clipsMoments[activeIdx] && this.clipsMoments[activeIdx].caption) ||
-                     'VIRAL MOMENT').trim();
+                     (this.clipsMoments && this.clipsMoments[activeIdx] && this.clipsMoments[activeIdx].subtitles && this.clipsMoments[activeIdx].subtitles[0]) ||
+                     '').trim();
     if (!rawText) return;
 
     ctx.save();
