@@ -2680,7 +2680,8 @@ class ScaleReachFullApp {
 
       // Central unified play/pause toggle click for this card
       const handleCardClick = (e) => {
-        if (e.target.closest('.reel-audio-btn')) return;
+        if (e && e.target && e.target.closest('.reel-audio-btn')) return;
+        if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
 
         if (this.activeClipIndex !== idx) {
           this.activateClipByIndex(idx);
@@ -2691,9 +2692,15 @@ class ScaleReachFullApp {
 
       const playBtn = card.querySelector('.reel-play-circle-btn');
       if (playBtn) {
-        playBtn.addEventListener('click', handleCardClick);
+        playBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          handleCardClick(e);
+        });
       }
-      card.addEventListener('click', handleCardClick);
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.reel-play-circle-btn') || e.target.closest('.reel-audio-btn')) return;
+        handleCardClick(e);
+      });
 
       this.aiSuggestedList.appendChild(card);
     });
@@ -2783,10 +2790,12 @@ class ScaleReachFullApp {
       if (stickerText) {
         // If user explicitly applied a caption via "Apply" button, use that across all clips!
         // Otherwise, each clip displays its OWN unique analyzed viral moment caption!
-        const textVal = (this.userAppliedCaption && this.userAppliedCaption.trim()) ||
+        const isPlayingThisCard = (idx === this.activeClipIndex && this.isPlaying && this.currentLiveSubtitle && !this.userAppliedCaption);
+        const textVal = isPlayingThisCard ? this.currentLiveSubtitle :
+                        ((this.userAppliedCaption && this.userAppliedCaption.trim()) ||
                         (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) ||
                         (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].subtitles && this.clipsMoments[idx].subtitles[0]) ||
-                        '';
+                        '');
         if (textVal) {
           stickerText.innerHTML = this.formatSpokenSubtitleHTML(textVal);
         } else {
@@ -2987,6 +2996,14 @@ class ScaleReachFullApp {
     }
     if (moment && moment.subtitles && moment.subtitles.length > 0 && !this.userAppliedCaption) {
       let subIdx = 0;
+      this.currentLiveSubtitle = moment.subtitles[0];
+      const initialCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`);
+      if (initialCard) {
+        const initialSticker = initialCard.querySelector('.reel-hook-caption-sticker .sticker-text');
+        if (initialSticker && !this.userAppliedCaption) {
+          initialSticker.innerHTML = this.formatSpokenSubtitleHTML(this.currentLiveSubtitle);
+        }
+      }
       this.cardSubtitleTimer = setInterval(() => {
         const card = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`);
         if (!card || !card.classList.contains('is-playing')) {
@@ -2995,12 +3012,15 @@ class ScaleReachFullApp {
           return;
         }
         subIdx = (subIdx + 1) % moment.subtitles.length;
+        const text = moment.subtitles[subIdx];
+        this.currentLiveSubtitle = text;
         const stickerText = card.querySelector('.reel-hook-caption-sticker .sticker-text');
         if (stickerText && !this.userAppliedCaption) {
-          const text = moment.subtitles[subIdx];
           stickerText.innerHTML = this.formatSpokenSubtitleHTML(text);
         }
-      }, 2000);
+      }, 1800);
+    } else {
+      this.currentLiveSubtitle = (this.userAppliedCaption && this.userAppliedCaption.trim()) || (moment ? moment.caption : null);
     }
 
     // Also sync and play main studio preview video
@@ -3060,6 +3080,7 @@ class ScaleReachFullApp {
       clearInterval(this.cardSubtitleTimer);
       this.cardSubtitleTimer = null;
     }
+    this.currentLiveSubtitle = null;
 
     // Revert sticker back to main moment caption when paused
     const moment = this.clipsMoments && this.clipsMoments[targetIdx];
@@ -3330,16 +3351,28 @@ class ScaleReachFullApp {
      5. The 8 Crazy Captions Carousel & Selection
   ---------------------------------------------------- */
   bindCrazyCaptions() {
-    this.captionsToggle.addEventListener('change', () => {
-      if (this.captionsToggle.checked) {
-        this.captionsGrid.style.opacity = '1';
-        this.captionsGrid.style.pointerEvents = 'all';
-      } else {
-        this.captionsGrid.style.opacity = '0.35';
-        this.captionsGrid.style.pointerEvents = 'none';
-        this.showToast('Captions disabled');
-      }
-    });
+    if (this.captionsToggle) {
+      this.captionsToggle.addEventListener('change', () => {
+        this.captionsEnabled = this.captionsToggle.checked;
+        if (this.studioCaptionsToggle) this.studioCaptionsToggle.checked = this.captionsEnabled;
+        if (this.captionsGrid) {
+          if (this.captionsToggle.checked) {
+            this.captionsGrid.style.opacity = '1';
+            this.captionsGrid.style.pointerEvents = 'all';
+          } else {
+            this.captionsGrid.style.opacity = '0.35';
+            this.captionsGrid.style.pointerEvents = 'none';
+          }
+        }
+        if (this.subnavCaptionsBtn) {
+          this.subnavCaptionsBtn.textContent = this.captionsEnabled ? '🔥 Captions: ON' : '⚪ Captions: OFF';
+          this.subnavCaptionsBtn.style.color = this.captionsEnabled ? '#3b82f6' : '#94a3b8';
+        }
+        this.updateSuggestedReelsCaptions();
+        this.updateCaptionsStatusBanner();
+        this.showToast(this.captionsEnabled ? 'Captions Active on 9:16 Video! ✨' : 'Captions Hidden');
+      });
+    }
 
     this.captionCardItems.forEach(card => {
       card.addEventListener('click', () => {
@@ -3729,7 +3762,13 @@ class ScaleReachFullApp {
 
     if (this.customCaptionInput) {
       this.customCaptionInput.addEventListener('input', (e) => {
-        if (this.captionTitleTag) this.captionTitleTag.textContent = e.target.value;
+        const val = e.target.value;
+        if (this.captionTitleTag) this.captionTitleTag.textContent = val;
+        if (this.studioCaptionTextInput) this.studioCaptionTextInput.value = val;
+        this.pendingCaptionText = val;
+        this.userAppliedCaption = val.trim() ? val : null;
+        this.updateSuggestedReelsCaptions();
+        this.updateCaptionsStatusBanner();
       });
     }
 
@@ -3910,12 +3949,16 @@ class ScaleReachFullApp {
       });
     }
 
-    // 2. Custom Text Input Live Sync
+    // 2. Custom Text Input Live Sync (Instant Real-time Typing on Video & Cards)
     if (this.studioCaptionTextInput) {
       this.studioCaptionTextInput.addEventListener('input', () => {
         if (this.hookPillBtns) this.hookPillBtns.forEach(b => b.classList.remove('active'));
         const val = this.studioCaptionTextInput.value;
         this.pendingCaptionText = val;
+        this.userAppliedCaption = val.trim() ? val : null;
+        if (this.customCaptionInput) this.customCaptionInput.value = val;
+        this.updateSuggestedReelsCaptions();
+        this.updateCaptionsStatusBanner();
       });
     }
 
@@ -3925,6 +3968,7 @@ class ScaleReachFullApp {
         this.studioCaptionTextInput.value = '';
         this.pendingCaptionText = '';
         this.userAppliedCaption = null;
+        this.currentLiveSubtitle = null;
         if (this.customCaptionInput) this.customCaptionInput.value = '';
         if (this.hookPillBtns) this.hookPillBtns.forEach(b => b.classList.remove('active'));
         if (this.clipsMoments) {
@@ -3941,7 +3985,7 @@ class ScaleReachFullApp {
       });
     }
 
-    // 3. Quick Viral Hook Pills
+    // 3. Quick Viral Hook Pills (Instant One-Click Application)
     if (this.hookPillBtns) {
       this.hookPillBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -3949,13 +3993,16 @@ class ScaleReachFullApp {
           btn.classList.add('active');
           const hook = btn.getAttribute('data-hook') || btn.textContent.trim();
           this.pendingCaptionText = hook;
+          this.userAppliedCaption = hook;
           if (this.studioCaptionTextInput) {
             this.studioCaptionTextInput.value = hook;
           }
           if (this.customCaptionInput) {
             this.customCaptionInput.value = hook;
           }
-          this.showToast(`Selected "${hook}" — Click "Apply Caption to Videos" to apply! ✨`);
+          this.updateSuggestedReelsCaptions();
+          this.updateCaptionsStatusBanner();
+          this.showToast(`Applied "${hook}" — Live in Mobile Preview & Clips! ✨`);
         });
       });
     }
@@ -4956,6 +5003,7 @@ class ScaleReachFullApp {
 
     const activeIdx = (this.activeClipIndex !== undefined && this.activeClipIndex >= 0) ? this.activeClipIndex : 0;
     const rawText = ((this.userAppliedCaption && this.userAppliedCaption.trim()) ||
+                     (this.currentLiveSubtitle && this.currentLiveSubtitle.trim()) ||
                      (this.clipsMoments && this.clipsMoments[activeIdx] && this.clipsMoments[activeIdx].caption) ||
                      (this.clipsMoments && this.clipsMoments[activeIdx] && this.clipsMoments[activeIdx].subtitles && this.clipsMoments[activeIdx].subtitles[0]) ||
                      '').trim();
