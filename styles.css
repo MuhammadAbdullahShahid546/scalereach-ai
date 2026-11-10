@@ -2621,26 +2621,27 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   100% { height: 100%; }
 }
 
-/* Bottom Footer Information */
+/* Bottom Footer Information - Clean Minimal Layout */
 .reel-card-footer {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 12px;
+  padding: 16px 12px 10px;
   z-index: 5;
   display: flex;
   flex-direction: column;
-  gap: 5px;
   pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.72) 100%);
+  border-radius: 0 0 14px 14px;
 }
 
 .reel-footer-title {
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   font-weight: 800;
   color: #ffffff;
-  line-height: 1.25;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -2648,22 +2649,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   -webkit-box-orient: vertical;
 }
 
-.reel-footer-desc {
-  font-size: 0.68rem;
-  color: #cbd5e1;
-  line-height: 1.25;
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-}
-
-.reel-footer-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 2px;
+/* Remove bottom cluttered description, tags and preview button as requested */
+.reel-footer-desc,
+.reel-footer-tags,
+.reel-footer-action-bar,
+.reel-action-pill {
+  display: none !important;
 }
 
 .reel-tag-chip {

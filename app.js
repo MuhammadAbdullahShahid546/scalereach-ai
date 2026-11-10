@@ -2603,19 +2603,9 @@ class ScaleReachFullApp {
             <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
           </div>
 
-          <!-- Bottom Meta & Actions -->
+          <!-- Bottom Title Only (Clean Uncluttered Video View) -->
           <div class="reel-card-footer">
             <div class="reel-footer-title">${moment.title}</div>
-            <p class="reel-footer-desc">"${moment.hookDesc || moment.seoTitle || ''}"</p>
-            <div class="reel-footer-tags">
-              ${moment.ytViews ? `<span class="reel-yt-views-chip"><span class="yt-play-icon">▶</span> ${moment.ytViews}</span>` : ''}
-              ${(moment.badgeTags || ['🔥 Viral Hook', '⚡ High Pace']).map(t => `<span class="reel-tag-chip">${t}</span>`).join('')}
-            </div>
-            <div class="reel-footer-action-bar">
-              <span class="reel-action-pill ${isActive ? 'active-pill' : ''}">
-                ${isActive ? '<span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview' : '▶ Click to Edit & Play'}
-              </span>
-            </div>
           </div>
         </div>
       `;
