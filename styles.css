@@ -2627,12 +2627,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 16px 12px 10px;
+  padding: 18px 54px 12px 14px; /* Right padding ensures title never touches floating download button */
   z-index: 5;
   display: flex;
   flex-direction: column;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.72) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.78) 100%);
   border-radius: 0 0 14px 14px;
 }
 
@@ -2647,6 +2647,83 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+/* User-Requested Download Reel Button on Bottom-Right */
+.reel-download-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.84);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  pointer-events: auto;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+  padding: 0;
+  outline: none;
+}
+
+.reel-download-btn:hover {
+  background: rgba(37, 99, 235, 0.92);
+  border-color: #60a5fa;
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.65);
+}
+
+.reel-download-btn:active {
+  transform: scale(0.92);
+}
+
+.reel-download-btn svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+}
+
+.reel-download-btn.is-downloading {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: #38bdf8;
+  pointer-events: none;
+}
+
+.reel-download-btn.is-downloading .reel-download-icon {
+  display: none !important;
+}
+
+.reel-download-btn.is-downloading .reel-download-spinner {
+  display: block !important;
+  animation: reelSpin 0.8s linear infinite;
+  color: #38bdf8;
+}
+
+@keyframes reelSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.reel-download-btn.download-complete {
+  background: rgba(22, 101, 52, 0.95) !important;
+  border-color: #22c55e !important;
+}
+
+.reel-download-btn.download-complete .reel-download-icon,
+.reel-download-btn.download-complete .reel-download-spinner {
+  display: none !important;
+}
+
+.reel-download-btn.download-complete .reel-download-check {
+  display: block !important;
 }
 
 /* Remove bottom cluttered description, tags and preview button as requested */

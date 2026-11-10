@@ -2607,6 +2607,20 @@ class ScaleReachFullApp {
           <div class="reel-card-footer">
             <div class="reel-footer-title">${moment.title}</div>
           </div>
+
+          <!-- User-Requested Bottom-Right Floating Download Button -->
+          <button class="reel-download-btn" type="button" data-clip="${idx + 1}" title="Download Reel ${idx + 1} (9:16 Short)" aria-label="Download this 9:16 Reel">
+            <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v12m0 0l-4-4m4 4l4-4"/>
+              <path d="M4 19h16"/>
+            </svg>
+            <svg class="reel-download-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none;">
+              <circle cx="12" cy="12" r="9" stroke-dasharray="40 15" stroke-linecap="round"/>
+            </svg>
+            <svg class="reel-download-check" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </button>
         </div>
       `;
 
@@ -2668,9 +2682,19 @@ class ScaleReachFullApp {
         });
       }
 
+      // Download Reel Button Click (Direct One-Click Download)
+      const downloadBtn = card.querySelector('.reel-download-btn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.downloadSuggestedClip(idx, e);
+        });
+      }
+
       // Central unified play/pause toggle click for this card
       const handleCardClick = (e) => {
-        if (e && e.target && e.target.closest('.reel-audio-btn')) return;
+        if (e && e.target && (e.target.closest('.reel-audio-btn') || e.target.closest('.reel-download-btn'))) return;
         if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
 
         if (this.activeClipIndex !== idx) {
@@ -2688,7 +2712,7 @@ class ScaleReachFullApp {
         });
       }
       card.addEventListener('click', (e) => {
-        if (e.target.closest('.reel-play-circle-btn') || e.target.closest('.reel-audio-btn')) return;
+        if (e.target.closest('.reel-play-circle-btn') || e.target.closest('.reel-audio-btn') || e.target.closest('.reel-download-btn')) return;
         handleCardClick(e);
       });
 
@@ -5393,84 +5417,163 @@ class ScaleReachFullApp {
   }
 
   /* ----------------------------------------------------
-     9. Free Video Export Download
+     9. Free Video Export & Reel Download
   ---------------------------------------------------- */
-  bindExport() {
-    const handleExport = () => {
-      if (this.isRecording) return;
-      this.isRecording = true;
+  downloadSuggestedClip(clipIdx, e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const idx = (clipIdx !== undefined && clipIdx >= 0) ? clipIdx : this.activeClipIndex;
+    const moment = this.clipsMoments && this.clipsMoments[idx];
+    if (!moment) return;
 
-      this.exportShortBtn.disabled = true;
-      this.exportFromStudioBtn.disabled = true;
-      this.exportProgressBox.classList.remove('hidden');
-      this.showToast(`Rendering 9:16 Short with ${this.selectedStyleName} Captions... ⚡`);
+    // Activate this clip if not active so 9:16 phone canvas and trimmer sync
+    if (this.activeClipIndex !== idx) {
+      this.activateClipByIndex(idx);
+    }
 
-      this.sourceVideo.currentTime = this.clipStart;
-      this.sourceVideo.play();
+    this.startExportProcess(idx);
+  }
 
-      const canvasStream = this.cropCanvas.captureStream(30);
-      let combinedStream = canvasStream;
+  startExportProcess(targetClipIdx) {
+    if (this.isRecording) {
+      this.showToast('Another export is already in progress, please wait... ⏳');
+      return;
+    }
+    const idx = (targetClipIdx !== undefined && targetClipIdx >= 0) ? targetClipIdx : this.activeClipIndex;
+    const moment = this.clipsMoments && this.clipsMoments[idx];
+    const rawTitle = moment ? (moment.title || `Reel_${idx + 1}`) : `Reel_${idx + 1}`;
+    const cleanFileName = `ScaleReach_${rawTitle.replace(/[^\w\d-_]/g, '_')}_${this.selectedStyleId || 'classic'}.webm`;
 
-      try {
-        if (this.sourceVideo.captureStream) {
-          const audioStream = this.sourceVideo.captureStream();
-          const tracks = audioStream.getAudioTracks();
-          if (tracks.length > 0) combinedStream.addTrack(tracks[0]);
-        }
-      } catch (e) {
-        console.warn(e);
+    this.isRecording = true;
+
+    // Visual feedback on card download button
+    const card = this.aiSuggestedList ? this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`) : null;
+    const cardDownloadBtn = card ? card.querySelector('.reel-download-btn') : null;
+    if (cardDownloadBtn) {
+      cardDownloadBtn.classList.add('is-downloading');
+      cardDownloadBtn.setAttribute('title', 'Downloading Reel...');
+    }
+
+    if (this.exportShortBtn) this.exportShortBtn.disabled = true;
+    if (this.exportFromStudioBtn) this.exportFromStudioBtn.disabled = true;
+    if (this.exportProgressBox) this.exportProgressBox.classList.remove('hidden');
+    this.showToast(`Rendering & Downloading "${rawTitle}" (9:16 Short)... ⚡`);
+
+    // Ensure source video is loaded
+    if (!this.sourceVideo.src || this.sourceVideo.src === window.location.href) {
+      this.sourceVideo.src = 'podcast.mp4';
+      this.sourceVideo.load();
+    }
+
+    const startSec = (moment && typeof moment.start === 'number') ? moment.start : this.clipStart;
+    const endSec = (moment && typeof moment.end === 'number') ? moment.end : this.clipEnd;
+    const totalDuration = Math.max(3, Math.min(30, endSec - startSec));
+
+    const vidDur = this.sourceVideo.duration;
+    let actualStart = startSec;
+    if (isFinite(vidDur) && vidDur > 0 && startSec >= vidDur) {
+      actualStart = (startSec % Math.max(5, vidDur - totalDuration));
+    }
+    const actualEnd = actualStart + totalDuration;
+
+    try {
+      this.sourceVideo.currentTime = actualStart;
+      this.sourceVideo.play().catch(console.warn);
+    } catch (e) {
+      console.warn(e);
+    }
+
+    // Capture clean 9:16 canvas stream (Canvas NEVER contains the download button!)
+    const canvasStream = this.cropCanvas.captureStream(30);
+    let combinedStream = canvasStream;
+
+    try {
+      if (this.sourceVideo.captureStream) {
+        const audioStream = this.sourceVideo.captureStream();
+        const tracks = audioStream.getAudioTracks();
+        if (tracks.length > 0) combinedStream.addTrack(tracks[0]);
       }
+    } catch (e) {
+      console.warn(e);
+    }
 
-      const recordedChunks = [];
-      const mimeType = MediaRecorder.isTypeSupported('video/webm;codecs=vp9')
-        ? 'video/webm;codecs=vp9'
-        : 'video/webm';
+    const recordedChunks = [];
+    const mimeType = (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('video/webm;codecs=vp9'))
+      ? 'video/webm;codecs=vp9'
+      : (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('video/webm'))
+        ? 'video/webm'
+        : 'video/mp4';
 
-      const recorder = new MediaRecorder(combinedStream, { mimeType });
+    let recorder = null;
+    try {
+      recorder = new MediaRecorder(combinedStream, { mimeType });
+    } catch (e) {
+      console.warn('MediaRecorder error, falling back to basic stream:', e);
+      recorder = new MediaRecorder(canvasStream);
+    }
 
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) recordedChunks.push(e.data);
-      };
-
-      recorder.onstop = () => {
-        const blob = new Blob(recordedChunks, { type: 'video/webm' });
-        const downloadUrl = URL.createObjectURL(blob);
-
-        const a = document.createElement('a');
-        a.href = downloadUrl;
-        a.download = `ScaleReach_Free_${this.selectedStyleId}_${Date.now()}.webm`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-
-        this.isRecording = false;
-        this.exportShortBtn.disabled = false;
-        this.exportFromStudioBtn.disabled = false;
-        this.exportProgressBox.classList.add('hidden');
-        this.showToast('Free Short Downloaded (No Watermark)! 🎉');
-      };
-
-      recorder.start(100);
-
-      const totalDuration = this.clipEnd - this.clipStart;
-
-      const progressInterval = setInterval(() => {
-        const elapsed = this.sourceVideo.currentTime - this.clipStart;
-        const progress = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100));
-
-        this.exportFill.style.width = `${progress}%`;
-        this.exportPercentText.textContent = `${Math.round(progress)}%`;
-
-        if (this.sourceVideo.currentTime >= this.clipEnd || !this.isRecording) {
-          clearInterval(progressInterval);
-          recorder.stop();
-          this.sourceVideo.pause();
-        }
-      }, 100);
+    recorder.ondataavailable = (e) => {
+      if (e.data && e.data.size > 0) recordedChunks.push(e.data);
     };
 
-    this.exportShortBtn.addEventListener('click', handleExport);
-    this.exportFromStudioBtn.addEventListener('click', handleExport);
+    recorder.onstop = () => {
+      const blob = new Blob(recordedChunks, { type: mimeType });
+      const downloadUrl = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = cleanFileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      this.isRecording = false;
+      if (cardDownloadBtn) {
+        cardDownloadBtn.classList.remove('is-downloading');
+        cardDownloadBtn.classList.add('download-complete');
+        cardDownloadBtn.setAttribute('title', 'Downloaded Successfully! ✓');
+        setTimeout(() => {
+          if (cardDownloadBtn) {
+            cardDownloadBtn.classList.remove('download-complete');
+            cardDownloadBtn.setAttribute('title', `Download Reel ${idx + 1} (9:16 Short)`);
+          }
+        }, 3000);
+      }
+      if (this.exportShortBtn) this.exportShortBtn.disabled = false;
+      if (this.exportFromStudioBtn) this.exportFromStudioBtn.disabled = false;
+      if (this.exportProgressBox) this.exportProgressBox.classList.add('hidden');
+      this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Clean Short, No Watermark)!`);
+    };
+
+    recorder.start(100);
+
+    const startTime = Date.now();
+    const progressInterval = setInterval(() => {
+      const elapsed = (Date.now() - startTime) / 1000;
+      const progress = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100));
+
+      if (this.exportFill) this.exportFill.style.width = `${progress}%`;
+      if (this.exportPercentText) this.exportPercentText.textContent = `${Math.round(progress)}%`;
+
+      if (elapsed >= totalDuration || this.sourceVideo.currentTime >= actualEnd || !this.isRecording) {
+        clearInterval(progressInterval);
+        if (recorder.state === 'recording') {
+          recorder.stop();
+        }
+        this.sourceVideo.pause();
+      }
+    }, 100);
+  }
+
+  bindExport() {
+    if (this.exportShortBtn) {
+      this.exportShortBtn.addEventListener('click', () => this.startExportProcess(this.activeClipIndex));
+    }
+    if (this.exportFromStudioBtn) {
+      this.exportFromStudioBtn.addEventListener('click', () => this.startExportProcess(this.activeClipIndex));
+    }
   }
 
   /* ----------------------------------------------------
