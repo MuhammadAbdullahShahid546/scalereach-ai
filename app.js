@@ -44,6 +44,17 @@ class ScaleReachFullApp {
     this.closeYtModalBtn = document.getElementById('closeYtModalBtn');
     this.confirmYtConnectBtn = document.getElementById('confirmYtConnectBtn');
 
+    // YouTube Smart Reel Download Modal
+    this.ytDownloadModal = document.getElementById('ytDownloadModal');
+    this.closeYtDownloadModalBtn = document.getElementById('closeYtDownloadModalBtn');
+    this.ytDownloadClipTitle = document.getElementById('ytDownloadClipTitle');
+    this.ytDownloadClipTime = document.getElementById('ytDownloadClipTime');
+    this.ytDirectDownloadBtn = document.getElementById('ytDirectDownloadBtn');
+    this.ytUploadRealVideoBtn = document.getElementById('ytUploadRealVideoBtn');
+    this.ytModalFileInput = document.getElementById('ytModalFileInput');
+    this.ytRenderDemoBtn = document.getElementById('ytRenderDemoBtn');
+    this.pendingDownloadClipIndex = 0;
+
     // Configure Screen 2 Elements
     this.backToHomeBtn = document.getElementById('backToHomeBtn');
     this.youtubeUrlInput = document.getElementById('youtubeUrlInput');
@@ -1547,6 +1558,7 @@ class ScaleReachFullApp {
     this.bindSidebar();
     this.bindHomeScreen();
     this.bindYouTubeModal();
+    this.bindYouTubeDownloadModal();
     this.bindConfigureScreen();
     this.bindCrazyCaptions();
     this.bindStudioScreen();
@@ -5433,7 +5445,102 @@ class ScaleReachFullApp {
       this.activateClipByIndex(idx);
     }
 
-    this.startExportProcess(idx);
+    if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
+      this.showYouTubeDownloadModal(idx);
+    } else {
+      this.startExportProcess(idx);
+    }
+  }
+
+  showYouTubeDownloadModal(idx) {
+    const targetIdx = (idx !== undefined && idx >= 0) ? idx : this.activeClipIndex;
+    const moment = this.clipsMoments && this.clipsMoments[targetIdx];
+    this.pendingDownloadClipIndex = targetIdx;
+
+    if (moment) {
+      if (this.ytDownloadClipTitle) {
+        this.ytDownloadClipTitle.textContent = moment.title || `Reel ${targetIdx + 1}`;
+      }
+      if (this.ytDownloadClipTime) {
+        const startStr = this.formatTime(moment.start);
+        const endStr = this.formatTime(moment.end);
+        const dur = Math.round(moment.end - moment.start);
+        const score = moment.viralityScore || '98% Viral';
+        this.ytDownloadClipTime.innerHTML = `<span>⏱️ Clip Time: <strong>${startStr} - ${endStr} (${dur}s)</strong></span><span>🔥 <strong>${score}</strong></span>`;
+      }
+    }
+
+    if (this.ytDownloadModal) {
+      this.ytDownloadModal.classList.remove('hidden');
+    }
+  }
+
+  bindYouTubeDownloadModal() {
+    if (!this.ytDownloadModal) return;
+
+    // Close button
+    if (this.closeYtDownloadModalBtn) {
+      this.closeYtDownloadModalBtn.addEventListener('click', () => {
+        this.ytDownloadModal.classList.add('hidden');
+      });
+    }
+
+    // Backdrop click close
+    this.ytDownloadModal.addEventListener('click', (e) => {
+      if (e.target === this.ytDownloadModal) {
+        this.ytDownloadModal.classList.add('hidden');
+      }
+    });
+
+    // Option 1: Direct YouTube HD Video Downloader (1-Click)
+    if (this.ytDirectDownloadBtn) {
+      this.ytDirectDownloadBtn.addEventListener('click', () => {
+        const ytId = this.currentYouTubeId || '_c2e1Ncl3Sc';
+        const dlUrl = `https://ssyoutube.com/watch?v=${ytId}`;
+        this.ytDownloadModal.classList.add('hidden');
+        this.showToast('Opening Real YouTube HD Video Downloader... 🚀');
+        window.open(dlUrl, '_blank');
+      });
+    }
+
+    // Option 2: Upload Real Video File to render 9:16 Shorts with Captions
+    if (this.ytUploadRealVideoBtn && this.ytModalFileInput) {
+      this.ytUploadRealVideoBtn.addEventListener('click', () => {
+        this.ytModalFileInput.click();
+      });
+
+      this.ytModalFileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+          const rawFile = e.target.files[0];
+          const sanitized = this.validateAndSanitizeUploadedFile ? this.validateAndSanitizeUploadedFile(rawFile) : { file: rawFile, safeTitle: rawFile.name };
+          if (!sanitized) return;
+
+          const fileUrl = URL.createObjectURL(sanitized.file);
+          this.sourceVideo.src = fileUrl;
+          this.sourceVideo.load();
+          this.activeSourceType = 'local';
+          
+          if (this.cropCanvas) this.cropCanvas.classList.remove('hidden');
+          if (this.phoneCaptionsOverlayCanvas) this.phoneCaptionsOverlayCanvas.classList.add('hidden');
+          if (this.phoneYtWrapper) this.phoneYtWrapper.classList.add('hidden');
+
+          this.ytDownloadModal.classList.add('hidden');
+          this.showToast(`Loaded "${sanitized.safeTitle}" — Starting 9:16 Short render... ⚡`);
+
+          setTimeout(() => {
+            this.startExportProcess(this.pendingDownloadClipIndex);
+          }, 400);
+        }
+      });
+    }
+
+    // Option 3: Render 9:16 Demo Preview
+    if (this.ytRenderDemoBtn) {
+      this.ytRenderDemoBtn.addEventListener('click', () => {
+        this.ytDownloadModal.classList.add('hidden');
+        this.startExportProcess(this.pendingDownloadClipIndex);
+      });
+    }
   }
 
   startExportProcess(targetClipIdx) {
@@ -5568,11 +5675,18 @@ class ScaleReachFullApp {
   }
 
   bindExport() {
+    const handleTrigger = () => {
+      if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
+        this.showYouTubeDownloadModal(this.activeClipIndex);
+      } else {
+        this.startExportProcess(this.activeClipIndex);
+      }
+    };
     if (this.exportShortBtn) {
-      this.exportShortBtn.addEventListener('click', () => this.startExportProcess(this.activeClipIndex));
+      this.exportShortBtn.addEventListener('click', handleTrigger);
     }
     if (this.exportFromStudioBtn) {
-      this.exportFromStudioBtn.addEventListener('click', () => this.startExportProcess(this.activeClipIndex));
+      this.exportFromStudioBtn.addEventListener('click', handleTrigger);
     }
   }
 

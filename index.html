@@ -1346,6 +1346,59 @@
 
   </div>
 
+  <!-- YouTube Reel Smart Download Modal (Real Video & Direct Options) -->
+  <div class="modal-backdrop hidden" id="ytDownloadModal">
+    <div class="yt-download-modal-card">
+      <div class="yt-modal-top">
+        <span class="yt-modal-icon">🎬</span>
+        <h3>Download Reel (Real HD Video)</h3>
+        <button class="modal-close-icon" id="closeYtDownloadModalBtn" type="button" aria-label="Close">&times;</button>
+      </div>
+      
+      <div class="yt-dl-clip-box">
+        <div class="yt-dl-clip-title" id="ytDownloadClipTitle">Reel Title</div>
+        <div class="yt-dl-clip-meta" id="ytDownloadClipTime">
+          <span>⏱️ Timestamp: 00:00 - 00:30</span>
+          <span>🔥 Virality: 98%</span>
+        </div>
+      </div>
+
+      <p class="yt-modal-desc" style="margin-bottom: 1rem;">
+        Yeh video online YouTube par chal rahi hai. Asli video download karne ke liye neeche diye gaye options chunein:
+      </p>
+
+      <div class="yt-dl-options-list">
+        <!-- Option 1: Direct YouTube HD Video Downloader (1-Click) -->
+        <button class="yt-dl-opt-btn primary" id="ytDirectDownloadBtn" type="button">
+          <span class="yt-dl-opt-icon">⚡</span>
+          <div class="yt-dl-opt-info">
+            <span class="yt-dl-opt-title">Download Real YouTube HD Video (1-Click)</span>
+            <span class="yt-dl-opt-hint">Asli YouTube HD video (1080p/720p) direct download karein</span>
+          </div>
+        </button>
+
+        <!-- Option 2: Upload Real Video File to render 9:16 Shorts with Captions -->
+        <button class="yt-dl-opt-btn secondary" id="ytUploadRealVideoBtn" type="button">
+          <span class="yt-dl-opt-icon">📁</span>
+          <div class="yt-dl-opt-info">
+            <span class="yt-dl-opt-title">Upload Video File & Auto-Trim with Captions</span>
+            <span class="yt-dl-opt-hint">Agar aapke paas video file (.mp4) hai to select karein — automatic 9:16 captions ke sath download hogi</span>
+          </div>
+        </button>
+        <input type="file" id="ytModalFileInput" accept="video/mp4,video/webm,video/quicktime" class="hidden">
+
+        <!-- Option 3: Render 9:16 Demo Preview -->
+        <button class="yt-dl-opt-btn ghost" id="ytRenderDemoBtn" type="button">
+          <span class="yt-dl-opt-icon">🧪</span>
+          <div class="yt-dl-opt-info">
+            <span class="yt-dl-opt-title">Render 9:16 Demo Short Preview</span>
+            <span class="yt-dl-opt-hint">Sample video par 9:16 crop aur captions ka test preview export karein</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- YouTube Connect Channel Modal -->
   <div class="modal-backdrop hidden" id="ytConnectModal">
     <div class="yt-modal-card">
