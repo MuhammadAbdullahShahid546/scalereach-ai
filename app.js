@@ -44,17 +44,6 @@ class ScaleReachFullApp {
     this.closeYtModalBtn = document.getElementById('closeYtModalBtn');
     this.confirmYtConnectBtn = document.getElementById('confirmYtConnectBtn');
 
-    // YouTube Smart Reel Download Modal
-    this.ytDownloadModal = document.getElementById('ytDownloadModal');
-    this.closeYtDownloadModalBtn = document.getElementById('closeYtDownloadModalBtn');
-    this.ytDownloadClipTitle = document.getElementById('ytDownloadClipTitle');
-    this.ytDownloadClipTime = document.getElementById('ytDownloadClipTime');
-    this.ytDirectDownloadBtn = document.getElementById('ytDirectDownloadBtn');
-    this.ytUploadRealVideoBtn = document.getElementById('ytUploadRealVideoBtn');
-    this.ytModalFileInput = document.getElementById('ytModalFileInput');
-    this.ytRenderDemoBtn = document.getElementById('ytRenderDemoBtn');
-    this.pendingDownloadClipIndex = 0;
-
     // Configure Screen 2 Elements
     this.backToHomeBtn = document.getElementById('backToHomeBtn');
     this.youtubeUrlInput = document.getElementById('youtubeUrlInput');
@@ -1558,7 +1547,6 @@ class ScaleReachFullApp {
     this.bindSidebar();
     this.bindHomeScreen();
     this.bindYouTubeModal();
-    this.bindYouTubeDownloadModal();
     this.bindConfigureScreen();
     this.bindCrazyCaptions();
     this.bindStudioScreen();
@@ -4656,8 +4644,9 @@ class ScaleReachFullApp {
      8. 9:16 Canvas Render Engine with Real HD Video Source
   ---------------------------------------------------- */
   setupDemoVideoSource() {
-    // Load real high-definition MP4 video
-    this.sourceVideo.src = 'podcast.mp4';
+    // Determine appropriate high-definition MP4 video (Sports Challenge vs Podcast)
+    const isSports = (this.currentVideoTitle && /athlete|haaland|sport|football|soccer|challenge|caitlin/i.test(this.currentVideoTitle)) || !this.currentVideoTitle;
+    this.sourceVideo.src = isSports ? 'sports_challenge.mp4' : 'podcast.mp4';
     this.sourceVideo.playsInline = true;
     this.sourceVideo.muted = true; // Start muted to guarantee browser autoplay
     this.sourceVideo.loop = false; // Looping handled via timeupdate for precise trimmer boundaries
@@ -5445,102 +5434,8 @@ class ScaleReachFullApp {
       this.activateClipByIndex(idx);
     }
 
-    if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
-      this.showYouTubeDownloadModal(idx);
-    } else {
-      this.startExportProcess(idx);
-    }
-  }
-
-  showYouTubeDownloadModal(idx) {
-    const targetIdx = (idx !== undefined && idx >= 0) ? idx : this.activeClipIndex;
-    const moment = this.clipsMoments && this.clipsMoments[targetIdx];
-    this.pendingDownloadClipIndex = targetIdx;
-
-    if (moment) {
-      if (this.ytDownloadClipTitle) {
-        this.ytDownloadClipTitle.textContent = moment.title || `Reel ${targetIdx + 1}`;
-      }
-      if (this.ytDownloadClipTime) {
-        const startStr = this.formatTime(moment.start);
-        const endStr = this.formatTime(moment.end);
-        const dur = Math.round(moment.end - moment.start);
-        const score = moment.viralityScore || '98% Viral';
-        this.ytDownloadClipTime.innerHTML = `<span>⏱️ Clip Time: <strong>${startStr} - ${endStr} (${dur}s)</strong></span><span>🔥 <strong>${score}</strong></span>`;
-      }
-    }
-
-    if (this.ytDownloadModal) {
-      this.ytDownloadModal.classList.remove('hidden');
-    }
-  }
-
-  bindYouTubeDownloadModal() {
-    if (!this.ytDownloadModal) return;
-
-    // Close button
-    if (this.closeYtDownloadModalBtn) {
-      this.closeYtDownloadModalBtn.addEventListener('click', () => {
-        this.ytDownloadModal.classList.add('hidden');
-      });
-    }
-
-    // Backdrop click close
-    this.ytDownloadModal.addEventListener('click', (e) => {
-      if (e.target === this.ytDownloadModal) {
-        this.ytDownloadModal.classList.add('hidden');
-      }
-    });
-
-    // Option 1: Direct YouTube HD Video Downloader (1-Click)
-    if (this.ytDirectDownloadBtn) {
-      this.ytDirectDownloadBtn.addEventListener('click', () => {
-        const ytId = this.currentYouTubeId || '_c2e1Ncl3Sc';
-        const dlUrl = `https://ssyoutube.com/watch?v=${ytId}`;
-        this.ytDownloadModal.classList.add('hidden');
-        this.showToast('Opening Real YouTube HD Video Downloader... 🚀');
-        window.open(dlUrl, '_blank');
-      });
-    }
-
-    // Option 2: Upload Real Video File to render 9:16 Shorts with Captions
-    if (this.ytUploadRealVideoBtn && this.ytModalFileInput) {
-      this.ytUploadRealVideoBtn.addEventListener('click', () => {
-        this.ytModalFileInput.click();
-      });
-
-      this.ytModalFileInput.addEventListener('change', (e) => {
-        if (e.target.files && e.target.files.length > 0) {
-          const rawFile = e.target.files[0];
-          const sanitized = this.validateAndSanitizeUploadedFile ? this.validateAndSanitizeUploadedFile(rawFile) : { file: rawFile, safeTitle: rawFile.name };
-          if (!sanitized) return;
-
-          const fileUrl = URL.createObjectURL(sanitized.file);
-          this.sourceVideo.src = fileUrl;
-          this.sourceVideo.load();
-          this.activeSourceType = 'local';
-          
-          if (this.cropCanvas) this.cropCanvas.classList.remove('hidden');
-          if (this.phoneCaptionsOverlayCanvas) this.phoneCaptionsOverlayCanvas.classList.add('hidden');
-          if (this.phoneYtWrapper) this.phoneYtWrapper.classList.add('hidden');
-
-          this.ytDownloadModal.classList.add('hidden');
-          this.showToast(`Loaded "${sanitized.safeTitle}" — Starting 9:16 Short render... ⚡`);
-
-          setTimeout(() => {
-            this.startExportProcess(this.pendingDownloadClipIndex);
-          }, 400);
-        }
-      });
-    }
-
-    // Option 3: Render 9:16 Demo Preview
-    if (this.ytRenderDemoBtn) {
-      this.ytRenderDemoBtn.addEventListener('click', () => {
-        this.ytDownloadModal.classList.add('hidden');
-        this.startExportProcess(this.pendingDownloadClipIndex);
-      });
-    }
+    // Direct in-browser 9:16 short export & download (NO external websites or redirects!)
+    this.startExportProcess(idx);
   }
 
   startExportProcess(targetClipIdx) {
@@ -5568,9 +5463,17 @@ class ScaleReachFullApp {
     if (this.exportProgressBox) this.exportProgressBox.classList.remove('hidden');
     this.showToast(`Rendering & Downloading "${rawTitle}" (9:16 Short)... ⚡`);
 
-    // Ensure source video is loaded
-    if (!this.sourceVideo.src || this.sourceVideo.src === window.location.href) {
-      this.sourceVideo.src = 'podcast.mp4';
+    // Determine the right video source for this clip (Sports Challenge vs Podcast vs User Upload)
+    let appropriateVideo = 'sports_challenge.mp4';
+    const isPodcast = (this.currentVideoTitle && /podcast|talk|interview|psychology|mindset/i.test(this.currentVideoTitle));
+    if (isPodcast) {
+      appropriateVideo = 'podcast.mp4';
+    } else if (this.activeSourceType !== 'youtube' && this.sourceVideo.src && !this.sourceVideo.src.includes('podcast.mp4') && !this.sourceVideo.src.includes('sports_challenge.mp4')) {
+      appropriateVideo = this.sourceVideo.src;
+    }
+
+    if (!this.sourceVideo.src || !this.sourceVideo.src.includes(appropriateVideo)) {
+      this.sourceVideo.src = appropriateVideo;
       this.sourceVideo.load();
     }
 
@@ -5675,18 +5578,11 @@ class ScaleReachFullApp {
   }
 
   bindExport() {
-    const handleTrigger = () => {
-      if (this.activeSourceType === 'youtube' && this.currentYouTubeId) {
-        this.showYouTubeDownloadModal(this.activeClipIndex);
-      } else {
-        this.startExportProcess(this.activeClipIndex);
-      }
-    };
     if (this.exportShortBtn) {
-      this.exportShortBtn.addEventListener('click', handleTrigger);
+      this.exportShortBtn.addEventListener('click', () => this.startExportProcess(this.activeClipIndex));
     }
     if (this.exportFromStudioBtn) {
-      this.exportFromStudioBtn.addEventListener('click', handleTrigger);
+      this.exportFromStudioBtn.addEventListener('click', () => this.startExportProcess(this.activeClipIndex));
     }
   }
 
