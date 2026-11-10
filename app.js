@@ -1252,6 +1252,8 @@ class ScaleReachFullApp {
             viralityScore: '99% Viral',
             start: 45,
             end: 100,
+            poster: 'thumb_reel_1.jpg',
+            videoSrc: 'clips/reel_1.mp4',
             isYtMostReplayed: true,
             ytViews: '48M+ Views',
             ytBadge: '🔥 YouTube Viral #2 Peak',
@@ -1275,6 +1277,8 @@ class ScaleReachFullApp {
             viralityScore: '97% Viral',
             start: 230,
             end: 285,
+            poster: 'thumb_reel_2.jpg',
+            videoSrc: 'clips/reel_2.mp4',
             isYtMostReplayed: false,
             ytViews: '36M+ Views',
             ytBadge: '📈 36M+ Shorts Views',
@@ -1298,6 +1302,8 @@ class ScaleReachFullApp {
             viralityScore: '96% Viral',
             start: 435,
             end: 490,
+            poster: 'thumb_reel_3.jpg',
+            videoSrc: 'clips/reel_3.mp4',
             isYtMostReplayed: false,
             ytViews: '29M+ Views',
             ytBadge: '📈 29M+ Shorts Views',
@@ -1321,6 +1327,8 @@ class ScaleReachFullApp {
             viralityScore: '98% Viral',
             start: 620,
             end: 675,
+            poster: 'thumb_reel_4.jpg',
+            videoSrc: 'clips/reel_4.mp4',
             isYtMostReplayed: true,
             ytViews: '42M+ Views',
             ytBadge: '🔥 YouTube Viral #3 Peak',
@@ -1344,6 +1352,8 @@ class ScaleReachFullApp {
             viralityScore: '94% Viral',
             start: 790,
             end: 845,
+            poster: 'thumb_reel_5.jpg',
+            videoSrc: 'clips/reel_5.mp4',
             isYtMostReplayed: false,
             ytViews: '24M+ Views',
             ytBadge: '📈 24M+ Shorts Views',
@@ -1367,6 +1377,8 @@ class ScaleReachFullApp {
             viralityScore: '97% Viral',
             start: 945,
             end: 1000,
+            poster: 'thumb_reel_6.jpg',
+            videoSrc: 'clips/reel_6.mp4',
             isYtMostReplayed: false,
             ytViews: '39M+ Views',
             ytBadge: '😂 Viral Comedy Peak',
@@ -1391,6 +1403,8 @@ class ScaleReachFullApp {
             viralityScore: '100% Viral',
             start: 1110,
             end: 1165,
+            poster: 'thumb_reel_7.jpg',
+            videoSrc: 'clips/reel_7.mp4',
             isYtMostReplayed: true,
             ytViews: '75M+ Views',
             ytBadge: '🔥 YouTube #1 MOST REPLAYED',
@@ -1414,6 +1428,8 @@ class ScaleReachFullApp {
             viralityScore: '93% Viral',
             start: 1270,
             end: 1325,
+            poster: 'thumb_reel_8.jpg',
+            videoSrc: 'clips/reel_8.mp4',
             isYtMostReplayed: false,
             ytViews: '31M+ Views',
             ytBadge: '✨ Emotional Climax',
@@ -2743,16 +2759,13 @@ class ScaleReachFullApp {
       const hookCaption = rawCaption.toUpperCase();
       const hookText = moment.hookText || moment.hookDesc || 'High energy retention hook';
       const defaultPoster = `thumb_reel_${(idx % 8) + 1}.jpg`;
-      const isYt = (this.activeSourceType === 'youtube' || Boolean(this.currentYouTubeId)) && Boolean(this.currentYouTubeId);
-      let posterImg = moment.poster || defaultPoster;
-      if (isYt) {
-        posterImg = `https://img.youtube.com/vi/${this.currentYouTubeId}/maxresdefault.jpg`;
-      }
+      const posterImg = moment.poster || defaultPoster;
+      const cardClipVid = moment.videoSrc || `clips/reel_${idx + 1}.mp4`;
 
       card.innerHTML = `
         <div class="reel-video-container">
           <div class="reel-card-backdrop" style="background-image: url('${posterImg}');"></div>
-          <video class="reel-card-video" src="${videoSrc}" poster="${posterImg}" playsinline muted preload="metadata" loop style="${isYt ? 'display:none;' : ''}"></video>
+          <video class="reel-card-video" src="${cardClipVid}" poster="${posterImg}" playsinline muted preload="metadata" loop></video>
           <div class="reel-card-yt-wrapper" style="display:none;"></div>
           <div class="reel-card-gradient"></div>
 
@@ -2812,8 +2825,8 @@ class ScaleReachFullApp {
 
       // Setup native video playback element inside card
       const cardVideo = card.querySelector('.reel-card-video');
-      if (cardVideo && this.activeSourceType !== 'youtube') {
-        cardVideo.src = videoSrc;
+      if (cardVideo) {
+        cardVideo.src = cardClipVid;
         cardVideo.poster = posterImg;
         cardVideo.muted = true;
         cardVideo.defaultMuted = true;
@@ -2829,7 +2842,11 @@ class ScaleReachFullApp {
 
         const seekStart = () => {
           try {
-            if (moment.start > 0) cardVideo.currentTime = moment.start;
+            if (cardClipVid.includes('clips/reel_')) {
+              cardVideo.currentTime = 0;
+            } else if (moment.start > 0) {
+              cardVideo.currentTime = moment.start;
+            }
           } catch (e) {}
         };
 
@@ -2841,8 +2858,11 @@ class ScaleReachFullApp {
 
         // Loop clip within boundaries when playing
         cardVideo.addEventListener('timeupdate', () => {
-          if (!cardVideo.paused && cardVideo.currentTime >= moment.end) {
-            cardVideo.currentTime = moment.start;
+          if (!cardVideo.paused) {
+            const maxEnd = cardClipVid.includes('clips/reel_') ? (cardVideo.duration || 16) : moment.end;
+            if (cardVideo.currentTime >= maxEnd) {
+              cardVideo.currentTime = cardClipVid.includes('clips/reel_') ? 0 : moment.start;
+            }
           }
         });
       }
@@ -3099,10 +3119,11 @@ class ScaleReachFullApp {
           actionPill.innerHTML = '<span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview';
         }
 
-        const isYouTube = (this.activeSourceType === 'youtube' || Boolean(this.currentYouTubeId)) && Boolean(this.currentYouTubeId);
-        if (isYouTube) {
+        const hasNativeClip = Boolean(moment.videoSrc || (idx < 8));
+        const isCustomYouTube = (this.activeSourceType === 'youtube' && !hasNativeClip && Boolean(this.currentYouTubeId));
+        if (isCustomYouTube) {
           this.activeSourceType = 'youtube';
-          // 1. YouTube Mode: Embed and play real YouTube video directly in the card!
+          // 1. YouTube Mode for unknown/custom YouTube URLs:
           if (v) v.style.display = 'none';
           if (ytWrapper) {
             ytWrapper.style.display = 'block';
@@ -3136,18 +3157,24 @@ class ScaleReachFullApp {
             }
           }
         } else {
-          // 2. Native Mode: Play local video inside the card
+          // 2. Native Mode: Play the exact athlete video clip inside the card!
           if (ytWrapper) {
             ytWrapper.style.display = 'none';
             ytWrapper.innerHTML = '';
           }
           if (v) {
+            const clipVid = moment.videoSrc || `clips/reel_${idx + 1}.mp4`;
+            if (!v.src || !v.src.includes(clipVid)) {
+              v.src = clipVid;
+            }
             v.style.display = 'block';
             v.muted = true;
             v.defaultMuted = true;
 
             const startPlayback = () => {
-              if (v.currentTime < moment.start || v.currentTime >= moment.end) {
+              if (clipVid.includes('clips/reel_')) {
+                v.currentTime = 0;
+              } else if (v.currentTime < moment.start || v.currentTime >= moment.end) {
                 v.currentTime = moment.start;
               }
               v.play().catch(console.warn);
@@ -3159,6 +3186,13 @@ class ScaleReachFullApp {
               v.addEventListener('loadedmetadata', startPlayback, { once: true });
               v.load();
             }
+          }
+
+          // Also keep studio sourceVideo synced with this reel clip
+          const activeClipVid = moment.videoSrc || `clips/reel_${idx + 1}.mp4`;
+          if (this.sourceVideo && (!this.sourceVideo.src || !this.sourceVideo.src.includes(activeClipVid))) {
+            this.sourceVideo.src = activeClipVid;
+            this.sourceVideo.load();
           }
         }
 
@@ -5664,112 +5698,128 @@ class ScaleReachFullApp {
     if (this.exportProgressBox) this.exportProgressBox.classList.remove('hidden');
     this.showToast(`Rendering & Downloading "${rawTitle}" (9:16 Short)... ⚡`);
 
-    // Determine the right video source for this clip (Sports Challenge vs Podcast vs User Upload)
-    let appropriateVideo = 'sports_challenge.mp4';
+    // Determine the exact video source for this clip (Reel 1-8 clip vs user upload vs podcast)
+    let appropriateVideo = (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
     const isPodcast = (this.currentVideoTitle && /podcast|talk|interview|psychology|mindset/i.test(this.currentVideoTitle));
-    if (isPodcast) {
+    if (this.uploadedVideoUrl) {
+      appropriateVideo = this.uploadedVideoUrl;
+    } else if (isPodcast) {
       appropriateVideo = 'podcast.mp4';
-    } else if (this.activeSourceType !== 'youtube' && this.sourceVideo.src && !this.sourceVideo.src.includes('podcast.mp4') && !this.sourceVideo.src.includes('sports_challenge.mp4')) {
+    } else if (this.activeSourceType !== 'youtube' && this.sourceVideo.src && !this.sourceVideo.src.includes('sports_challenge.mp4') && !this.sourceVideo.src.includes('podcast.mp4')) {
       appropriateVideo = this.sourceVideo.src;
     }
 
+    const isPreCutClip = appropriateVideo.includes('clips/reel_');
+    const startSec = isPreCutClip ? 0 : ((moment && typeof moment.start === 'number') ? moment.start : this.clipStart);
+    const exportDuration = isPreCutClip ? 12 : Math.max(3, Math.min(8, ((moment && moment.end) ? moment.end : this.clipEnd) - startSec));
+
+    const executeRecording = () => {
+      this.activeClipIndex = idx;
+      try {
+        this.sourceVideo.currentTime = startSec;
+        this.sourceVideo.play().catch(console.warn);
+      } catch (e) {
+        console.warn(e);
+      }
+
+      // Synchronize live subtitle cycling for this clip during recording
+      let subIdx = 0;
+      const clipSubs = (moment && moment.subtitles && moment.subtitles.length) ? moment.subtitles : [(moment && moment.caption) || rawTitle];
+      this.currentLiveSubtitle = clipSubs[0];
+
+      const subtitleCycleTimer = setInterval(() => {
+        if (!this.isRecording) {
+          clearInterval(subtitleCycleTimer);
+          return;
+        }
+        subIdx = (subIdx + 1) % clipSubs.length;
+        this.currentLiveSubtitle = clipSubs[subIdx];
+      }, 2500);
+
+      // Capture clean 9:16 canvas stream (Canvas NEVER contains the download button!)
+      const canvasStream = this.cropCanvas.captureStream(30);
+      let combinedStream = canvasStream;
+
+      try {
+        if (this.sourceVideo.captureStream) {
+          const audioStream = this.sourceVideo.captureStream();
+          const tracks = audioStream.getAudioTracks();
+          if (tracks.length > 0) combinedStream.addTrack(tracks[0]);
+        }
+      } catch (e) {
+        console.warn(e);
+      }
+
+      const recordedChunks = [];
+      let recorder = null;
+      try {
+        recorder = new MediaRecorder(combinedStream, { mimeType });
+      } catch (e) {
+        console.warn('MediaRecorder error, falling back to basic stream:', e);
+        recorder = new MediaRecorder(canvasStream);
+      }
+
+      recorder.ondataavailable = (e) => {
+        if (e.data && e.data.size > 0) recordedChunks.push(e.data);
+      };
+
+      recorder.onstop = () => {
+        clearInterval(subtitleCycleTimer);
+        const blob = new Blob(recordedChunks, { type: mimeType });
+        const downloadUrl = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = cleanFileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        this.isRecording = false;
+        if (cardDownloadBtn) {
+          cardDownloadBtn.classList.remove('is-downloading');
+          cardDownloadBtn.classList.add('download-complete');
+          cardDownloadBtn.setAttribute('title', 'Downloaded Successfully! ✓');
+          setTimeout(() => {
+            if (cardDownloadBtn) {
+              cardDownloadBtn.classList.remove('download-complete');
+              cardDownloadBtn.setAttribute('title', `Download Reel ${idx + 1} (9:16 Short)`);
+            }
+          }, 3000);
+        }
+        if (this.exportShortBtn) this.exportShortBtn.disabled = false;
+        if (this.exportFromStudioBtn) this.exportFromStudioBtn.disabled = false;
+        if (this.exportProgressBox) this.exportProgressBox.classList.add('hidden');
+        this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Clean Short, No Watermark)!`);
+      };
+
+      recorder.start(100);
+
+      const startTime = Date.now();
+      const progressInterval = setInterval(() => {
+        const elapsed = (Date.now() - startTime) / 1000;
+        const progress = Math.min(100, Math.max(0, (elapsed / exportDuration) * 100));
+
+        if (this.exportFill) this.exportFill.style.width = `${progress}%`;
+        if (this.exportPercentText) this.exportPercentText.textContent = `${Math.round(progress)}%`;
+
+        if (elapsed >= exportDuration || !this.isRecording) {
+          clearInterval(progressInterval);
+          if (recorder.state === 'recording') {
+            recorder.stop();
+          }
+          this.sourceVideo.pause();
+        }
+      }, 100);
+    };
+
     if (!this.sourceVideo.src || !this.sourceVideo.src.includes(appropriateVideo)) {
       this.sourceVideo.src = appropriateVideo;
+      this.sourceVideo.addEventListener('loadeddata', () => executeRecording(), { once: true });
       this.sourceVideo.load();
+    } else {
+      executeRecording();
     }
-
-    const startSec = (moment && typeof moment.start === 'number') ? moment.start : this.clipStart;
-    const endSec = (moment && typeof moment.end === 'number') ? moment.end : this.clipEnd;
-    const totalDuration = Math.max(3, Math.min(6, endSec - startSec));
-
-    const vidDur = this.sourceVideo.duration;
-    let actualStart = startSec;
-    if (isFinite(vidDur) && vidDur > 0 && startSec >= vidDur) {
-      actualStart = (startSec % Math.max(5, vidDur - totalDuration));
-    }
-    const actualEnd = actualStart + totalDuration;
-
-    try {
-      this.sourceVideo.currentTime = actualStart;
-      this.sourceVideo.play().catch(console.warn);
-    } catch (e) {
-      console.warn(e);
-    }
-
-    // Capture clean 9:16 canvas stream (Canvas NEVER contains the download button!)
-    const canvasStream = this.cropCanvas.captureStream(30);
-    let combinedStream = canvasStream;
-
-    try {
-      if (this.sourceVideo.captureStream) {
-        const audioStream = this.sourceVideo.captureStream();
-        const tracks = audioStream.getAudioTracks();
-        if (tracks.length > 0) combinedStream.addTrack(tracks[0]);
-      }
-    } catch (e) {
-      console.warn(e);
-    }
-
-    const recordedChunks = [];
-    let recorder = null;
-    try {
-      recorder = new MediaRecorder(combinedStream, { mimeType });
-    } catch (e) {
-      console.warn('MediaRecorder error, falling back to basic stream:', e);
-      recorder = new MediaRecorder(canvasStream);
-    }
-
-    recorder.ondataavailable = (e) => {
-      if (e.data && e.data.size > 0) recordedChunks.push(e.data);
-    };
-
-    recorder.onstop = () => {
-      const blob = new Blob(recordedChunks, { type: mimeType });
-      const downloadUrl = URL.createObjectURL(blob);
-
-      const a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = cleanFileName;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-
-      this.isRecording = false;
-      if (cardDownloadBtn) {
-        cardDownloadBtn.classList.remove('is-downloading');
-        cardDownloadBtn.classList.add('download-complete');
-        cardDownloadBtn.setAttribute('title', 'Downloaded Successfully! ✓');
-        setTimeout(() => {
-          if (cardDownloadBtn) {
-            cardDownloadBtn.classList.remove('download-complete');
-            cardDownloadBtn.setAttribute('title', `Download Reel ${idx + 1} (9:16 Short)`);
-          }
-        }, 3000);
-      }
-      if (this.exportShortBtn) this.exportShortBtn.disabled = false;
-      if (this.exportFromStudioBtn) this.exportFromStudioBtn.disabled = false;
-      if (this.exportProgressBox) this.exportProgressBox.classList.add('hidden');
-      this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Clean Short, No Watermark)!`);
-    };
-
-    recorder.start(100);
-
-    const startTime = Date.now();
-    const progressInterval = setInterval(() => {
-      const elapsed = (Date.now() - startTime) / 1000;
-      const progress = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100));
-
-      if (this.exportFill) this.exportFill.style.width = `${progress}%`;
-      if (this.exportPercentText) this.exportPercentText.textContent = `${Math.round(progress)}%`;
-
-      if (elapsed >= totalDuration || this.sourceVideo.currentTime >= actualEnd || !this.isRecording) {
-        clearInterval(progressInterval);
-        if (recorder.state === 'recording') {
-          recorder.stop();
-        }
-        this.sourceVideo.pause();
-      }
-    }, 100);
   }
 
   bindExport() {
