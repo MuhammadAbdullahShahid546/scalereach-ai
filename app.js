@@ -281,7 +281,12 @@ class ScaleReachFullApp {
             end: 15,
             hookDesc: 'Speaker explains the subconscious reason people look away during serious conversations.',
             seoTitle: 'Notice what happens when she looks away? Psychology expert explains 😳🧠',
-            caption: 'BODY LANGUAGE SECRET',
+            caption: 'NOTICE WHAT HAPPENS THE MOMENT SHE LOOKS AWAY',
+            subtitles: [
+              'NOTICE WHAT HAPPENS THE MOMENT SHE LOOKS AWAY',
+              'SHE IS SUBCONSCIOUSLY CHECKING FOR REASSURANCE',
+              'THIS IS THE NUMBER ONE SIGN OF UNCERTAINTY'
+            ],
             tags: ['#psychology', '#podcast', '#bodylanguage', '#communication', '#viral'],
             badgeTags: ['🔥 99% Viral Hook', '🧠 Psychology', '👁️ Micro-Expressions']
           },
@@ -294,7 +299,12 @@ class ScaleReachFullApp {
             end: 33,
             hookDesc: 'Simple behavioral hack that makes anyone feel instantly understood and open up.',
             seoTitle: 'This 3-second psychological trick works on literally everyone 🤯✨',
-            caption: 'TRY THIS TODAY',
+            caption: 'IF YOU WANT SOMEONE TO AGREE, DO THIS FIRST',
+            subtitles: [
+              'IF YOU WANT SOMEONE TO AGREE, DO THIS FIRST',
+              'NEVER COUNTER THEIR POINT DIRECTLY',
+              'VALIDATE THEIR PERSPECTIVE BEFORE YOU SPEAK'
+            ],
             tags: ['#mindset', '#communicationhacks', '#negotiation', '#lifeadvice', '#fyp'],
             badgeTags: ['😂 97% Retention', '💡 Life Hack', '🤝 Instant Rapport']
           },
@@ -307,7 +317,12 @@ class ScaleReachFullApp {
             end: 51,
             hookDesc: 'Host breaks down why reacting immediately escalates conflict and how to pause effectively.',
             seoTitle: 'If you argue like this, stop immediately ⚠️ Here is what to do instead',
-            caption: 'NEVER SAY THIS',
+            caption: 'WHEN YOU RAISE YOUR VOICE, YOU ALREADY LOST',
+            subtitles: [
+              'WHEN YOU RAISE YOUR VOICE, YOU ALREADY LOST',
+              'THE PERSON WHO CONTROLS THEIR TONE CONTROLS THE ROOM',
+              'LOWER YOUR TONE AND SLOW DOWN YOUR WORDS'
+            ],
             tags: ['#relationships', '#conflictresolution', '#mentalhealth', '#couplesadvice', '#shorts'],
             badgeTags: ['⚡ 96% Relationship Hook', '🛑 Warning Sign', '📈 High Engagement']
           },
@@ -320,7 +335,12 @@ class ScaleReachFullApp {
             end: 69,
             hookDesc: 'Step-by-step psychological framework for sharing opposing viewpoints with zero drama.',
             seoTitle: 'The most mature way to handle someone who disagrees with you 👏💯',
-            caption: 'CALM COMMUNICATION',
+            caption: 'DO NOT REACT TO ANGER WITH DEFENSIVENESS',
+            subtitles: [
+              'DO NOT REACT TO ANGER WITH DEFENSIVENESS',
+              'TAKE A DEEP BREATH BEFORE RESPONDING',
+              'THAT TWO SECOND PAUSE CHANGES EVERYTHING'
+            ],
             tags: ['#stoicism', '#emotionalintelligence', '#communication', '#growth', '#reels'],
             badgeTags: ['🤯 95% High Value', '🛡️ De-Escalate', '💬 High Comments']
           },
@@ -333,7 +353,12 @@ class ScaleReachFullApp {
             end: 87,
             hookDesc: 'Insightful discussion on reflective listening and why people crave feeling heard over solutions.',
             seoTitle: 'Stop giving solutions and start doing this one thing instead 🧠💡',
-            caption: 'LISTEN CAREFULLY',
+            caption: 'PEOPLE DO NOT WANT SOLUTIONS, THEY WANT TO BE HEARD',
+            subtitles: [
+              'PEOPLE DO NOT WANT SOLUTIONS, THEY WANT TO BE HEARD',
+              'ASK THEM HOW THEY FEEL INSTEAD OF FIXING IT',
+              'THAT IS WHERE DEEP TRUST ACTUALLY COMES FROM'
+            ],
             tags: ['#activelearning', '#empathy', '#lifelessons', '#talkshow', '#deepconversations'],
             badgeTags: ['💡 93% Emotional Hook', '👂 Empathy', '🚀 High Saves']
           },
@@ -346,7 +371,12 @@ class ScaleReachFullApp {
             end: 105,
             hookDesc: 'Closing philosophy on consistency, micro-actions, and emotional security in modern life.',
             seoTitle: 'This is the only real foundation of trust that actually lasts 🥹❤️',
-            caption: 'THE CORE TRUTH',
+            caption: 'TRUE CONFIDENCE IS NEVER LOUD OR ARROGANT',
+            subtitles: [
+              'TRUE CONFIDENCE IS NEVER LOUD OR ARROGANT',
+              'WHEN YOU KNOW WHO YOU ARE, YOU DO NOT NEED VALIDATION',
+              'SILENCE SPEAKS MUCH LOUDER THAN NOISE'
+            ],
             tags: ['#trust', '#lifelessons', '#podcastmoment', '#inspirational', '#foryou'],
             badgeTags: ['🏆 91% Climax', '🔒 Trust Secret', '✨ High Share Rate']
           },
@@ -359,7 +389,12 @@ class ScaleReachFullApp {
             end: 123,
             hookDesc: 'How taking a deliberate breath before responding projects supreme confidence.',
             seoTitle: 'Do this 2-second pause before answering to sound 10x more confident 🗣️⚡',
-            caption: 'POWER OF SILENCE',
+            caption: 'PAUSE FOR TWO SECONDS BEFORE ANSWERING ANY QUESTION',
+            subtitles: [
+              'PAUSE FOR TWO SECONDS BEFORE ANSWERING ANY QUESTION',
+              'IT MAKES YOUR ANSWER SOUND TEN TIMES MORE POWERFUL',
+              'NEVER RUSH YOUR WORDS JUST TO FILL THE SILENCE'
+            ],
             tags: ['#confidence', '#publicspeaking', '#charismatips', '#viralreels', '#shorts'],
             badgeTags: ['🎯 90% Charisma Hack', '⏳ 2-Sec Rule', '⚡ High Retention']
           },
@@ -372,9 +407,12 @@ class ScaleReachFullApp {
             end: 141,
             hookDesc: 'Host and guest burst into genuine laughter breaking character at the recording wrap.',
             seoTitle: 'The candid blooper at the end of the recording was the best part 😂🎬',
-            caption: 'UNFILTERED LAUGHS',
-            tags: ['#bloopers', '#behindthescenes', '#outtakes', '#podcastfunny', '#trending'],
-            badgeTags: ['🚀 89% Viral Outro', '😂 Blooper', '💬 Comment Spike']
+            caption: 'WE WERE LAUGHING SO HARD WE COULD NOT EVEN FINISH',
+            subtitles: [
+              'WE WERE LAUGHING SO HARD WE COULD NOT EVEN FINISH',
+              'LOOK AT THE CAMERAMAN LOSING IT IN THE BACKGROUND',
+              'THIS WAS DEFINITELY THE FUNNIEST OUTTAKE'
+            ],
           }
         ]
       },
@@ -516,7 +554,12 @@ class ScaleReachFullApp {
             end: 75,
             hookDesc: 'Speed disguised as Prime mascot surprisingly reveals himself in the middle of Logan Paul\'s match.',
             seoTitle: 'IShowSpeed really snuck into WrestleMania and the crowd went crazy 💀😭',
-            caption: 'HE ACTUALLY DID IT',
+            caption: 'THEY ACTUALLY LET ME INSIDE WRESTLEMANIA BRO!',
+            subtitles: [
+              'THEY ACTUALLY LET ME INSIDE WRESTLEMANIA BRO!',
+              'LOOK AT MY OUTFIT, NOBODY REALIZED IT WAS ME!',
+              'IM ABOUT TO ENTER THE RING RIGHT NOW!'
+            ],
             tags: ['#ishowspeed', '#wrestlemania', '#wwe', '#speed', '#viral', '#shorts'],
             badgeTags: ['🔥 99% Viral', '⚡ Chaotic Energy', '🤯 Crowd Shock']
           },
@@ -532,7 +575,12 @@ class ScaleReachFullApp {
             end: 230,
             hookDesc: 'Speed barks at Randy Orton right before getting RKO\'d through the announce table.',
             seoTitle: 'Speed barking at Randy Orton seconds before disaster strikes 😭⚰️',
-            caption: 'WORST MISTAKE EVER',
+            caption: 'WHY DID I BARK AT RANDY ORTON BRO?!',
+            subtitles: [
+              'WHY DID I BARK AT RANDY ORTON BRO?!',
+              'HE JUST LOOKED BACK AT ME AND LOCKED IN!',
+              'HE HIT ME WITH AN RKO THROUGH THE TABLE!'
+            ],
             tags: ['#speedrko', '#randyorton', '#wwefunny', '#shorts', '#trending'],
             badgeTags: ['💀 98% Reaction', '😂 Pure Chaos', '💥 Legendary RKO']
           },
@@ -545,7 +593,12 @@ class ScaleReachFullApp {
             end: 390,
             hookDesc: 'Speed slides brass knuckles across the canvas while referee is completely distracted.',
             seoTitle: 'IShowSpeed saved Logan Paul with this illegal move at WrestleMania 😱🏆',
-            caption: 'LOGAN PAUL SAVED',
+            caption: 'LOGAN, TAKE THE BRASS KNUCKLES RIGHT NOW!',
+            subtitles: [
+              'LOGAN, TAKE THE BRASS KNUCKLES RIGHT NOW!',
+              'THE REFEREE HAS NO IDEA WHAT IS HAPPENING!',
+              'I JUST SAVED HIM ON LIVE TELEVISION!'
+            ],
             tags: ['#loganpaul', '#wwehighlights', '#speedlive', '#viralclips', '#trending'],
             badgeTags: ['⚡ 96% Action', '🥊 High Drama', '🔥 Peak Hype']
           },
@@ -558,7 +611,12 @@ class ScaleReachFullApp {
             end: 560,
             hookDesc: 'Speed climbs the ropes and the entire 70,000 fan stadium shouts Ronaldo\'s iconic celebration.',
             seoTitle: 'IShowSpeed got 70,000 wrestling fans to scream SIUUU at once 🐐🔥',
-            caption: '70,000 PEOPLE SIUU',
+            caption: 'SEVENTY THOUSAND PEOPLE SCREAMING SUI WITH ME!',
+            subtitles: [
+              'SEVENTY THOUSAND PEOPLE SCREAMING SUI WITH ME!',
+              'LISTEN TO THE ENTIRE STADIUM ROAR RIGHT NOW!',
+              'THIS IS THE CRAZIEST NIGHT OF MY LIFE!'
+            ],
             tags: ['#siuuu', '#cristiano', '#ishowspeedclip', '#wrestlemania40', '#shorts'],
             badgeTags: ['🤯 95% Stadium Shock', '🐐 Ronaldo Vibe', '🔊 Max Audio']
           },
@@ -571,7 +629,12 @@ class ScaleReachFullApp {
             end: 725,
             hookDesc: 'Triple H stops Speed in the gorilla position hallway: "Are you crazy or are you a genius?"',
             seoTitle: 'Triple H had this to say to Speed right after the match 🤯👀',
-            caption: 'TRIPLE H WAS WAITING',
+            caption: 'TRIPLE H SAID ARE YOU CRAZY OR ARE YOU A GENIUS?!',
+            subtitles: [
+              'TRIPLE H SAID ARE YOU CRAZY OR ARE YOU A GENIUS?!',
+              'HE WAS WAITING FOR ME BACKSTAGE IN THE HALLWAY!',
+              'I CANNOT BELIEVE TRIPLE H ACTUALLY SAID THAT!'
+            ],
             tags: ['#tripleh', '#backstage', '#wwelockerroom', '#speed', '#foryou'],
             badgeTags: ['💡 93% Exclusive', '🤝 WWE Boss', '💬 High Curiosity']
           },
@@ -584,7 +647,12 @@ class ScaleReachFullApp {
             end: 885,
             hookDesc: 'Speed holding ice to his neck while screaming at the livestream chat in disbelief.',
             seoTitle: 'Speed\'s honest reaction after getting slammed by Randy Orton 😂',
-            caption: 'MY NECK IS BROKEN',
+            caption: 'CHAT, MY ENTIRE BODY IS IN PAIN RIGHT NOW!',
+            subtitles: [
+              'CHAT, MY ENTIRE BODY IS IN PAIN RIGHT NOW!',
+              'HE SLAMMED ME WITH SO MUCH FORCE BRO!',
+              'BUT WE WON THE MATCH AND WE MADE HISTORY!'
+            ],
             tags: ['#ishowspeedlive', '#aftermath', '#streaming', '#speedlive', '#fyp'],
             badgeTags: ['🏆 91% Climax', '🔥 Post-Match', '💬 High Comments']
           },
@@ -597,7 +665,12 @@ class ScaleReachFullApp {
             end: 1025,
             hookDesc: 'Multi-angle cinematic slow motion of the exact split second the wooden announce table explodes.',
             seoTitle: 'Randy Orton RKO on IShowSpeed in ultra slow motion looks brutal 🤯💀',
-            caption: 'IMPACT IN SLOW MOTION',
+            caption: 'LOOK AT THE TABLE SHATTERING IN SLOW MOTION!',
+            subtitles: [
+              'LOOK AT THE TABLE SHATTERING IN SLOW MOTION!',
+              'YOU CAN SEE THE EXACT MOMENT MY SOUL LEFT MY BODY!',
+              'THAT IMPACT WAS COMPLETELY REAL CHAT!'
+            ],
             tags: ['#slowmotion', '#wweaction', '#speedrko', '#viralreels', '#shorts'],
             badgeTags: ['🎯 90% Impact', '🌪️ Slow Motion', '⚡ Maximum Hype']
           },
@@ -610,7 +683,12 @@ class ScaleReachFullApp {
             end: 1090,
             hookDesc: 'Speed puts on a neon security vest and runs past screaming fans into the getaway sprinter van.',
             seoTitle: 'How IShowSpeed actually escaped the arena without getting arrested 😂🏃',
-            caption: 'MISSION ACCOMPLISHED',
+            caption: 'PUT THIS SECURITY VEST ON, WE GOTTA GET OUT OF HERE!',
+            subtitles: [
+              'PUT THIS SECURITY VEST ON, WE GOTTA GET OUT OF HERE!',
+              'THE SECURITY GUARDS ARE LOOKING EVERYWHERE!',
+              'SPRINT TO THE VAN BEFORE ANYONE SPOTS US!'
+            ],
             tags: ['#speedescape', '#bloopers', '#stealth', '#wrestlemania', '#trending'],
             badgeTags: ['🚀 89% Chaos Outro', '🏃 Getaway Van', '💬 Huge Comments']
           }
@@ -632,7 +710,12 @@ class ScaleReachFullApp {
             end: 75,
             hookDesc: 'MKBHD inspects the micro-hinge titanium gears and explains why folding displays crack.',
             seoTitle: 'Is the folding screen crease finally gone forever? MKBHD explains 📱🤯',
-            caption: 'LOOK AT THIS CREASE',
+            caption: 'THE FIRST THING YOU NOTICE IS THE CREASE IS TOTALLY GONE',
+            subtitles: [
+              'THE FIRST THING YOU NOTICE IS THE CREASE IS TOTALLY GONE',
+              'YOU RUN YOUR FINGER ACROSS AND CAN BARELY FEEL A THING',
+              'THIS IS WHAT FOLDING SCREENS SHOULD HAVE BEEN'
+            ],
             tags: ['#mkbhd', '#foldingphone', '#tech', '#gadgets', '#smartphone', '#review'],
             badgeTags: ['🔥 98% Tech Hook', '🔍 Macro Lens', '⚙️ Engineering']
           },
@@ -645,7 +728,12 @@ class ScaleReachFullApp {
             end: 215,
             hookDesc: 'Marques breaks down Cupertino supply chain limitations and ultra-thin flexible glass.',
             seoTitle: 'The real reason Apple hasn\'t made a folding iPhone yet will surprise you 🍎👀',
-            caption: 'APPLE\'S SECRET REASON',
+            caption: 'APPLE WILL NOT BUILD THIS UNTIL THE GLASS CANNOT SCRATCH',
+            subtitles: [
+              'APPLE WILL NOT BUILD THIS UNTIL THE GLASS CANNOT SCRATCH',
+              'FLEXIBLE GLASS HAS A MOHS HARDNESS RATING OF JUST TWO',
+              'CUPERTINO REFUSES TO SHIP A SCREEN YOUR FINGERNAIL CAN DENT'
+            ],
             tags: ['#apple', '#iphonefold', '#techrumors', '#mkbhdshorts', '#gadgethack'],
             badgeTags: ['⚡ 96% Curiosity', '🍎 Apple Debate', '📊 High Retention']
           },
@@ -658,7 +746,12 @@ class ScaleReachFullApp {
             end: 360,
             hookDesc: 'Pouring fine pocket sand into the hinge mechanism to see if it grinds or snaps.',
             seoTitle: 'What happens when you drop an $1,800 foldable phone directly in the sand 😱⚠️',
-            caption: 'LISTEN TO THE CRUNCH',
+            caption: 'LISTEN TO THE GRINDING SOUND INSIDE THE HINGE',
+            subtitles: [
+              'LISTEN TO THE GRINDING SOUND INSIDE THE HINGE',
+              'FINE POCKET SAND GETS CAUGHT IN THE GEARS IMMEDIATELY',
+              'DO NOT BRING THIS PHONE TO THE BEACH UNDER ANY CIRCUMSTANCE'
+            ],
             tags: ['#torturetest', '#scratchtest', '#techfunny', '#cringe', '#durability'],
             badgeTags: ['😂 95% Cringe Shock', '💥 Sand Test', '🎧 Audio ASMR']
           },
@@ -671,7 +764,12 @@ class ScaleReachFullApp {
             end: 505,
             hookDesc: 'Detailed transparent teardown showing ribbon cables connecting two independent batteries across the hinge.',
             seoTitle: 'The insane battery trick folding phones use to stay ultra-thin 🤯🔌',
-            caption: 'TWO BATTERIES IN ONE',
+            caption: 'THERE ARE ACTUALLY TWO SEPARATE BATTERIES INSIDE',
+            subtitles: [
+              'THERE ARE ACTUALLY TWO SEPARATE BATTERIES INSIDE',
+              'CONNECTED BY A FLEXIBLE RIBBON CABLE ACROSS THE SPINE',
+              'IT DISCHARGES SIMULTANEOUSLY TO BALANCE HEAT AND THICKNESS'
+            ],
             tags: ['#hardware', '#engineering', '#teardown', '#phonetech', '#mkbhd'],
             badgeTags: ['🤯 94% Deep Tech', '🔋 Dual Battery', '🔬 Teardown']
           },
@@ -684,7 +782,12 @@ class ScaleReachFullApp {
             end: 650,
             hookDesc: 'Editing video, answering emails, and watching YouTube simultaneously on the inner display.',
             seoTitle: 'This is the only feature that makes folding phones genuinely worth buying 📱⚡',
-            caption: 'PRODUCTIVITY BEAST',
+            caption: 'YOU CAN RUN THREE FULL APPS SIDE BY SIDE AT ONCE',
+            subtitles: [
+              'YOU CAN RUN THREE FULL APPS SIDE BY SIDE AT ONCE',
+              'DRAGGING AND DROPPING FILES BETWEEN THEM IN REAL TIME',
+              'THIS IS THE ONLY FEATURE THAT JUSTIFIES THE PRICE TAG'
+            ],
             tags: ['#productivity', '#multitasking', '#workfromanywhere', '#techhacks', '#reels'],
             badgeTags: ['💡 93% Utility', '📲 3 Apps at Once', '🚀 High Saves']
           },
@@ -697,7 +800,12 @@ class ScaleReachFullApp {
             end: 790,
             hookDesc: 'After 24 months of real-world pocket drops: Should you actually spend $1,800 on this?',
             seoTitle: 'Don\'t buy a folding phone until you see what happens after 2 years ⚠️📉',
-            caption: 'DON\'T BUY THIS YET',
+            caption: 'AFTER TWO YEARS OF DAILY USE, HERE IS THE TRUTH',
+            subtitles: [
+              'AFTER TWO YEARS OF DAILY USE, HERE IS THE TRUTH',
+              'THE INNER PROTECTOR PEELS AND THE RESALE VALUE TANKS',
+              'WAIT FOR GENERATION THREE BEFORE YOU DROP YOUR CASH'
+            ],
             tags: ['#techwarning', '#foldables', '#buyersguide', '#phonecomparison', '#fyp'],
             badgeTags: ['🏆 91% Buying Guide', '⚠️ Warning Hook', '💡 Value Test']
           },
@@ -710,7 +818,12 @@ class ScaleReachFullApp {
             end: 915,
             hookDesc: 'Special probe camera slides inside the open hinge showing 4 tiny water-resistant rubber gaskets in motion.',
             seoTitle: 'Looking inside a folding phone hinge with an 8K probe lens is wild 🔬📱',
-            caption: '8K PROBE LENS ZOOM',
+            caption: 'LOOK AT THESE MICROSCOPIC WATERPROOF GASKETS MOVING',
+            subtitles: [
+              'LOOK AT THESE MICROSCOPIC WATERPROOF GASKETS MOVING',
+              'THERE ARE FOUR TINY TEETH INTERLOCKING INSIDE THE SPINE',
+              'PRECISION ENGINEERING AT AN ABSOLUTE WATCHMAKER LEVEL'
+            ],
             tags: ['#macrophotography', '#teardown', '#mkbhd', '#engineering', '#shorts'],
             badgeTags: ['🎯 90% Macro Zoom', '🔬 8K Probe Lens', '⚡ High Retention']
           },
@@ -723,7 +836,12 @@ class ScaleReachFullApp {
             end: 990,
             hookDesc: 'Marques reveals the community voting results from 10 million blind photo and battery test submissions.',
             seoTitle: 'The smartphone that actually won blind test will shock fanboys 🏆👑',
-            caption: 'THE UNEXPECTED WINNER',
+            caption: 'THE SMARTPHONE THAT WON OVER TEN MILLION VOTES',
+            subtitles: [
+              'THE SMARTPHONE THAT WON OVER TEN MILLION VOTES',
+              'NEITHER APPLE NOR SAMSUNG WON THE BEST CAMERA TROPHY',
+              'THE REAL WINNER IS GOING TO SHOCK EVERY TECH FAN'
+            ],
             tags: ['#smartphoneawards', '#mkbhd', '#blindtest', '#techreview', '#fyp'],
             badgeTags: ['🚀 89% Final Winner', '🏆 Golden Trophy', '💬 Tech Debate']
           }
@@ -971,7 +1089,12 @@ class ScaleReachFullApp {
             end: 75,
             hookDesc: 'Contestant challenges LeBron James to a 3-point shootout with $100,000 cash on the line.',
             seoTitle: 'He really challenged LeBron James to a 1v1 for $100,000 🏀😱',
-            caption: 'CAN HE BEAT LEBRON',
+            caption: 'IF YOU BEAT LEBRON JAMES IN A SHOOTOUT, YOU WIN $100,000!',
+            subtitles: [
+              'IF YOU BEAT LEBRON JAMES IN A SHOOTOUT, YOU WIN $100,000!',
+              'HE IS THE GREATEST SCORER IN NBA HISTORY!',
+              'YOU HAVE SIXTY SECONDS ON THE CLOCK, LET GO!'
+            ],
             tags: ['#mrbeast', '#lebron', '#basketball', '#nba', '#100k', '#challenge'],
             badgeTags: ['🔥 99% High Stakes', '🏀 LeBron 1v1', '⚡ Immediate Hook']
           },
@@ -984,7 +1107,12 @@ class ScaleReachFullApp {
             end: 205,
             hookDesc: 'LeBron swats the basketball away with a funny grin and the entire gym goes wild.',
             seoTitle: 'LeBron James did not let this slide for a second 😂💀',
-            caption: 'GET THAT OUT OF HERE',
+            caption: 'LEBRON JUST SWATTED THAT BALL CLEAN INTO THE STANDS!',
+            subtitles: [
+              'LEBRON JUST SWATTED THAT BALL CLEAN INTO THE STANDS!',
+              'DID YOU SEE THAT SMILE ON HIS FACE?!',
+              'HE SAID NOT IN MY HOUSE TODAY!'
+            ],
             tags: ['#lebronblock', '#funny', '#basketballhighlights', '#mrbeast', '#shorts'],
             badgeTags: ['😂 97% Laughter Spike', '🏀 Savage Block', '🎉 Pure Hype']
           },
@@ -997,7 +1125,12 @@ class ScaleReachFullApp {
             end: 345,
             hookDesc: 'Contestant gets one single attempt from mid-court logo with MrBeast holding the countdown buzzer.',
             seoTitle: 'He attempted a half-court shot against LeBron for $50,000 🤯🏀',
-            caption: 'HALF COURT HAIL MARY',
+            caption: 'ONE SHOT FROM THE HALF-COURT LOGO FOR FIFTY THOUSAND!',
+            subtitles: [
+              'ONE SHOT FROM THE HALF-COURT LOGO FOR FIFTY THOUSAND!',
+              'EVERYONE IN THE GYM IS COMPLETELY SILENT!',
+              'THE BALL IS IN THE AIR... LOOK AT THE ARC!'
+            ],
             tags: ['#halfcourtshot', '#trickshot', '#basketballlife', '#mrbeastchallenge', '#viral'],
             badgeTags: ['⚡ 96% Tense Pace', '🏀 Half Court', '💥 Max Suspense']
           },
@@ -1010,7 +1143,12 @@ class ScaleReachFullApp {
             end: 495,
             hookDesc: 'LeBron takes flight from the free throw line and hammers down a ferocious windmill slam.',
             seoTitle: 'LeBron James pulled off an NBA Finals dunk in a MrBeast video 😱🔥',
-            caption: 'THE KING TAKES FLIGHT',
+            caption: 'LEBRON JUST TOOK OFF FROM THE FREE THROW LINE!',
+            subtitles: [
+              'LEBRON JUST TOOK OFF FROM THE FREE THROW LINE!',
+              'HE HAMMERED DOWN A 360 WINDMILL SLAM!',
+              'THE ENTIRE BACKBOARD WAS SHAKING!'
+            ],
             tags: ['#lebrondunk', '#slamdunk', '#kingjames', '#nbatiktok', '#insane'],
             badgeTags: ['🤯 95% Dunk Shock', '👑 King James', '🔊 Crowd Roar']
           },
@@ -1023,7 +1161,12 @@ class ScaleReachFullApp {
             end: 635,
             hookDesc: 'LeBron pauses the challenge to give the contestant personalized elbow alignment and wrist flick coaching.',
             seoTitle: 'LeBron James broke down his exact shooting secret in 30 seconds 🧠🏀',
-            caption: 'COACH LEBRON',
+            caption: 'LEBRON IS SHOWING THE EXACT ELBOW ALIGNMENT SECRET',
+            subtitles: [
+              'LEBRON IS SHOWING THE EXACT ELBOW ALIGNMENT SECRET',
+              'KEEP YOUR WRIST TUCKED AND SNAP AT THE PEAK',
+              'THAT IS HOW HE HAS SCORED OVER 40,000 POINTS'
+            ],
             tags: ['#basketballtraining', '#shootingcoach', '#lebronjames', '#nbatips', '#reels'],
             badgeTags: ['💡 93% Masterclass', '🏀 Pro Technique', '🚀 High Saves']
           },
@@ -1036,7 +1179,12 @@ class ScaleReachFullApp {
             end: 765,
             hookDesc: 'Tense countdown with crowd holding breath as the final basketball shot arcs through the air.',
             seoTitle: 'The final shot for $100,000 had everyone holding their breath 🥹🏀',
-            caption: 'WILL IT GO IN',
+            caption: 'THIS FINAL SHOT DECIDES THE ENTIRE HUNDRED THOUSAND DOLLARS!',
+            subtitles: [
+              'THIS FINAL SHOT DECIDES THE ENTIRE HUNDRED THOUSAND DOLLARS!',
+              'THREE... TWO... ONE... HE RELEASES THE BALL!',
+              'DID IT GO IN?! LOOK AT MRBEAST REACTION!'
+            ],
             tags: ['#buzzerbeater', '#wholesome', '#100000dollars', '#sportsclimax', '#fyp'],
             badgeTags: ['🏆 91% Climax', '💰 $100k Final Shot', '✨ Game Winner']
           },
@@ -1049,7 +1197,12 @@ class ScaleReachFullApp {
             end: 885,
             hookDesc: 'Phantom high-speed camera captures LeBron hanging in the air and rattling the rim.',
             seoTitle: 'LeBron James dunk in super slow motion looks completely unreal 🤯🏀',
-            caption: 'GRAVITY DEFIED',
+            caption: 'WATCH LEBRON HANG IN THE AIR IN SUPER SLOW MOTION',
+            subtitles: [
+              'WATCH LEBRON HANG IN THE AIR IN SUPER SLOW MOTION',
+              'HE WAS LITERALLY EYE LEVEL WITH THE BASKETBALL RIM',
+              'THAT IS PURE ATHLETIC SUPERHUMAN POWER'
+            ],
             tags: ['#lebrondunk', '#slowmo', '#kingjames', '#nbahighlights', '#shorts'],
             badgeTags: ['🎯 90% Dunk Angle', '🌪️ Slow Motion', '⚡ High Retention']
           },
@@ -1062,7 +1215,12 @@ class ScaleReachFullApp {
             end: 950,
             hookDesc: 'LeBron jokes with MrBeast about joining his next challenge video as the gym roars with laughter.',
             seoTitle: 'LeBron James roasting MrBeast is the funniest thing you\'ll see today 😂💀',
-            caption: 'LEBRON ROASTS MRBEAST',
+            caption: 'LEBRON SAID I AM JOINING YOUR NEXT CHALLENGE JIMMY!',
+            subtitles: [
+              'LEBRON SAID I AM JOINING YOUR NEXT CHALLENGE JIMMY!',
+              'THE WHOLE CREW BURST OUT LAUGHING AT COURT BANTER',
+              'SUBSCRIBE AND WE WILL BRING LEBRON BACK AGAIN!'
+            ],
             tags: ['#mrbeast', '#lebron', '#funny', '#bloopers', '#foryou'],
             badgeTags: ['🚀 89% Outro', '😂 Trash Talk', '💬 Comment Spike']
           }
@@ -1087,11 +1245,12 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral #2 Peak',
             hookDesc: 'Erling Haaland unloads full velocity rocket kick with $100,000 cash briefcase locked inside the goal.',
             seoTitle: 'Erling Haaland tried to score for $100,000 on an amateur keeper ⚽😱',
-            caption: 'CAN HE SAVE THIS?! ⚽',
+            caption: 'IF YOU BLOCK ERLING HAALAND, YOU WIN $100,000!',
             subtitles: [
-              'CAN HE STOP ERLING HAALAND?!',
-              'THE $100,000 PENALTY SHOT!',
-              'LOOK AT THE RAW POWER!'
+              'IF YOU BLOCK ERLING HAALAND, YOU WIN $100,000!',
+              'HE KICKS AT OVER 100 MILES AN HOUR!',
+              'CAN AN AMATEUR GOALIE ACTUALLY STOP THIS?!',
+              'THAT BALL CAME IN LIKE AN ABSOLUTE MISSILE!'
             ],
             tags: ['#mrbeast', '#haaland', '#penalty', '#soccer', '#100k', '#viral'],
             badgeTags: ['🔥 YouTube Peak (48M)', '⚽ Haaland 100 MPH', '⚡ Instant Hook']
@@ -1108,11 +1267,12 @@ class ScaleReachFullApp {
             ytBadge: '📈 36M+ Shorts Views',
             hookDesc: 'Olympic gymnastics legend Simone Biles performs high-stakes acrobatics suspended 100 feet in mid-air.',
             seoTitle: 'Simone Biles did a balance beam challenge 100 FEET in the air 🤯🤸',
-            caption: '100 FEET IN THE AIR! 😱',
+            caption: 'SIMONE BILES IS BALANCING 100 FEET IN THE AIR!',
             subtitles: [
-              'SIMONE BILES 100 FEET IN THE AIR!',
-              'ONE SLIP AND IT IS ALL OVER!',
-              'HOW IS SHE SO CALM RIGHT NOW?!'
+              'SIMONE BILES IS BALANCING 100 FEET IN THE AIR!',
+              'IF SHE WALKS ACROSS THIS BEAM, YOU WIN $100,000!',
+              'LOOK AT HOW STEADY SHE STAYS WITHOUT A NET!',
+              'THAT WAS PURE OLYMPIC PERFECTION!'
             ],
             tags: ['#simonebiles', '#gymnastics', '#mrbeast', '#daredevil', '#insane'],
             badgeTags: ['📈 36M+ Shorts Views', '🤸 Sky Balance', '💥 High Tension']
@@ -1129,11 +1289,12 @@ class ScaleReachFullApp {
             ytBadge: '📈 29M+ Shorts Views',
             hookDesc: 'Cricket superstar Hardik Pandya crushes a monster 120-meter hit clean out of the stadium for charity.',
             seoTitle: 'Hardik Pandya smashed a ball clean out of the stadium for $100,000 🏏🚀',
-            caption: 'OUT OF THE STADIUM! 🏏',
+            caption: 'HARDIK PANDYA HAS THREE SHOTS TO HIT IT OUT!',
             subtitles: [
-              'HARDIK PANDYA STEPS UP TO THE PLATE!',
-              'HE SMASHED IT CLEAN OUT OF THE STADIUM!',
-              'THAT BALL IS NEVER COMING BACK!'
+              'HARDIK PANDYA HAS THREE SHOTS TO HIT IT OUT!',
+              'HE JUST LAUNCHED THAT BALL OVER THE ROOF!',
+              'THAT BALL WENT COMPLETELY OUT OF THE ARENA!',
+              'THE ENTIRE CROWD CANNOT BELIEVE WHAT HAPPENED!'
             ],
             tags: ['#hardikpandya', '#cricket', '#mrbeast', '#powerhitting', '#viral'],
             badgeTags: ['📈 29M+ Shorts Views', '🏏 Monster Six', '🚀 Ball Lost']
@@ -1150,11 +1311,12 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral #3 Peak',
             hookDesc: 'WNBA sensation Caitlin Clark sinks consecutive deep logo 3-pointers and swishes an effortless half-court shot.',
             seoTitle: 'Caitlin Clark made an impossible half-court shot look so easy 🤯🏀',
-            caption: 'NOTHING BUT NET! 🏀',
+            caption: 'FIRST TRY FROM THE LOGO... NOTHING BUT NET!',
             subtitles: [
-              'CAITLIN CLARK FROM HALF-COURT!',
-              'NOTHING BUT NET ON THE FIRST TRY!',
-              'SHE MAKES IT LOOK RIDICULOUSLY EASY!'
+              'CAITLIN CLARK HAS TO SINK THIS DEEP HALF-COURT SHOT!',
+              'FIRST TRY FROM THE LOGO... NOTHING BUT NET!',
+              'HOW DOES SHE MAKE AN IMPOSSIBLE SHOT LOOK SO EASY?!',
+              'SHE JUST DRAINED A HALF-COURT SHOT CLEAN!'
             ],
             tags: ['#caitlinclark', '#wnba', '#basketball', '#halfcourt', '#mrbeast'],
             badgeTags: ['🔥 YouTube Peak (42M)', '🏀 Half-Court Swish', '🎯 Pure Magic']
@@ -1171,11 +1333,12 @@ class ScaleReachFullApp {
             ytBadge: '📈 24M+ Shorts Views',
             hookDesc: 'Olympian Alysa Liu races at top speed across an obstacle-filled ice rink for charity challenge.',
             seoTitle: 'Olympic figure skater races through an extreme obstacle ice track ⛸️⚡',
-            caption: 'INSANE SPEED ON ICE! ⛸️',
+            caption: 'SHE HAS TO SKATE THROUGH THIS ENTIRE OBSTACLE COURSE!',
             subtitles: [
-              'OLYMPIC SKATER VS IMPOSSIBLE ICE MAZE!',
-              'LOOK AT THAT SPEED AND AGILITY!',
-              'SHE DODGED THE OBSTACLES CLEANLY!'
+              'SHE HAS TO SKATE THROUGH THIS ENTIRE OBSTACLE COURSE!',
+              'WATCH THE INCREDIBLE SPEED AND EDGE CONTROL ON ICE!',
+              'SHE CLEARED EVERY SINGLE OBSTACLE CLEANLY!',
+              'THAT IS WHY SHE IS AN OLYMPIC FIGURE SKATER!'
             ],
             tags: ['#alysaliu', '#figureskating', '#olympics', '#mrbeast', '#speed'],
             badgeTags: ['📈 24M+ Shorts Views', '⛸️ Ice Agility', '⚡ Max Speed']
@@ -1192,11 +1355,12 @@ class ScaleReachFullApp {
             ytBadge: '😂 Viral Comedy Peak',
             hookDesc: 'Gordon Ramsay makes an unscripted cameo and brutally roasts Jimmy\'s culinary attempts with hilarious British sarcasm.',
             seoTitle: 'Gordon Ramsay brutally roasting MrBeast is pure comedy gold 😂💀',
-            caption: 'IT TASTES LIKE WHAT?! 😂',
+            caption: 'I AM SORRY JIMMY, BUT THAT TASTES LIKE CARDBOARD!',
             subtitles: [
-              'GORDON RAMSAY TASTE TESTS FEASTABLES!',
-              'IT TASTES LIKE CARDBOARD!',
-              'THE WHOLE CREW CANNOT STOP LAUGHING!'
+              'GORDON RAMSAY, TRY THIS CHOCOLATE AND GIVE YOUR HONEST OPINION!',
+              'I AM SORRY JIMMY, BUT THAT TASTES LIKE CARDBOARD!',
+              'I CANNOT BELIEVE YOU JUST ROASTED ME TO MY FACE!',
+              'GORDON RAMSAY HAS ZERO FILTER AND THE CREW LOST IT!'
             ],
             tags: ['#gordonramsay', '#mrbeast', '#roast', '#funny', '#reaction'],
             badgeTags: ['😂 39M+ Shorts Views', '👨‍🍳 Ramsay Roast', '🤣 Pure Comedy']
@@ -1213,11 +1377,12 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube #1 MOST REPLAYED',
             hookDesc: 'LeBron James and Jimmy face off in a 1-minute 3-point shootout where Jimmy shockingly scores 5 to LeBron\'s 4 in front of an electrified crowd.',
             seoTitle: 'MrBeast actually challenged LeBron James to a 3-point contest for $100,000 👑🏀',
-            caption: 'HE BEAT LEBRON JAMES?! 👑🏀',
+            caption: 'LEBRON, IF I MAKE MORE SHOTS THAN YOU, YOU DONATE $100,000!',
             subtitles: [
-              'MRBEAST VS LEBRON JAMES FOR $100,000!',
-              'JIMMY SINKING 5 SHOTS IN ONE MINUTE!',
-              'THE MOST REPLAYED MOMENT ON YOUTUBE!'
+              'LEBRON, IF I MAKE MORE SHOTS THAN YOU, YOU DONATE $100,000!',
+              'WAIT, DID JIMMY JUST HIT 5 THREE-POINTERS IN A ROW?!',
+              'THERE IS NO WAY HE ACTUALLY JUST BEAT LEBRON JAMES!',
+              'YOU GOT ME MAN, YOU REALLY JUST BEAT ME!'
             ],
             tags: ['#lebron', '#mrbeast', '#basketball', '#100k', '#mostreplayed', '#viral'],
             badgeTags: ['🔥 #1 Most Replayed (75M)', '👑 LeBron Shootout', '💥 100% Viral Peak']
@@ -1234,11 +1399,12 @@ class ScaleReachFullApp {
             ytBadge: '✨ Emotional Climax',
             hookDesc: 'MrBeast hands over the $100,000 ceremonial check to LeBron\'s foundation as golden confetti explodes across the arena.',
             seoTitle: 'The wholesome ending where $100,000 was given to LeBron\'s foundation 🥹💰',
-            caption: '$100,000 DONATION! 🏆',
+            caption: 'WE ARE HANDING OVER THIS $100,000 CHECK RIGHT NOW!',
             subtitles: [
-              '100 THOUSAND DOLLARS FOR CHARITY!',
-              'LEBRON AND JIMMY CELEBRATING TOGETHER!',
-              'WHAT AN INCREDIBLE SHOWDOWN!'
+              'WE ARE HANDING OVER THIS $100,000 CHECK RIGHT NOW!',
+              'THIS IS OFFICIALLY GOING TO YOUR FAMILY FOUNDATION!',
+              'THANK YOU SO MUCH TO EVERYONE WHO SUPPORTED THIS!',
+              'THIS $100,000 IS GOING TO CHANGE SO MANY LIVES!'
             ],
             tags: ['#mrbeast', '#lebron', '#wholesome', '#giveaway', '#charity', '#shorts'],
             badgeTags: ['✨ 31M+ Shorts Views', '💰 $100k Check', '🏆 Grand Finale']
