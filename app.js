@@ -3,6 +3,18 @@
  * Home Dashboard (AJJEZ Workspace) -> Configure (8 Crazy Captions) -> Studio & Free Export
  */
 
+// Security Safeguard: Block any external downloader redirects (savefrom.net / ssyoutube)
+if (typeof window !== 'undefined') {
+  const _origOpen = window.open;
+  window.open = function(url, target, features) {
+    if (typeof url === 'string' && (url.includes('ssyoutube') || url.includes('savefrom'))) {
+      console.warn('Prevented external downloader redirect:', url);
+      return null;
+    }
+    return _origOpen ? _origOpen.apply(this, arguments) : null;
+  };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new ScaleReachFullApp();
   app.init();
@@ -5612,7 +5624,22 @@ class ScaleReachFullApp {
     const idx = (targetClipIdx !== undefined && targetClipIdx >= 0) ? targetClipIdx : this.activeClipIndex;
     const moment = this.clipsMoments && this.clipsMoments[idx];
     const rawTitle = moment ? (moment.title || `Reel_${idx + 1}`) : `Reel_${idx + 1}`;
-    const cleanFileName = `ScaleReach_${rawTitle.replace(/[^\w\d-_]/g, '_')}_${this.selectedStyleId || 'classic'}.webm`;
+
+    let ext = 'mp4';
+    let mimeType = 'video/mp4';
+    if (typeof MediaRecorder !== 'undefined') {
+      if (MediaRecorder.isTypeSupported('video/mp4')) {
+        mimeType = 'video/mp4';
+        ext = 'mp4';
+      } else if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) {
+        mimeType = 'video/webm;codecs=vp9';
+        ext = 'webm';
+      } else if (MediaRecorder.isTypeSupported('video/webm')) {
+        mimeType = 'video/webm';
+        ext = 'webm';
+      }
+    }
+    const cleanFileName = `ScaleReach_${rawTitle.replace(/[^\w\d-_]/g, '_')}_${this.selectedStyleId || 'classic'}.${ext}`;
 
     this.isRecording = true;
 
@@ -5645,7 +5672,7 @@ class ScaleReachFullApp {
 
     const startSec = (moment && typeof moment.start === 'number') ? moment.start : this.clipStart;
     const endSec = (moment && typeof moment.end === 'number') ? moment.end : this.clipEnd;
-    const totalDuration = Math.max(3, Math.min(30, endSec - startSec));
+    const totalDuration = Math.max(3, Math.min(6, endSec - startSec));
 
     const vidDur = this.sourceVideo.duration;
     let actualStart = startSec;
@@ -5676,12 +5703,6 @@ class ScaleReachFullApp {
     }
 
     const recordedChunks = [];
-    const mimeType = (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('video/webm;codecs=vp9'))
-      ? 'video/webm;codecs=vp9'
-      : (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('video/webm'))
-        ? 'video/webm'
-        : 'video/mp4';
-
     let recorder = null;
     try {
       recorder = new MediaRecorder(combinedStream, { mimeType });
