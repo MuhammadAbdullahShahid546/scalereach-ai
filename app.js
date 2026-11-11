@@ -4289,7 +4289,7 @@ class ScaleReachFullApp {
         const origContent = this.applyCaptionBtn.innerHTML;
         this.applyCaptionBtn.innerHTML = `
           <span class="btn-apply-icon">✓</span>
-          <span class="btn-apply-label">Caption Applied!</span>
+          <span class="btn-apply-label">On-Screen Text Applied!</span>
           <span class="btn-apply-hint">(Applied to all clips & live video)</span>
         `;
         setTimeout(() => {
@@ -4299,7 +4299,7 @@ class ScaleReachFullApp {
           }
         }, 1800);
 
-        this.showToast(`Applied "${textToApply}" (${this.selectedStyleName}) to all clips & active video! ⚡`);
+        this.showToast(`Applied ${this.selectedStyleName} On-Screen Text to all clips & active video! ⚡`);
       });
     }
 
@@ -4387,17 +4387,17 @@ class ScaleReachFullApp {
     // Never overwrite the caption text - only update the visual style!
     this.updateSuggestedReelsCaptions();
     this.updateCaptionsStatusBanner();
-    this.showToast(`Active Style: ${this.selectedStyleName} ✨ (Applied to all suggested reels)`);
+    this.showToast(`Active On-Screen Text: ${this.selectedStyleName} ✨ (Auto-applied to spoken dialogue)`);
   }
 
   updateCaptionsStatusBanner() {
     if (!this.studioCaptionsStatusText) return;
     if (!this.captionsEnabled) {
-      this.studioCaptionsStatusText.innerHTML = `<strong>Captions Disabled:</strong> Toggle switch on top right to enable live captions.`;
+      this.studioCaptionsStatusText.innerHTML = `<strong>On-Screen Text Disabled:</strong> Toggle switch on top right to enable live on-screen text.`;
       return;
     }
     const posLabel = this.captionPosition === 'top' ? 'Top' : this.captionPosition === 'center' ? 'Center' : 'Bottom';
-    this.studioCaptionsStatusText.innerHTML = `<strong>Active Style: ${this.selectedStyleName}</strong> • Showing live at ${posLabel} (${this.captionFontSize}px) on 9:16 Video`;
+    this.studioCaptionsStatusText.innerHTML = `<strong>Active On-Screen Text: ${this.selectedStyleName}</strong> • Showing live at ${posLabel} (${this.captionFontSize}px) on 9:16 Video`;
   }
 
   /* ----------------------------------------------------
