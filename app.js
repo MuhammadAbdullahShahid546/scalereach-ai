@@ -1259,12 +1259,14 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral #2 Peak',
             hookDesc: 'Erling Haaland takes on MrBeast in a high-stakes soccer target precision shootout for $100,000.',
             seoTitle: 'Erling Haaland target shootout for $100,000 is unbelievable ⚽😱',
-            caption: 'I HAVE FIVE SHOTS TO SCORE ON ERLING HAALAND!',
+            caption: 'FIVE SHOTS ON HAALAND!',
             subtitles: [
-              'I HAVE FIVE SHOTS TO SCORE ON ERLING HAALAND!',
-              'NOLAN, ARE YOU GOING TO CATCH US BACK UP?',
-              'I AM THE GREATEST ATHLETE THAT EVER LIVED!',
-              'LOOK AT THAT SHOT, RIGHT IN THE BULLSEYE!'
+              'FIVE SHOTS',
+              'TO SCORE ON',
+              'ERLING HAALAND!',
+              'IF I SCORE ONE',
+              'WE WIN $100,000!',
+              'LOOK AT THAT STRIKE!'
             ],
             tags: ['#mrbeast', '#haaland', '#soccer', '#target', '#100k', '#viral'],
             badgeTags: ['🔥 YouTube Peak (48M)', '⚽ Haaland Bullseye', '⚡ Instant Hook']
@@ -1283,12 +1285,13 @@ class ScaleReachFullApp {
             ytBadge: '📈 24M+ Shorts Views',
             hookDesc: 'Olympian Alysa Liu races at top speed across an obstacle-filled ice rink for charity challenge.',
             seoTitle: 'Olympic figure skater races through an extreme obstacle ice track ⛸️⚡',
-            caption: 'SHE HAS TO COMPLETE THE OBSTACLE COURSE BEFORE TIME RUNS OUT!',
+            caption: 'OLYMPIC ICE OBSTACLE!',
             subtitles: [
-              'SHE HAS TO COMPLETE THE OBSTACLE COURSE BEFORE TIME RUNS OUT!',
-              'SHE HAS TO NAVIGATE THIS ENTIRE OBSTACLE COURSE!',
-              'LOOK AT THAT SPEED AND CONTROL ON THE TURNS!',
-              'THAT WAS AN ABSOLUTELY FLAWLESS RUN!'
+              'OLYMPIC ICE',
+              'OBSTACLE COURSE!',
+              'LOOK AT THAT SPEED!',
+              'DO NOT SLIP NOW!',
+              'FLAWLESS RUN!'
             ],
             tags: ['#alysaliu', '#figureskating', '#olympics', '#mrbeast', '#speed'],
             badgeTags: ['📈 24M+ Shorts Views', '⛸️ Ice Agility', '⚡ Max Speed']
@@ -1307,12 +1310,13 @@ class ScaleReachFullApp {
             ytBadge: '📈 29M+ Shorts Views',
             hookDesc: 'Cricket superstar Hardik Pandya tries baseball for the first time in a race to hit 3 home runs for charity.',
             seoTitle: 'Hardik Pandya tried baseball for the first time for $100,000 🏏⚾',
-            caption: 'CAN YOU HIT THIS BALL OUT OF THE STADIUM?!',
+            caption: 'THREE HOME RUNS!',
             subtitles: [
-              'CAN YOU HIT THIS BALL OUT OF THE STADIUM?!',
-              'FIRST PERSON TO HIT THREE HOME RUNS WINS $100,000!',
-              'AND HARDIK PANDYA SMASHES THE WINNING HOME RUN!',
-              'DONATING THE ENTIRE $100,000 TO CHARITY!'
+              'THREE HOME RUNS!',
+              'HIT IT OUT',
+              'OF THE STADIUM!',
+              'RIGHT OVER THE WALL!',
+              '$100,000 FOR CHARITY!'
             ],
             tags: ['#hardikpandya', '#cricket', '#baseball', '#mrbeast', '#viral'],
             badgeTags: ['📈 29M+ Shorts Views', '⚾ 3 Home Runs', '🚀 Win for Charity']
@@ -1331,12 +1335,13 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral #3 Peak',
             hookDesc: 'WNBA star Caitlin Clark roasts MrBeast\'s airballs, hits four 3-pointers and swishes a half-court shot for $90,000.',
             seoTitle: 'Caitlin Clark made an impossible half-court shot look so easy 🤯🏀',
-            caption: 'EVERY THREE POINTER ADDS TWENTY THOUSAND DOLLARS!',
+            caption: 'LOGO HALF-COURT SHOT!',
             subtitles: [
-              'EVERY THREE POINTER ADDS TWENTY THOUSAND DOLLARS!',
-              'EACH THREE-POINTER MADE IS TEN THOUSAND DOLLARS!',
-              'CAITLIN CLARK DRAINED FOUR OUT OF FOUR!',
-              'SWISH ON THE SECOND TRY! NINETY THOUSAND DOLLARS!'
+              'LOGO HALF-COURT SHOT!',
+              'SHE CANNOT MISS!',
+              'TWENTY THOUSAND EACH!',
+              'NOTHING BUT NET!',
+              '$90,000 WON!'
             ],
             tags: ['#caitlinclark', '#wnba', '#basketball', '#halfcourt', '#mrbeast'],
             badgeTags: ['🔥 YouTube Peak (42M)', '🏀 Half-Court Swish', '🎯 $90k Won']
@@ -1355,12 +1360,13 @@ class ScaleReachFullApp {
             ytBadge: '😂 Viral Comedy Peak',
             hookDesc: 'Gordon Ramsay competes against MrBeast in a cook-off and drops the iconic idiot sandwich roast on Nolan.',
             seoTitle: 'Gordon Ramsay calling Nolan an idiot sandwich in MrBeast video 😂💀',
-            caption: 'YOU HAVE TEN MINUTES TO MAKE A GOURMET DISH!',
+            caption: 'TASTES LIKE CARDBOARD!',
             subtitles: [
-              'YOU HAVE TEN MINUTES TO MAKE A GOURMET DISH!',
-              'PUT THE BREAD ON YOUR HEAD! WHAT ARE YOU?!',
-              'AN IDIOT SANDWICH, CHEF!',
-              'I WON\'T GO EASY ON YOU FOR $100,000!'
+              'TASTES LIKE CARDBOARD!',
+              'WHAT ARE YOU?!',
+              'AN IDIOT SANDWICH!',
+              'TEN MINUTES LEFT!',
+              'ABSOLUTELY DISGUSTING!'
             ],
             tags: ['#gordonramsay', '#idiotsandwich', '#mrbeast', '#roast', '#funny'],
             badgeTags: ['😂 39M+ Shorts Views', '👨‍🍳 Idiot Sandwich', '🤣 Pure Comedy']
@@ -1379,12 +1385,13 @@ class ScaleReachFullApp {
             ytBadge: '📈 36M+ Shorts Views',
             hookDesc: 'Olympic gymnastics legend Simone Biles crosses an ultra-thin 1.5-inch beam suspended 100 feet in the air for foster kids.',
             seoTitle: 'Simone Biles did a balance beam challenge 100 FEET in the air 🤯🤸',
-            caption: 'DO NOT LOOK DOWN, KEEP YOUR BALANCE RIGHT IN THE CENTER!',
+            caption: '100 FEET IN THE AIR!',
             subtitles: [
-              'DO NOT LOOK DOWN, KEEP YOUR BALANCE RIGHT IN THE CENTER!',
-              'THIS BEAM IS SCALED DOWN TO JUST 1.5 INCHES WIDE!',
-              'DO NOT MOVE, OH MY GOSH, SHE IS CRUSHING IT!',
-              'TWO HUNDRED FIFTY THOUSAND DOLLARS FOR CHARITY!'
+              '100 FEET',
+              'IN THE AIR!',
+              'DO NOT LOOK DOWN!',
+              '1.5 INCHES WIDE!',
+              'QUARTER MILLION DOLLARS!'
             ],
             tags: ['#simonebiles', '#gymnastics', '#mrbeast', '#daredevil', '#charity'],
             badgeTags: ['📈 36M+ Shorts Views', '🤸 Sky Balance', '💥 100ft High']
@@ -1403,12 +1410,13 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube #1 MOST REPLAYED',
             hookDesc: 'LeBron James and Jimmy face off in a 3-point shootout where Jimmy shockingly scores 5 to LeBron\'s 4.',
             seoTitle: 'MrBeast actually challenged LeBron James to a 3-point contest for $100,000 👑🏀',
-            caption: 'LET US SEE WHO CAN SINK THE GAME WINNING SHOT!',
+            caption: 'LEBRON 3-POINT SHOOTOUT!',
             subtitles: [
-              'LET US SEE WHO CAN SINK THE GAME WINNING SHOT!',
-              'I\'M CHALLENGING LEBRON JAMES TO A 3-POINT CONTEST!',
-              'JIMMY SINKING FIVE THREE-POINTERS IN A ROW!',
-              'YOU ACTUALLY BEAT ME, MAN! YOU GOT IT!'
+              'LEBRON 3-POINT SHOOTOUT!',
+              'CAN JIMMY WIN?!',
+              'FIVE IN A ROW!',
+              'HE ACTUALLY BEAT ME!',
+              'WHAT A SHOT!'
             ],
             tags: ['#lebron', '#mrbeast', '#basketball', '#100k', '#mostreplayed', '#viral'],
             badgeTags: ['🔥 #1 Most Replayed (75M)', '👑 LeBron Shootout', '💥 100% Viral Peak']
@@ -1427,12 +1435,12 @@ class ScaleReachFullApp {
             ytBadge: '✨ Emotional Climax',
             hookDesc: 'MrBeast celebrates raising over $500,000 across all challenges for the athletes\' charity foundations.',
             seoTitle: 'We raised over $500,000 for charity with professional athletes 🥹💰',
-            caption: 'EVERY SINGLE DOLLAR IS GOING DIRECTLY TO CHARITY!',
+            caption: '$500,000 FOR CHARITY!',
             subtitles: [
-              'EVERY SINGLE DOLLAR IS GOING DIRECTLY TO CHARITY!',
-              'EVERY SINGLE DOLLAR GOES DIRECTLY TO CHARITY!',
-              'THANK YOU TO ALL THE ATHLETES WHO PLAYED!',
-              'SUBSCRIBE AND WE WILL DO THIS AGAIN WITH MORE PROS!'
+              '$500,000 FOR CHARITY!',
+              'EVERY SINGLE DOLLAR!',
+              'THANK YOU TO THE PROS!',
+              'GREATEST CHALLENGE EVER!'
             ],
             tags: ['#mrbeast', '#charity', '#wholesome', '#giveaway', '#athletes', '#shorts'],
             badgeTags: ['✨ 31M+ Shorts Views', '💰 $500k Total', '🏆 Grand Finale']
@@ -2549,12 +2557,12 @@ class ScaleReachFullApp {
         videoSrc: null,
         hookDesc: `AI detected peak introductory hook in ${cleanTitle}.`,
         seoTitle: `Watch what happens in the first minute of ${cleanTitle} 😱🔥`,
-        caption: 'WELCOME BACK, TODAY WE ARE TAKING ON THE CRAZIEST CHALLENGE YET!',
+        caption: 'WATCH TILL THE END!',
         subtitles: [
-          'WELCOME BACK, TODAY WE ARE TAKING ON THE CRAZIEST CHALLENGE YET!',
-          'MAKE SURE YOU WATCH UNTIL THE VERY END!',
-          'NOBODY THOUGHT THIS WOULD ACTUALLY WORK!',
-          'LET US GET RIGHT INTO IT RIGHT NOW!'
+          'WATCH TILL',
+          'THE VERY END!',
+          'CRAZIEST MOMENT YET!',
+          'LOOK AT THIS!'
         ],
         tags: [`#${tagWord}`, '#viral', '#challenge', '#shorts', '#trending'],
         badgeTags: ['🔥 99% Viral Hook', '⚡ High Retention', '🚀 Trending Peak']
@@ -2573,12 +2581,12 @@ class ScaleReachFullApp {
         videoSrc: null,
         hookDesc: `Intense conversational build-up and narrative progression in ${cleanTitle}.`,
         seoTitle: `The tension in this part of ${cleanTitle} was unreal ⏱️⚡`,
-        caption: 'LOOK AT WHAT IS HAPPENING RIGHT OVER HERE, WATCH CLOSELY!',
+        caption: 'RUNNING OUT OF TIME!',
         subtitles: [
-          'LOOK AT WHAT IS HAPPENING RIGHT OVER HERE, WATCH CLOSELY!',
-          'WE ARE RUNNING OUT OF TIME FASTER THAN WE THOUGHT!',
-          'PAY CLOSE ATTENTION TO WHAT HAPPENS NEXT!',
-          'EVERY SECOND COUNTS RIGHT NOW!'
+          'RUNNING OUT',
+          'OF TIME FASTER!',
+          'WATCH CAREFULLY NOW!',
+          'EVERY SECOND COUNTS!'
         ],
         tags: [`#${tagWord}`, '#momentum', '#intensity', '#reels', '#fyp'],
         badgeTags: ['📈 96% Engagement', '⚡ Fast Pacing', '🎯 High Focus']
@@ -2597,12 +2605,12 @@ class ScaleReachFullApp {
         videoSrc: null,
         hookDesc: `Auditory and emotional turn detected where the video direction completely shifts.`,
         seoTitle: `The unexpected plot twist in ${cleanTitle} that nobody saw coming 🤯💀`,
-        caption: 'I HONESTLY DID NOT THINK THIS WOULD WORK ON THE FIRST TRY!',
+        caption: 'DID YOU SEE THAT?!',
         subtitles: [
-          'I HONESTLY DID NOT THINK THIS WOULD WORK ON THE FIRST TRY!',
-          'WAIT, LOOK AT WHAT JUST HAPPENED ON SCREEN!',
-          'ARE YOU KIDDING ME, DID YOU JUST SEE THAT?!',
-          'THAT WAS NOT SUPPOSED TO HAPPEN AT ALL!'
+          'WAIT, LOOK AT THAT!',
+          'DID YOU JUST',
+          'SEE THAT HAPPEN?!',
+          'UNBELIEVABLE MOMENT!'
         ],
         tags: [`#${tagWord}`, '#turningpoint', '#unexpected', '#shortsfeed', '#fyp'],
         badgeTags: ['🔥 98% Surprise', '💥 Viral Twist', '💬 Comment Magnet']
@@ -2621,12 +2629,12 @@ class ScaleReachFullApp {
         videoSrc: null,
         hookDesc: `Direct conversational delivery of key video concept in ${cleanTitle}.`,
         seoTitle: `The exact moment the game completely changed in ${cleanTitle} 🏆🔥`,
-        caption: 'HOLD ON A SECOND, LISTEN TO WHAT HE IS SAYING RIGHT NOW!',
+        caption: 'CRITICAL MOMENT!',
         subtitles: [
-          'HOLD ON A SECOND, LISTEN TO WHAT HE IS SAYING RIGHT NOW!',
-          'THIS ONE MOMENT DECIDES EVERYTHING GOING FORWARD!',
-          'DO NOT BLINK OR YOU WILL MISS IT COMPLETELY!',
-          'HE IS MAKING THE BIGGEST DECISION RIGHT HERE!'
+          'CRITICAL MOMENT!',
+          'THIS ONE MOMENT',
+          'DECIDES EVERYTHING!',
+          'BIGGEST DECISION!'
         ],
         tags: [`#${tagWord}`, '#highlight', '#keymoment', '#viralshorts', '#reels'],
         badgeTags: ['🎯 95% High Retention', '🔥 Critical Moment', '💡 Golden Clip']
@@ -2645,12 +2653,12 @@ class ScaleReachFullApp {
         videoSrc: null,
         hookDesc: `High laughter acoustic frequency and spontaneous reaction cluster.`,
         seoTitle: `The funniest conversation in ${cleanTitle} that made everyone lose it 😂💀`,
-        caption: 'THE ENTIRE ROOM COULD NOT STOP LAUGHING AT THIS!',
+        caption: 'PURE COMEDY GOLD!',
         subtitles: [
-          'THE ENTIRE ROOM COULD NOT STOP LAUGHING AT THIS!',
-          'DID HE ACTUALLY JUST SAY THAT OUT LOUD?!',
-          'YOU CANNOT SCRIPT THIS STUFF IN REAL LIFE!',
-          'LOOK AT EVERYONE S FACES RIGHT NOW!'
+          'PURE COMEDY GOLD!',
+          'COULD NOT STOP LAUGHING!',
+          'CANNOT SCRIPT THIS!',
+          'LOOK AT HIS FACE!'
         ],
         tags: [`#${tagWord}`, '#comedy', '#funny', '#humor', '#reactions', '#shorts'],
         badgeTags: ['😂 97% Comedy Peak', '🤣 Pure Laughs', '🔥 High Shares']
@@ -2669,12 +2677,12 @@ class ScaleReachFullApp {
         videoSrc: null,
         hookDesc: `Dynamic peak action sequence and high tempo dialogue exchange.`,
         seoTitle: `The climax of ${cleanTitle} was completely wild ⚡🏆`,
-        caption: 'THIS IS THE FINAL SHOWDOWN, EVERYTHING IS ON THE LINE!',
+        caption: 'FINAL SHOWDOWN!',
         subtitles: [
-          'THIS IS THE FINAL SHOWDOWN, EVERYTHING IS ON THE LINE!',
-          'WHO IS GOING TO COME OUT ON TOP OF THIS?!',
-          'GIVE IT EVERYTHING YOU HAVE GOT RIGHT NOW!',
-          'AND THAT IS HOW IT IS DONE!'
+          'FINAL SHOWDOWN!',
+          'EVERYTHING ON THE LINE!',
+          'WHO WILL WIN?!',
+          'LOOK AT THAT MOVE!'
         ],
         tags: [`#${tagWord}`, '#showdown', '#climax', '#intense', '#shorts'],
         badgeTags: ['⚡ 96% Action Climax', '🏆 Peak Stakes', '🚀 High Energy']
@@ -2693,12 +2701,12 @@ class ScaleReachFullApp {
         videoSrc: null,
         hookDesc: `Peak resolution and satisfying conclusion point of the primary video story arc.`,
         seoTitle: `The ending of ${cleanTitle} will leave you speechless 🤯✨`,
-        caption: 'AND THAT CONCLUDES THE GREATEST CHALLENGE WE HAVE EVER DONE!',
+        caption: 'THE GRAND FINALE!',
         subtitles: [
-          'AND THAT CONCLUDES THE GREATEST CHALLENGE WE HAVE EVER DONE!',
-          'LOOK AT THE FINAL RESULT, WE FINALLY DID IT!',
-          'A HUGE SHOUTOUT TO EVERYONE INVOLVED TODAY!',
-          'LET ME KNOW IN THE COMMENTS WHAT YOU THINK!'
+          'THE GRAND FINALE!',
+          'WE FINALLY DID IT!',
+          'LOOK AT THE RESULT!',
+          'UNBELIEVABLE FINISH!'
         ],
         tags: [`#${tagWord}`, '#ending', '#finale', '#satisfying', '#viral'],
         badgeTags: ['👑 98% Emotional Peak', '🌟 Grand Finale', '💬 Comment Wave']
@@ -2717,12 +2725,12 @@ class ScaleReachFullApp {
         videoSrc: null,
         hookDesc: `Unfiltered outro banter and high conversion community call-to-action.`,
         seoTitle: `Behind the scenes outtakes from ${cleanTitle} are hilarious 🎬🤣`,
-        caption: 'THANK YOU SO MUCH FOR WATCHING, MAKE SURE TO SUBSCRIBE!',
+        caption: 'THANK YOU FOR WATCHING!',
         subtitles: [
-          'THANK YOU SO MUCH FOR WATCHING, MAKE SURE TO SUBSCRIBE!',
-          'DROP A LIKE IF YOU ENJOYED THIS VIDEO!',
-          'WE WILL BE BACK WITH AN EVEN BIGGER CHALLENGE NEXT TIME!',
-          'SEE YOU ALL IN THE VERY NEXT VIDEO!'
+          'THANK YOU',
+          'FOR WATCHING!',
+          'DROP A LIKE!',
+          'SUBSCRIBE FOR MORE!'
         ],
         tags: [`#${tagWord}`, '#outro', '#behindthescenes', '#subscribe', '#fyp'],
         badgeTags: ['🎬 92% Outro', '💬 High Comments', '✨ Pure Fun']
@@ -3249,7 +3257,7 @@ class ScaleReachFullApp {
         if (stickerText && !this.userAppliedCaption) {
           stickerText.innerHTML = this.formatSpokenSubtitleHTML(text);
         }
-      }, 1800);
+      }, 850);
     } else {
       this.currentLiveSubtitle = (this.userAppliedCaption && this.userAppliedCaption.trim()) || (moment ? moment.caption : null);
     }
@@ -4282,7 +4290,7 @@ class ScaleReachFullApp {
             this.applyCaptionBtn.classList.remove('applied-success');
             this.applyCaptionBtn.innerHTML = origContent;
           }
-        }, 1800);
+        }, 850);
 
         this.showToast(`Applied ${this.selectedStyleName} On-Screen Text to all clips & active video! ⚡`);
       });
@@ -5341,22 +5349,30 @@ class ScaleReachFullApp {
       if (lw > maxLineWidth) maxLineWidth = lw;
     });
 
-    const boxW = Math.min(maxW + 20, maxLineWidth + 32);
-    const boxH = totalBlockH + 16;
-    const boxX = midX - boxW / 2;
-    const boxY = startY - size * 0.85;
-
     ctx.save();
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.88)';
-    ctx.roundRect(boxX, boxY, boxW, boxH, 12);
-    ctx.fill();
-
     ctx.textAlign = 'center';
+    ctx.lineJoin = 'round';
+    ctx.miterLimit = 2;
+
     lines.forEach((line, idx) => {
       const isLast = (idx === lines.length - 1);
-      ctx.font = `900 ${size}px "Plus Jakarta Sans", sans-serif`;
-      ctx.fillStyle = isLast ? '#facc15' : '#ffffff';
-      ctx.fillText(line.toUpperCase(), midX, startY + (idx * lineHeight));
+      const lineY = startY + (idx * lineHeight);
+
+      // Deep dark outline stroke (for crystal clear legibility directly on video without box)
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = Math.max(6, size * 0.18);
+      ctx.strokeText(line.toUpperCase(), midX, lineY);
+
+      // Multi-layer drop shadow
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 3;
+
+      // Fill color (Alex Hormozi: punch word in yellow if multiple words, else pure white)
+      ctx.font = `900 ${size}px "Montserrat", "Plus Jakarta Sans", sans-serif`;
+      ctx.fillStyle = (isLast && lines.length > 1) ? '#ffe600' : '#ffffff';
+      ctx.fillText(line.toUpperCase(), midX, lineY);
     });
     ctx.restore();
   }
@@ -5386,21 +5402,16 @@ class ScaleReachFullApp {
       const isLast = (idx === lines.length - 1);
       const lineY = startY + (idx * lineHeight);
 
-      if (isLast && lines.length > 1) {
-        const lineW = ctx.measureText(line.toUpperCase()).width;
-        ctx.save();
-        ctx.fillStyle = 'rgba(0, 242, 254, 0.35)';
-        ctx.strokeStyle = '#00f2fe';
-        ctx.lineWidth = 1.5;
-        ctx.roundRect(midX - lineW / 2 - 12, lineY - size * 0.85, lineW + 24, size * 1.25, 8);
-        ctx.fill();
-        ctx.stroke();
-        ctx.restore();
+      // Deep dark outline stroke
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = Math.max(6, size * 0.18);
+      ctx.strokeText(line.toUpperCase(), midX, lineY);
 
-        ctx.fillStyle = '#ffffff';
+      if (isLast && lines.length > 1) {
+        ctx.fillStyle = '#00f2fe';
         ctx.fillText(line.toUpperCase(), midX, lineY);
       } else {
-        ctx.fillStyle = '#00d2ff';
+        ctx.fillStyle = '#ffffff';
         ctx.fillText(line.toUpperCase(), midX, lineY);
       }
     });
@@ -5432,21 +5443,16 @@ class ScaleReachFullApp {
       const isLast = (idx === lines.length - 1);
       const lineY = startY + (idx * lineHeight);
 
-      if (isLast && lines.length > 1) {
-        const lineW = ctx.measureText(line.toUpperCase()).width;
-        ctx.save();
-        ctx.fillStyle = 'rgba(255, 42, 42, 0.45)';
-        ctx.strokeStyle = '#ef4444';
-        ctx.lineWidth = 1.5;
-        ctx.roundRect(midX - lineW / 2 - 12, lineY - size * 0.85, lineW + 24, size * 1.25, 8);
-        ctx.fill();
-        ctx.stroke();
-        ctx.restore();
+      // Deep dark outline stroke
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = Math.max(6, size * 0.18);
+      ctx.strokeText(line.toUpperCase(), midX, lineY);
 
-        ctx.fillStyle = '#ffffff';
+      if (isLast && lines.length > 1) {
+        ctx.fillStyle = '#ff2a2a';
         ctx.fillText(line.toUpperCase(), midX, lineY);
       } else {
-        ctx.fillStyle = '#ff2a2a';
+        ctx.fillStyle = '#ffffff';
         ctx.fillText(line.toUpperCase(), midX, lineY);
       }
     });
@@ -5750,7 +5756,7 @@ class ScaleReachFullApp {
         }
         subIdx = (subIdx + 1) % clipSubs.length;
         this.currentLiveSubtitle = clipSubs[subIdx];
-      }, 2500);
+      }, 850);
 
       // Capture clean 9:16 canvas stream (Canvas NEVER contains the download button!)
       const canvasStream = this.cropCanvas.captureStream(30);
