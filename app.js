@@ -278,6 +278,210 @@ class ScaleReachFullApp {
     // Database of Presets & Knowledge Base for AI Video Analysis (8 Viral Reels Each)
     this.videoAnalysisDatabase = [
       {
+        id: 'mrbeast_futuristic_tech',
+        matchKeywords: ['pangwriq4-4', 'futuristic tech', '$1 vs $1,000,000,000', '1 billion tech', 'future tech', 'futuristic'],
+        title: '$1 vs $1,000,000,000 Futuristic Tech!',
+        author: 'MrBeast • 23:04',
+        duration: 1384,
+        clips: [
+          {
+            id: 1,
+            title: '⚡ Reel 1: $1 vs $1 Billion Futuristic Tech Begins!',
+            hookText: '⚡ Testing The Wildest Technology on Earth',
+            viralityScore: '99% Viral',
+            start: 0,
+            end: 45,
+            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
+            videoSrc: null,
+            isYtMostReplayed: true,
+            ytViews: '65M+ Views',
+            ytBadge: '🔥 YouTube Viral #1 Peak',
+            hookDesc: 'MrBeast introduces the insane futuristic challenge comparing $1 devices up to a $1,000,000,000 tech facility.',
+            seoTitle: '$1 vs $1,000,000,000 Futuristic Tech challenge is unbelievable 🤯⚡',
+            caption: '$1 BILLION TECH!',
+            subtitles: [
+              'TESTING $1 TO',
+              '$1 BILLION TECH!',
+              'THE MOST INSANE',
+              'FUTURISTIC INVENTIONS',
+              'ON PLANET EARTH!'
+            ],
+            tags: ['#mrbeast', '#futuristic', '#tech', '#billion', '#challenge', '#viral'],
+            badgeTags: ['🔥 YouTube Peak (65M)', '⚡ $1B Tech', '🚀 Instant Hook']
+          },
+          {
+            id: 2,
+            title: '🧠 Reel 2: Mind-Reading Brain Chip Test!',
+            hookText: '🧠 Playing Video Games With Thoughts Only',
+            viralityScore: '98% Viral',
+            start: 50,
+            end: 105,
+            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
+            videoSrc: null,
+            isYtMostReplayed: false,
+            ytViews: '42M+ Views',
+            ytBadge: '📈 42M+ Shorts Views',
+            hookDesc: 'Testing cutting-edge brain-computer interface technology that translates neural thoughts into screen controls.',
+            seoTitle: 'We actually tested a mind reading brain chip 🧠🤯',
+            caption: 'MIND READING CHIP!',
+            subtitles: [
+              'MIND READING CHIP!',
+              'PLAYING VIDEO GAMES',
+              'WITH MY MIND!',
+              'LOOK AT THE SCREEN!',
+              'THIS FEELS UNREAL!'
+            ],
+            tags: ['#neuralink', '#brainchip', '#mindcontrol', '#futuretech', '#mrbeast'],
+            badgeTags: ['📈 42M+ Views', '🧠 Brain Interface', '⚡ Mind Reading']
+          },
+          {
+            id: 3,
+            title: '🛸 Reel 3: The Real Life Flying Vehicle!',
+            hookText: '🛸 Personal Flying Craft Takes Off Over Water',
+            viralityScore: '97% Viral',
+            start: 108,
+            end: 165,
+            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
+            videoSrc: null,
+            isYtMostReplayed: true,
+            ytViews: '58M+ Views',
+            ytBadge: '🔥 YouTube Viral Peak',
+            hookDesc: 'Flying an authentic personal eVTOL aircraft hundreds of feet in the air across open water.',
+            seoTitle: 'I flew a real life flying car over the ocean 🛸🌊',
+            caption: 'FLYING VEHICLE!',
+            subtitles: [
+              'AN ACTUAL FLYING CAR!',
+              'WE ARE TAKING OFF!',
+              'LOOK HOW HIGH WE ARE!',
+              'SOARING IN THE SKY!'
+            ],
+            tags: ['#flyingcar', '#evtol', '#futuretravel', '#mrbeast', '#viral'],
+            badgeTags: ['🔥 58M+ Views', '🛸 Real Flying Car', '💥 High Energy']
+          },
+          {
+            id: 4,
+            title: '🏎️ Reel 4: $10,000,000 Concept Supercar!',
+            hookText: '🏎️ Autonomous Concept Car With Futuristic Cockpit',
+            viralityScore: '96% Viral',
+            start: 168,
+            end: 225,
+            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
+            videoSrc: null,
+            isYtMostReplayed: false,
+            ytViews: '37M+ Views',
+            ytBadge: '📈 High Engagement Peak',
+            hookDesc: 'Touring a 10 million dollar one-of-one hypercar with full autonomous intelligence and cyberpunk interior.',
+            seoTitle: 'Inside a $10,000,000 concept car from the future 🏎️✨',
+            caption: '$10M FUTURE CAR!',
+            subtitles: [
+              '$10,000,000 CAR!',
+              'LOOK AT THIS INTERIOR!',
+              'SELF DRIVING FUTURE!',
+              'FASTEST CAR ON EARTH!'
+            ],
+            tags: ['#supercar', '#conceptcar', '#10million', '#luxury', '#hypercar'],
+            badgeTags: ['📈 37M+ Views', '🏎️ $10M Supercar', '💎 Ultra Rare']
+          },
+          {
+            id: 5,
+            title: '🥩 Reel 5: Lab-Grown Futuristic Meat Taste Test!',
+            hookText: '🥩 Blind Taste Test: Real Meat vs Lab Cultured',
+            viralityScore: '95% Viral',
+            start: 233,
+            end: 295,
+            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
+            videoSrc: null,
+            isYtMostReplayed: false,
+            ytViews: '31M+ Views',
+            ytBadge: '😂 Viral Comedy & Curiosity',
+            hookDesc: 'Blind taste test comparing gourmet farm steak to biologically identical cellular lab-grown meat.',
+            seoTitle: 'Can we tell the difference between real steak and lab grown meat?! 🥩🔬',
+            caption: 'LAB-GROWN MEAT!',
+            subtitles: [
+              'LAB GROWN MEAT!',
+              'CAN YOU TELL',
+              'THE DIFFERENCE?!',
+              'TASTES LIKE REAL STEAK!',
+              'MIND BLOWING!'
+            ],
+            tags: ['#labgrownmeat', '#futurefood', '#tastetest', '#mrbeast', '#foodie'],
+            badgeTags: ['🥩 Lab Grown Food', '😋 Blind Taste Test', '🔬 Future Science']
+          },
+          {
+            id: 6,
+            title: '🦣 Reel 6: De-Extinct Woolly Mammoth DNA!',
+            hookText: '🦣 Bringing Back The Woolly Mammoth With Genetics',
+            viralityScore: '98% Viral',
+            start: 298,
+            end: 370,
+            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
+            videoSrc: null,
+            isYtMostReplayed: true,
+            ytViews: '61M+ Views',
+            ytBadge: '🔥 YouTube Viral #2 Peak',
+            hookDesc: 'Inside the genetic de-extinction lab at Colossal Biosciences sequencing Woolly Mammoth DNA.',
+            seoTitle: 'Scientists are bringing back the Woolly Mammoth right now 🦣🧬',
+            caption: 'WOOLLY MAMMOTH DNA!',
+            subtitles: [
+              'BRINGING BACK',
+              'THE WOOLLY MAMMOTH!',
+              'ACTUAL EXTINCT DNA!',
+              'SCIENCE IS INSANE!'
+            ],
+            tags: ['#woollymammoth', '#deextinction', '#dna', '#genetics', '#science'],
+            badgeTags: ['🔥 61M+ Views', '🦣 Mammoth Genetics', '🧬 Jurassic Tech']
+          },
+          {
+            id: 7,
+            title: '🔴 Reel 7: Living on Mars Biosphere Simulation!',
+            hookText: '🔴 Sealed Artificial Ecosystem For Space Colonization',
+            viralityScore: '94% Viral',
+            start: 373,
+            end: 440,
+            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
+            videoSrc: null,
+            isYtMostReplayed: false,
+            ytViews: '29M+ Views',
+            ytBadge: '📈 Space Frontier Peak',
+            hookDesc: 'Experiencing an airtight biosphere dome that simulates living conditions for human life on Mars.',
+            seoTitle: 'We stepped inside a sealed Mars colony biosphere dome 🔴🚀',
+            caption: 'MARS COLONY DOME!',
+            subtitles: [
+              'MARS BIOSPHERE!',
+              'SEALED FROM EARTH!',
+              'THIS IS LIFE ON MARS!',
+              'BREATHING ARTIFICIAL AIR!'
+            ],
+            tags: ['#mars', '#biosphere', '#spacecolony', '#mrbeast', '#elonmusk'],
+            badgeTags: ['🔴 Mars Habitat', '🚀 Space Colonization', '✨ Sci-Fi Real']
+          },
+          {
+            id: 8,
+            title: '🚀 Reel 8: $1,000,000,000 Starship Rocket Tour!',
+            hookText: '🚀 Massive Billion-Dollar Space Rocket Facility Tour',
+            viralityScore: '100% Viral',
+            start: 443,
+            end: 515,
+            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
+            videoSrc: null,
+            isYtMostReplayed: true,
+            ytViews: '82M+ Views',
+            ytBadge: '🔥 YouTube #1 MOST REPLAYED',
+            hookDesc: 'Walking underneath the largest rocket in human history equipped with 33 Raptor rocket engines.',
+            seoTitle: 'Touring the $1,000,000,000 Starship rocket in Boca Chica 🚀🤯',
+            caption: '$1 BILLION STARSHIP!',
+            subtitles: [
+              '$1 BILLION STARSHIP!',
+              'LARGEST ROCKET EVER!',
+              'LOOK AT THOSE ENGINES!',
+              'READY FOR SPACE!'
+            ],
+            tags: ['#starship', '#spacex', '#rocket', '#billiondollar', '#marsrocket'],
+            badgeTags: ['🔥 #1 Most Replayed (82M)', '🚀 $1B Starship', '💥 100% Viral Peak']
+          }
+        ]
+      },
+      {
         id: 'real_podcast_interview',
         matchKeywords: ['podcast', 'interview', 'psychology', 'mindset', 'talk', 'conversation', 'body language'],
         title: 'Communication & Psychology Deep-Dive Podcast',
@@ -1735,14 +1939,17 @@ class ScaleReachFullApp {
       }
     ];
 
-    // Initial Active Moments (Default to MrBeast Beat Pro Athlete 8 Viral Reels preset)
-    const initialPreset = this.videoAnalysisDatabase.find(p => p.id === 'mrbeast_haaland') || this.videoAnalysisDatabase[0];
+    // Initial Active Moments (Default to MrBeast $1 vs $1,000,000,000 Futuristic Tech! - pAnGwRiQ4-4)
+    const initialPreset = this.videoAnalysisDatabase.find(p => p.id === 'mrbeast_futuristic_tech') || this.videoAnalysisDatabase[0];
     this.clipsMoments = JSON.parse(JSON.stringify(initialPreset.clips));
-    if (initialPreset && initialPreset.duration) {
-      this.videoDuration = initialPreset.duration;
-      this.clipStart = initialPreset.clips[0].start;
-      this.clipEnd = initialPreset.clips[0].end;
-    }
+    this.currentYouTubeId = 'pAnGwRiQ4-4';
+    this.activeSourceType = 'youtube';
+    this.currentVideoUrl = 'https://www.youtube.com/watch?v=pAnGwRiQ4-4';
+    this.currentVideoTitle = '$1 vs $1,000,000,000 Futuristic Tech!';
+    this.currentVideoAuthor = 'MrBeast • 23:04';
+    this.videoDuration = 1384;
+    this.clipStart = initialPreset.clips[0].start;
+    this.clipEnd = initialPreset.clips[0].end;
   }
 
   init() {
@@ -1760,6 +1967,9 @@ class ScaleReachFullApp {
     this.setupDemoVideoSource();
     this.start9x16RenderEngine();
     this.applyCapCutFiltersToElements();
+
+    // Default to user's exact YouTube video: $1 vs $1,000,000,000 Futuristic Tech!
+    this.loadYouTubeVideo('pAnGwRiQ4-4', 'https://www.youtube.com/watch?v=pAnGwRiQ4-4');
 
     // Global listener to proactively neutralize YouTube CC and capture real video duration across all embeds
     window.addEventListener('message', (event) => {
@@ -2086,6 +2296,8 @@ class ScaleReachFullApp {
 
     // Known titles mapping for instant recognition
     const knownTitles = {
+      'pAnGwRiQ4-4': { title: '$1 vs $1,000,000,000 Futuristic Tech!', author: 'MrBeast • 23:04', duration: 1384 },
+      'pangwriq4-4': { title: '$1 vs $1,000,000,000 Futuristic Tech!', author: 'MrBeast • 23:04', duration: 1384 },
       '_c2e1Ncl3Sc': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • 22:28', duration: 1348 },
       '_c2e1ncl3sc': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • 22:28', duration: 1348 },
       '0e3GPea1Tyg': { title: 'Beat Professional Athlete, Win $100,000', author: 'MrBeast • 22:28', duration: 1348 },
