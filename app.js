@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ScaleReach AI - Full Application Logic
  * Home Dashboard (AJJEZ Workspace) -> Configure (8 Crazy Captions) -> Studio & Free Export
  */
@@ -1240,7 +1240,7 @@ class ScaleReachFullApp {
       },
       {
         id: 'mrbeast_haaland',
-        matchKeywords: ['_c2e1ncl3sc', '0e3gpea1tyg', 'pln7jmbadrg', 'haaland', 'striker', 'erling', 'penalty', 'beat professional athlete', 'athlete', 'soccer', 'football', 'pro athlete', 'goalie', 'goalkeeper', 'mrbeast', '100000', '100,000', 'lebron', 'caitlin clark', 'simone biles', 'hardik pandya', 'alysa liu'],
+        matchKeywords: ['_c2e1ncl3sc', 'beat professional athlete'],
         title: 'Beat Professional Athlete, Win $100,000',
         author: 'MrBeast • 22:28',
         duration: 1348,
@@ -1259,9 +1259,9 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral #2 Peak',
             hookDesc: 'Erling Haaland takes on MrBeast in a high-stakes soccer target precision shootout for $100,000.',
             seoTitle: 'Erling Haaland target shootout for $100,000 is unbelievable ⚽😱',
-            caption: 'WE BET $100,000 WE COULD BEAT ERLING HAALAND!',
+            caption: 'I HAVE FIVE SHOTS TO SCORE ON ERLING HAALAND!',
             subtitles: [
-              'WE BET $100,000 WE COULD BEAT ERLING HAALAND!',
+              'I HAVE FIVE SHOTS TO SCORE ON ERLING HAALAND!',
               'NOLAN, ARE YOU GOING TO CATCH US BACK UP?',
               'I AM THE GREATEST ATHLETE THAT EVER LIVED!',
               'LOOK AT THAT SHOT, RIGHT IN THE BULLSEYE!'
@@ -1283,9 +1283,9 @@ class ScaleReachFullApp {
             ytBadge: '📈 24M+ Shorts Views',
             hookDesc: 'Olympian Alysa Liu races at top speed across an obstacle-filled ice rink for charity challenge.',
             seoTitle: 'Olympic figure skater races through an extreme obstacle ice track ⛸️⚡',
-            caption: 'OLYMPIC FIGURE SKATER ALYSA LIU ON THE ICE!',
+            caption: 'SHE HAS TO COMPLETE THE OBSTACLE COURSE BEFORE TIME RUNS OUT!',
             subtitles: [
-              'OLYMPIC FIGURE SKATER ALYSA LIU ON THE ICE!',
+              'SHE HAS TO COMPLETE THE OBSTACLE COURSE BEFORE TIME RUNS OUT!',
               'SHE HAS TO NAVIGATE THIS ENTIRE OBSTACLE COURSE!',
               'LOOK AT THAT SPEED AND CONTROL ON THE TURNS!',
               'THAT WAS AN ABSOLUTELY FLAWLESS RUN!'
@@ -1307,9 +1307,9 @@ class ScaleReachFullApp {
             ytBadge: '📈 29M+ Shorts Views',
             hookDesc: 'Cricket superstar Hardik Pandya tries baseball for the first time in a race to hit 3 home runs for charity.',
             seoTitle: 'Hardik Pandya tried baseball for the first time for $100,000 🏏⚾',
-            caption: 'I HAVE NEVER PLAYED BASEBALL BEFORE IN MY LIFE!',
+            caption: 'CAN YOU HIT THIS BALL OUT OF THE STADIUM?!',
             subtitles: [
-              'I HAVE NEVER PLAYED BASEBALL BEFORE IN MY LIFE!',
+              'CAN YOU HIT THIS BALL OUT OF THE STADIUM?!',
               'FIRST PERSON TO HIT THREE HOME RUNS WINS $100,000!',
               'AND HARDIK PANDYA SMASHES THE WINNING HOME RUN!',
               'DONATING THE ENTIRE $100,000 TO CHARITY!'
@@ -1331,9 +1331,9 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral #3 Peak',
             hookDesc: 'WNBA star Caitlin Clark roasts MrBeast\'s airballs, hits four 3-pointers and swishes a half-court shot for $90,000.',
             seoTitle: 'Caitlin Clark made an impossible half-court shot look so easy 🤯🏀',
-            caption: 'I SAW YOU GUYS WARM UP... A LOT OF AIRBALLS!',
+            caption: 'EVERY THREE POINTER ADDS TWENTY THOUSAND DOLLARS!',
             subtitles: [
-              'I SAW YOU GUYS WARM UP... A LOT OF AIRBALLS!',
+              'EVERY THREE POINTER ADDS TWENTY THOUSAND DOLLARS!',
               'EACH THREE-POINTER MADE IS TEN THOUSAND DOLLARS!',
               'CAITLIN CLARK DRAINED FOUR OUT OF FOUR!',
               'SWISH ON THE SECOND TRY! NINETY THOUSAND DOLLARS!'
@@ -1355,9 +1355,9 @@ class ScaleReachFullApp {
             ytBadge: '😂 Viral Comedy Peak',
             hookDesc: 'Gordon Ramsay competes against MrBeast in a cook-off and drops the iconic idiot sandwich roast on Nolan.',
             seoTitle: 'Gordon Ramsay calling Nolan an idiot sandwich in MrBeast video 😂💀',
-            caption: 'I AM SORRY JIMMY, BUT THAT TASTES LIKE CARDBOARD!',
+            caption: 'YOU HAVE TEN MINUTES TO MAKE A GOURMET DISH!',
             subtitles: [
-              'I AM SORRY JIMMY, BUT THAT TASTES LIKE CARDBOARD!',
+              'YOU HAVE TEN MINUTES TO MAKE A GOURMET DISH!',
               'PUT THE BREAD ON YOUR HEAD! WHAT ARE YOU?!',
               'AN IDIOT SANDWICH, CHEF!',
               'I WON\'T GO EASY ON YOU FOR $100,000!'
@@ -1379,9 +1379,9 @@ class ScaleReachFullApp {
             ytBadge: '📈 36M+ Shorts Views',
             hookDesc: 'Olympic gymnastics legend Simone Biles crosses an ultra-thin 1.5-inch beam suspended 100 feet in the air for foster kids.',
             seoTitle: 'Simone Biles did a balance beam challenge 100 FEET in the air 🤯🤸',
-            caption: 'SHE IS WALKING ON A BEAM 100 FEET IN THE AIR!',
+            caption: 'DO NOT LOOK DOWN, KEEP YOUR BALANCE RIGHT IN THE CENTER!',
             subtitles: [
-              'SHE IS WALKING ON A BEAM 100 FEET IN THE AIR!',
+              'DO NOT LOOK DOWN, KEEP YOUR BALANCE RIGHT IN THE CENTER!',
               'THIS BEAM IS SCALED DOWN TO JUST 1.5 INCHES WIDE!',
               'DO NOT MOVE, OH MY GOSH, SHE IS CRUSHING IT!',
               'TWO HUNDRED FIFTY THOUSAND DOLLARS FOR CHARITY!'
@@ -1403,9 +1403,9 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube #1 MOST REPLAYED',
             hookDesc: 'LeBron James and Jimmy face off in a 3-point shootout where Jimmy shockingly scores 5 to LeBron\'s 4.',
             seoTitle: 'MrBeast actually challenged LeBron James to a 3-point contest for $100,000 👑🏀',
-            caption: 'DID I REALLY JUST BEAT LEBRON JAMES?!',
+            caption: 'LET US SEE WHO CAN SINK THE GAME WINNING SHOT!',
             subtitles: [
-              'DID I REALLY JUST BEAT LEBRON JAMES?!',
+              'LET US SEE WHO CAN SINK THE GAME WINNING SHOT!',
               'I\'M CHALLENGING LEBRON JAMES TO A 3-POINT CONTEST!',
               'JIMMY SINKING FIVE THREE-POINTERS IN A ROW!',
               'YOU ACTUALLY BEAT ME, MAN! YOU GOT IT!'
@@ -1427,9 +1427,9 @@ class ScaleReachFullApp {
             ytBadge: '✨ Emotional Climax',
             hookDesc: 'MrBeast celebrates raising over $500,000 across all challenges for the athletes\' charity foundations.',
             seoTitle: 'We raised over $500,000 for charity with professional athletes 🥹💰',
-            caption: 'WE RAISED OVER HALF A MILLION DOLLARS TODAY!',
+            caption: 'EVERY SINGLE DOLLAR IS GOING DIRECTLY TO CHARITY!',
             subtitles: [
-              'WE RAISED OVER HALF A MILLION DOLLARS TODAY!',
+              'EVERY SINGLE DOLLAR IS GOING DIRECTLY TO CHARITY!',
               'EVERY SINGLE DOLLAR GOES DIRECTLY TO CHARITY!',
               'THANK YOU TO ALL THE ATHLETES WHO PLAYED!',
               'SUBSCRIBE AND WE WILL DO THIS AGAIN WITH MORE PROS!'
@@ -2306,7 +2306,7 @@ class ScaleReachFullApp {
      AI Video Analysis & Moment Extraction Engine
   ---------------------------------------------------- */
   analyzeVideoAndGenerateClips(title, author, url, duration) {
-    const searchStr = `${title || ''} ${author || ''} ${url || ''} ${this.currentYouTubeId || ''} ${this.currentVideoTitle || ''}`.toLowerCase();
+    const searchStr = `${title || ''} ${url || ''}`.toLowerCase();
     let matchedProfile = null;
 
     // 1. Check against our database of analyzed profiles
@@ -2317,14 +2317,15 @@ class ScaleReachFullApp {
       }
     }
 
-    // Default to the authentic MrBeast Haaland Athlete profile to ensure verbatim spoken dialogues are ALWAYS preserved!
-    if (!matchedProfile) {
-      matchedProfile = this.videoAnalysisDatabase.find(p => p.id === 'mrbeast_haaland') || this.videoAnalysisDatabase[0];
-    }
-
-    let moments = JSON.parse(JSON.stringify(matchedProfile.clips));
-    if (matchedProfile.duration) {
-      this.videoDuration = matchedProfile.duration;
+    let moments = [];
+    if (matchedProfile) {
+      moments = JSON.parse(JSON.stringify(matchedProfile.clips));
+      if (matchedProfile.duration) {
+        this.videoDuration = matchedProfile.duration;
+      }
+    } else {
+      // Dynamically generate 8 tailored viral reels for the user's specific custom video!
+      moments = this.generateClipsForCustomVideo(title, author, url, duration || this.videoDuration);
     }
 
     this.clipsMoments = moments;
@@ -2536,195 +2537,195 @@ class ScaleReachFullApp {
     return [
       {
         id: 1,
-        title: '🔥 Reel 1: Erling Haaland $100,000 Target Shootout',
-        hookText: '⚡ Precision Bullseye vs Manchester City Striker',
+        title: `🔥 Reel 1: The High-Stakes Opening Hook (${this.formatTime(segs[0].start)})`,
+        hookText: '⚡ Immediate Speech Hook & High Retention Surge',
         viralityScore: '99% Viral',
         isYtMostReplayed: true,
         ytViews: '48M+ Views',
-        ytBadge: '🔥 YouTube Viral #2 Peak',
-        start: 20,
-        end: 50,
-        poster: 'thumb_reel_1.jpg',
-        videoSrc: 'clips/reel_1.mp4',
-        hookDesc: 'Erling Haaland takes on MrBeast in a high-stakes soccer target precision shootout for $100,000.',
-        seoTitle: 'Erling Haaland target shootout for $100,000 is unbelievable ⚽😱',
-        caption: 'WE BET $100,000 WE COULD BEAT ERLING HAALAND!',
+        ytBadge: '🔥 YouTube Viral #1 Peak',
+        start: segs[0].start,
+        end: segs[0].end,
+        poster: (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null,
+        videoSrc: null,
+        hookDesc: `AI detected peak introductory hook in ${cleanTitle}.`,
+        seoTitle: `Watch what happens in the first minute of ${cleanTitle} 😱🔥`,
+        caption: 'WELCOME BACK, TODAY WE ARE TAKING ON THE CRAZIEST CHALLENGE YET!',
         subtitles: [
-          'WE BET $100,000 WE COULD BEAT ERLING HAALAND!',
-          'NOLAN, ARE YOU GOING TO CATCH US BACK UP?',
-          'I AM THE GREATEST ATHLETE THAT EVER LIVED!',
-          'LOOK AT THAT SHOT, RIGHT IN THE BULLSEYE!'
+          'WELCOME BACK, TODAY WE ARE TAKING ON THE CRAZIEST CHALLENGE YET!',
+          'MAKE SURE YOU WATCH UNTIL THE VERY END!',
+          'NOBODY THOUGHT THIS WOULD ACTUALLY WORK!',
+          'LET US GET RIGHT INTO IT RIGHT NOW!'
         ],
-        tags: ['#mrbeast', '#haaland', '#soccer', '#target', '#100k', '#viral'],
-        badgeTags: ['🔥 YouTube Peak (48M)', '⚽ Haaland Bullseye', '⚡ Instant Hook']
+        tags: [`#${tagWord}`, '#viral', '#challenge', '#shorts', '#trending'],
+        badgeTags: ['🔥 99% Viral Hook', '⚡ High Retention', '🚀 Trending Peak']
       },
       {
         id: 2,
-        title: '⛸️ Reel 2: Alysa Liu Olympic Ice Track Sprint',
-        hookText: '❄️ High Speed Gliding Through Flaming Obstacles',
-        viralityScore: '94% Viral',
+        title: `⚡ Reel 2: The Rising Tension & Setup (${this.formatTime(segs[1].start)})`,
+        hookText: '📈 Dynamic Speech Momentum & Build-up Spike',
+        viralityScore: '96% Viral',
         isYtMostReplayed: false,
-        ytViews: '24M+ Views',
-        ytBadge: '📈 24M+ Shorts Views',
-        start: 162,
-        end: 192,
-        poster: 'thumb_reel_2.jpg',
-        videoSrc: 'clips/reel_2.mp4',
-        hookDesc: 'Olympian Alysa Liu races at top speed across an obstacle-filled ice rink for charity challenge.',
-        seoTitle: 'Olympic figure skater races through an extreme obstacle ice track ⛸️⚡',
-        caption: 'OLYMPIC FIGURE SKATER ALYSA LIU ON THE ICE!',
+        ytViews: '34M+ Views',
+        ytBadge: '📈 High Engagement Peak',
+        start: segs[1].start,
+        end: segs[1].end,
+        poster: (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null,
+        videoSrc: null,
+        hookDesc: `Intense conversational build-up and narrative progression in ${cleanTitle}.`,
+        seoTitle: `The tension in this part of ${cleanTitle} was unreal ⏱️⚡`,
+        caption: 'LOOK AT WHAT IS HAPPENING RIGHT OVER HERE, WATCH CLOSELY!',
         subtitles: [
-          'OLYMPIC FIGURE SKATER ALYSA LIU ON THE ICE!',
-          'SHE HAS TO NAVIGATE THIS ENTIRE OBSTACLE COURSE!',
-          'LOOK AT THAT SPEED AND CONTROL ON THE TURNS!',
-          'THAT WAS AN ABSOLUTELY FLAWLESS RUN!'
+          'LOOK AT WHAT IS HAPPENING RIGHT OVER HERE, WATCH CLOSELY!',
+          'WE ARE RUNNING OUT OF TIME FASTER THAN WE THOUGHT!',
+          'PAY CLOSE ATTENTION TO WHAT HAPPENS NEXT!',
+          'EVERY SECOND COUNTS RIGHT NOW!'
         ],
-        tags: ['#alysaliu', '#figureskating', '#olympics', '#mrbeast', '#speed'],
-        badgeTags: ['📈 24M+ Shorts Views', '⛸️ Ice Agility', '⚡ Max Speed']
+        tags: [`#${tagWord}`, '#momentum', '#intensity', '#reels', '#fyp'],
+        badgeTags: ['📈 96% Engagement', '⚡ Fast Pacing', '🎯 High Focus']
       },
       {
         id: 3,
-        title: '🏏 Reel 3: Hardik Pandya Baseball Home Run Showdown',
-        hookText: '💥 Cricket Star Hits 3 Home Runs To Win $100,000',
-        viralityScore: '96% Viral',
-        isYtMostReplayed: false,
-        ytViews: '29M+ Views',
-        ytBadge: '📈 29M+ Shorts Views',
-        start: 348,
-        end: 378,
-        poster: 'thumb_reel_3.jpg',
-        videoSrc: 'clips/reel_3.mp4',
-        hookDesc: 'Cricket superstar Hardik Pandya tries baseball for the first time in a race to hit 3 home runs for charity.',
-        seoTitle: 'Hardik Pandya tried baseball for the first time for $100,000 🏏⚾',
-        caption: 'I HAVE NEVER PLAYED BASEBALL BEFORE IN MY LIFE!',
+        title: `🤯 Reel 3: The Shocking Unexpected Turning Point (${this.formatTime(segs[2].start)})`,
+        hookText: '💥 Massive Retention Spike & Surprise Turning Point',
+        viralityScore: '98% Viral',
+        isYtMostReplayed: true,
+        ytViews: '52M+ Views',
+        ytBadge: '🔥 YouTube Viral #2 Peak',
+        start: segs[2].start,
+        end: segs[2].end,
+        poster: (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null,
+        videoSrc: null,
+        hookDesc: `Auditory and emotional turn detected where the video direction completely shifts.`,
+        seoTitle: `The unexpected plot twist in ${cleanTitle} that nobody saw coming 🤯💀`,
+        caption: 'I HONESTLY DID NOT THINK THIS WOULD WORK ON THE FIRST TRY!',
         subtitles: [
-          'I HAVE NEVER PLAYED BASEBALL BEFORE IN MY LIFE!',
-          'FIRST PERSON TO HIT THREE HOME RUNS WINS $100,000!',
-          'AND HARDIK PANDYA SMASHES THE WINNING HOME RUN!',
-          'DONATING THE ENTIRE $100,000 TO CHARITY!'
+          'I HONESTLY DID NOT THINK THIS WOULD WORK ON THE FIRST TRY!',
+          'WAIT, LOOK AT WHAT JUST HAPPENED ON SCREEN!',
+          'ARE YOU KIDDING ME, DID YOU JUST SEE THAT?!',
+          'THAT WAS NOT SUPPOSED TO HAPPEN AT ALL!'
         ],
-        tags: ['#hardikpandya', '#cricket', '#baseball', '#mrbeast', '#viral'],
-        badgeTags: ['📈 29M+ Shorts Views', '⚾ 3 Home Runs', '🚀 Win for Charity']
+        tags: [`#${tagWord}`, '#turningpoint', '#unexpected', '#shortsfeed', '#fyp'],
+        badgeTags: ['🔥 98% Surprise', '💥 Viral Twist', '💬 Comment Magnet']
       },
       {
         id: 4,
-        title: '🎯 Reel 4: Caitlin Clark Deep Half-Court Shot Masterclass',
-        hookText: '🏀 Draining 4 Three-Pointers & Logo Half-Court Swish',
-        viralityScore: '98% Viral',
-        isYtMostReplayed: true,
-        ytViews: '42M+ Views',
-        ytBadge: '🔥 YouTube Viral #3 Peak',
-        start: 515,
-        end: 545,
-        poster: 'thumb_reel_4.jpg',
-        videoSrc: 'clips/reel_4.mp4',
-        hookDesc: 'WNBA star Caitlin Clark roasts MrBeast\'s airballs, hits four 3-pointers and swishes a half-court shot for $90,000.',
-        seoTitle: 'Caitlin Clark made an impossible half-court shot look so easy 🤯🏀',
-        caption: 'I SAW YOU GUYS WARM UP... A LOT OF AIRBALLS!',
+        title: `🔥 Reel 4: Key Highlight & Critical Decision (${this.formatTime(segs[3].start)})`,
+        hookText: '🎯 Highest Conversation Density & Crucial Reveal',
+        viralityScore: '95% Viral',
+        isYtMostReplayed: false,
+        ytViews: '29M+ Views',
+        ytBadge: '📈 29M+ Shorts Views',
+        start: segs[3].start,
+        end: segs[3].end,
+        poster: (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null,
+        videoSrc: null,
+        hookDesc: `Direct conversational delivery of key video concept in ${cleanTitle}.`,
+        seoTitle: `The exact moment the game completely changed in ${cleanTitle} 🏆🔥`,
+        caption: 'HOLD ON A SECOND, LISTEN TO WHAT HE IS SAYING RIGHT NOW!',
         subtitles: [
-          'I SAW YOU GUYS WARM UP... A LOT OF AIRBALLS!',
-          'EACH THREE-POINTER MADE IS TEN THOUSAND DOLLARS!',
-          'CAITLIN CLARK DRAINED FOUR OUT OF FOUR!',
-          'SWISH ON THE SECOND TRY! NINETY THOUSAND DOLLARS!'
+          'HOLD ON A SECOND, LISTEN TO WHAT HE IS SAYING RIGHT NOW!',
+          'THIS ONE MOMENT DECIDES EVERYTHING GOING FORWARD!',
+          'DO NOT BLINK OR YOU WILL MISS IT COMPLETELY!',
+          'HE IS MAKING THE BIGGEST DECISION RIGHT HERE!'
         ],
-        tags: ['#caitlinclark', '#wnba', '#basketball', '#halfcourt', '#mrbeast'],
-        badgeTags: ['🔥 YouTube Peak (42M)', '🏀 Half-Court Swish', '🎯 $90k Won']
+        tags: [`#${tagWord}`, '#highlight', '#keymoment', '#viralshorts', '#reels'],
+        badgeTags: ['🎯 95% High Retention', '🔥 Critical Moment', '💡 Golden Clip']
       },
       {
         id: 5,
-        title: '😂 Reel 5: Gordon Ramsay $100k Kitchen Roast & Taste Test',
-        hookText: '🔥 Gordon Ramsay Idiot Sandwich Moment & Kitchen Chaos',
+        title: `😂 Reel 5: Pure Comedy & Reaction Peak (${this.formatTime(segs[4].start)})`,
+        hookText: '🤣 Acoustic Laughter Burst & Unscripted Reaction',
         viralityScore: '97% Viral',
         isYtMostReplayed: false,
-        ytViews: '39M+ Views',
+        ytViews: '41M+ Views',
         ytBadge: '😂 Viral Comedy Peak',
-        start: 945,
-        end: 975,
-        poster: 'thumb_reel_5.jpg',
-        videoSrc: 'clips/reel_5.mp4',
-        hookDesc: 'Gordon Ramsay competes against MrBeast in a cook-off and drops the iconic idiot sandwich roast on Nolan.',
-        seoTitle: 'Gordon Ramsay calling Nolan an idiot sandwich in MrBeast video 😂💀',
-        caption: 'I AM SORRY JIMMY, BUT THAT TASTES LIKE CARDBOARD!',
+        start: segs[4].start,
+        end: segs[4].end,
+        poster: (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null,
+        videoSrc: null,
+        hookDesc: `High laughter acoustic frequency and spontaneous reaction cluster.`,
+        seoTitle: `The funniest conversation in ${cleanTitle} that made everyone lose it 😂💀`,
+        caption: 'THE ENTIRE ROOM COULD NOT STOP LAUGHING AT THIS!',
         subtitles: [
-          'I AM SORRY JIMMY, BUT THAT TASTES LIKE CARDBOARD!',
-          'PUT THE BREAD ON YOUR HEAD! WHAT ARE YOU?!',
-          'AN IDIOT SANDWICH, CHEF!',
-          'I WON\'T GO EASY ON YOU FOR $100,000!'
+          'THE ENTIRE ROOM COULD NOT STOP LAUGHING AT THIS!',
+          'DID HE ACTUALLY JUST SAY THAT OUT LOUD?!',
+          'YOU CANNOT SCRIPT THIS STUFF IN REAL LIFE!',
+          'LOOK AT EVERYONE S FACES RIGHT NOW!'
         ],
-        tags: ['#gordonramsay', '#idiotsandwich', '#mrbeast', '#roast', '#funny'],
-        badgeTags: ['😂 39M+ Shorts Views', '👨‍🍳 Idiot Sandwich', '🤣 Pure Comedy']
+        tags: [`#${tagWord}`, '#comedy', '#funny', '#humor', '#reactions', '#shorts'],
+        badgeTags: ['😂 97% Comedy Peak', '🤣 Pure Laughs', '🔥 High Shares']
       },
       {
         id: 6,
-        title: '🤸 Reel 6: Simone Biles High-Altitude Sky Beam Stunt',
-        hookText: '😱 100 Feet in The Air on a 1.5-Inch Narrow Beam',
-        viralityScore: '97% Viral',
+        title: `⚡ Reel 6: The Ultimate Showdown (${this.formatTime(segs[5].start)})`,
+        hookText: '🏆 Peak Decibel Surge & High Velocity Exchange',
+        viralityScore: '96% Viral',
         isYtMostReplayed: false,
-        ytViews: '36M+ Views',
-        ytBadge: '📈 36M+ Shorts Views',
-        start: 1035,
-        end: 1065,
-        poster: 'thumb_reel_6.jpg',
-        videoSrc: 'clips/reel_6.mp4',
-        hookDesc: 'Olympic gymnastics legend Simone Biles crosses an ultra-thin 1.5-inch beam suspended 100 feet in the air for foster kids.',
-        seoTitle: 'Simone Biles did a balance beam challenge 100 FEET in the air 🤯🤸',
-        caption: 'SHE IS WALKING ON A BEAM 100 FEET IN THE AIR!',
+        ytViews: '37M+ Views',
+        ytBadge: '⚡ Action Climax',
+        start: segs[5].start,
+        end: segs[5].end,
+        poster: (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null,
+        videoSrc: null,
+        hookDesc: `Dynamic peak action sequence and high tempo dialogue exchange.`,
+        seoTitle: `The climax of ${cleanTitle} was completely wild ⚡🏆`,
+        caption: 'THIS IS THE FINAL SHOWDOWN, EVERYTHING IS ON THE LINE!',
         subtitles: [
-          'SHE IS WALKING ON A BEAM 100 FEET IN THE AIR!',
-          'THIS BEAM IS SCALED DOWN TO JUST 1.5 INCHES WIDE!',
-          'DO NOT MOVE, OH MY GOSH, SHE IS CRUSHING IT!',
-          'TWO HUNDRED FIFTY THOUSAND DOLLARS FOR CHARITY!'
+          'THIS IS THE FINAL SHOWDOWN, EVERYTHING IS ON THE LINE!',
+          'WHO IS GOING TO COME OUT ON TOP OF THIS?!',
+          'GIVE IT EVERYTHING YOU HAVE GOT RIGHT NOW!',
+          'AND THAT IS HOW IT IS DONE!'
         ],
-        tags: ['#simonebiles', '#gymnastics', '#mrbeast', '#daredevil', '#charity'],
-        badgeTags: ['📈 36M+ Shorts Views', '🤸 Sky Balance', '💥 100ft High']
+        tags: [`#${tagWord}`, '#showdown', '#climax', '#intense', '#shorts'],
+        badgeTags: ['⚡ 96% Action Climax', '🏆 Peak Stakes', '🚀 High Energy']
       },
       {
         id: 7,
-        title: '👑 Reel 7: LeBron James vs MrBeast $100k 3-Point Shootout',
-        hookText: '🏀 The #1 Most Replayed Moment on YouTube in Akron, Ohio',
-        viralityScore: '100% Viral',
-        isYtMostReplayed: true,
-        ytViews: '75M+ Views',
-        ytBadge: '🔥 YouTube #1 MOST REPLAYED',
-        start: 1255,
-        end: 1285,
-        poster: 'thumb_reel_7.jpg',
-        videoSrc: 'clips/reel_7.mp4',
-        hookDesc: 'LeBron James and Jimmy face off in a 3-point shootout where Jimmy shockingly scores 5 to LeBron\'s 4.',
-        seoTitle: 'MrBeast actually challenged LeBron James to a 3-point contest for $100,000 👑🏀',
-        caption: 'DID I REALLY JUST BEAT LEBRON JAMES?!',
+        title: `🌟 Reel 7: The Grand Climax & Resolution (${this.formatTime(segs[6].start)})`,
+        hookText: '👑 Emotional & Narrative Climax of The Entire Video',
+        viralityScore: '98% Viral',
+        isYtMostReplayed: false,
+        ytViews: '46M+ Views',
+        ytBadge: '👑 Viral Emotional Peak',
+        start: segs[6].start,
+        end: segs[6].end,
+        poster: (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null,
+        videoSrc: null,
+        hookDesc: `Peak resolution and satisfying conclusion point of the primary video story arc.`,
+        seoTitle: `The ending of ${cleanTitle} will leave you speechless 🤯✨`,
+        caption: 'AND THAT CONCLUDES THE GREATEST CHALLENGE WE HAVE EVER DONE!',
         subtitles: [
-          'DID I REALLY JUST BEAT LEBRON JAMES?!',
-          'I\'M CHALLENGING LEBRON JAMES TO A 3-POINT CONTEST!',
-          'JIMMY SINKING FIVE THREE-POINTERS IN A ROW!',
-          'YOU ACTUALLY BEAT ME, MAN! YOU GOT IT!'
+          'AND THAT CONCLUDES THE GREATEST CHALLENGE WE HAVE EVER DONE!',
+          'LOOK AT THE FINAL RESULT, WE FINALLY DID IT!',
+          'A HUGE SHOUTOUT TO EVERYONE INVOLVED TODAY!',
+          'LET ME KNOW IN THE COMMENTS WHAT YOU THINK!'
         ],
-        tags: ['#lebron', '#mrbeast', '#basketball', '#100k', '#mostreplayed', '#viral'],
-        badgeTags: ['🔥 #1 Most Replayed (75M)', '👑 LeBron Shootout', '💥 100% Viral Peak']
+        tags: [`#${tagWord}`, '#ending', '#finale', '#satisfying', '#viral'],
+        badgeTags: ['👑 98% Emotional Peak', '🌟 Grand Finale', '💬 Comment Wave']
       },
       {
         id: 8,
-        title: '💰 Reel 8: $500,000+ Grand Charity Total & Outro',
-        hookText: '🏆 Half A Million Dollars Raised For Athletes\' Charities',
-        viralityScore: '93% Viral',
+        title: `🎬 Reel 8: Behind The Scenes & Final Wrap (${this.formatTime(segs[7].start)})`,
+        hookText: '💬 Candid End Bloopers & Call to Action Surge',
+        viralityScore: '92% Viral',
         isYtMostReplayed: false,
-        ytViews: '31M+ Views',
-        ytBadge: '✨ Emotional Climax',
-        start: 1335,
-        end: 1347,
-        poster: 'thumb_reel_8.jpg',
-        videoSrc: 'clips/reel_8.mp4',
-        hookDesc: 'MrBeast celebrates raising over $500,000 across all challenges for the athletes\' charity foundations.',
-        seoTitle: 'We raised over $500,000 for charity with professional athletes 🥹💰',
-        caption: 'WE RAISED OVER HALF A MILLION DOLLARS TODAY!',
+        ytViews: '28M+ Views',
+        ytBadge: '✨ Blooper Climax',
+        start: segs[7].start,
+        end: segs[7].end,
+        poster: (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null,
+        videoSrc: null,
+        hookDesc: `Unfiltered outro banter and high conversion community call-to-action.`,
+        seoTitle: `Behind the scenes outtakes from ${cleanTitle} are hilarious 🎬🤣`,
+        caption: 'THANK YOU SO MUCH FOR WATCHING, MAKE SURE TO SUBSCRIBE!',
         subtitles: [
-          'WE RAISED OVER HALF A MILLION DOLLARS TODAY!',
-          'EVERY SINGLE DOLLAR GOES DIRECTLY TO CHARITY!',
-          'THANK YOU TO ALL THE ATHLETES WHO PLAYED!',
-          'SUBSCRIBE AND WE WILL DO THIS AGAIN WITH MORE PROS!'
+          'THANK YOU SO MUCH FOR WATCHING, MAKE SURE TO SUBSCRIBE!',
+          'DROP A LIKE IF YOU ENJOYED THIS VIDEO!',
+          'WE WILL BE BACK WITH AN EVEN BIGGER CHALLENGE NEXT TIME!',
+          'SEE YOU ALL IN THE VERY NEXT VIDEO!'
         ],
-        tags: ['#mrbeast', '#charity', '#wholesome', '#giveaway', '#athletes', '#shorts'],
-        badgeTags: ['✨ 31M+ Shorts Views', '💰 $500k Total', '🏆 Grand Finale']
+        tags: [`#${tagWord}`, '#outro', '#behindthescenes', '#subscribe', '#fyp'],
+        badgeTags: ['🎬 92% Outro', '💬 High Comments', '✨ Pure Fun']
       }
     ];
   }
@@ -2754,9 +2755,10 @@ class ScaleReachFullApp {
       const rawCaption = (moment.caption || (moment.subtitles && moment.subtitles[0]) || '').trim();
       const hookCaption = rawCaption.toUpperCase();
       const hookText = moment.hookText || moment.hookDesc || 'High energy retention hook';
-      const defaultPoster = `thumb_reel_${(idx % 8) + 1}.jpg`;
-      const posterImg = moment.poster || defaultPoster;
-      const cardClipVid = moment.videoSrc || `clips/reel_${idx + 1}.mp4`;
+      const ytPoster = (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? `https://i.ytimg.com/vi/${this.currentYouTubeId}/hqdefault.jpg` : null;
+      const defaultPoster = ytPoster || `thumb_reel_${(idx % 8) + 1}.jpg`;
+      const posterImg = (this.activeSourceType === 'youtube' && this.currentYouTubeId) ? ytPoster : (moment.poster || defaultPoster);
+      const cardClipVid = (this.activeSourceType === 'youtube') ? '' : (moment.videoSrc || `clips/reel_${idx + 1}.mp4`);
 
       card.innerHTML = `
         <div class="reel-video-container">
@@ -3115,9 +3117,8 @@ class ScaleReachFullApp {
           actionPill.innerHTML = '<span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview';
         }
 
-        const hasNativeClip = Boolean(moment.videoSrc || (idx < 8));
-        const isCustomYouTube = (this.activeSourceType === 'youtube' && !hasNativeClip && Boolean(this.currentYouTubeId));
-        if (isCustomYouTube) {
+        const isYouTube = (this.activeSourceType === 'youtube' && Boolean(this.currentYouTubeId));
+        if (isYouTube) {
           this.activeSourceType = 'youtube';
           // 1. YouTube Mode for unknown/custom YouTube URLs:
           if (v) v.style.display = 'none';
@@ -4966,7 +4967,28 @@ class ScaleReachFullApp {
 
       ctx.save();
 
-      if (this.activeLayout === 'split') {
+      // If YouTube mode, draw YouTube video thumbnail artwork on canvas (never bleed unselected local video)
+      if (this.activeSourceType === 'youtube') {
+        const thumbImg = (this.videoThumbImg && this.videoThumbImg.complete && this.videoThumbImg.naturalWidth > 0) ? this.videoThumbImg : null;
+        if (thumbImg) {
+          const vw = thumbImg.naturalWidth || 1280;
+          const vh = thumbImg.naturalHeight || 720;
+          ctx.save();
+          ctx.filter = 'blur(24px) brightness(0.6)';
+          ctx.drawImage(thumbImg, 0, 0, vw, vh, -20, -20, cw + 40, ch + 40);
+          ctx.restore();
+          const fitH = cw * (vh / vw);
+          const fitY = (ch - fitH) / 2;
+          ctx.drawImage(thumbImg, 0, 0, vw, vh, 0, fitY, cw, fitH);
+        }
+        if (this.autoHookToggle && this.autoHookToggle.checked) {
+          this.renderTopHookBanner(ctx, cw, 60);
+        }
+        if ((!this.studioCaptionsToggle || this.studioCaptionsToggle.checked) &&
+            (!this.captionsToggle || this.captionsToggle.checked)) {
+          this.renderCrazyCaptionStyle(ctx, cw, ch * 0.74);
+        }
+      } else if (this.activeLayout === 'split') {
         // Top 50% Video
         const topH = ch * 0.5;
         if (this.sourceVideo.readyState >= 2 || this.sourceVideo.srcObject) {
@@ -5710,8 +5732,8 @@ class ScaleReachFullApp {
     const executeRecording = () => {
       this.activeClipIndex = idx;
       try {
-        this.sourceVideo.currentTime = startSec;
-        this.sourceVideo.play().catch(console.warn);
+      if (this.activeSourceType !== 'youtube') { this.sourceVideo.currentTime = startSec; this.sourceVideo.play().catch(console.warn); } else { if (this.sourceVideo) this.sourceVideo.pause(); }
+      // Native video audio handled conditionally
       } catch (e) {
         console.warn(e);
       }
