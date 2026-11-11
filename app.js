@@ -130,10 +130,11 @@ class ScaleReachFullApp {
     this.phoneCaptionsOverlayCanvas = document.getElementById('phoneCaptionsOverlayCanvas');
     this.ctxPhoneOverlay = this.phoneCaptionsOverlayCanvas ? this.phoneCaptionsOverlayCanvas.getContext('2d') : null;
     const storedYtId = (typeof localStorage !== 'undefined') ? localStorage.getItem('scalereach_yt_id') : null;
-    this.currentYouTubeId = storedYtId || '_c2e1Ncl3Sc';
+    this.currentYouTubeId = (storedYtId && storedYtId !== '_c2e1Ncl3Sc' && storedYtId !== '0e3GPea1Tyg') ? storedYtId : 'pAnGwRiQ4-4';
     this.activeSourceType = 'youtube';
-    this.currentVideoTitle = 'Beat Professional Athlete, Win $100,000';
-    this.currentVideoAuthor = 'MrBeast • YouTube';
+    this.currentVideoTitle = '$1 vs $1,000,000,000 Futuristic Tech!';
+    this.currentVideoAuthor = 'MrBeast • 23:04';
+    this.currentVideoUrl = 'https://www.youtube.com/watch?v=pAnGwRiQ4-4';
     this.layoutBtns = document.querySelectorAll('.layout-btn');
     this.panSlider = document.getElementById('panSlider');
     this.panValDisplay = document.getElementById('panValDisplay');
@@ -298,13 +299,14 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral #1 Peak',
             hookDesc: 'MrBeast introduces the insane futuristic challenge comparing $1 devices up to a $1,000,000,000 tech facility.',
             seoTitle: '$1 vs $1,000,000,000 Futuristic Tech challenge is unbelievable 🤯⚡',
-            caption: '$1 BILLION TECH!',
+            caption: 'THIS IS A ONE BILLION DOLLAR ROCKET SHIP!',
             subtitles: [
-              'TESTING $1 TO',
-              '$1 BILLION TECH!',
-              'THE MOST INSANE',
-              'FUTURISTIC INVENTIONS',
-              'ON PLANET EARTH!'
+              'THIS IS A ONE BILLION',
+              'DOLLAR ROCKET SHIP!',
+              'ARE WE JUST LAUNCHING IT?',
+              'IT TAKES YOU TO MARS!',
+              'IN A $500M BIOSPHERE!',
+              'THE FUTURE IS EPIC!'
             ],
             tags: ['#mrbeast', '#futuristic', '#tech', '#billion', '#challenge', '#viral'],
             badgeTags: ['🔥 YouTube Peak (65M)', '⚡ $1B Tech', '🚀 Instant Hook']
@@ -323,13 +325,17 @@ class ScaleReachFullApp {
             ytBadge: '📈 42M+ Shorts Views',
             hookDesc: 'Testing cutting-edge brain-computer interface technology that translates neural thoughts into screen controls.',
             seoTitle: 'We actually tested a mind reading brain chip 🧠🤯',
-            caption: 'MIND READING CHIP!',
+            caption: 'HE JUST TYPED HI WITH HIS MIND!',
             subtitles: [
-              'MIND READING CHIP!',
-              'PLAYING VIDEO GAMES',
-              'WITH MY MIND!',
-              'LOOK AT THE SCREEN!',
-              'THIS FEELS UNREAL!'
+              'WE ARE GOING WITH',
+              'THE $10,000 NEURALINK!',
+              'PARALYZED FROM NECK DOWN?',
+              'ANYTHING ON A COMPUTER',
+              'I CAN DO!',
+              'MOVING WITH HIS THOUGHTS!',
+              'HE JUST TYPED HI',
+              'WITH HIS MIND!',
+              'IS THIS NOT CRAZY?!'
             ],
             tags: ['#neuralink', '#brainchip', '#mindcontrol', '#futuretech', '#mrbeast'],
             badgeTags: ['📈 42M+ Views', '🧠 Brain Interface', '⚡ Mind Reading']
@@ -348,12 +354,14 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral Peak',
             hookDesc: 'Flying an authentic personal eVTOL aircraft hundreds of feet in the air across open water.',
             seoTitle: 'I flew a real life flying car over the ocean 🛸🌊',
-            caption: 'FLYING VEHICLE!',
+            caption: 'AN ACTUAL FLYING VEHICLE!',
             subtitles: [
-              'AN ACTUAL FLYING CAR!',
+              'AN ACTUAL FLYING VEHICLE!',
               'WE ARE TAKING OFF!',
+              'NO TRAFFIC NO STOP SIGNS!',
               'LOOK HOW HIGH WE ARE!',
-              'SOARING IN THE SKY!'
+              'FLYING OVER THE CARS!',
+              'THE FUTURE OF TRAVEL!'
             ],
             tags: ['#flyingcar', '#evtol', '#futuretravel', '#mrbeast', '#viral'],
             badgeTags: ['🔥 58M+ Views', '🛸 Real Flying Car', '💥 High Energy']
@@ -372,12 +380,13 @@ class ScaleReachFullApp {
             ytBadge: '📈 High Engagement Peak',
             hookDesc: 'Touring a 10 million dollar one-of-one hypercar with full autonomous intelligence and cyberpunk interior.',
             seoTitle: 'Inside a $10,000,000 concept car from the future 🏎️✨',
-            caption: '$10M FUTURE CAR!',
+            caption: 'A TEN MILLION DOLLAR CAR!',
             subtitles: [
-              '$10,000,000 CAR!',
-              'LOOK AT THIS INTERIOR!',
-              'SELF DRIVING FUTURE!',
-              'FASTEST CAR ON EARTH!'
+              'A TEN MILLION DOLLAR CAR!',
+              'LOOK AT DOORS OPENING UP!',
+              'NO STEERING WHEEL INSIDE!',
+              'ENTIRELY AUTONOMOUS AI!',
+              'FEELS LIKE SCI-FI MOVIE!'
             ],
             tags: ['#supercar', '#conceptcar', '#10million', '#luxury', '#hypercar'],
             badgeTags: ['📈 37M+ Views', '🏎️ $10M Supercar', '💎 Ultra Rare']
@@ -396,13 +405,14 @@ class ScaleReachFullApp {
             ytBadge: '😂 Viral Comedy & Curiosity',
             hookDesc: 'Blind taste test comparing gourmet farm steak to biologically identical cellular lab-grown meat.',
             seoTitle: 'Can we tell the difference between real steak and lab grown meat?! 🥩🔬',
-            caption: 'LAB-GROWN MEAT!',
+            caption: 'TASTES LIKE REAL CHICKEN!',
             subtitles: [
-              'LAB GROWN MEAT!',
-              'CAN YOU TELL',
-              'THE DIFFERENCE?!',
-              'TASTES LIKE REAL STEAK!',
-              'MIND BLOWING!'
+              'WE ARE AT UPSIDE FOODS!',
+              'CHICKEN GROWN FROM CELLS!',
+              'NO ANIMALS SLAUGHTERED!',
+              'LET US TASTE IT!',
+              'TASTES LIKE REAL CHICKEN!',
+              'THAT IS MIND BLOWING!'
             ],
             tags: ['#labgrownmeat', '#futurefood', '#tastetest', '#mrbeast', '#foodie'],
             badgeTags: ['🥩 Lab Grown Food', '😋 Blind Taste Test', '🔬 Future Science']
@@ -421,12 +431,13 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube Viral #2 Peak',
             hookDesc: 'Inside the genetic de-extinction lab at Colossal Biosciences sequencing Woolly Mammoth DNA.',
             seoTitle: 'Scientists are bringing back the Woolly Mammoth right now 🦣🧬',
-            caption: 'WOOLLY MAMMOTH DNA!',
+            caption: 'REAL WOOLLY MAMMOTH DNA!',
             subtitles: [
-              'BRINGING BACK',
-              'THE WOOLLY MAMMOTH!',
-              'ACTUAL EXTINCT DNA!',
-              'SCIENCE IS INSANE!'
+              'REAL WOOLLY MAMMOTH DNA!',
+              'THIS TUSK IS 43,000 YEARS OLD!',
+              'COMBINING MAMMOTH GENES!',
+              'BRINGING MAMMOTH BACK!',
+              'JURASSIC PARK IN REAL LIFE!'
             ],
             tags: ['#woollymammoth', '#deextinction', '#dna', '#genetics', '#science'],
             badgeTags: ['🔥 61M+ Views', '🦣 Mammoth Genetics', '🧬 Jurassic Tech']
@@ -445,12 +456,13 @@ class ScaleReachFullApp {
             ytBadge: '📈 Space Frontier Peak',
             hookDesc: 'Experiencing an airtight biosphere dome that simulates living conditions for human life on Mars.',
             seoTitle: 'We stepped inside a sealed Mars colony biosphere dome 🔴🚀',
-            caption: 'MARS COLONY DOME!',
+            caption: '$500 MILLION BIOSPHERE!',
             subtitles: [
-              'MARS BIOSPHERE!',
-              'SEALED FROM EARTH!',
-              'THIS IS LIFE ON MARS!',
-              'BREATHING ARTIFICIAL AIR!'
+              '$500 MILLION BIOSPHERE!',
+              'BUILT TO SURVIVE MARS!',
+              'PRODUCES OWN OXYGEN!',
+              'AND FRESH WATER!',
+              'FEELS LIKE ANOTHER PLANET!'
             ],
             tags: ['#mars', '#biosphere', '#spacecolony', '#mrbeast', '#elonmusk'],
             badgeTags: ['🔴 Mars Habitat', '🚀 Space Colonization', '✨ Sci-Fi Real']
@@ -469,12 +481,13 @@ class ScaleReachFullApp {
             ytBadge: '🔥 YouTube #1 MOST REPLAYED',
             hookDesc: 'Walking underneath the largest rocket in human history equipped with 33 Raptor rocket engines.',
             seoTitle: 'Touring the $1,000,000,000 Starship rocket in Boca Chica 🚀🤯',
-            caption: '$1 BILLION STARSHIP!',
+            caption: 'ONE BILLION DOLLAR ROCKET!',
             subtitles: [
-              '$1 BILLION STARSHIP!',
-              'LARGEST ROCKET EVER!',
-              'LOOK AT THOSE ENGINES!',
-              'READY FOR SPACE!'
+              'ONE BILLION DOLLAR ROCKET!',
+              'LOOK HOW GIGANTIC THIS IS!',
+              'BIGGEST ROCKET EVER BUILT!',
+              'THIS TAKES HUMANS TO MARS!',
+              'SUBSCRIBE TO RIDE THIS!'
             ],
             tags: ['#starship', '#spacex', '#rocket', '#billiondollar', '#marsrocket'],
             badgeTags: ['🔥 #1 Most Replayed (82M)', '🚀 $1B Starship', '💥 100% Viral Peak']
@@ -1969,6 +1982,15 @@ class ScaleReachFullApp {
     this.applyCapCutFiltersToElements();
 
     // Default to user's exact YouTube video: $1 vs $1,000,000,000 Futuristic Tech!
+    // Clean old athlete video cache from localStorage so Futuristic Tech always loads
+    try {
+      if (typeof localStorage !== 'undefined') {
+        const sid = localStorage.getItem('scalereach_yt_id');
+        if (!sid || sid === '_c2e1Ncl3Sc' || sid === '0e3GPea1Tyg') {
+          localStorage.setItem('scalereach_yt_id', 'pAnGwRiQ4-4');
+        }
+      }
+    } catch(e) {}
     this.loadYouTubeVideo('pAnGwRiQ4-4', 'https://www.youtube.com/watch?v=pAnGwRiQ4-4');
 
     // Global listener to proactively neutralize YouTube CC and capture real video duration across all embeds

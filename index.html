@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261111_nocache_v12">
+  <link rel="stylesheet" href="styles.css?v=20261111_nocache_v20">
 </head>
 <body class="dashboard-body">
 
@@ -251,7 +251,7 @@
                     <path d="M4 14.5l2.5 4.5h11l2.5-4.5H4z" fill="#FBBC05"/>
                   </svg>
                 </span>
-                <input type="text" id="mainVideoUrlInput" placeholder="Enter URL">
+                <input type="text" id="mainVideoUrlInput" placeholder="Enter URL" value="https://www.youtube.com/watch?v=pAnGwRiQ4-4">
               </div>
 
               <!-- 4. Big Primary Button "Get clips in 1 click" -->
@@ -404,15 +404,15 @@
                 <!-- Video Thumbnail Card with Title & Duration -->
                 <div class="video-preview-tile" id="videoPreviewTile">
                   <div class="thumb-media-box">
-                    <img id="videoThumbImg" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&auto=format&fit=crop&q=80" alt="Video Thumbnail">
-                    <div class="thumb-badge-duration" id="videoDurationBadge">22:28</div>
+                    <img id="videoThumbImg" src="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" alt="Video Thumbnail">
+                    <div class="thumb-badge-duration" id="videoDurationBadge">23:04</div>
                     <div class="thumb-play-overlay">▶</div>
                   </div>
 
                   <div class="thumb-meta-footer">
                     <div class="thumb-titles">
-                      <h4 id="videoMetaTitle">Communication & Psychology Deep-Dive Podcast</h4>
-                      <p id="videoMetaAuthor">The Mindset Studio &bull; 02:23</p>
+                      <h4 id="videoMetaTitle">$1 vs $1,000,000,000 Futuristic Tech!</h4>
+                      <p id="videoMetaAuthor">MrBeast &bull; 23:04</p>
                     </div>
                     <button class="thumb-remove-btn" id="removeVideoBtn" title="Change video">&times;</button>
                   </div>
@@ -644,12 +644,12 @@
                 <div class="card-header">
                   <div class="card-title">
                     <span class="dot-purple"></span>
-                    <h3 id="studioVideoTitle">Communication & Psychology Deep-Dive Podcast</h3>
+                    <h3 id="studioVideoTitle">$1 vs $1,000,000,000 Futuristic Tech!</h3>
                   </div>
                   <div class="video-meta-tags-row">
-                    <span class="file-name-pill" id="studioChannelPill">The Mindset Studio • 02:23</span>
+                    <span class="file-name-pill" id="studioChannelPill">MrBeast • 23:04</span>
                     <span class="source-url-pill" id="studioSourceUrlPill">
-                      <span class="link-icon">🔗</span> <span id="studioSourceUrlText">Local Video: podcast.mp4</span>
+                      <span class="link-icon">🔗</span> <span id="studioSourceUrlText">https://www.youtube.com/watch?v=pAnGwRiQ4-4</span>
                     </span>
                     <button type="button" class="change-video-pill-btn" id="changeVideoBtn" title="Switch to another video or paste new link">🔄 Change Video</button>
                     <div class="quality-badge-pill" id="qualityBadgePill" title="Playing at highest available quality">
@@ -780,18 +780,19 @@
                   <!-- Reel 1 (Default Active) -->
                   <div class="suggest-reel-card active" data-clip="1" data-index="0">
                     <div class="reel-video-container">
-                      <div class="reel-card-backdrop" style="background-image: url('thumb_reel_1.jpg');"></div>
-                      <video class="reel-card-video" src="podcast.mp4" poster="thumb_reel_1.jpg" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-backdrop" style="background-image: url('https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg');"></div>
+                      <video class="reel-card-video" src="" poster="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" playsinline muted preload="metadata" loop></video>
                       <div class="reel-card-yt-wrapper" style="display:none;"></div>
                       <div class="reel-card-gradient"></div>
                       <div class="reel-card-topbar">
-                        <span class="reel-score-badge score-high"><span class="fire-icon">🔥</span> 99% Viral</span>
-                        <span class="reel-time-badge">00:00 - 00:15 (15s)</span>
+                        <span class="reel-score-badge score-high reel-yt-replayed" title="YouTube Verified Most Replayed Retention Peak">
+                          <span class="yt-play-icon">▶</span> 🔥 YouTube Viral #1 Peak
+                        </span>
+                        <span class="reel-time-badge">00:00 - 00:45 (45s)</span>
                       </div>
                       <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
-                      <div class="reel-hook-caption-sticker">
-                        <div class="sticker-text">BODY LANGUAGE SECRET</div>
-                        <div class="sticker-subtext">⚡ Eye Contact & Micro-Expression Breakdown</div>
+                      <div class="reel-hook-caption-sticker style-classic pos-bottom">
+                        <div class="sticker-text">THIS IS A <span class="cap-highlight">ONE BILLION</span> DOLLAR ROCKET SHIP!</div>
                       </div>
                       <div class="reel-center-play">
                         <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
@@ -801,35 +802,30 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">🔥 Reel 1: The Hidden Body Language Sign Nobody Notices</div>
-                        <p class="reel-footer-desc">"Speaker explains the subconscious reason people look away during serious conversations."</p>
-                        <div class="reel-footer-tags">
-                          <span class="reel-tag-chip">🧠 Psychology</span>
-                          <span class="reel-tag-chip">👁️ Micro-Expressions</span>
-                          <span class="reel-tag-chip">🔥 99% Hook</span>
-                        </div>
-                        <div class="reel-footer-action-bar">
-                          <span class="reel-action-pill active-pill"><span class="reel-pulsing-dot"></span> 📱 Live in Mobile Preview</span>
-                        </div>
+                        <div class="reel-footer-title">⚡ Reel 1:  vs  Billion Futuristic Tech Begins!</div>
                       </div>
+                      <button class="reel-download-btn" type="button" data-clip="1" title="Download Reel 1 (9:16 Short)">
+                        <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
+                      </button>
                     </div>
                   </div>
 
                   <!-- Reel 2 -->
                   <div class="suggest-reel-card" data-clip="2" data-index="1">
                     <div class="reel-video-container">
-                      <div class="reel-card-backdrop" style="background-image: url('thumb_reel_2.jpg');"></div>
-                      <video class="reel-card-video" src="podcast.mp4" poster="thumb_reel_2.jpg" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-backdrop" style="background-image: url('https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg');"></div>
+                      <video class="reel-card-video" src="" poster="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" playsinline muted preload="metadata" loop></video>
                       <div class="reel-card-yt-wrapper" style="display:none;"></div>
                       <div class="reel-card-gradient"></div>
                       <div class="reel-card-topbar">
-                        <span class="reel-score-badge score-high"><span class="fire-icon">🔥</span> 97% Viral</span>
-                        <span class="reel-time-badge">00:18 - 00:33 (15s)</span>
+                        <span class="reel-score-badge score-high">
+                          <span class="fire-icon">🔥</span> 98% Viral
+                        </span>
+                        <span class="reel-time-badge">00:50 - 01:45 (55s)</span>
                       </div>
                       <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
-                      <div class="reel-hook-caption-sticker">
-                        <div class="sticker-text">TRY THIS TODAY</div>
-                        <div class="sticker-subtext">💡 3-Second Head Tilt Hack For Active Listening</div>
+                      <div class="reel-hook-caption-sticker style-classic pos-bottom">
+                        <div class="sticker-text">HE JUST TYPED <span class="cap-highlight">HI</span> WITH HIS MIND!</div>
                       </div>
                       <div class="reel-center-play">
                         <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
@@ -839,35 +835,30 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">💡 Reel 2: The 3-Second Head Tilt Psychology Secret</div>
-                        <p class="reel-footer-desc">"Simple behavioral hack that makes anyone feel instantly understood and open up."</p>
-                        <div class="reel-footer-tags">
-                          <span class="reel-tag-chip">💡 Life Hack</span>
-                          <span class="reel-tag-chip">🤝 Instant Rapport</span>
-                          <span class="reel-tag-chip">🧠 97% Retention</span>
-                        </div>
-                        <div class="reel-footer-action-bar">
-                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
-                        </div>
+                        <div class="reel-footer-title">🧠 Reel 2: Mind-Reading Brain Chip Test!</div>
                       </div>
+                      <button class="reel-download-btn" type="button" data-clip="2" title="Download Reel 2 (9:16 Short)">
+                        <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
+                      </button>
                     </div>
                   </div>
 
                   <!-- Reel 3 -->
                   <div class="suggest-reel-card" data-clip="3" data-index="2">
                     <div class="reel-video-container">
-                      <div class="reel-card-backdrop" style="background-image: url('thumb_reel_3.jpg');"></div>
-                      <video class="reel-card-video" src="podcast.mp4" poster="thumb_reel_3.jpg" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-backdrop" style="background-image: url('https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg');"></div>
+                      <video class="reel-card-video" src="" poster="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" playsinline muted preload="metadata" loop></video>
                       <div class="reel-card-yt-wrapper" style="display:none;"></div>
                       <div class="reel-card-gradient"></div>
                       <div class="reel-card-topbar">
-                        <span class="reel-score-badge score-mid"><span class="fire-icon">⚡</span> 96% Viral</span>
-                        <span class="reel-time-badge">00:36 - 00:51 (15s)</span>
+                        <span class="reel-score-badge score-high reel-yt-replayed">
+                          <span class="yt-play-icon">▶</span> 🔥 YouTube Viral Peak
+                        </span>
+                        <span class="reel-time-badge">01:48 - 02:45 (57s)</span>
                       </div>
                       <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
-                      <div class="reel-hook-caption-sticker">
-                        <div class="sticker-text">NEVER SAY THIS</div>
-                        <div class="sticker-subtext">🛑 Fatal Mistake In Difficult Conversations</div>
+                      <div class="reel-hook-caption-sticker style-classic pos-bottom">
+                        <div class="sticker-text">AN ACTUAL <span class="cap-highlight">FLYING VEHICLE!</span></div>
                       </div>
                       <div class="reel-center-play">
                         <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
@@ -877,35 +868,30 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">⚡ Reel 3: The Fatal Mistake In Difficult Conversations</div>
-                        <p class="reel-footer-desc">"Host breaks down why reacting immediately escalates conflict and how to pause."</p>
-                        <div class="reel-footer-tags">
-                          <span class="reel-tag-chip">🛑 Warning Sign</span>
-                          <span class="reel-tag-chip">💬 Communication</span>
-                          <span class="reel-tag-chip">📈 96% Hook</span>
-                        </div>
-                        <div class="reel-footer-action-bar">
-                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
-                        </div>
+                        <div class="reel-footer-title">🛸 Reel 3: The Real Life Flying Vehicle!</div>
                       </div>
+                      <button class="reel-download-btn" type="button" data-clip="3" title="Download Reel 3 (9:16 Short)">
+                        <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
+                      </button>
                     </div>
                   </div>
 
                   <!-- Reel 4 -->
                   <div class="suggest-reel-card" data-clip="4" data-index="3">
                     <div class="reel-video-container">
-                      <div class="reel-card-backdrop" style="background-image: url('thumb_reel_4.jpg');"></div>
-                      <video class="reel-card-video" src="podcast.mp4" poster="thumb_reel_4.jpg" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-backdrop" style="background-image: url('https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg');"></div>
+                      <video class="reel-card-video" src="" poster="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" playsinline muted preload="metadata" loop></video>
                       <div class="reel-card-yt-wrapper" style="display:none;"></div>
                       <div class="reel-card-gradient"></div>
                       <div class="reel-card-topbar">
-                        <span class="reel-score-badge score-mid"><span class="fire-icon">🤯</span> 95% Viral</span>
-                        <span class="reel-time-badge">00:54 - 01:09 (15s)</span>
+                        <span class="reel-score-badge score-mid">
+                          <span class="fire-icon">🔥</span> 96% Viral
+                        </span>
+                        <span class="reel-time-badge">02:48 - 03:50 (62s)</span>
                       </div>
                       <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
-                      <div class="reel-hook-caption-sticker">
-                        <div class="sticker-text">CALM COMMUNICATION</div>
-                        <div class="sticker-subtext">🎯 De-escalate Any Conflict In 15 Seconds</div>
+                      <div class="reel-hook-caption-sticker style-classic pos-bottom">
+                        <div class="sticker-text">A <span class="cap-highlight">,000,000</span> DOLLAR CAR!</div>
                       </div>
                       <div class="reel-center-play">
                         <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
@@ -915,35 +901,30 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">🤯 Reel 4: How To Disagree Without Being Disrespectful</div>
-                        <p class="reel-footer-desc">"Step-by-step psychological framework for sharing opposing viewpoints with zero drama."</p>
-                        <div class="reel-footer-tags">
-                          <span class="reel-tag-chip">🛡️ De-Escalate</span>
-                          <span class="reel-tag-chip">🧠 High EQ</span>
-                          <span class="reel-tag-chip">💬 95% Value</span>
-                        </div>
-                        <div class="reel-footer-action-bar">
-                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
-                        </div>
+                        <div class="reel-footer-title">🏎️ Reel 4: ,000,000 Concept Supercar!</div>
                       </div>
+                      <button class="reel-download-btn" type="button" data-clip="4" title="Download Reel 4 (9:16 Short)">
+                        <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
+                      </button>
                     </div>
                   </div>
 
                   <!-- Reel 5 -->
                   <div class="suggest-reel-card" data-clip="5" data-index="4">
                     <div class="reel-video-container">
-                      <div class="reel-card-backdrop" style="background-image: url('thumb_reel_5.jpg');"></div>
-                      <video class="reel-card-video" src="podcast.mp4" poster="thumb_reel_5.jpg" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-backdrop" style="background-image: url('https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg');"></div>
+                      <video class="reel-card-video" src="" poster="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" playsinline muted preload="metadata" loop></video>
                       <div class="reel-card-yt-wrapper" style="display:none;"></div>
                       <div class="reel-card-gradient"></div>
                       <div class="reel-card-topbar">
-                        <span class="reel-score-badge score-mid"><span class="fire-icon">💡</span> 93% Viral</span>
-                        <span class="reel-time-badge">01:12 - 01:27 (15s)</span>
+                        <span class="reel-score-badge score-mid">
+                          <span class="fire-icon">🔥</span> 95% Viral
+                        </span>
+                        <span class="reel-time-badge">03:53 - 04:55 (62s)</span>
                       </div>
                       <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
-                      <div class="reel-hook-caption-sticker">
-                        <div class="sticker-text">LISTEN CAREFULLY</div>
-                        <div class="sticker-subtext">👂 Hearing vs Truly Listening Breakdown</div>
+                      <div class="reel-hook-caption-sticker style-classic pos-bottom">
+                        <div class="sticker-text">TASTES LIKE <span class="cap-highlight">REAL CHICKEN!</span></div>
                       </div>
                       <div class="reel-center-play">
                         <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
@@ -953,35 +934,30 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">💡 Reel 5: The Difference Between Hearing And Truly Listening</div>
-                        <p class="reel-footer-desc">"Insightful discussion on reflective listening and emotional validation."</p>
-                        <div class="reel-footer-tags">
-                          <span class="reel-tag-chip">👂 Empathy</span>
-                          <span class="reel-tag-chip">📚 Life Lesson</span>
-                          <span class="reel-tag-chip">💡 93% Retention</span>
-                        </div>
-                        <div class="reel-footer-action-bar">
-                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
-                        </div>
+                        <div class="reel-footer-title">🥩 Reel 5: Lab-Grown Futuristic Meat Taste Test!</div>
                       </div>
+                      <button class="reel-download-btn" type="button" data-clip="5" title="Download Reel 5 (9:16 Short)">
+                        <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
+                      </button>
                     </div>
                   </div>
 
                   <!-- Reel 6 -->
                   <div class="suggest-reel-card" data-clip="6" data-index="5">
                     <div class="reel-video-container">
-                      <div class="reel-card-backdrop" style="background-image: url('thumb_reel_6.jpg');"></div>
-                      <video class="reel-card-video" src="podcast.mp4" poster="thumb_reel_6.jpg" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-backdrop" style="background-image: url('https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg');"></div>
+                      <video class="reel-card-video" src="" poster="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" playsinline muted preload="metadata" loop></video>
                       <div class="reel-card-yt-wrapper" style="display:none;"></div>
                       <div class="reel-card-gradient"></div>
                       <div class="reel-card-topbar">
-                        <span class="reel-score-badge score-mid"><span class="fire-icon">🏆</span> 91% Viral</span>
-                        <span class="reel-time-badge">01:28 - 01:43 (15s)</span>
+                        <span class="reel-score-badge score-high reel-yt-replayed">
+                          <span class="yt-play-icon">▶</span> 🔥 YouTube Viral #2 Peak
+                        </span>
+                        <span class="reel-time-badge">04:58 - 06:10 (72s)</span>
                       </div>
                       <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
-                      <div class="reel-hook-caption-sticker">
-                        <div class="sticker-text">THE CORE TRUTH</div>
-                        <div class="sticker-subtext">🔒 Unspoken Rules Of Long-Term Trust</div>
+                      <div class="reel-hook-caption-sticker style-classic pos-bottom">
+                        <div class="sticker-text">REAL <span class="cap-highlight">WOOLLY MAMMOTH</span> DNA!</div>
                       </div>
                       <div class="reel-center-play">
                         <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
@@ -991,35 +967,30 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">🏆 Reel 6: Unspoken Rules Of Long-Term Trust</div>
-                        <p class="reel-footer-desc">"Closing philosophy on consistency, micro-actions, and emotional security."</p>
-                        <div class="reel-footer-tags">
-                          <span class="reel-tag-chip">🔒 Trust Secret</span>
-                          <span class="reel-tag-chip">🏆 91% Climax</span>
-                          <span class="reel-tag-chip">✨ High Share Rate</span>
-                        </div>
-                        <div class="reel-footer-action-bar">
-                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
-                        </div>
+                        <div class="reel-footer-title">🦣 Reel 6: De-Extinct Woolly Mammoth DNA!</div>
                       </div>
+                      <button class="reel-download-btn" type="button" data-clip="6" title="Download Reel 6 (9:16 Short)">
+                        <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
+                      </button>
                     </div>
                   </div>
 
                   <!-- Reel 7 -->
                   <div class="suggest-reel-card" data-clip="7" data-index="6">
                     <div class="reel-video-container">
-                      <div class="reel-card-backdrop" style="background-image: url('thumb_reel_7.jpg');"></div>
-                      <video class="reel-card-video" src="podcast.mp4" poster="thumb_reel_7.jpg" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-backdrop" style="background-image: url('https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg');"></div>
+                      <video class="reel-card-video" src="" poster="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" playsinline muted preload="metadata" loop></video>
                       <div class="reel-card-yt-wrapper" style="display:none;"></div>
                       <div class="reel-card-gradient"></div>
                       <div class="reel-card-topbar">
-                        <span class="reel-score-badge score-mid"><span class="fire-icon">🎯</span> 90% Viral</span>
-                        <span class="reel-time-badge">01:08 - 01:23 (15s)</span>
+                        <span class="reel-score-badge score-mid">
+                          <span class="fire-icon">🔥</span> 94% Viral
+                        </span>
+                        <span class="reel-time-badge">06:13 - 07:20 (67s)</span>
                       </div>
                       <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
-                      <div class="reel-hook-caption-sticker">
-                        <div class="sticker-text">POWER OF SILENCE</div>
-                        <div class="sticker-subtext">⏳ The 2-Second Silence Rule Before Replying</div>
+                      <div class="reel-hook-caption-sticker style-classic pos-bottom">
+                        <div class="sticker-text"><span class="cap-highlight"> MILLION</span> BIOSPHERE!</div>
                       </div>
                       <div class="reel-center-play">
                         <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
@@ -1029,35 +1000,30 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">🎯 Reel 7: The Micro-Pause That Commands Respect</div>
-                        <p class="reel-footer-desc">"How taking a deliberate breath before responding projects supreme confidence."</p>
-                        <div class="reel-footer-tags">
-                          <span class="reel-tag-chip">⏳ 2-Sec Rule</span>
-                          <span class="reel-tag-chip">🗣️ Charisma</span>
-                          <span class="reel-tag-chip">🎯 90% Hook</span>
-                        </div>
-                        <div class="reel-footer-action-bar">
-                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
-                        </div>
+                        <div class="reel-footer-title">🔴 Reel 7: Living on Mars Biosphere Simulation!</div>
                       </div>
+                      <button class="reel-download-btn" type="button" data-clip="7" title="Download Reel 7 (9:16 Short)">
+                        <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
+                      </button>
                     </div>
                   </div>
 
                   <!-- Reel 8 -->
                   <div class="suggest-reel-card" data-clip="8" data-index="7">
                     <div class="reel-video-container">
-                      <div class="reel-card-backdrop" style="background-image: url('thumb_reel_8.jpg');"></div>
-                      <video class="reel-card-video" src="podcast.mp4" poster="thumb_reel_8.jpg" playsinline muted preload="metadata" loop></video>
+                      <div class="reel-card-backdrop" style="background-image: url('https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg');"></div>
+                      <video class="reel-card-video" src="" poster="https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg" playsinline muted preload="metadata" loop></video>
                       <div class="reel-card-yt-wrapper" style="display:none;"></div>
                       <div class="reel-card-gradient"></div>
                       <div class="reel-card-topbar">
-                        <span class="reel-score-badge score-mid"><span class="fire-icon">🚀</span> 89% Viral</span>
-                        <span class="reel-time-badge">01:26 - 01:41 (15s)</span>
+                        <span class="reel-score-badge score-high reel-yt-replayed">
+                          <span class="yt-play-icon">▶</span> 🔥 YouTube #1 MOST REPLAYED
+                        </span>
+                        <span class="reel-time-badge">07:23 - 08:30 (67s)</span>
                       </div>
                       <button class="reel-audio-btn" type="button" title="Mute/Unmute Audio"><span class="sound-icon">🔇</span></button>
-                      <div class="reel-hook-caption-sticker">
-                        <div class="sticker-text">UNFILTERED LAUGHS</div>
-                        <div class="sticker-subtext">😂 Candid Outtakes & Funniest Off-Script Moment</div>
+                      <div class="reel-hook-caption-sticker style-classic pos-bottom">
+                        <div class="sticker-text">ONE BILLION <span class="cap-highlight">DOLLAR ROCKET!</span></div>
                       </div>
                       <div class="reel-center-play">
                         <button class="reel-play-circle-btn" type="button" aria-label="Play/Pause Reel">
@@ -1067,22 +1033,15 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">🚀 Reel 8: Behind-The-Scenes Banter & Wrap-Up</div>
-                        <p class="reel-footer-desc">"Host and guest burst into genuine laughter breaking character at recording wrap."</p>
-                        <div class="reel-footer-tags">
-                          <span class="reel-tag-chip">😂 Blooper</span>
-                          <span class="reel-tag-chip">💬 Comment Spike</span>
-                          <span class="reel-tag-chip">🚀 89% Outro</span>
-                        </div>
-                        <div class="reel-footer-action-bar">
-                          <span class="reel-action-pill">▶ Click to Edit & Play</span>
-                        </div>
+                        <div class="reel-footer-title">🚀 Reel 8: ,000,000,000 Starship Rocket Tour!</div>
                       </div>
+                      <button class="reel-download-btn" type="button" data-clip="8" title="Download Reel 8 (9:16 Short)">
+                        <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-
               <!-- AI Titles & Hashtags Box -->
               <div class="card">
                 <div class="card-header">
@@ -1411,6 +1370,6 @@
     </svg>
   </div>
 
-  <script src="app.js?v=20261111_nocache_v13"></script>
+  <script src="app.js?v=20261111_nocache_v20"></script>
 </body>
 </html>
