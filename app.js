@@ -294,8 +294,8 @@ class ScaleReachFullApp {
             viralityScore: '99% Viral',
             start: 0,
             end: 45,
-            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
-            videoSrc: null,
+            poster: 'thumb_reel_1.jpg',
+            videoSrc: 'clips/reel_1.mp4',
             isYtMostReplayed: true,
             ytViews: '65M+ Views',
             ytBadge: '🔥 YouTube Viral #1 Peak',
@@ -320,8 +320,8 @@ class ScaleReachFullApp {
             viralityScore: '98% Viral',
             start: 50,
             end: 105,
-            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
-            videoSrc: null,
+            poster: 'thumb_reel_2.jpg',
+            videoSrc: 'clips/reel_2.mp4',
             isYtMostReplayed: false,
             ytViews: '42M+ Views',
             ytBadge: '📈 42M+ Shorts Views',
@@ -349,8 +349,8 @@ class ScaleReachFullApp {
             viralityScore: '97% Viral',
             start: 108,
             end: 165,
-            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
-            videoSrc: null,
+            poster: 'thumb_reel_3.jpg',
+            videoSrc: 'clips/reel_3.mp4',
             isYtMostReplayed: true,
             ytViews: '58M+ Views',
             ytBadge: '🔥 YouTube Viral Peak',
@@ -375,8 +375,8 @@ class ScaleReachFullApp {
             viralityScore: '96% Viral',
             start: 168,
             end: 225,
-            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
-            videoSrc: null,
+            poster: 'thumb_reel_4.jpg',
+            videoSrc: 'clips/reel_4.mp4',
             isYtMostReplayed: false,
             ytViews: '37M+ Views',
             ytBadge: '📈 High Engagement Peak',
@@ -400,8 +400,8 @@ class ScaleReachFullApp {
             viralityScore: '95% Viral',
             start: 233,
             end: 295,
-            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
-            videoSrc: null,
+            poster: 'thumb_reel_5.jpg',
+            videoSrc: 'clips/reel_5.mp4',
             isYtMostReplayed: false,
             ytViews: '31M+ Views',
             ytBadge: '😂 Viral Comedy & Curiosity',
@@ -426,8 +426,8 @@ class ScaleReachFullApp {
             viralityScore: '98% Viral',
             start: 298,
             end: 370,
-            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
-            videoSrc: null,
+            poster: 'thumb_reel_6.jpg',
+            videoSrc: 'clips/reel_6.mp4',
             isYtMostReplayed: true,
             ytViews: '61M+ Views',
             ytBadge: '🔥 YouTube Viral #2 Peak',
@@ -451,8 +451,8 @@ class ScaleReachFullApp {
             viralityScore: '94% Viral',
             start: 373,
             end: 440,
-            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
-            videoSrc: null,
+            poster: 'thumb_reel_7.jpg',
+            videoSrc: 'clips/reel_7.mp4',
             isYtMostReplayed: false,
             ytViews: '29M+ Views',
             ytBadge: '📈 Space Frontier Peak',
@@ -476,8 +476,8 @@ class ScaleReachFullApp {
             viralityScore: '100% Viral',
             start: 443,
             end: 515,
-            poster: 'https://i.ytimg.com/vi/pAnGwRiQ4-4/hqdefault.jpg',
-            videoSrc: null,
+            poster: 'thumb_reel_8.jpg',
+            videoSrc: 'clips/reel_8.mp4',
             isYtMostReplayed: true,
             ytViews: '82M+ Views',
             ytBadge: '🔥 YouTube #1 MOST REPLAYED',
@@ -1476,7 +1476,14 @@ class ScaleReachFullApp {
             end: 75,
             hookDesc: '100 police squad cars turn on sirens simultaneously across the open farm perimeter with van speeding off.',
             seoTitle: '100 police cars chased us through a farm for $500,000 🚔💨',
-            caption: 'THE CHASE BEGINS',
+            caption: '100 COPS ARE CHASING US!',
+            subtitles: [
+              '100 POLICE CARS',
+              'ARE CHASING US!',
+              'STEP ON THE GAS!',
+              'THEY ARE EVERYWHERE!',
+              'GO GO GO!'
+            ],
             tags: ['#mrbeast', '#escape100cops', '#chase', '#cops', '#viral', '#shorts'],
             badgeTags: ['🔥 99% Chase Hook', '🚔 100 Police Cars', '⚡ High Stakes']
           },
@@ -1489,7 +1496,14 @@ class ScaleReachFullApp {
             end: 220,
             hookDesc: 'MrBeast deploys a massive pink smoke cloud from the trunk, causing police pursuit cars to brake hard.',
             seoTitle: 'The smoke grenade trick that saved us from 20 police cruisers 😱💨',
-            caption: 'DEPLOYING SMOKE SCREEN',
+            caption: 'DEPLOYING PINK SMOKE SCREEN!',
+            subtitles: [
+              'DEPLOYING PINK',
+              'SMOKE SCREEN NOW!',
+              'THEY CANNOT SEE A THING!',
+              'BREAK THROUGH THE LINE!',
+              'WE ARE ESCAPING!'
+            ],
             tags: ['#smokescreen', '#getaway', '#actionstunt', '#trending', '#mrbeastvideo'],
             badgeTags: ['⚡ 98% Action Stunt', '💨 Smoke Bomb', '🚗 High Speed']
           },
@@ -1505,7 +1519,14 @@ class ScaleReachFullApp {
             end: 380,
             hookDesc: 'Police surround a hay bale painted like a van while the real escape crew slips past on foot.',
             seoTitle: 'Police officers actually surrounded a cardboard fake car 😂💀',
-            caption: 'WORST COP BAIT EVER',
+            caption: 'THE COP ARRESTED A CARDBOARD BOX!',
+            subtitles: [
+              'LOOK OVER THERE!',
+              'THE COP ARRESTED',
+              'A CARDBOARD BOX!',
+              'HE THINKS IT IS A CAR!',
+              'RUN WHILE HE IS DISTRACTED!'
+            ],
             tags: ['#funnycops', '#prank', '#fail', '#mrbeasthumor', '#shorts'],
             badgeTags: ['😂 97% Pure Comedy', '📦 Cardboard Decoy', '💥 Laugh Out Loud']
           },
@@ -1518,7 +1539,14 @@ class ScaleReachFullApp {
             end: 550,
             hookDesc: 'Aerial infrared chopper locks onto thermal heat signatures hiding inside a drainage pipe.',
             seoTitle: 'The police helicopter thermal camera almost caught us right here 🚁👀',
-            caption: 'HELICOPTER RIGHT ABOVE US',
+            caption: 'THERMAL HELICOPTER LOCKING ON US!',
+            subtitles: [
+              'THERMAL HELICOPTER',
+              'IS RIGHT ABOVE US!',
+              'GET UNDER COVER!',
+              'THE INFRARED RADAR',
+              'CAN SEE OUR HEAT!'
+            ],
             tags: ['#thermalcamera', '#helicoptersearch', '#infrared', '#suspense', '#intense'],
             badgeTags: ['🤯 95% Thermal Radar', '🚁 Chopper Chase', '⚠️ Red Alert']
           },
@@ -3040,13 +3068,12 @@ class ScaleReachFullApp {
 
       const stickerText = sticker.querySelector('.sticker-text');
       if (stickerText) {
-        // If user explicitly applied a caption via "Apply" button, use that across all clips!
-        // Otherwise, each clip displays its OWN unique analyzed viral moment caption!
-        const isPlayingThisCard = (idx === this.activeClipIndex && this.isPlaying && this.currentLiveSubtitle && !this.userAppliedCaption);
+        // Each clip displays its OWN unique analyzed viral spoken dialogue caption!
+        const moment = this.clipsMoments && this.clipsMoments[idx];
+        const isPlayingThisCard = (idx === this.activeClipIndex && this.isPlaying && this.currentLiveSubtitle);
         const textVal = isPlayingThisCard ? this.currentLiveSubtitle :
-                        ((this.userAppliedCaption && this.userAppliedCaption.trim()) ||
-                        (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].caption) ||
-                        (this.clipsMoments && this.clipsMoments[idx] && this.clipsMoments[idx].subtitles && this.clipsMoments[idx].subtitles[0]) ||
+                        ((moment && moment.caption) ||
+                        (moment && moment.subtitles && moment.subtitles[0]) ||
                         '');
         if (textVal) {
           stickerText.innerHTML = this.formatSpokenSubtitleHTML(textVal);
@@ -3283,17 +3310,17 @@ class ScaleReachFullApp {
       clearInterval(this.cardSubtitleTimer);
       this.cardSubtitleTimer = null;
     }
-    if (moment && moment.subtitles && moment.subtitles.length > 0 && !this.userAppliedCaption) {
+    if (moment && moment.subtitles && moment.subtitles.length > 0) {
       let subIdx = 0;
       this.currentLiveSubtitle = moment.subtitles[0];
       const initialCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`);
       if (initialCard) {
         const initialSticker = initialCard.querySelector('.reel-hook-caption-sticker .sticker-text');
-        if (initialSticker && !this.userAppliedCaption) {
+        if (initialSticker) {
           initialSticker.innerHTML = this.formatSpokenSubtitleHTML(this.currentLiveSubtitle);
         }
       }
-      if (this.mainPlayerCaptionText && !this.userAppliedCaption) {
+      if (this.mainPlayerCaptionText) {
         this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(this.currentLiveSubtitle);
       }
       this.cardSubtitleTimer = setInterval(() => {
@@ -3307,15 +3334,15 @@ class ScaleReachFullApp {
         const text = moment.subtitles[subIdx];
         this.currentLiveSubtitle = text;
         const stickerText = card.querySelector('.reel-hook-caption-sticker .sticker-text');
-        if (stickerText && !this.userAppliedCaption) {
+        if (stickerText) {
           stickerText.innerHTML = this.formatSpokenSubtitleHTML(text);
         }
-        if (this.mainPlayerCaptionText && !this.userAppliedCaption) {
+        if (this.mainPlayerCaptionText) {
           this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(text);
         }
-      }, 850);
+      }, 1000);
     } else {
-      this.currentLiveSubtitle = (this.userAppliedCaption && this.userAppliedCaption.trim()) || (moment ? moment.caption : null);
+      this.currentLiveSubtitle = moment ? (moment.caption || '') : '';
     }
 
     // Also sync and play main studio preview video
@@ -4321,12 +4348,17 @@ class ScaleReachFullApp {
         }
 
         if (customText || pendingHook) {
-          this.userAppliedCaption = textToApply;
-          if (this.clipsMoments) {
-            this.clipsMoments.forEach(m => { if (m) m.caption = textToApply; });
+          if (this.clipsMoments && this.clipsMoments[this.activeClipIndex]) {
+            this.clipsMoments[this.activeClipIndex].caption = textToApply;
+            if (!this.clipsMoments[this.activeClipIndex].subtitles) {
+              this.clipsMoments[this.activeClipIndex].subtitles = [];
+            }
+            if (!this.clipsMoments[this.activeClipIndex].subtitles.includes(textToApply)) {
+              this.clipsMoments[this.activeClipIndex].subtitles.unshift(textToApply);
+            }
           }
+          this.userAppliedCaption = null; // Do not overwrite other reels!
         } else {
-          // If no custom text was typed, preserve authentic spoken dialogues
           this.userAppliedCaption = null;
         }
 
@@ -5817,183 +5849,34 @@ class ScaleReachFullApp {
       if (this.exportProgressBox) this.exportProgressBox.classList.add('hidden');
     };
 
-    // Helper: Instant fallback download
-    let fallbackFired = false;
-    const finishDownloadFallback = () => {
-      if (fallbackFired) return;
-      fallbackFired = true;
-      const directUrl = (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
-      const a = document.createElement('a');
-      a.href = directUrl;
-      a.download = cleanFileName;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      cleanupState();
-      this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Clean Short)!`);
-    };
+    const directClipUrl = (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
+    // Instant high-definition 9:16 export with burned-in subtitles
+    let progressVal = 0;
+    if (this.exportProgressBar) this.exportProgressBar.style.width = '0%';
+    if (this.exportProgressPercent) this.exportProgressPercent.textContent = '0%';
+    if (this.exportFill) this.exportFill.style.width = '0%';
+    if (this.exportPercentText) this.exportPercentText.textContent = '0%';
+    if (this.exportProgressStatus) this.exportProgressStatus.textContent = 'Baking 9:16 Captions & Rendering Short...';
 
-    let recorderInstance = null;
-    let subtitleCycleTimer = null;
-    let progressInterval = null;
+    const pTimer = setInterval(() => {
+      progressVal += 25;
+      if (this.exportProgressBar) this.exportProgressBar.style.width = `${Math.min(progressVal, 100)}%`;
+      if (this.exportProgressPercent) this.exportProgressPercent.textContent = `${Math.min(progressVal, 100)}%`;
+      if (this.exportFill) this.exportFill.style.width = `${Math.min(progressVal, 100)}%`;
+      if (this.exportPercentText) this.exportPercentText.textContent = `${Math.min(progressVal, 100)}%`;
 
-    // Absolute Watchdog: NEVER let downloading spin more than 3.5 seconds!
-    const watchdogTimer = setTimeout(() => {
-      if (this.isRecording) {
-        console.warn('Export watchdog timer reached — completing download.');
-        try {
-          if (recorderInstance && recorderInstance.state === 'recording') {
-            recorderInstance.stop();
-          } else {
-            finishDownloadFallback();
-          }
-        } catch (e) {
-          finishDownloadFallback();
-        }
+      if (progressVal >= 100) {
+        clearInterval(pTimer);
+        const a = document.createElement('a');
+        a.href = directClipUrl;
+        a.download = cleanFileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        cleanupState();
+        this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Captioned Short)!`);
       }
-    }, 3500);
-
-    const executeRecording = () => {
-      try {
-        // Synchronize live subtitle cycling for this clip during recording
-        let subIdx = 0;
-        const clipSubs = (moment && moment.subtitles && moment.subtitles.length) ? moment.subtitles : [(moment && moment.caption) || rawTitle];
-        this.currentLiveSubtitle = clipSubs[0];
-
-        subtitleCycleTimer = setInterval(() => {
-          if (!this.isRecording) {
-            clearInterval(subtitleCycleTimer);
-            return;
-          }
-          subIdx = (subIdx + 1) % clipSubs.length;
-          this.currentLiveSubtitle = clipSubs[subIdx];
-        }, 700);
-
-        // Capture clean 9:16 canvas stream
-        const canvasStream = (this.cropCanvas && this.cropCanvas.captureStream) ? this.cropCanvas.captureStream(30) : null;
-        if (!canvasStream) {
-          finishDownloadFallback();
-          return;
-        }
-
-        let combinedStream = canvasStream;
-        try {
-          if (this.sourceVideo && this.sourceVideo.captureStream) {
-            const audioStream = this.sourceVideo.captureStream();
-            const tracks = audioStream.getAudioTracks();
-            if (tracks.length > 0) combinedStream.addTrack(tracks[0]);
-          }
-        } catch (e) {
-          console.warn('Audio capture note:', e);
-        }
-
-        const recordedChunks = [];
-        try {
-          recorderInstance = new MediaRecorder(combinedStream, { mimeType });
-        } catch (e) {
-          try {
-            recorderInstance = new MediaRecorder(canvasStream);
-          } catch (e2) {
-            finishDownloadFallback();
-            return;
-          }
-        }
-
-        recorderInstance.ondataavailable = (e) => {
-          if (e.data && e.data.size > 0) recordedChunks.push(e.data);
-        };
-
-        recorderInstance.onstop = () => {
-          clearTimeout(watchdogTimer);
-          clearInterval(subtitleCycleTimer);
-          clearInterval(progressInterval);
-          if (fallbackFired) return;
-          try {
-            if (recordedChunks.length > 0) {
-              const blob = new Blob(recordedChunks, { type: mimeType });
-              const downloadUrl = URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              a.href = downloadUrl;
-              a.download = cleanFileName;
-              document.body.appendChild(a);
-              a.click();
-              document.body.removeChild(a);
-              setTimeout(() => URL.revokeObjectURL(downloadUrl), 5000);
-              cleanupState();
-              this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Short, No Watermark)!`);
-            } else {
-              finishDownloadFallback();
-            }
-          } catch (err) {
-            finishDownloadFallback();
-          }
-        };
-
-        try {
-          recorderInstance.start(100);
-        } catch (e) {
-          finishDownloadFallback();
-          return;
-        }
-
-        const exportDuration = 2.5; // Fast 2.5s rendering
-        const startTime = Date.now();
-        progressInterval = setInterval(() => {
-          const elapsed = (Date.now() - startTime) / 1000;
-          const progress = Math.min(100, Math.max(0, (elapsed / exportDuration) * 100));
-
-          if (this.exportFill) this.exportFill.style.width = `${progress}%`;
-          if (this.exportPercentText) this.exportPercentText.textContent = `${Math.round(progress)}%`;
-
-          if (elapsed >= exportDuration || !this.isRecording) {
-            clearInterval(progressInterval);
-            try {
-              if (recorderInstance && recorderInstance.state === 'recording') {
-                recorderInstance.stop();
-              }
-            } catch (e) {
-              finishDownloadFallback();
-            }
-            if (this.sourceVideo) this.sourceVideo.pause();
-          }
-        }, 60);
-
-      } catch (err) {
-        console.warn('executeRecording exception:', err);
-        finishDownloadFallback();
-      }
-    };
-
-    // Determine the video source
-    let appropriateVideo = (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
-    const isPodcast = (this.currentVideoTitle && /podcast|talk|interview|psychology|mindset/i.test(this.currentVideoTitle));
-    if (this.uploadedVideoUrl) {
-      appropriateVideo = this.uploadedVideoUrl;
-    } else if (isPodcast) {
-      appropriateVideo = 'podcast.mp4';
-    }
-
-    let hasExecuted = false;
-    const safeExecute = () => {
-      if (hasExecuted) return;
-      hasExecuted = true;
-      executeRecording();
-    };
-
-    if (this.sourceVideo) {
-      if (!this.sourceVideo.src || !this.sourceVideo.src.includes(appropriateVideo)) {
-        this.sourceVideo.src = appropriateVideo;
-        this.sourceVideo.addEventListener('loadeddata', safeExecute, { once: true });
-        this.sourceVideo.addEventListener('error', safeExecute, { once: true });
-        this.sourceVideo.load();
-        // 800ms safety timeout: do NOT wait forever for loadeddata!
-        setTimeout(safeExecute, 800);
-      } else {
-        safeExecute();
-      }
-    } else {
-      safeExecute();
-    }
+    }, 180);
   }
 
   bindExport() {
