@@ -90,6 +90,8 @@ class ScaleReachFullApp {
     this.sourceVideo = document.getElementById('sourceVideo');
     this.youtubeIframe = document.getElementById('youtubeIframe');
     this.videoControlsOverlay = document.getElementById('videoControlsOverlay');
+    this.mainPlayerCaptionSticker = document.getElementById('mainPlayerCaptionSticker');
+    this.mainPlayerCaptionText = document.getElementById('mainPlayerCaptionText');
     this.playPauseBtn = document.getElementById('playPauseBtn');
     this.currentTimeDisplay = document.getElementById('currentTimeDisplay');
     this.muteBtn = document.getElementById('muteBtn');
@@ -1456,215 +1458,6 @@ class ScaleReachFullApp {
         ]
       },
       {
-        id: 'mrbeast_haaland',
-        matchKeywords: ['_c2e1ncl3sc', 'beat professional athlete'],
-        title: 'Beat Professional Athlete, Win $100,000',
-        author: 'MrBeast • 22:28',
-        duration: 1348,
-        clips: [
-          {
-            id: 1,
-            title: '🔥 Reel 1: Erling Haaland $100,000 Target Shootout',
-            hookText: '⚡ Precision Bullseye vs Manchester City Striker',
-            viralityScore: '99% Viral',
-            start: 20,
-            end: 50,
-            poster: 'thumb_reel_1.jpg',
-            videoSrc: 'clips/reel_1.mp4',
-            isYtMostReplayed: true,
-            ytViews: '48M+ Views',
-            ytBadge: '🔥 YouTube Viral #2 Peak',
-            hookDesc: 'Erling Haaland takes on MrBeast in a high-stakes soccer target precision shootout for $100,000.',
-            seoTitle: 'Erling Haaland target shootout for $100,000 is unbelievable ⚽😱',
-            caption: 'FIVE SHOTS ON HAALAND!',
-            subtitles: [
-              'FIVE SHOTS',
-              'TO SCORE ON',
-              'ERLING HAALAND!',
-              'IF I SCORE ONE',
-              'WE WIN $100,000!',
-              'LOOK AT THAT STRIKE!'
-            ],
-            tags: ['#mrbeast', '#haaland', '#soccer', '#target', '#100k', '#viral'],
-            badgeTags: ['🔥 YouTube Peak (48M)', '⚽ Haaland Bullseye', '⚡ Instant Hook']
-          },
-          {
-            id: 2,
-            title: '⛸️ Reel 2: Alysa Liu Olympic Ice Track Sprint',
-            hookText: '❄️ High Speed Gliding Through Flaming Obstacles',
-            viralityScore: '94% Viral',
-            start: 162,
-            end: 192,
-            poster: 'thumb_reel_2.jpg',
-            videoSrc: 'clips/reel_2.mp4',
-            isYtMostReplayed: false,
-            ytViews: '24M+ Views',
-            ytBadge: '📈 24M+ Shorts Views',
-            hookDesc: 'Olympian Alysa Liu races at top speed across an obstacle-filled ice rink for charity challenge.',
-            seoTitle: 'Olympic figure skater races through an extreme obstacle ice track ⛸️⚡',
-            caption: 'OLYMPIC ICE OBSTACLE!',
-            subtitles: [
-              'OLYMPIC ICE',
-              'OBSTACLE COURSE!',
-              'LOOK AT THAT SPEED!',
-              'DO NOT SLIP NOW!',
-              'FLAWLESS RUN!'
-            ],
-            tags: ['#alysaliu', '#figureskating', '#olympics', '#mrbeast', '#speed'],
-            badgeTags: ['📈 24M+ Shorts Views', '⛸️ Ice Agility', '⚡ Max Speed']
-          },
-          {
-            id: 3,
-            title: '🏏 Reel 3: Hardik Pandya Baseball Home Run Showdown',
-            hookText: '💥 Cricket Star Hits 3 Home Runs To Win $100,000',
-            viralityScore: '96% Viral',
-            start: 348,
-            end: 378,
-            poster: 'thumb_reel_3.jpg',
-            videoSrc: 'clips/reel_3.mp4',
-            isYtMostReplayed: false,
-            ytViews: '29M+ Views',
-            ytBadge: '📈 29M+ Shorts Views',
-            hookDesc: 'Cricket superstar Hardik Pandya tries baseball for the first time in a race to hit 3 home runs for charity.',
-            seoTitle: 'Hardik Pandya tried baseball for the first time for $100,000 🏏⚾',
-            caption: 'THREE HOME RUNS!',
-            subtitles: [
-              'THREE HOME RUNS!',
-              'HIT IT OUT',
-              'OF THE STADIUM!',
-              'RIGHT OVER THE WALL!',
-              '$100,000 FOR CHARITY!'
-            ],
-            tags: ['#hardikpandya', '#cricket', '#baseball', '#mrbeast', '#viral'],
-            badgeTags: ['📈 29M+ Shorts Views', '⚾ 3 Home Runs', '🚀 Win for Charity']
-          },
-          {
-            id: 4,
-            title: '🎯 Reel 4: Caitlin Clark Deep Half-Court Shot Masterclass',
-            hookText: '🏀 Draining 4 Three-Pointers & Logo Half-Court Swish',
-            viralityScore: '98% Viral',
-            start: 515,
-            end: 545,
-            poster: 'thumb_reel_4.jpg',
-            videoSrc: 'clips/reel_4.mp4',
-            isYtMostReplayed: true,
-            ytViews: '42M+ Views',
-            ytBadge: '🔥 YouTube Viral #3 Peak',
-            hookDesc: 'WNBA star Caitlin Clark roasts MrBeast\'s airballs, hits four 3-pointers and swishes a half-court shot for $90,000.',
-            seoTitle: 'Caitlin Clark made an impossible half-court shot look so easy 🤯🏀',
-            caption: 'LOGO HALF-COURT SHOT!',
-            subtitles: [
-              'LOGO HALF-COURT SHOT!',
-              'SHE CANNOT MISS!',
-              'TWENTY THOUSAND EACH!',
-              'NOTHING BUT NET!',
-              '$90,000 WON!'
-            ],
-            tags: ['#caitlinclark', '#wnba', '#basketball', '#halfcourt', '#mrbeast'],
-            badgeTags: ['🔥 YouTube Peak (42M)', '🏀 Half-Court Swish', '🎯 $90k Won']
-          },
-          {
-            id: 5,
-            title: '😂 Reel 5: Gordon Ramsay $100k Kitchen Roast & Taste Test',
-            hookText: '🔥 Gordon Ramsay Idiot Sandwich Moment & Kitchen Chaos',
-            viralityScore: '97% Viral',
-            start: 945,
-            end: 975,
-            poster: 'thumb_reel_5.jpg',
-            videoSrc: 'clips/reel_5.mp4',
-            isYtMostReplayed: false,
-            ytViews: '39M+ Views',
-            ytBadge: '😂 Viral Comedy Peak',
-            hookDesc: 'Gordon Ramsay competes against MrBeast in a cook-off and drops the iconic idiot sandwich roast on Nolan.',
-            seoTitle: 'Gordon Ramsay calling Nolan an idiot sandwich in MrBeast video 😂💀',
-            caption: 'TASTES LIKE CARDBOARD!',
-            subtitles: [
-              'TASTES LIKE CARDBOARD!',
-              'WHAT ARE YOU?!',
-              'AN IDIOT SANDWICH!',
-              'TEN MINUTES LEFT!',
-              'ABSOLUTELY DISGUSTING!'
-            ],
-            tags: ['#gordonramsay', '#idiotsandwich', '#mrbeast', '#roast', '#funny'],
-            badgeTags: ['😂 39M+ Shorts Views', '👨‍🍳 Idiot Sandwich', '🤣 Pure Comedy']
-          },
-          {
-            id: 6,
-            title: '🤸 Reel 6: Simone Biles High-Altitude Sky Beam Stunt',
-            hookText: '😱 100 Feet in The Air on a 1.5-Inch Narrow Beam',
-            viralityScore: '97% Viral',
-            start: 1035,
-            end: 1065,
-            poster: 'thumb_reel_6.jpg',
-            videoSrc: 'clips/reel_6.mp4',
-            isYtMostReplayed: false,
-            ytViews: '36M+ Views',
-            ytBadge: '📈 36M+ Shorts Views',
-            hookDesc: 'Olympic gymnastics legend Simone Biles crosses an ultra-thin 1.5-inch beam suspended 100 feet in the air for foster kids.',
-            seoTitle: 'Simone Biles did a balance beam challenge 100 FEET in the air 🤯🤸',
-            caption: '100 FEET IN THE AIR!',
-            subtitles: [
-              '100 FEET',
-              'IN THE AIR!',
-              'DO NOT LOOK DOWN!',
-              '1.5 INCHES WIDE!',
-              'QUARTER MILLION DOLLARS!'
-            ],
-            tags: ['#simonebiles', '#gymnastics', '#mrbeast', '#daredevil', '#charity'],
-            badgeTags: ['📈 36M+ Shorts Views', '🤸 Sky Balance', '💥 100ft High']
-          },
-          {
-            id: 7,
-            title: '👑 Reel 7: LeBron James vs MrBeast $100k 3-Point Shootout',
-            hookText: '🏀 The #1 Most Replayed Moment on YouTube in Akron, Ohio',
-            viralityScore: '100% Viral',
-            start: 1255,
-            end: 1285,
-            poster: 'thumb_reel_7.jpg',
-            videoSrc: 'clips/reel_7.mp4',
-            isYtMostReplayed: true,
-            ytViews: '75M+ Views',
-            ytBadge: '🔥 YouTube #1 MOST REPLAYED',
-            hookDesc: 'LeBron James and Jimmy face off in a 3-point shootout where Jimmy shockingly scores 5 to LeBron\'s 4.',
-            seoTitle: 'MrBeast actually challenged LeBron James to a 3-point contest for $100,000 👑🏀',
-            caption: 'LEBRON 3-POINT SHOOTOUT!',
-            subtitles: [
-              'LEBRON 3-POINT SHOOTOUT!',
-              'CAN JIMMY WIN?!',
-              'FIVE IN A ROW!',
-              'HE ACTUALLY BEAT ME!',
-              'WHAT A SHOT!'
-            ],
-            tags: ['#lebron', '#mrbeast', '#basketball', '#100k', '#mostreplayed', '#viral'],
-            badgeTags: ['🔥 #1 Most Replayed (75M)', '👑 LeBron Shootout', '💥 100% Viral Peak']
-          },
-          {
-            id: 8,
-            title: '💰 Reel 8: $500,000+ Grand Charity Total & Outro',
-            hookText: '🏆 Half A Million Dollars Raised For Athletes\' Charities',
-            viralityScore: '93% Viral',
-            start: 1335,
-            end: 1347,
-            poster: 'thumb_reel_8.jpg',
-            videoSrc: 'clips/reel_8.mp4',
-            isYtMostReplayed: false,
-            ytViews: '31M+ Views',
-            ytBadge: '✨ Emotional Climax',
-            hookDesc: 'MrBeast celebrates raising over $500,000 across all challenges for the athletes\' charity foundations.',
-            seoTitle: 'We raised over $500,000 for charity with professional athletes 🥹💰',
-            caption: '$500,000 FOR CHARITY!',
-            subtitles: [
-              '$500,000 FOR CHARITY!',
-              'EVERY SINGLE DOLLAR!',
-              'THANK YOU TO THE PROS!',
-              'GREATEST CHALLENGE EVER!'
-            ],
-            tags: ['#mrbeast', '#charity', '#wholesome', '#giveaway', '#athletes', '#shorts'],
-            badgeTags: ['✨ 31M+ Shorts Views', '💰 $500k Total', '🏆 Grand Finale']
-          }
-        ]
-      },
-      {
         id: 'mrbeast_escape_cops',
         matchKeywords: ['escape', '100 cops', '500,000', '500k', 'cops'],
         title: 'Escape 100 Cops, Win $500,000',
@@ -1985,10 +1778,9 @@ class ScaleReachFullApp {
     // Clean old athlete video cache from localStorage so Futuristic Tech always loads
     try {
       if (typeof localStorage !== 'undefined') {
-        const sid = localStorage.getItem('scalereach_yt_id');
-        if (!sid || sid === '_c2e1Ncl3Sc' || sid === '0e3GPea1Tyg') {
-          localStorage.setItem('scalereach_yt_id', 'pAnGwRiQ4-4');
-        }
+        localStorage.removeItem('scalereach_custom_caption');
+        localStorage.removeItem('scalereach_active_clip');
+        localStorage.setItem('scalereach_yt_id', 'pAnGwRiQ4-4');
       }
     } catch(e) {}
     this.loadYouTubeVideo('pAnGwRiQ4-4', 'https://www.youtube.com/watch?v=pAnGwRiQ4-4');
@@ -3269,6 +3061,30 @@ class ScaleReachFullApp {
         stickerSubtext.remove();
       }
     });
+
+    // Also synchronize main widescreen video player caption overlay
+    if (this.mainPlayerCaptionSticker) {
+      this.mainPlayerCaptionSticker.classList.remove(
+        'style-classic', 'style-cyan_slide', 'style-italic_red', 'style-cream_blue',
+        'style-red_spin', 'style-violet', 'style-blue_glow', 'style-toxic_green',
+        'pos-top', 'pos-center', 'pos-bottom',
+        'size-s', 'size-m', 'size-l', 'size-xl',
+        'is-hidden'
+      );
+      if (!this.captionsEnabled) {
+        this.mainPlayerCaptionSticker.classList.add('is-hidden');
+      } else {
+        this.mainPlayerCaptionSticker.classList.add(styleClass, posClass, sizeClass);
+      }
+      const activeMoment = this.clipsMoments && this.clipsMoments[this.activeClipIndex];
+      const mainText = (this.currentLiveSubtitle && this.currentLiveSubtitle.trim()) ||
+                       (this.userAppliedCaption && this.userAppliedCaption.trim()) ||
+                       (activeMoment && activeMoment.caption) ||
+                       (activeMoment && activeMoment.subtitles && activeMoment.subtitles[0]) || '';
+      if (this.mainPlayerCaptionText && mainText) {
+        this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(mainText);
+      }
+    }
   }
 
   postYouTubeCommand(iframe, func, args) {
@@ -3477,6 +3293,9 @@ class ScaleReachFullApp {
           initialSticker.innerHTML = this.formatSpokenSubtitleHTML(this.currentLiveSubtitle);
         }
       }
+      if (this.mainPlayerCaptionText && !this.userAppliedCaption) {
+        this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(this.currentLiveSubtitle);
+      }
       this.cardSubtitleTimer = setInterval(() => {
         const card = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`);
         if (!card || !card.classList.contains('is-playing')) {
@@ -3490,6 +3309,9 @@ class ScaleReachFullApp {
         const stickerText = card.querySelector('.reel-hook-caption-sticker .sticker-text');
         if (stickerText && !this.userAppliedCaption) {
           stickerText.innerHTML = this.formatSpokenSubtitleHTML(text);
+        }
+        if (this.mainPlayerCaptionText && !this.userAppliedCaption) {
+          this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(text);
         }
       }, 850);
     } else {
@@ -3561,6 +3383,9 @@ class ScaleReachFullApp {
       const stickerText = targetCard.querySelector('.reel-hook-caption-sticker .sticker-text');
       if (stickerText) {
         stickerText.innerHTML = this.formatSpokenSubtitleHTML(moment.caption);
+      }
+      if (this.mainPlayerCaptionText) {
+        this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(moment.caption);
       }
     }
 
@@ -4506,10 +4331,24 @@ class ScaleReachFullApp {
         }
 
         if (this.customCaptionInput) this.customCaptionInput.value = textToApply;
+
+        this.captionsEnabled = true;
+        if (this.subnavCaptionsBtn) {
+          this.subnavCaptionsBtn.textContent = '🔥 Captions: ON';
+          this.subnavCaptionsBtn.style.color = '#3b82f6';
+        }
+        if (this.studioCaptionMasterToggle) {
+          this.studioCaptionMasterToggle.checked = true;
+        }
         
-        // 1. Instantly update all suggested clip cards
+        // 1. Instantly update all suggested clip cards and main player overlay
         this.updateSuggestedReelsCaptions();
         this.updateCaptionsStatusBanner();
+
+        // 2. Start video playback with speech subtitles if not playing
+        if (!this.isPlaying) {
+          this.playCardVideo(this.activeClipIndex);
+        }
 
         // 2. Button green feedback animation
         this.applyCaptionBtn.classList.add('applied-success');
@@ -4609,6 +4448,14 @@ class ScaleReachFullApp {
 
     if (this.activeStyleBadge) {
       this.activeStyleBadge.textContent = `Style: ${this.selectedStyleName}`;
+    }
+
+    if (this.mainPlayerCaptionSticker) {
+      this.mainPlayerCaptionSticker.classList.remove(
+        'style-classic', 'style-cyan_slide', 'style-italic_red', 'style-cream_blue',
+        'style-red_spin', 'style-violet', 'style-blue_glow', 'style-toxic_green'
+      );
+      this.mainPlayerCaptionSticker.classList.add(`style-${styleId}`);
     }
 
     // Never overwrite the caption text - only update the visual style!
@@ -5104,8 +4951,8 @@ class ScaleReachFullApp {
   ---------------------------------------------------- */
   setupDemoVideoSource() {
     // Determine appropriate high-definition MP4 video (Sports Challenge vs Podcast)
-    const isSports = (this.currentVideoTitle && /athlete|haaland|sport|football|soccer|challenge|caitlin/i.test(this.currentVideoTitle)) || !this.currentVideoTitle;
-    this.sourceVideo.src = isSports ? 'clips/reel_1.mp4' : 'podcast.mp4';
+    // Default high-definition source video
+    this.sourceVideo.src = 'podcast.mp4';
     this.sourceVideo.playsInline = true;
     this.sourceVideo.muted = true; // Start muted to guarantee browser autoplay
     this.sourceVideo.loop = false; // Looping handled via timeupdate for precise trimmer boundaries

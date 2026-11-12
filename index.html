@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261111_nocache_v20">
+  <link rel="stylesheet" href="styles.css?v=20261112_nocache_v60">
 </head>
 <body class="dashboard-body">
 
@@ -663,6 +663,11 @@
                   <video id="sourceVideo" playsinline preload="auto"></video>
                   <iframe id="youtubeIframe" class="hidden" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                   
+                  <!-- Speech-Synced On-Screen Text Overlay (CapCut Auto-Captions directly over Main Video) -->
+                  <div class="main-player-caption-sticker style-classic pos-bottom" id="mainPlayerCaptionSticker">
+                    <div class="sticker-text" id="mainPlayerCaptionText">THIS IS A <span class="cap-highlight">ONE BILLION</span> DOLLAR ROCKET SHIP!</div>
+                  </div>
+                  
                   <!-- Switch Video Source Pill / Fallback Toggle -->
                   <div class="video-mode-switch-bar" id="videoModeSwitchBar">
                     <button class="mode-switch-pill" id="qualityToggleBtn" title="Force 1080p / 4K Ultra HD Quality">
@@ -802,7 +807,7 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">⚡ Reel 1:  vs  Billion Futuristic Tech Begins!</div>
+                        <div class="reel-footer-title">⚡ Reel 1: $1 vs $1 Billion Futuristic Tech Begins!</div>
                       </div>
                       <button class="reel-download-btn" type="button" data-clip="1" title="Download Reel 1 (9:16 Short)">
                         <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
@@ -901,7 +906,7 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">🏎️ Reel 4: ,000,000 Concept Supercar!</div>
+                        <div class="reel-footer-title">🏎️ Reel 4: $10,000,000 Concept Supercar!</div>
                       </div>
                       <button class="reel-download-btn" type="button" data-clip="4" title="Download Reel 4 (9:16 Short)">
                         <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
@@ -1033,7 +1038,7 @@
                         <div class="reel-playing-waveform" style="display:none;"><span></span><span></span><span></span><span></span></div>
                       </div>
                       <div class="reel-card-footer">
-                        <div class="reel-footer-title">🚀 Reel 8: ,000,000,000 Starship Rocket Tour!</div>
+                        <div class="reel-footer-title">🚀 Reel 8: $1,000,000,000 Starship Rocket Tour!</div>
                       </div>
                       <button class="reel-download-btn" type="button" data-clip="8" title="Download Reel 8 (9:16 Short)">
                         <svg class="reel-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 19h16"/></svg>
@@ -1246,14 +1251,14 @@
                   <div class="quick-hooks-bar">
                     <span class="quick-hooks-title">⚡ Quick Viral Hooks:</span>
                     <div class="quick-hooks-scroll">
-                      <button class="hook-pill-btn" data-hook="CAN HE SAVE THIS? 😱">CAN HE SAVE THIS? 😱</button>
-                      <button class="hook-pill-btn" data-hook="100 MPH ROCKET KICK 🚀">100 MPH ROCKET KICK 🚀</button>
-                      <button class="hook-pill-btn" data-hook="WAIT FOR HIS REACTION 😂">WAIT FOR HIS REACTION 😂</button>
-                      <button class="hook-pill-btn" data-hook="THE $100,000 SHOT ⚽">THE $100,000 SHOT ⚽</button>
-                      <button class="hook-pill-btn" data-hook="WATCH TILL THE END 👀">WATCH TILL THE END 👀</button>
-                      <button class="hook-pill-btn" data-hook="DON'T BLINK NOW ⚡">DON'T BLINK NOW ⚡</button>
-                      <button class="hook-pill-btn" data-hook="NOBODY SAW THIS COMING 🤯">NOBODY SAW THIS COMING 🤯</button>
-                      <button class="hook-pill-btn" data-hook="LIFE CHANGING MOMENT 🏆">LIFE CHANGING MOMENT 🏆</button>
+                      <button class="hook-pill-btn" data-hook="THIS IS A $1B ROCKET SHIP! 🚀">THIS IS A $1B ROCKET SHIP! 🚀</button>
+                      <button class="hook-pill-btn" data-hook="HE TYPED HI WITH HIS MIND! 🧠">HE TYPED HI WITH HIS MIND! 🧠</button>
+                      <button class="hook-pill-btn" data-hook="AN ACTUAL FLYING VEHICLE! 🛸">AN ACTUAL FLYING VEHICLE! 🛸</button>
+                      <button class="hook-pill-btn" data-hook="A $10,000,000 CAR! 🏎️">A $10,000,000 CAR! 🏎️</button>
+                      <button class="hook-pill-btn" data-hook="TASTES LIKE REAL CHICKEN! 🥩">TASTES LIKE REAL CHICKEN! 🥩</button>
+                      <button class="hook-pill-btn" data-hook="REAL WOOLLY MAMMOTH DNA! 🦣">REAL WOOLLY MAMMOTH DNA! 🦣</button>
+                      <button class="hook-pill-btn" data-hook="$500 MILLION BIOSPHERE! 🔴">$500 MILLION BIOSPHERE! 🔴</button>
+                      <button class="hook-pill-btn" data-hook="THE FUTURE OF TECH! ⚡">THE FUTURE OF TECH! ⚡</button>
                     </div>
                   </div>
 
@@ -1370,6 +1375,6 @@
     </svg>
   </div>
 
-  <script src="app.js?v=20261111_nocache_v20"></script>
+  <script src="app.js?v=20261112_nocache_v60"></script>
 </body>
 </html>

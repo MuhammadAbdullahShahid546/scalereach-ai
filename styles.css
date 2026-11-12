@@ -2437,7 +2437,8 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 /* 1. Classic Style (Alex Hormozi Yellow & White - Authentic Direct Video Caption) */
-.reel-hook-caption-sticker.style-classic .sticker-text {
+.reel-hook-caption-sticker.style-classic .sticker-text,
+.main-player-caption-sticker.style-classic .sticker-text {
   color: #ffffff !important;
   background: transparent !important;
   border: none !important;
@@ -2445,13 +2446,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   backdrop-filter: none !important;
 }
 .reel-hook-caption-sticker.style-classic .sticker-text .cap-highlight,
+.main-player-caption-sticker.style-classic .sticker-text .cap-highlight,
 .reel-hook-caption-sticker.style-classic .cap-highlight {
   color: #ffe600 !important;
   text-shadow: 0 0 14px rgba(255, 230, 0, 0.95), 0 2px 6px #000 !important;
 }
 
 /* 2. Cyan Slide Style (Electric Cyan Glow) */
-.reel-hook-caption-sticker.style-cyan_slide .sticker-text {
+.reel-hook-caption-sticker.style-cyan_slide .sticker-text,
+.main-player-caption-sticker.style-cyan_slide .sticker-text {
   color: #ffffff !important;
   background: transparent !important;
   border: none !important;
@@ -2460,13 +2463,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   font-style: italic !important;
 }
 .reel-hook-caption-sticker.style-cyan_slide .sticker-text .cap-highlight,
+.main-player-caption-sticker.style-cyan_slide .sticker-text .cap-highlight,
 .reel-hook-caption-sticker.style-cyan_slide .cap-highlight {
   color: #00f2fe !important;
   text-shadow: 0 0 16px rgba(0, 242, 254, 1), 0 2px 6px #000 !important;
 }
 
 /* 3. Italic Red Style (Slanted Sports Red) */
-.reel-hook-caption-sticker.style-italic_red .sticker-text {
+.reel-hook-caption-sticker.style-italic_red .sticker-text,
+.main-player-caption-sticker.style-italic_red .sticker-text {
   color: #ffffff !important;
   background: transparent !important;
   border: none !important;
@@ -2475,13 +2480,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   font-style: italic !important;
 }
 .reel-hook-caption-sticker.style-italic_red .sticker-text .cap-highlight,
+.main-player-caption-sticker.style-italic_red .sticker-text .cap-highlight,
 .reel-hook-caption-sticker.style-italic_red .cap-highlight {
   color: #ff2a2a !important;
   text-shadow: 0 0 16px rgba(255, 42, 42, 1), 0 2px 6px #000 !important;
 }
 
 /* 4. Cream Blue Style (Soft Pastel Cream with Sky Blue Glow) */
-.reel-hook-caption-sticker.style-cream_blue .sticker-text {
+.reel-hook-caption-sticker.style-cream_blue .sticker-text,
+.main-player-caption-sticker.style-cream_blue .sticker-text {
   color: #f1f5f9 !important;
   background: transparent !important;
   border: none !important;
@@ -2489,13 +2496,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   backdrop-filter: none !important;
 }
 .reel-hook-caption-sticker.style-cream_blue .sticker-text .cap-highlight,
+.main-player-caption-sticker.style-cream_blue .sticker-text .cap-highlight,
 .reel-hook-caption-sticker.style-cream_blue .cap-highlight {
   color: #38bdf8 !important;
   text-shadow: 0 0 14px rgba(56, 189, 248, 0.95), 0 2px 6px #000 !important;
 }
 
 /* 5. Red Spin Style (Fiery Crimson) */
-.reel-hook-caption-sticker.style-red_spin .sticker-text {
+.reel-hook-caption-sticker.style-red_spin .sticker-text,
+.main-player-caption-sticker.style-red_spin .sticker-text {
   color: #ffffff !important;
   background: transparent !important;
   border: none !important;
@@ -2503,13 +2512,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   backdrop-filter: none !important;
 }
 .reel-hook-caption-sticker.style-red_spin .sticker-text .cap-highlight,
+.main-player-caption-sticker.style-red_spin .sticker-text .cap-highlight,
 .reel-hook-caption-sticker.style-red_spin .cap-highlight {
   color: #ff1f3d !important;
   text-shadow: 0 0 16px rgba(255, 31, 61, 1), 0 2px 6px #000 !important;
 }
 
 /* 6. Violet Style (Royal Purple Neon Glow) */
-.reel-hook-caption-sticker.style-violet .sticker-text {
+.reel-hook-caption-sticker.style-violet .sticker-text,
+.main-player-caption-sticker.style-violet .sticker-text {
   color: #ffffff !important;
   background: transparent !important;
   border: none !important;
@@ -2517,13 +2528,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   backdrop-filter: none !important;
 }
 .reel-hook-caption-sticker.style-violet .sticker-text .cap-highlight,
+.main-player-caption-sticker.style-violet .sticker-text .cap-highlight,
 .reel-hook-caption-sticker.style-violet .cap-highlight {
   color: #e879f9 !important;
   text-shadow: 0 0 16px rgba(232, 121, 249, 1), 0 2px 6px #000 !important;
 }
 
 /* 7. Blue Glow Style (Electric Royal Blue) */
-.reel-hook-caption-sticker.style-blue_glow .sticker-text {
+.reel-hook-caption-sticker.style-blue_glow .sticker-text,
+.main-player-caption-sticker.style-blue_glow .sticker-text {
   color: #ffffff !important;
   background: transparent !important;
   border: none !important;
@@ -2531,13 +2544,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   backdrop-filter: none !important;
 }
 .reel-hook-caption-sticker.style-blue_glow .sticker-text .cap-highlight,
+.main-player-caption-sticker.style-blue_glow .sticker-text .cap-highlight,
 .reel-hook-caption-sticker.style-blue_glow .cap-highlight {
   color: #60a5fa !important;
   text-shadow: 0 0 16px rgba(96, 165, 250, 1), 0 2px 6px #000 !important;
 }
 
 /* 8. Toxic Green Style (Radioactive Neon Green) */
-.reel-hook-caption-sticker.style-toxic_green .sticker-text {
+.reel-hook-caption-sticker.style-toxic_green .sticker-text,
+.main-player-caption-sticker.style-toxic_green .sticker-text {
   color: #ffffff !important;
   background: transparent !important;
   border: none !important;
@@ -2545,6 +2560,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   backdrop-filter: none !important;
 }
 .reel-hook-caption-sticker.style-toxic_green .sticker-text .cap-highlight,
+.main-player-caption-sticker.style-toxic_green .sticker-text .cap-highlight,
 .reel-hook-caption-sticker.style-toxic_green .cap-highlight {
   color: #00ff66 !important;
   text-shadow: 0 0 16px rgba(0, 255, 102, 1), 0 2px 6px #000 !important;
@@ -3783,3 +3799,66 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   animation: pulse 1.6s infinite;
 }
 
+
+/* Speech-Synced On-Screen Text Overlay for Main Video Player */
+.main-player-caption-sticker {
+  position: absolute;
+  bottom: 16%;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.main-player-caption-sticker.pos-top {
+  top: 12% !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+.main-player-caption-sticker.pos-center {
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+}
+.main-player-caption-sticker.pos-bottom {
+  top: auto !important;
+  bottom: 16% !important;
+  transform: none !important;
+}
+.main-player-caption-sticker.is-hidden {
+  display: none !important;
+}
+.main-player-caption-sticker .sticker-text {
+  font-family: "Montserrat", "Plus Jakarta Sans", sans-serif;
+  font-weight: 900;
+  font-size: 2.1rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: transparent !important;
+  border: none !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.98), 0 4px 22px rgba(0,0,0,0.95), 0 0 4px #000 !important;
+  -webkit-text-stroke: 1.2px rgba(0,0,0,0.85);
+  display: inline-block;
+  padding: 4px 14px;
+  animation: captionBeatPop 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.main-player-caption-sticker.size-s .sticker-text {
+  font-size: 1.4rem !important;
+}
+.main-player-caption-sticker.size-m .sticker-text {
+  font-size: 2.1rem !important;
+}
+.main-player-caption-sticker.size-l .sticker-text {
+  font-size: 2.6rem !important;
+}
+.main-player-caption-sticker.size-xl .sticker-text {
+  font-size: 3.2rem !important;
+}
