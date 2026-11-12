@@ -4230,6 +4230,7 @@ class ScaleReachFullApp {
   activateClipByIndex(clipIdx) {
     this.activeClipIndex = clipIdx;
     this.isCustomAdjusted = false;
+    this.userAppliedCaption = null; // Reset custom override so new clip displays its own authentic dialogue!
 
     // Sync Subnav Pills
     if (this.clipSelectorPills) {
