@@ -3279,6 +3279,24 @@ class ScaleReachFullApp {
     }
   }
 
+  getMomentCues(moment) {
+    if (!moment) return [];
+    if (moment.cues && Array.isArray(moment.cues) && moment.cues.length > 0) {
+      return moment.cues;
+    }
+    const lines = (moment.subtitles && Array.isArray(moment.subtitles)) ? moment.subtitles : [];
+    if (lines.length === 0) {
+      return [{ start: 0, end: Math.max(1, (moment.end - moment.start) || 25), text: moment.caption || '' }];
+    }
+    const dur = Math.max(1, (moment.end - moment.start) || 25);
+    const step = dur / lines.length;
+    return lines.map((text, i) => ({
+      start: parseFloat((i * step).toFixed(2)),
+      end: parseFloat(((i + 1) * step).toFixed(2)),
+      text: typeof text === 'string' ? text : (text.text || '')
+    }));
+  }
+
   playCardVideo(idx) {
     if (!this.aiSuggestedList) return;
     const cards = this.aiSuggestedList.querySelectorAll('.suggest-reel-card');
@@ -3407,42 +3425,35 @@ class ScaleReachFullApp {
     // Update main studio play/pause button
     if (this.playPauseBtn) this.playPauseBtn.textContent = '⏸';
 
-    // Start dynamic speech subtitles cycling during video playback
+    // STRICT TIMEUPDATE SYNC (Zero Intervals, Zero Guessing, Zero Loops)
     if (this.cardSubtitleTimer) {
       clearInterval(this.cardSubtitleTimer);
       this.cardSubtitleTimer = null;
     }
-    if (moment && moment.subtitles && moment.subtitles.length > 0) {
-      let subIdx = 0;
-      this.currentLiveSubtitle = moment.subtitles[0];
-      const initialCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`);
-      if (initialCard) {
-        const initialSticker = initialCard.querySelector('.reel-hook-caption-sticker .sticker-text');
-        if (initialSticker) {
-          initialSticker.innerHTML = this.formatSpokenSubtitleHTML(this.currentLiveSubtitle);
+    this.currentLiveSubtitle = null;
+
+    const initialCard = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`);
+    const cardVideoEl = initialCard ? initialCard.querySelector('.reel-card-video') : null;
+    const stickerText = initialCard ? initialCard.querySelector('.reel-hook-caption-sticker .sticker-text') : null;
+
+    if (cardVideoEl && moment) {
+      const cues = this.getMomentCues(moment);
+      cardVideoEl.ontimeupdate = () => {
+        if (cardVideoEl.paused || !initialCard.classList.contains('is-playing')) return;
+        const curTime = cardVideoEl.currentTime;
+
+        // Strict Windowing: Only show if curTime is within [start, end]
+        const activeCue = cues.find(c => curTime >= c.start && curTime <= c.end);
+        if (activeCue) {
+          this.currentLiveSubtitle = activeCue.text;
+          if (stickerText) stickerText.innerHTML = this.formatSpokenSubtitleHTML(activeCue.text);
+          if (this.mainPlayerCaptionText) this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(activeCue.text);
+        } else {
+          // Outside speech bounds or between sentences: show NOTHING (NO LOOPING!)
+          if (stickerText) stickerText.innerHTML = '';
+          if (this.mainPlayerCaptionText) this.mainPlayerCaptionText.innerHTML = '';
         }
-      }
-      if (this.mainPlayerCaptionText) {
-        this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(this.currentLiveSubtitle);
-      }
-      this.cardSubtitleTimer = setInterval(() => {
-        const card = this.aiSuggestedList.querySelector(`.suggest-reel-card[data-index="${idx}"]`);
-        if (!card || !card.classList.contains('is-playing')) {
-          clearInterval(this.cardSubtitleTimer);
-          this.cardSubtitleTimer = null;
-          return;
-        }
-        subIdx = (subIdx + 1) % moment.subtitles.length;
-        const text = moment.subtitles[subIdx];
-        this.currentLiveSubtitle = text;
-        const stickerText = card.querySelector('.reel-hook-caption-sticker .sticker-text');
-        if (stickerText) {
-          stickerText.innerHTML = this.formatSpokenSubtitleHTML(text);
-        }
-        if (this.mainPlayerCaptionText) {
-          this.mainPlayerCaptionText.innerHTML = this.formatSpokenSubtitleHTML(text);
-        }
-      }, 1000);
+      };
     } else {
       this.currentLiveSubtitle = moment ? (moment.caption || '') : '';
     }
@@ -3487,8 +3498,9 @@ class ScaleReachFullApp {
       this.postYouTubeCommand(this.youtubeIframe, 'pauseVideo');
       this.postYouTubeCommand(this.phoneYoutubeIframe, 'pauseVideo');
     } else {
-      if (v && !v.paused) {
-        v.pause();
+      if (v) {
+        if (!v.paused) v.pause();
+        v.ontimeupdate = null;
       }
       if (this.sourceVideo && !this.sourceVideo.paused) {
         this.sourceVideo.pause();
