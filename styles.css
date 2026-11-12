@@ -2344,6 +2344,11 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: none !important;
 }
 
+/* When playing high-definition MP4 reels with burned-in 60fps speech subtitles, hide the HTML sticker during playback to avoid duplicate text */
+.suggest-reel-card.is-playing:not(.is-youtube) .reel-hook-caption-sticker {
+  display: none !important;
+}
+
 /* 9:16 Ratio Safe Zone Positions (Never hides behind footer or overlaps speaker face) */
 .reel-hook-caption-sticker.pos-top {
   top: 15% !important;
