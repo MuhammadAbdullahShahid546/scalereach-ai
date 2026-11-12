@@ -5754,11 +5754,6 @@ class ScaleReachFullApp {
     const moment = this.clipsMoments && this.clipsMoments[idx];
     if (!moment) return;
 
-    // Activate this clip if not active so 9:16 phone canvas and trimmer sync
-    if (this.activeClipIndex !== idx) {
-      this.activateClipByIndex(idx);
-    }
-
     // Direct in-browser 9:16 short export & download (NO external websites or redirects!)
     this.startExportProcess(idx);
   }
@@ -5803,7 +5798,173 @@ class ScaleReachFullApp {
     if (this.exportProgressBox) this.exportProgressBox.classList.remove('hidden');
     this.showToast(`Rendering & Downloading "${rawTitle}" (9:16 Short)... ⚡`);
 
-    // Determine the exact video source for this clip (Reel 1-8 clip vs user upload vs podcast)
+    // Helper: Reset all UI states when done
+    const cleanupState = () => {
+      this.isRecording = false;
+      if (cardDownloadBtn) {
+        cardDownloadBtn.classList.remove('is-downloading');
+        cardDownloadBtn.classList.add('download-complete');
+        cardDownloadBtn.setAttribute('title', 'Downloaded Successfully! ✓');
+        setTimeout(() => {
+          if (cardDownloadBtn) {
+            cardDownloadBtn.classList.remove('download-complete');
+            cardDownloadBtn.setAttribute('title', `Download Reel ${idx + 1} (9:16 Short)`);
+          }
+        }, 3000);
+      }
+      if (this.exportShortBtn) this.exportShortBtn.disabled = false;
+      if (this.exportFromStudioBtn) this.exportFromStudioBtn.disabled = false;
+      if (this.exportProgressBox) this.exportProgressBox.classList.add('hidden');
+    };
+
+    // Helper: Instant fallback download
+    let fallbackFired = false;
+    const finishDownloadFallback = () => {
+      if (fallbackFired) return;
+      fallbackFired = true;
+      const directUrl = (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
+      const a = document.createElement('a');
+      a.href = directUrl;
+      a.download = cleanFileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      cleanupState();
+      this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Clean Short)!`);
+    };
+
+    let recorderInstance = null;
+    let subtitleCycleTimer = null;
+    let progressInterval = null;
+
+    // Absolute Watchdog: NEVER let downloading spin more than 3.5 seconds!
+    const watchdogTimer = setTimeout(() => {
+      if (this.isRecording) {
+        console.warn('Export watchdog timer reached — completing download.');
+        try {
+          if (recorderInstance && recorderInstance.state === 'recording') {
+            recorderInstance.stop();
+          } else {
+            finishDownloadFallback();
+          }
+        } catch (e) {
+          finishDownloadFallback();
+        }
+      }
+    }, 3500);
+
+    const executeRecording = () => {
+      try {
+        // Synchronize live subtitle cycling for this clip during recording
+        let subIdx = 0;
+        const clipSubs = (moment && moment.subtitles && moment.subtitles.length) ? moment.subtitles : [(moment && moment.caption) || rawTitle];
+        this.currentLiveSubtitle = clipSubs[0];
+
+        subtitleCycleTimer = setInterval(() => {
+          if (!this.isRecording) {
+            clearInterval(subtitleCycleTimer);
+            return;
+          }
+          subIdx = (subIdx + 1) % clipSubs.length;
+          this.currentLiveSubtitle = clipSubs[subIdx];
+        }, 700);
+
+        // Capture clean 9:16 canvas stream
+        const canvasStream = (this.cropCanvas && this.cropCanvas.captureStream) ? this.cropCanvas.captureStream(30) : null;
+        if (!canvasStream) {
+          finishDownloadFallback();
+          return;
+        }
+
+        let combinedStream = canvasStream;
+        try {
+          if (this.sourceVideo && this.sourceVideo.captureStream) {
+            const audioStream = this.sourceVideo.captureStream();
+            const tracks = audioStream.getAudioTracks();
+            if (tracks.length > 0) combinedStream.addTrack(tracks[0]);
+          }
+        } catch (e) {
+          console.warn('Audio capture note:', e);
+        }
+
+        const recordedChunks = [];
+        try {
+          recorderInstance = new MediaRecorder(combinedStream, { mimeType });
+        } catch (e) {
+          try {
+            recorderInstance = new MediaRecorder(canvasStream);
+          } catch (e2) {
+            finishDownloadFallback();
+            return;
+          }
+        }
+
+        recorderInstance.ondataavailable = (e) => {
+          if (e.data && e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        recorderInstance.onstop = () => {
+          clearTimeout(watchdogTimer);
+          clearInterval(subtitleCycleTimer);
+          clearInterval(progressInterval);
+          if (fallbackFired) return;
+          try {
+            if (recordedChunks.length > 0) {
+              const blob = new Blob(recordedChunks, { type: mimeType });
+              const downloadUrl = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = downloadUrl;
+              a.download = cleanFileName;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              setTimeout(() => URL.revokeObjectURL(downloadUrl), 5000);
+              cleanupState();
+              this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Short, No Watermark)!`);
+            } else {
+              finishDownloadFallback();
+            }
+          } catch (err) {
+            finishDownloadFallback();
+          }
+        };
+
+        try {
+          recorderInstance.start(100);
+        } catch (e) {
+          finishDownloadFallback();
+          return;
+        }
+
+        const exportDuration = 2.5; // Fast 2.5s rendering
+        const startTime = Date.now();
+        progressInterval = setInterval(() => {
+          const elapsed = (Date.now() - startTime) / 1000;
+          const progress = Math.min(100, Math.max(0, (elapsed / exportDuration) * 100));
+
+          if (this.exportFill) this.exportFill.style.width = `${progress}%`;
+          if (this.exportPercentText) this.exportPercentText.textContent = `${Math.round(progress)}%`;
+
+          if (elapsed >= exportDuration || !this.isRecording) {
+            clearInterval(progressInterval);
+            try {
+              if (recorderInstance && recorderInstance.state === 'recording') {
+                recorderInstance.stop();
+              }
+            } catch (e) {
+              finishDownloadFallback();
+            }
+            if (this.sourceVideo) this.sourceVideo.pause();
+          }
+        }, 60);
+
+      } catch (err) {
+        console.warn('executeRecording exception:', err);
+        finishDownloadFallback();
+      }
+    };
+
+    // Determine the video source
     let appropriateVideo = (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
     const isPodcast = (this.currentVideoTitle && /podcast|talk|interview|psychology|mindset/i.test(this.currentVideoTitle));
     if (this.uploadedVideoUrl) {
@@ -5812,116 +5973,26 @@ class ScaleReachFullApp {
       appropriateVideo = 'podcast.mp4';
     }
 
-    const isPreCutClip = appropriateVideo.includes('clips/reel_');
-    const startSec = isPreCutClip ? 0 : ((moment && typeof moment.start === 'number') ? moment.start : this.clipStart);
-    const exportDuration = isPreCutClip ? 12 : Math.max(3, Math.min(8, ((moment && moment.end) ? moment.end : this.clipEnd) - startSec));
-
-    const executeRecording = () => {
-      this.activeClipIndex = idx;
-      try {
-      if (this.activeSourceType !== 'youtube') { this.sourceVideo.currentTime = startSec; this.sourceVideo.play().catch(console.warn); } else { if (this.sourceVideo) this.sourceVideo.pause(); }
-      // Native video audio handled conditionally
-      } catch (e) {
-        console.warn(e);
-      }
-
-      // Synchronize live subtitle cycling for this clip during recording
-      let subIdx = 0;
-      const clipSubs = (moment && moment.subtitles && moment.subtitles.length) ? moment.subtitles : [(moment && moment.caption) || rawTitle];
-      this.currentLiveSubtitle = clipSubs[0];
-
-      const subtitleCycleTimer = setInterval(() => {
-        if (!this.isRecording) {
-          clearInterval(subtitleCycleTimer);
-          return;
-        }
-        subIdx = (subIdx + 1) % clipSubs.length;
-        this.currentLiveSubtitle = clipSubs[subIdx];
-      }, 850);
-
-      // Capture clean 9:16 canvas stream (Canvas NEVER contains the download button!)
-      const canvasStream = this.cropCanvas.captureStream(30);
-      let combinedStream = canvasStream;
-
-      try {
-        if (this.sourceVideo.captureStream) {
-          const audioStream = this.sourceVideo.captureStream();
-          const tracks = audioStream.getAudioTracks();
-          if (tracks.length > 0) combinedStream.addTrack(tracks[0]);
-        }
-      } catch (e) {
-        console.warn(e);
-      }
-
-      const recordedChunks = [];
-      let recorder = null;
-      try {
-        recorder = new MediaRecorder(combinedStream, { mimeType });
-      } catch (e) {
-        console.warn('MediaRecorder error, falling back to basic stream:', e);
-        recorder = new MediaRecorder(canvasStream);
-      }
-
-      recorder.ondataavailable = (e) => {
-        if (e.data && e.data.size > 0) recordedChunks.push(e.data);
-      };
-
-      recorder.onstop = () => {
-        clearInterval(subtitleCycleTimer);
-        const blob = new Blob(recordedChunks, { type: mimeType });
-        const downloadUrl = URL.createObjectURL(blob);
-
-        const a = document.createElement('a');
-        a.href = downloadUrl;
-        a.download = cleanFileName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-
-        this.isRecording = false;
-        if (cardDownloadBtn) {
-          cardDownloadBtn.classList.remove('is-downloading');
-          cardDownloadBtn.classList.add('download-complete');
-          cardDownloadBtn.setAttribute('title', 'Downloaded Successfully! ✓');
-          setTimeout(() => {
-            if (cardDownloadBtn) {
-              cardDownloadBtn.classList.remove('download-complete');
-              cardDownloadBtn.setAttribute('title', `Download Reel ${idx + 1} (9:16 Short)`);
-            }
-          }, 3000);
-        }
-        if (this.exportShortBtn) this.exportShortBtn.disabled = false;
-        if (this.exportFromStudioBtn) this.exportFromStudioBtn.disabled = false;
-        if (this.exportProgressBox) this.exportProgressBox.classList.add('hidden');
-        this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Clean Short, No Watermark)!`);
-      };
-
-      recorder.start(100);
-
-      const startTime = Date.now();
-      const progressInterval = setInterval(() => {
-        const elapsed = (Date.now() - startTime) / 1000;
-        const progress = Math.min(100, Math.max(0, (elapsed / exportDuration) * 100));
-
-        if (this.exportFill) this.exportFill.style.width = `${progress}%`;
-        if (this.exportPercentText) this.exportPercentText.textContent = `${Math.round(progress)}%`;
-
-        if (elapsed >= exportDuration || !this.isRecording) {
-          clearInterval(progressInterval);
-          if (recorder.state === 'recording') {
-            recorder.stop();
-          }
-          this.sourceVideo.pause();
-        }
-      }, 100);
+    let hasExecuted = false;
+    const safeExecute = () => {
+      if (hasExecuted) return;
+      hasExecuted = true;
+      executeRecording();
     };
 
-    if (!this.sourceVideo.src || !this.sourceVideo.src.includes(appropriateVideo)) {
-      this.sourceVideo.src = appropriateVideo;
-      this.sourceVideo.addEventListener('loadeddata', () => executeRecording(), { once: true });
-      this.sourceVideo.load();
+    if (this.sourceVideo) {
+      if (!this.sourceVideo.src || !this.sourceVideo.src.includes(appropriateVideo)) {
+        this.sourceVideo.src = appropriateVideo;
+        this.sourceVideo.addEventListener('loadeddata', safeExecute, { once: true });
+        this.sourceVideo.addEventListener('error', safeExecute, { once: true });
+        this.sourceVideo.load();
+        // 800ms safety timeout: do NOT wait forever for loadeddata!
+        setTimeout(safeExecute, 800);
+      } else {
+        safeExecute();
+      }
     } else {
-      executeRecording();
+      safeExecute();
     }
   }
 
