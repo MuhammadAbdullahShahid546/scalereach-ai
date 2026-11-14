@@ -74,7 +74,7 @@ while ($listener.IsListening) {
             }
 
             $style = if ($parsed -and $parsed.style) { $parsed.style.ToString().ToLower() } else { "classic" }
-            Write-Host "[API] Processing 100% Dynamic Video URL: $inputUrl (Style: $style)"
+            Write-Host "Frontend se aya URL: $inputUrl"
 
             # 1. Clean old temporary files (Strict user requirement: delete old files)
             $tempDir = Join-Path $baseDir "temp_processing"
@@ -85,7 +85,10 @@ while ($listener.IsListening) {
             }
 
             $jobId = [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds().ToString()
-            $videoFile = Join-Path $tempDir "video_$jobId.mp4"
+            $fileName = "video_$jobId.mp4"
+            Write-Host "Download ho rahi file ka naam: $fileName"
+
+            $videoFile = Join-Path $tempDir $fileName
             $assFile = Join-Path $tempDir "caption_$jobId.ass"
             $clipsDir = Join-Path $baseDir "clips"
             if (!(Test-Path $clipsDir)) { New-Item -ItemType Directory -Force -Path $clipsDir | Out-Null }

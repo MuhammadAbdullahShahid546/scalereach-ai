@@ -6078,7 +6078,16 @@ class ScaleReachFullApp {
     };
 
     // Strictly prioritize newly downloaded clip from the current user URL
-    const directClipUrl = this.activeDownloadedClipUrl || (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
+    let directClipUrl = this.activeDownloadedClipUrl || (moment && moment.videoSrc);
+    if (!directClipUrl) {
+      if (this.currentVideoUrl) {
+        this.showToast('Connecting to backend & rendering new video URL... ⏳');
+        this.loadVideoAndAutoExtractClips(this.currentVideoUrl);
+        cleanupState();
+        return;
+      }
+      directClipUrl = `clips/reel_${idx + 1}.mp4`;
+    }
     // Instant high-definition 9:16 export with burned-in subtitles
     let progressVal = 0;
     if (this.exportProgressBar) this.exportProgressBar.style.width = '0%';
