@@ -71,3 +71,7 @@ build/
 futuristic_source.mp4.webm
 test_*
 sub_*.ass
+audio_check/
+ref_frames/
+user_clip_frames/
+temp_processing/

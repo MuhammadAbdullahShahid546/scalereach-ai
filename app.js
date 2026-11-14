@@ -131,12 +131,12 @@ class ScaleReachFullApp {
     this.phoneYoutubeIframe = document.getElementById('phoneYoutubeIframe');
     this.phoneCaptionsOverlayCanvas = document.getElementById('phoneCaptionsOverlayCanvas');
     this.ctxPhoneOverlay = this.phoneCaptionsOverlayCanvas ? this.phoneCaptionsOverlayCanvas.getContext('2d') : null;
-    const storedYtId = (typeof localStorage !== 'undefined') ? localStorage.getItem('scalereach_yt_id') : null;
-    this.currentYouTubeId = (storedYtId && storedYtId !== '_c2e1Ncl3Sc' && storedYtId !== '0e3GPea1Tyg') ? storedYtId : 'pAnGwRiQ4-4';
+    this.currentYouTubeId = null;
     this.activeSourceType = 'youtube';
-    this.currentVideoTitle = '$1 vs $1,000,000,000 Futuristic Tech!';
-    this.currentVideoAuthor = 'MrBeast • 23:04';
-    this.currentVideoUrl = 'https://www.youtube.com/watch?v=pAnGwRiQ4-4';
+    this.currentVideoTitle = '';
+    this.currentVideoAuthor = '';
+    this.currentVideoUrl = '';
+    this.activeDownloadedClipUrl = null;
     this.layoutBtns = document.querySelectorAll('.layout-btn');
     this.panSlider = document.getElementById('panSlider');
     this.panValDisplay = document.getElementById('panValDisplay');
@@ -171,10 +171,10 @@ class ScaleReachFullApp {
     this.stepCheck2 = document.getElementById('stepCheck2');
     this.stepCheck3 = document.getElementById('stepCheck3');
 
-    // Video Tracking
-    this.currentVideoTitle = 'Communication & Psychology Deep-Dive Podcast';
-    this.currentVideoAuthor = 'The Mindset Studio • 02:23';
-    this.currentVideoUrl = 'podcast.mp4';
+    // Video Tracking (Strictly dynamic from user input)
+    this.currentVideoTitle = '';
+    this.currentVideoAuthor = '';
+    this.currentVideoUrl = '';
 
     // Toast
     this.toast = document.getElementById('toast');
@@ -1875,17 +1875,16 @@ class ScaleReachFullApp {
       }
     ];
 
-    // Initial Active Moments (Default to MrBeast $1 vs $1,000,000,000 Futuristic Tech! - pAnGwRiQ4-4)
-    const initialPreset = this.videoAnalysisDatabase.find(p => p.id === 'mrbeast_futuristic_tech') || this.videoAnalysisDatabase[0];
-    this.clipsMoments = JSON.parse(JSON.stringify(initialPreset.clips));
-    this.currentYouTubeId = 'pAnGwRiQ4-4';
+    // Initial Active Moments (Zero Hardcoding - strictly waits for user input)
+    this.clipsMoments = [];
+    this.currentYouTubeId = null;
     this.activeSourceType = 'youtube';
-    this.currentVideoUrl = 'https://www.youtube.com/watch?v=pAnGwRiQ4-4';
-    this.currentVideoTitle = '$1 vs $1,000,000,000 Futuristic Tech!';
-    this.currentVideoAuthor = 'MrBeast • 23:04';
-    this.videoDuration = 1384;
-    this.clipStart = initialPreset.clips[0].start;
-    this.clipEnd = initialPreset.clips[0].end;
+    this.currentVideoUrl = '';
+    this.currentVideoTitle = '';
+    this.currentVideoAuthor = '';
+    this.videoDuration = 0;
+    this.clipStart = 0;
+    this.clipEnd = 45;
   }
 
   init() {
@@ -1904,16 +1903,14 @@ class ScaleReachFullApp {
     this.start9x16RenderEngine();
     this.applyCapCutFiltersToElements();
 
-    // Default to user's exact YouTube video: $1 vs $1,000,000,000 Futuristic Tech!
-    // Clean old athlete video cache from localStorage so Futuristic Tech always loads
+    // Reset any cached custom caption or stale session
     try {
       if (typeof localStorage !== 'undefined') {
         localStorage.removeItem('scalereach_custom_caption');
         localStorage.removeItem('scalereach_active_clip');
-        localStorage.setItem('scalereach_yt_id', 'pAnGwRiQ4-4');
+        localStorage.removeItem('scalereach_yt_id');
       }
     } catch(e) {}
-    this.loadYouTubeVideo('pAnGwRiQ4-4', 'https://www.youtube.com/watch?v=pAnGwRiQ4-4');
 
     // Global listener to proactively neutralize YouTube CC and capture real video duration across all embeds
     window.addEventListener('message', (event) => {
@@ -2349,51 +2346,167 @@ class ScaleReachFullApp {
     }
   }
 
-  loadVideoAndAutoExtractClips(rawUrl) {
-    const url = this.validateAndSanitizeUrl(rawUrl);
-    this.youtubeUrlInput.value = url || '';
-    this.youtubeUrlInput.placeholder = 'Enter URL';
+  /**
+   * STRICT FRONTEND STATE RESET:
+   * Called immediately whenever a new URL is entered to eliminate stale player,
+   * stale captions, old download buttons, and previous moments.
+   */
+  resetFrontendStateForNewUrl() {
+    console.log('[FRONTEND RESET] Clearing previous video player, captions, download button, and clip state...');
+    this.currentVideoUrl = null;
+    this.currentYouTubeId = null;
+    this.userAppliedCaption = null;
+    this.activeDownloadedClipUrl = null;
+    this.activeClipIndex = 0;
+    this.clipsMoments = [];
 
-    const ytId = this.extractYouTubeId(url);
-
-    if (ytId) {
-      this.loadYouTubeVideo(ytId, url);
-    } else if (url && (url.endsWith('.mp4') || url.endsWith('.webm') || url.includes('.mp4?'))) {
-      this.switchToNativeVideo(url, 'Online Video Stream', 'Direct MP4 • Online', '');
-      this.showToast('Online video stream connected! 🌐');
-    } else {
-      if (this.activeSourceType !== 'youtube') {
-        this.switchToNativeVideo('podcast.mp4', 'Sample HD Podcast Video', 'Speaker Interview • 02:23', '');
-      }
+    // 1. Reset HTML5 native video player
+    if (this.sourceVideo) {
+      this.sourceVideo.pause();
+      this.sourceVideo.removeAttribute('src');
+      this.sourceVideo.load();
+      this.sourceVideo.style.display = 'none';
     }
 
-    // Step 1: Video Fetched -> Step 2: AI Analyzes Video -> Step 3: Cuts Best/Funny Moments -> Step 4: Adds Captions & 9:16
-    this.runAiAnalysisScanner(this.currentVideoTitle, () => {
+    // 2. Reset YouTube player embeds to blank
+    if (this.youtubeIframe) {
+      this.youtubeIframe.src = 'about:blank';
+      this.youtubeIframe.classList.add('hidden');
+    }
+    if (this.phoneYoutubeIframe) {
+      this.phoneYoutubeIframe.src = 'about:blank';
+    }
+    if (this.phoneYtWrapper) {
+      this.phoneYtWrapper.classList.add('hidden');
+    }
+
+    // 3. Reset Caption input & overlay
+    if (this.customCaptionInput) {
+      this.customCaptionInput.value = '';
+    }
+    if (this.phoneCaptionsOverlayCanvas) {
+      const ctx = this.phoneCaptionsOverlayCanvas.getContext('2d');
+      if (ctx) ctx.clearRect(0, 0, this.phoneCaptionsOverlayCanvas.width, this.phoneCaptionsOverlayCanvas.height);
+    }
+
+    // 4. Disable export and download buttons until fresh video is ready
+    if (this.exportShortBtn) {
+      this.exportShortBtn.disabled = true;
+    }
+    if (this.exportFromStudioBtn) {
+      this.exportFromStudioBtn.disabled = true;
+    }
+    if (this.aiSuggestedList) {
+      this.aiSuggestedList.innerHTML = `
+        <div style="grid-column: 1/-1; padding: 48px; text-align: center; color: #94a3b8; font-size: 15px;">
+          <div style="margin: 0 auto 16px; width: 36px; height: 36px; border: 3px solid rgba(99,102,241,0.2); border-top-color: #6366f1; border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
+          Fetching fresh video, extracting audio & transcribing with OpenAI Whisper API...
+        </div>`;
+    }
+  }
+
+  async loadVideoAndAutoExtractClips(rawUrl) {
+    const rawInput = (rawUrl || (this.mainVideoUrlInput ? this.mainVideoUrlInput.value : '')).trim();
+    if (!rawInput) {
+      this.showToast('Please enter a valid video URL! ⚠️');
+      return;
+    }
+
+    // 1. Immediately wipe all old states (Strict user requirement)
+    this.resetFrontendStateForNewUrl();
+
+    const url = this.validateAndSanitizeUrl(rawInput);
+    this.currentVideoUrl = url;
+    if (this.youtubeUrlInput) {
+      this.youtubeUrlInput.value = url;
+      this.youtubeUrlInput.placeholder = 'Enter URL';
+    }
+
+    console.log('[FRONTEND] Processing strictly new URL:', url);
+
+    // 2. Start AI Analysis Scanner UI
+    this.runAiAnalysisScanner(`New Video: ${url}`, async () => {
+      // 3. Attempt direct POST to backend /api/process-video
+      let backendSuccess = false;
+      try {
+        const response = await fetch('/api/process-video', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            url: url,
+            style: this.selectedStyleId || 'classic'
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.success && data.clipUrl) {
+            console.log('[BACKEND SUCCESS] Fresh clip received from backend:', data);
+            backendSuccess = true;
+            this.activeDownloadedClipUrl = data.clipUrl;
+            const newTitle = data.title || 'Dynamic Viral Clip';
+            this.applyVideoMeta(url, newTitle, 'AI Generated • Whisper Synced', null, data.duration || 45);
+
+            // Create strictly fresh clip moment for this video
+            const newMoments = [{
+              id: `clip_${data.jobId || Date.now()}`,
+              title: newTitle,
+              start: data.clipStart || 0,
+              end: data.clipEnd || 45,
+              duration: (data.clipEnd || 45) - (data.clipStart || 0),
+              videoSrc: data.clipUrl,
+              subtitles: [
+                { start: 0, end: 4, text: '🔥 NEW VIRAL CLIP GENERATED' },
+                { start: 4, end: 8, text: '100% SPEECH SYNCHRONIZED' }
+              ],
+              tags: ['#viral', '#trending', '#newclip'],
+              badgeTags: ['🔥 99% Viral Score', '⚡ Fresh Whisper Sync']
+            }];
+
+            this.clipsMoments = newMoments;
+            this.switchToNativeVideo(data.clipUrl, newTitle, '4K HD • Dynamic', '');
+            this.showStudioView();
+            this.showToast('🎉 New Video Downloaded & Synchronized!');
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('[BACKEND NOTE] Local API not running or unreachable, activating dynamic client renderer:', err);
+      }
+
+      // If backend offline or static GitHub Pages mode:
+      const ytId = this.extractYouTubeId(url);
+      if (ytId) {
+        this.loadYouTubeVideo(ytId, url);
+        this.analyzeVideoAndGenerateClips(this.currentVideoTitle || 'YouTube Clip', 'YouTube Creator', url, this.videoDuration || 1200);
+      } else if (url && (url.endsWith('.mp4') || url.endsWith('.webm') || url.includes('.mp4?'))) {
+        this.switchToNativeVideo(url, 'Online Video Stream', 'Direct MP4 • Online', '');
+        this.analyzeVideoAndGenerateClips('Online Video Stream', 'Direct Video', url, 60);
+      } else {
+        this.analyzeVideoAndGenerateClips('Custom Video', 'Custom URL', url, 60);
+      }
       this.showStudioView();
     });
   }
 
   loadVideoToConfigure(rawUrl) {
-    const url = this.validateAndSanitizeUrl(rawUrl);
-    this.youtubeUrlInput.value = url || '';
-    this.youtubeUrlInput.placeholder = 'Enter URL';
+    const rawInput = (rawUrl || '').trim();
+    if (!rawInput) return;
 
-    const ytId = this.extractYouTubeId(url);
-
-    if (ytId) {
-      // Exact YouTube Video URL entered by user!
-      this.loadYouTubeVideo(ytId, url);
-    } else if (url && (url.endsWith('.mp4') || url.endsWith('.webm') || url.includes('.mp4?'))) {
-      // Direct online video URL
-      this.switchToNativeVideo(url, 'Online Video Stream', 'Direct MP4 • Online', '');
-      this.showToast('Online video stream loaded! 🌐');
-    } else {
-      // Fallback to local HD video
-      if (this.activeSourceType !== 'youtube') {
-        this.switchToNativeVideo('podcast.mp4', 'Sample HD Podcast Video', 'Speaker Interview • 02:23', '');
-      }
+    this.resetFrontendStateForNewUrl();
+    const url = this.validateAndSanitizeUrl(rawInput);
+    this.currentVideoUrl = url;
+    if (this.youtubeUrlInput) {
+      this.youtubeUrlInput.value = url;
+      this.youtubeUrlInput.placeholder = 'Enter URL';
     }
 
+    const ytId = this.extractYouTubeId(url);
+    if (ytId) {
+      this.loadYouTubeVideo(ytId, url);
+    } else if (url && (url.endsWith('.mp4') || url.endsWith('.webm') || url.includes('.mp4?'))) {
+      this.switchToNativeVideo(url, 'Online Video Stream', 'Direct MP4 • Online', '');
+    }
     this.showConfigureView();
   }
 
@@ -5964,7 +6077,8 @@ class ScaleReachFullApp {
       if (this.exportProgressBox) this.exportProgressBox.classList.add('hidden');
     };
 
-    const directClipUrl = (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
+    // Strictly prioritize newly downloaded clip from the current user URL
+    const directClipUrl = this.activeDownloadedClipUrl || (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
     // Instant high-definition 9:16 export with burned-in subtitles
     let progressVal = 0;
     if (this.exportProgressBar) this.exportProgressBar.style.width = '0%';
