@@ -1976,6 +1976,14 @@ class ScaleReachFullApp {
       });
     }
 
+    const sideNavBackendConfig = document.getElementById('sideNavBackendConfig');
+    if (sideNavBackendConfig) {
+      sideNavBackendConfig.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.promptBackendUrlConfig();
+      });
+    }
+
     this.sideNavAllClips.addEventListener('click', () => {
       this.showStudioView();
       this.showToast('Opened Clips Library');
@@ -2405,6 +2413,34 @@ class ScaleReachFullApp {
     }
   }
 
+  getBackendApiUrl() {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return '';
+    }
+    const saved = localStorage.getItem('scalereach_backend_url');
+    if (saved && saved.startsWith('http')) {
+      return saved.replace(/\/+$/, '');
+    }
+    return window.SCALEREACH_BACKEND_URL || 'https://scalereach-ai-backend.onrender.com';
+  }
+
+  promptBackendUrlConfig() {
+    const current = localStorage.getItem('scalereach_backend_url') || 'https://scalereach-ai-backend.onrender.com';
+    const entered = window.prompt('Enter your Render.com or Railway.app Backend URL:\n(e.g. https://your-app.onrender.com)', current);
+    if (entered !== null) {
+      const clean = entered.trim().replace(/\/+$/, '');
+      if (clean.startsWith('http://') || clean.startsWith('https://')) {
+        localStorage.setItem('scalereach_backend_url', clean);
+        this.showToast(`✅ Backend Connected: ${clean}`);
+      } else if (!clean) {
+        localStorage.removeItem('scalereach_backend_url');
+        this.showToast('Reset backend URL to default');
+      } else {
+        alert('Please enter a valid URL starting with https:// or http://');
+      }
+    }
+  }
+
   async loadVideoAndAutoExtractClips(rawUrl) {
     const rawInput = (rawUrl || (this.mainVideoUrlInput ? this.mainVideoUrlInput.value : '')).trim();
     if (!rawInput) {
@@ -2424,12 +2460,16 @@ class ScaleReachFullApp {
 
     console.log('[FRONTEND] Processing strictly new URL:', url);
 
+    const backendBase = this.getBackendApiUrl();
+    const endpoint = `${backendBase}/api/process-video`;
+    console.log('[FRONTEND] Target Backend Endpoint:', endpoint);
+
     // 2. Start AI Analysis Scanner UI
     this.runAiAnalysisScanner(`New Video: ${url}`, async () => {
-      // 3. Attempt direct POST to backend /api/process-video
+      // 3. Attempt direct POST to cloud backend /api/process-video
       let backendSuccess = false;
       try {
-        const response = await fetch('/api/process-video', {
+        const response = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ 
