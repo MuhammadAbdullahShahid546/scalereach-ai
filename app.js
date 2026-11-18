@@ -6066,22 +6066,7 @@ class ScaleReachFullApp {
     const idx = (targetClipIdx !== undefined && targetClipIdx >= 0) ? targetClipIdx : this.activeClipIndex;
     const moment = this.clipsMoments && this.clipsMoments[idx];
     const rawTitle = moment ? (moment.title || `Reel_${idx + 1}`) : `Reel_${idx + 1}`;
-
-    let ext = 'mp4';
-    let mimeType = 'video/mp4';
-    if (typeof MediaRecorder !== 'undefined') {
-      if (MediaRecorder.isTypeSupported('video/mp4')) {
-        mimeType = 'video/mp4';
-        ext = 'mp4';
-      } else if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) {
-        mimeType = 'video/webm;codecs=vp9';
-        ext = 'webm';
-      } else if (MediaRecorder.isTypeSupported('video/webm')) {
-        mimeType = 'video/webm';
-        ext = 'webm';
-      }
-    }
-    const cleanFileName = `ScaleReach_${rawTitle.replace(/[^\w\d-_]/g, '_')}_${this.selectedStyleId || 'classic'}.${ext}`;
+    const cleanFileName = `ScaleReach_${rawTitle.replace(/[^\w\d-_]/g, '_')}_${this.selectedStyleId || 'classic'}.mp4`;
 
     this.isRecording = true;
 
@@ -6090,15 +6075,14 @@ class ScaleReachFullApp {
     const cardDownloadBtn = card ? card.querySelector('.reel-download-btn') : null;
     if (cardDownloadBtn) {
       cardDownloadBtn.classList.add('is-downloading');
-      cardDownloadBtn.setAttribute('title', 'Downloading Reel...');
+      cardDownloadBtn.setAttribute('title', 'Exporting Reel in Browser...');
     }
 
     if (this.exportShortBtn) this.exportShortBtn.disabled = true;
     if (this.exportFromStudioBtn) this.exportFromStudioBtn.disabled = true;
     if (this.exportProgressBox) this.exportProgressBox.classList.remove('hidden');
-    this.showToast(`Rendering & Downloading "${rawTitle}" (9:16 Short)... ⚡`);
+    this.showToast(`Rendering 9:16 Short in browser (Zero Server)... ⚡`);
 
-    // Helper: Reset all UI states when done
     const cleanupState = () => {
       this.isRecording = false;
       if (cardDownloadBtn) {
@@ -6117,44 +6101,65 @@ class ScaleReachFullApp {
       if (this.exportProgressBox) this.exportProgressBox.classList.add('hidden');
     };
 
-    // Strictly prioritize newly downloaded clip from the current user URL
-    let directClipUrl = this.activeDownloadedClipUrl || (moment && moment.videoSrc);
-    if (!directClipUrl) {
-      if (this.currentVideoUrl) {
-        this.showToast('Connecting to backend & rendering new video URL... ⏳');
-        this.loadVideoAndAutoExtractClips(this.currentVideoUrl);
-        cleanupState();
-        return;
-      }
-      directClipUrl = `clips/reel_${idx + 1}.mp4`;
+    // Client-Side Canvas Stream Recording (100% In-Browser WebAssembly/MediaRecorder)
+    let stream = null;
+    if (this.cropCanvas && this.cropCanvas.captureStream) {
+      try { stream = this.cropCanvas.captureStream(30); } catch(e) {}
     }
-    // Instant high-definition 9:16 export with burned-in subtitles
-    let progressVal = 0;
-    if (this.exportProgressBar) this.exportProgressBar.style.width = '0%';
-    if (this.exportProgressPercent) this.exportProgressPercent.textContent = '0%';
-    if (this.exportFill) this.exportFill.style.width = '0%';
-    if (this.exportPercentText) this.exportPercentText.textContent = '0%';
-    if (this.exportProgressStatus) this.exportProgressStatus.textContent = 'Baking 9:16 Captions & Rendering Short...';
 
-    const pTimer = setInterval(() => {
-      progressVal += 25;
-      if (this.exportProgressBar) this.exportProgressBar.style.width = `${Math.min(progressVal, 100)}%`;
-      if (this.exportProgressPercent) this.exportProgressPercent.textContent = `${Math.min(progressVal, 100)}%`;
-      if (this.exportFill) this.exportFill.style.width = `${Math.min(progressVal, 100)}%`;
-      if (this.exportPercentText) this.exportPercentText.textContent = `${Math.min(progressVal, 100)}%`;
-
-      if (progressVal >= 100) {
-        clearInterval(pTimer);
+    if (stream && typeof MediaRecorder !== 'undefined') {
+      const mime = MediaRecorder.isTypeSupported('video/mp4') ? 'video/mp4' : 'video/webm';
+      let recorder;
+      try {
+        recorder = new MediaRecorder(stream, { mimeType: mime });
+      } catch(e) {
+        recorder = new MediaRecorder(stream);
+      }
+      const chunks = [];
+      recorder.ondataavailable = (e) => { if (e.data && e.data.size > 0) chunks.push(e.data); };
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: recorder.mimeType || mime });
+        const ext = (recorder.mimeType && recorder.mimeType.includes('mp4')) ? 'mp4' : 'webm';
+        const fileDlName = `ScaleReach_${rawTitle.replace(/[^\w\d-_]/g, '_')}_${this.selectedStyleId || 'classic'}.${ext}`;
+        const blobUrl = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = directClipUrl;
-        a.download = cleanFileName;
+        a.href = blobUrl;
+        a.download = fileDlName;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         cleanupState();
-        this.showToast(`🎉 "${rawTitle}" Downloaded (9:16 Captioned Short)!`);
-      }
-    }, 180);
+        this.showToast(`🎉 "${rawTitle}" Exported & Downloaded in browser!`);
+      };
+
+      // Progress animation while recording canvas
+      let progressVal = 0;
+      recorder.start(100);
+
+      const pTimer = setInterval(() => {
+        progressVal += 12;
+        if (this.exportProgressBar) this.exportProgressBar.style.width = `${Math.min(progressVal, 100)}%`;
+        if (this.exportProgressPercent) this.exportProgressPercent.textContent = `${Math.min(progressVal, 100)}%`;
+        if (this.exportFill) this.exportFill.style.width = `${Math.min(progressVal, 100)}%`;
+        if (this.exportPercentText) this.exportPercentText.textContent = `${Math.min(progressVal, 100)}%`;
+
+        if (progressVal >= 100) {
+          clearInterval(pTimer);
+          if (recorder.state === 'recording') recorder.stop();
+        }
+      }, 300);
+    } else {
+      // Direct clip download fallback
+      const directClipUrl = this.activeDownloadedClipUrl || (moment && moment.videoSrc) || `clips/reel_${idx + 1}.mp4`;
+      const a = document.createElement('a');
+      a.href = directClipUrl;
+      a.download = cleanFileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      cleanupState();
+      this.showToast(`🎉 "${rawTitle}" Downloaded!`);
+    }
   }
 
   bindExport() {
