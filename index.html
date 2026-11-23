@@ -22,8 +22,8 @@
   <meta http-equiv="Expires" content="0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261112_nocache_v110">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261123_vercel_v1">
 </head>
 <body class="dashboard-body">
 
@@ -147,8 +147,8 @@
          ========================================== -->
     <div class="app-main-viewport">
       
-      <!-- Top Navigation Header -->
-      <header class="top-nav-bar">
+      <!-- Vercel-Style Sticky Navigation Header (64px) -->
+      <header class="top-nav-bar vercel-nav" id="mainHeaderBar">
         <div class="nav-left-group">
           <button class="icon-btn-sidebar" id="sidebarToggleBtn" title="Toggle Sidebar">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -156,10 +156,19 @@
               <path d="M9 3v18"/>
             </svg>
           </button>
-          <a href="#" class="top-nav-brand" id="topNavBrandLogo" title="ScaleReach AI">
-            <img src="logo_dark.png" alt="ScaleReach" class="top-brand-logo-img">
+          <a href="#" class="top-nav-brand vercel-brand" id="topNavBrandLogo" title="ScaleReach AI">
+            <svg class="vercel-triangle-icon" width="22" height="19" viewBox="0 0 76 65" fill="#171717">
+              <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
+            </svg>
+            <span class="vercel-brand-text">ScaleReach</span>
           </a>
-          <div class="breadcrumb-trail">
+          <nav class="vercel-nav-links">
+            <a href="#features" class="v-nav-link">Features</a>
+            <a href="#captions" class="v-nav-link">Captions</a>
+            <a href="#demoCardsCarousel" class="v-nav-link">Demo</a>
+            <a href="https://github.com/MuhammadAbdullahShahid546/scalereach-ai" target="_blank" class="v-nav-link">GitHub</a>
+          </nav>
+          <div class="breadcrumb-trail" style="display:none;">
             <a href="#" class="crumb-link" id="crumbDashboard">Dashboard</a>
             <span class="crumb-separator">&gt;</span>
             <span class="crumb-current" id="crumbCurrent">Videos</span>
@@ -167,11 +176,10 @@
         </div>
 
         <div class="nav-right-group">
-          <span class="plan-badge-pill">Free</span>
-          <div class="free-status-badge">
-            <span class="pulse-green-dot"></span>
-            <span>100% Free Mode</span>
-          </div>
+          <span class="v-status-tag"><span class="v-dot"></span> 100% Free AI</span>
+          <button class="v-btn-pill-primary" id="navPrimaryCtaBtn" type="button" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus(); el.scrollIntoView({behavior:'smooth'});}">
+            Upload Video
+          </button>
         </div>
       </header>
 
@@ -179,30 +187,53 @@
       <div class="content-scroll-container">
         
         <!-- ==================================================================
-             SCREEN 1: HOME PAGE (EXACT MATCH WITH USER SCREENSHOT)
+             SCREEN 1: HOME PAGE (VERCEL DESIGN SYSTEM SPECIFICATION)
              ================================================================== -->
         <section class="view-screen active" id="homeDashboardView">
-          
-          <div class="home-hero-center">
+          <div class="vercel-dot-grid-bg"></div>
+
+          <div class="home-hero-center vercel-hero-container">
             
-            <!-- Greeting Header with Free Minutes Pill -->
-            <div class="greeting-row">
-              <h1 class="greeting-title">
-                <span class="wave-emoji">👋</span> Hey, AJJEZ
-              </h1>
-              <div class="greeting-actions-right">
-                <div class="free-minutes-pill">
-                  <span class="clock-icon">⏱️</span>
-                  <span>Unlimited Free Mins</span>
+            <!-- Vercel Asymmetric Hero Section -->
+            <div class="vercel-hero-content">
+              <div class="vercel-hero-text">
+                <div class="vercel-badge-pill">
+                  <span class="v-badge-sparkle">✦</span>
+                  <span>Next-Gen Video Repurposing</span>
+                  <span class="v-badge-arrow">&rarr;</span>
                 </div>
-                <div class="free-creator-tag">
-                  <span>✨ 100% Free AI</span>
+
+                <h1 class="vercel-hero-heading">
+                  Turn long videos<br>into viral clips.
+                </h1>
+
+                <p class="vercel-hero-subhead">
+                  ScaleReach automatically tracks speakers, reframes 16:9 videos into 9:16 vertical shorts, and burns viral Hormozi &amp; MrBeast karaoke captions. 100% free for everyone.
+                </p>
+
+                <div class="vercel-hero-cta-group">
+                  <button class="v-btn-pill-primary" type="button" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus();}">
+                    Start Clipping Free
+                  </button>
+                  <button class="v-btn-pill-secondary" type="button" onclick="const el=document.getElementById('demoCardsCarousel'); if(el){el.scrollIntoView({behavior:'smooth'});}">
+                    Explore Demos
+                  </button>
+                </div>
+              </div>
+
+              <!-- Centered Geometric Object with Soft Multi-Color Gradient Glow -->
+              <div class="vercel-hero-visual-wrapper">
+                <div class="vercel-mesh-gradient-glow"></div>
+                <div class="vercel-geometric-prism">
+                  <svg width="124" height="108" viewBox="0 0 76 65" fill="none">
+                    <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#171717"/>
+                  </svg>
                 </div>
               </div>
             </div>
 
-            <!-- Central Hero Generation Card (Exact match with screenshot) -->
-            <div class="hero-generation-card">
+            <!-- Central Hero Generation Card (Vercel Styled) -->
+            <div class="hero-generation-card vercel-card-styled">
               
               <!-- 1. YouTube Connect Banner (At top of the card) -->
               <div class="yt-connect-banner" id="ytConnectBanner">
@@ -369,6 +400,65 @@
 
               </div>
             </div>
+
+            <!-- Vercel-Style Alternating Feature Sections -->
+            <section class="vercel-features-section" id="features">
+              <!-- Feature 1: Intelligent 9:16 Cropping -->
+              <div class="v-feature-block">
+                <div class="v-feature-visual">
+                  <div class="v-mockup-window">
+                    <div class="v-window-dots"><span></span><span></span><span></span></div>
+                    <div class="v-mockup-preview-inner">
+                      <img src="thumb_reel_1.jpg" alt="Smart 9:16 Reframe" class="v-preview-img">
+                      <div class="v-aspect-badge">9:16 Center Reframe</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="v-feature-copy">
+                  <span class="v-feature-kicker">01 / AUTO-REFRAME</span>
+                  <h2 class="v-feature-title">Smart 9:16 Speaker Tracking.</h2>
+                  <p class="v-feature-desc">Converts standard 16:9 widescreen footage into vertical shorts. Intelligent facial and motion detection ensures talking heads stay dynamically locked in the center.</p>
+                </div>
+              </div>
+
+              <!-- Feature 2: Hormozi & MrBeast Viral Captions -->
+              <div class="v-feature-block v-feature-reversed" id="captions">
+                <div class="v-feature-copy">
+                  <span class="v-feature-kicker">02 / VIRAL CAPTIONS</span>
+                  <h2 class="v-feature-title">Hormozi &amp; MrBeast Captions.</h2>
+                  <p class="v-feature-desc">Word-level karaoke highlighting with bouncy pop scale effects, high-contrast black borders, and punchy yellow &amp; green accents burned directly onto your clips in seconds.</p>
+                </div>
+                <div class="v-feature-visual">
+                  <div class="v-caption-showcase-card">
+                    <div class="v-caption-pill">
+                      <span>THIS IS A </span><span class="highlight-yellow">ONE BILLION</span><span> DOLLAR SHIP!</span>
+                    </div>
+                    <div class="v-caption-pill">
+                      <span>CAN HE </span><span class="highlight-green">SAVE THIS?</span> 😱
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Vercel Clean Light Footer -->
+            <footer class="vercel-site-footer">
+              <div class="v-footer-content">
+                <div class="v-footer-left">
+                  <svg width="18" height="16" viewBox="0 0 76 65" fill="#171717">
+                    <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
+                  </svg>
+                  <span class="v-footer-brand">ScaleReach AI</span>
+                  <span class="v-footer-badge">100% Free Forever</span>
+                </div>
+                <div class="v-footer-links">
+                  <a href="#features">Features</a>
+                  <a href="#captions">Captions</a>
+                  <a href="#demoCardsCarousel">Demos</a>
+                  <a href="https://github.com/MuhammadAbdullahShahid546/scalereach-ai" target="_blank">GitHub</a>
+                </div>
+              </div>
+            </footer>
 
           </div>
 
@@ -1380,9 +1470,26 @@
   </div>
 
   <!-- ScaleReach ASS Subtitle & Animation Engine (100% Free - No Watermark) -->
-  <script src="assGenerator.js?v=20261122_v1"></script>
+  <script src="assGenerator.js?v=20261123_v2"></script>
   <!-- FFmpeg.wasm for 100% In-Browser Video Processing (No Backend Required) -->
   <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
-  <script src="app.js?v=20261122_scalereach_pro_free"></script>
+  <script src="app.js?v=20261123_vercel_redesign"></script>
+  <script>
+    // Vercel Sticky Navbar Scroll State
+    document.addEventListener('DOMContentLoaded', () => {
+      const nav = document.getElementById('mainHeaderBar');
+      const scrollEl = document.querySelector('.content-scroll-container') || window;
+      if (nav && scrollEl) {
+        scrollEl.addEventListener('scroll', () => {
+          const top = (scrollEl.scrollTop !== undefined) ? scrollEl.scrollTop : window.scrollY;
+          if (top > 15) {
+            nav.classList.add('is-scrolled');
+          } else {
+            nav.classList.remove('is-scrolled');
+          }
+        }, { passive: true });
+      }
+    });
+  </script>
 </body>
 </html>

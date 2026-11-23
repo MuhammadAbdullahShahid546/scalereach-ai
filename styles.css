@@ -3,32 +3,33 @@
    ========================================================================== */
 
 :root {
-  --bg-app: #08090d;
-  --bg-sidebar: #0a0b12;
-  --bg-card: #12141d;
-  --bg-card-subtle: #171a26;
-  --bg-input: #0b0d14;
-  --bg-hover: #1e2232;
+  /* Vercel Design System Tokens */
+  --bg-app: #FAFAFA;
+  --bg-sidebar: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F7F7F8;
+  --bg-input: #FFFFFF;
+  --bg-hover: #F2F2F2;
 
-  --border-card: #202434;
-  --border-input: #282e42;
-  --border-green: #22c55e;
-  --border-blue: #2563eb;
+  --border-card: #EBEBEB;
+  --border-input: #E5E5E5;
+  --border-green: #10b981;
+  --border-blue: #0072F5;
 
-  --text-main: #f8fafc;
-  --text-sub: #94a3b8;
-  --text-dim: #64748b;
+  --text-main: #171717;
+  --text-sub: #4D4D4D;
+  --text-dim: #8F8F8F;
 
-  --primary-blue: #2563eb;
-  --primary-blue-hover: #1d4ed8;
-  --accent-cyan: #06b6d4;
+  --primary-blue: #0072F5;
+  --primary-blue-hover: #0060D6;
+  --accent-cyan: #00f2fe;
   --accent-yellow: #facc15;
   --accent-red: #ef4444;
-  --accent-green: #22c55e;
+  --accent-green: #10b981;
   --accent-purple: #8b5cf6;
 
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', 'Menlo', monospace;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -37,6 +38,8 @@
   --radius-full: 9999px;
 
   --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 * {
@@ -3863,4 +3866,558 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 .main-player-caption-sticker.size-xl .sticker-text {
   font-size: 3.2rem !important;
+}
+
+/* ==========================================================================
+   VERCEL DESIGN SYSTEM SPECIFICATION (LIGHT & MINIMAL)
+   ========================================================================== */
+
+/* Subtle Dot-Grid Pattern */
+.vercel-dot-grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 640px;
+  background-image: radial-gradient(#E0E0E0 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 64px Sticky Vercel Navbar */
+.top-nav-bar.vercel-nav {
+  height: 64px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(250, 250, 250, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid #EBEBEB;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.top-nav-bar.vercel-nav.is-scrolled {
+  background: #FAFAFA;
+  border-bottom-color: #E0E0E0;
+}
+
+.vercel-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: #171717;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+}
+
+.vercel-triangle-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.vercel-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: 2rem;
+}
+
+.v-nav-link {
+  color: #4D4D4D;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.v-nav-link:hover {
+  color: #171717;
+}
+
+.v-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4D4D4D;
+  background: #FFFFFF;
+  border: 1px solid #EBEBEB;
+  border-radius: 9999px;
+  padding: 0.35rem 0.85rem;
+}
+
+.v-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+/* Pill Buttons */
+.v-btn-pill-primary {
+  background: #171717;
+  color: #FFFFFF;
+  border: 1px solid #171717;
+  border-radius: 9999px;
+  padding: 0.55rem 1.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.v-btn-pill-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.v-btn-pill-secondary {
+  background: transparent;
+  color: #171717;
+  border: 1px solid #171717;
+  border-radius: 9999px;
+  padding: 0.55rem 1.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.v-btn-pill-secondary:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Vercel Spacious Asymmetric Hero */
+.vercel-hero-container {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+}
+
+.vercel-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 2.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.vercel-hero-text {
+  flex: 1;
+  max-width: 580px;
+}
+
+.vercel-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  border: 1px solid #EBEBEB;
+  border-radius: 9999px;
+  padding: 0.32rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4D4D4D;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  margin-bottom: 1.5rem;
+}
+
+.v-badge-sparkle {
+  color: #0072F5;
+  font-size: 0.9rem;
+}
+
+.v-badge-arrow {
+  color: #8F8F8F;
+  margin-left: 0.2rem;
+}
+
+.vercel-hero-heading {
+  font-size: 3.4rem;
+  line-height: 1.08;
+  font-weight: 800;
+  color: #171717;
+  letter-spacing: -2.4px;
+  margin-bottom: 1.2rem;
+}
+
+.vercel-hero-subhead {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #4D4D4D;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.vercel-hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Centered Geometric Prism with Soft Multi-Color Mesh Gradient Glow */
+.vercel-hero-visual-wrapper {
+  position: relative;
+  width: 320px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vercel-mesh-gradient-glow {
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 242, 254, 0.5) 0%,
+    rgba(37, 99, 235, 0.42) 25%,
+    rgba(139, 92, 246, 0.42) 50%,
+    rgba(236, 72, 153, 0.35) 75%,
+    rgba(245, 158, 11, 0.25) 90%,
+    transparent 100%
+  );
+  filter: blur(52px);
+  animation: meshPulse 8s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes meshPulse {
+  0% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.1) rotate(15deg); opacity: 1; }
+  100% { transform: scale(0.95) rotate(-10deg); opacity: 0.85; }
+}
+
+.vercel-geometric-prism {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+}
+
+/* Vercel Minimalist White URL Generation Card */
+.hero-generation-card.vercel-card-styled {
+  background: #FFFFFF !important;
+  border: 1px solid #EBEBEB !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  border-radius: 20px !important;
+  padding: 1.8rem !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.hero-generation-card.vercel-card-styled .main-video-input-box {
+  background: #FAFAFA !important;
+  border: 1px solid #EBEBEB !important;
+  border-radius: 9999px !important;
+  padding: 0.45rem 1.3rem !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.hero-generation-card.vercel-card-styled .main-video-input-box:focus-within {
+  border-color: #0072F5 !important;
+  box-shadow: 0 0 0 3px rgba(0, 114, 245, 0.15) !important;
+  background: #FFFFFF !important;
+}
+
+.hero-generation-card.vercel-card-styled .main-video-input-box input {
+  color: #171717 !important;
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+}
+
+.hero-generation-card.vercel-card-styled .btn-get-clips-primary {
+  background: #171717 !important;
+  color: #FFFFFF !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  font-family: var(--font-sans) !important;
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+}
+
+.hero-generation-card.vercel-card-styled .btn-get-clips-primary:hover {
+  opacity: 0.9 !important;
+  transform: translateY(-1px) !important;
+}
+
+.hero-generation-card.vercel-card-styled .btn-upload-file-pill {
+  border: 1px solid #EBEBEB !important;
+  background: #FFFFFF !important;
+  color: #171717 !important;
+  border-radius: 9999px !important;
+}
+
+.hero-generation-card.vercel-card-styled .yt-connect-banner {
+  background: #F7F7F8 !important;
+  border: 1px solid #EBEBEB !important;
+  border-radius: 12px !important;
+}
+
+.hero-generation-card.vercel-card-styled .yt-connect-text {
+  color: #171717 !important;
+}
+
+.hero-generation-card.vercel-card-styled .btn-connect-link {
+  background: #171717 !important;
+  color: #FFFFFF !important;
+  border-radius: 9999px !important;
+}
+
+/* Vercel Alternating Feature Sections */
+.vercel-features-section {
+  max-width: 1080px;
+  margin: 4.5rem auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.v-feature-block {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 3rem 2rem;
+  border: 1px solid #EBEBEB;
+  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.v-feature-block.v-feature-reversed {
+  flex-direction: row-reverse;
+}
+
+.v-feature-visual {
+  flex: 1.2;
+}
+
+.v-feature-copy {
+  flex: 1;
+}
+
+.v-feature-kicker {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0072F5;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.v-feature-title {
+  font-size: 2.1rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #171717;
+  letter-spacing: -1.2px;
+  margin-bottom: 0.9rem;
+}
+
+.v-feature-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4D4D4D;
+}
+
+.v-mockup-window {
+  background: #F7F7F8;
+  border: 1px solid #EBEBEB;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+.v-window-dots {
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #FAFAFA;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.v-window-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #E0E0E0;
+}
+
+.v-mockup-preview-inner {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.v-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.v-aspect-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.v-caption-showcase-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2.5rem;
+  background: #FAFAFA;
+  border: 1px solid #EBEBEB;
+  border-radius: 16px;
+}
+
+.v-caption-pill {
+  padding: 1rem 1.6rem;
+  border-radius: 14px;
+  background: #000000;
+  color: #FFFFFF;
+  font-family: 'Montserrat', var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.v-caption-pill .highlight-yellow {
+  color: #FFE600;
+}
+
+.v-caption-pill .highlight-green {
+  color: #24E01E;
+}
+
+/* Vercel Light Clean Footer */
+.vercel-site-footer {
+  margin-top: 5rem;
+  border-top: 1px solid #EBEBEB;
+  background: #FAFAFA;
+  padding: 2.5rem 2rem;
+}
+
+.v-footer-content {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.v-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.v-footer-brand {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #171717;
+  letter-spacing: -0.02em;
+}
+
+.v-footer-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0072F5;
+  background: #EBF5FF;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+}
+
+.v-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.v-footer-links a {
+  color: #8F8F8F;
+  text-decoration: none;
+  font-size: 0.86rem;
+  transition: color 0.15s ease;
+}
+
+.v-footer-links a:hover {
+  color: #171717;
+}
+
+/* Light Theme overrides for Demo Cards */
+.demo-videos-section {
+  max-width: 1080px !important;
+  margin: 4rem auto 1rem auto !important;
+}
+
+.demo-section-header h3 {
+  color: #171717 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.demo-section-header p {
+  color: #4D4D4D !important;
+}
+
+.demo-video-card {
+  background: #FFFFFF !important;
+  border: 1px solid #EBEBEB !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+  border-radius: 14px !important;
+}
+
+.demo-card-info h4 {
+  color: #171717 !important;
+}
+
+.demo-card-info p {
+  color: #8F8F8F !important;
 }
