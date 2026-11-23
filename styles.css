@@ -3876,17 +3876,11 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 /* Subtle Dot-Grid Pattern */
 .vercel-dot-grid-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 700px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 100%);
-  pointer-events: none;
-  z-index: 0;
+  display: none !important;
+}
+
+.vercel-conical-light-beam {
+  display: none !important;
 }
 
 /* 64px Sticky Vercel Navbar */
@@ -3924,11 +3918,13 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .top-brand-logo-img {
   height: 38px;
   width: 38px;
-  border-radius: 8px;
-  object-fit: cover;
+  border-radius: 0;
+  object-fit: contain;
   display: block;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 10px rgba(0, 114, 245, 0.35);
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  filter: drop-shadow(0 0 10px rgba(0, 114, 245, 0.45));
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -4122,61 +4118,46 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 .vercel-mesh-gradient-glow {
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 180deg at 50% 50%,
-    #00f2fe 0deg,
-    #2563eb 72deg,
-    #8b5cf6 144deg,
-    #ec4899 216deg,
-    #f59e0b 288deg,
-    #00f2fe 360deg
-  );
-  filter: blur(55px);
-  opacity: 0.7;
-  animation: meshPulse 8s infinite alternate ease-in-out;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes meshPulse {
-  0% { transform: scale(0.9) rotate(0deg); opacity: 0.65; }
-  50% { transform: scale(1.12) rotate(15deg); opacity: 0.85; }
-  100% { transform: scale(0.95) rotate(-10deg); opacity: 0.7; }
+  display: none !important;
 }
 
 .scalereach-hero-logo-box {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2rem auto 3.5rem auto;
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
 }
 
-.hero-scalereach-icon-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 28px;
-  object-fit: cover;
-  box-shadow: 0 16px 50px rgba(0, 114, 245, 0.4), 0 0 0 1.5px rgba(255, 255, 255, 0.2);
-  background: #000000;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+.hero-scalereach-raw-logo {
+  width: 340px;
+  max-width: 90vw;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 0 35px rgba(0, 114, 245, 0.45));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
 }
 
-.hero-scalereach-icon-img:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 24px 60px rgba(0, 114, 245, 0.55), 0 0 0 2px rgba(255, 255, 255, 0.35);
+.hero-scalereach-raw-logo:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 55px rgba(0, 114, 245, 0.7));
 }
 
 .footer-scalereach-logo-img {
   height: 28px;
   width: 28px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  object-fit: contain;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .vercel-capsule-footer .btn-upload-file-pill:hover {
