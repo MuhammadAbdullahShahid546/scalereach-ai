@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261123_vercel_v2">
+  <link rel="stylesheet" href="styles.css?v=20261123_getclips_v3">
 </head>
 <body class="dashboard-body">
 
@@ -127,13 +127,19 @@
                   </button>
                 </div>
 
-                <div class="works-with-logos">
-                  <span class="works-label">Supports:</span>
-                  <span class="v-platform-tag">YouTube</span>
-                  <span class="v-platform-tag">Twitch</span>
-                  <span class="v-platform-tag">Kick</span>
-                  <span class="v-platform-tag">Drive</span>
-                  <span class="v-platform-tag">MP4 / MOV</span>
+                <div class="capsule-footer-right-group">
+                  <div class="works-with-logos">
+                    <span class="works-label">Supports:</span>
+                    <span class="v-platform-tag">YouTube</span>
+                    <span class="v-platform-tag">Twitch</span>
+                    <span class="v-platform-tag">Kick</span>
+                    <span class="v-platform-tag">Drive</span>
+                    <span class="v-platform-tag">MP4</span>
+                  </div>
+                  <button class="card-right-down-get-clips-btn" id="cardRightDownGetClipsBtn" type="button" title="Get clips">
+                    <span>Get clips</span>
+                    <span class="btn-arrow">&rarr;</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -1170,12 +1176,11 @@
   <!-- Floating Toast Notification -->
   <div class="toast-notification hidden" id="toast">Copied to clipboard! ✓</div>
 
-  <!-- Bottom Right Floating Support Button -->
-  <div class="support-float-btn" title="AI Support">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-    </svg>
-  </div>
+  <!-- Bottom Right Floating "Get clips →" Action Button (Right Down) -->
+  <button class="right-down-get-clips-btn" id="floatingRightDownBtn" type="button" title="Get clips">
+    <span>Get clips</span>
+    <span class="btn-arrow">&rarr;</span>
+  </button>
 
   <!-- ScaleReach ASS Subtitle & Animation Engine (100% Free - No Watermark) -->
   <script src="assGenerator.js?v=20261123_v2"></script>
@@ -1183,7 +1188,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
   <script src="app.js?v=20261123_vercel_redesign"></script>
   <script>
-    // Vercel Sticky Navbar Scroll State
+    // Vercel Sticky Navbar Scroll State & Right-Down Button Handlers
     document.addEventListener('DOMContentLoaded', () => {
       const nav = document.getElementById('mainHeaderBar');
       const scrollEl = document.querySelector('.content-scroll-container') || window;
@@ -1197,6 +1202,24 @@
           }
         }, { passive: true });
       }
+
+      // Handler for Right-Down "Get clips →" buttons
+      const handleGetClipsTrigger = () => {
+        const urlInput = document.getElementById('mainVideoUrlInput');
+        const getClipsBtn = document.getElementById('homeGetClipsBtn');
+        if (urlInput && (!urlInput.value || !urlInput.value.trim())) {
+          urlInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          urlInput.focus();
+        } else if (getClipsBtn) {
+          getClipsBtn.click();
+        }
+      };
+
+      const floatBtn = document.getElementById('floatingRightDownBtn');
+      if (floatBtn) floatBtn.addEventListener('click', handleGetClipsTrigger);
+
+      const cardBtn = document.getElementById('cardRightDownGetClipsBtn');
+      if (cardBtn) cardBtn.addEventListener('click', handleGetClipsTrigger);
     });
   </script>
 </body>

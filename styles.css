@@ -4249,6 +4249,94 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   letter-spacing: 0.02em;
 }
 
+/* Card Right Down Action Group & Button */
+.capsule-footer-right-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  flex-wrap: wrap !important;
+}
+
+.card-right-down-get-clips-btn {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border: 1px solid #FFFFFF !important;
+  border-radius: 9999px !important;
+  padding: 0.5rem 1.15rem !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.15) !important;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.card-right-down-get-clips-btn .btn-arrow {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+
+.card-right-down-get-clips-btn:hover {
+  transform: translateY(-1px);
+  background: #EDEDED !important;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3) !important;
+}
+
+.card-right-down-get-clips-btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Bottom-Right Floating "Get clips →" Action Button (Right Down) */
+.right-down-get-clips-btn {
+  position: fixed !important;
+  bottom: 26px !important;
+  right: 26px !important;
+  z-index: 9999 !important;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border: 1px solid #FFFFFF !important;
+  border-radius: 9999px !important;
+  padding: 0.8rem 1.55rem !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.22), 0 10px 32px rgba(0, 0, 0, 0.95) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  outline: none !important;
+}
+
+.right-down-get-clips-btn .btn-arrow {
+  display: inline-block;
+  font-size: 1.15rem;
+  line-height: 1;
+  font-weight: 800;
+  transition: transform 0.2s ease;
+}
+
+.right-down-get-clips-btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.35), 0 14px 40px rgba(0, 0, 0, 0.98) !important;
+  background: #EDEDED !important;
+}
+
+.right-down-get-clips-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.right-down-get-clips-btn:active {
+  transform: translateY(0) scale(0.97) !important;
+}
+
 /* Ensure OLED pitch black on entire app */
 html,
 body.dashboard-body,
