@@ -52,31 +52,33 @@ body.dashboard-body {
   font-family: var(--font-sans);
   background-color: var(--bg-app);
   color: var(--text-main);
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   -webkit-font-smoothing: antialiased;
 }
 
-/* App Master Layout (Sidebar + Main Viewport) */
+/* App Master Layout (Full-Width Clean Vercel Layout) */
 .app-layout {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-/* ==========================================================================
-   SIDEBAR (Matching User Screenshot Left Column)
-   ========================================================================== */
 .app-sidebar {
-  width: 250px;
-  background-color: var(--bg-sidebar);
-  border-right: 1px solid var(--border-card);
+  display: none !important;
+}
+
+.icon-btn-sidebar {
+  display: none !important;
+}
+
+.app-main-viewport {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
-  z-index: 50;
-  height: 100%;
 }
 
 /* ScaleReach Official Brand Logo in Sidebar */

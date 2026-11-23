@@ -1947,18 +1947,22 @@ class ScaleReachFullApp {
      1. Sidebar Navigation & Collapse
   ---------------------------------------------------- */
   bindSidebar() {
-    this.sidebarToggleBtn.addEventListener('click', () => {
-      this.appSidebar.classList.toggle('collapsed');
-      if (this.appSidebar.classList.contains('collapsed')) {
-        this.appSidebar.style.display = 'none';
-      } else {
-        this.appSidebar.style.display = 'flex';
-      }
-    });
+    if (this.sidebarToggleBtn && this.appSidebar) {
+      this.sidebarToggleBtn.addEventListener('click', () => {
+        this.appSidebar.classList.toggle('collapsed');
+        if (this.appSidebar.classList.contains('collapsed')) {
+          this.appSidebar.style.display = 'none';
+        } else {
+          this.appSidebar.style.display = 'flex';
+        }
+      });
+    }
 
-    this.sideNavHome.addEventListener('click', () => {
-      this.showHomeScreen();
-    });
+    if (this.sideNavHome) {
+      this.sideNavHome.addEventListener('click', () => {
+        this.showHomeScreen();
+      });
+    }
 
     const sideNavLogoBrand = document.getElementById('sideNavLogoBrand');
     if (sideNavLogoBrand) {
@@ -1984,15 +1988,19 @@ class ScaleReachFullApp {
       });
     }
 
-    this.sideNavAllClips.addEventListener('click', () => {
-      this.showStudioView();
-      this.showToast('Opened Clips Library');
-    });
+    if (this.sideNavAllClips) {
+      this.sideNavAllClips.addEventListener('click', () => {
+        this.showStudioView();
+        this.showToast('Opened Clips Library');
+      });
+    }
 
-    this.crumbDashboard.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.showHomeScreen();
-    });
+    if (this.crumbDashboard) {
+      this.crumbDashboard.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.showHomeScreen();
+      });
+    }
   }
 
   /* ----------------------------------------------------
@@ -3992,9 +4000,9 @@ class ScaleReachFullApp {
     this.studioView.classList.add('hidden');
     this.homeDashboardView.classList.remove('hidden');
 
-    this.crumbCurrent.textContent = 'Videos';
-    this.sideNavHome.classList.add('active');
-    this.sideNavAllClips.classList.remove('active');
+    if (this.crumbCurrent) this.crumbCurrent.textContent = 'Videos';
+    if (this.sideNavHome) this.sideNavHome.classList.add('active');
+    if (this.sideNavAllClips) this.sideNavAllClips.classList.remove('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -4003,7 +4011,7 @@ class ScaleReachFullApp {
     this.studioView.classList.add('hidden');
     this.configureView.classList.remove('hidden');
 
-    this.crumbCurrent.textContent = 'Configure';
+    if (this.crumbCurrent) this.crumbCurrent.textContent = 'Configure';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -4012,9 +4020,9 @@ class ScaleReachFullApp {
     this.configureView.classList.add('hidden');
     this.studioView.classList.remove('hidden');
 
-    this.crumbCurrent.textContent = 'Studio & Export';
-    this.sideNavHome.classList.remove('active');
-    this.sideNavAllClips.classList.add('active');
+    if (this.crumbCurrent) this.crumbCurrent.textContent = 'Studio & Export';
+    if (this.sideNavHome) this.sideNavHome.classList.remove('active');
+    if (this.sideNavAllClips) this.sideNavAllClips.classList.add('active');
 
     // Make sure latest analyzed clips, subnav pills, and trimmer are active
     this.renderSuggestedClipsUI();
