@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261123_vercel_v1">
+  <link rel="stylesheet" href="styles.css?v=20261123_vercel_v2">
 </head>
 <body class="dashboard-body">
 
@@ -38,15 +38,13 @@
       <header class="top-nav-bar vercel-nav" id="mainHeaderBar">
         <div class="nav-left-group">
           <a href="#" class="top-nav-brand vercel-brand" id="topNavBrandLogo" title="ScaleReach AI">
-            <svg class="vercel-triangle-icon" width="22" height="19" viewBox="0 0 76 65" fill="#171717">
+            <svg class="vercel-triangle-icon" width="22" height="19" viewBox="0 0 76 65" fill="#FFFFFF">
               <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
             </svg>
             <span class="vercel-brand-text">ScaleReach</span>
           </a>
           <nav class="vercel-nav-links">
-            <a href="#features" class="v-nav-link">Features</a>
-            <a href="#captions" class="v-nav-link">Captions</a>
-            <a href="#demoCardsCarousel" class="v-nav-link">Demo</a>
+            <a href="#mainVideoUrlInput" class="v-nav-link" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus();}">Create Clips</a>
             <a href="https://github.com/MuhammadAbdullahShahid546/scalereach-ai" target="_blank" class="v-nav-link">GitHub</a>
           </nav>
           <div class="breadcrumb-trail" style="display:none;">
@@ -74,275 +72,103 @@
           <div class="vercel-conical-light-beam"></div>
           <div class="vercel-dot-grid-bg"></div>
 
-          <div class="home-hero-center vercel-hero-container">
+          <div class="home-hero-center vercel-hero-container vercel-hero-centered-layout">
             
-            <!-- Vercel Asymmetric Hero Section -->
-            <div class="vercel-hero-content">
-              <div class="vercel-hero-text">
-                <div class="vercel-badge-pill">
-                  <span class="v-badge-sparkle">✦</span>
-                  <span>ScaleReach 2.0 is live &mdash; 100% Free Open AI</span>
-                  <span class="v-badge-arrow">&rarr;</span>
-                </div>
+            <!-- Vercel Badge Pill -->
+            <div class="vercel-badge-pill" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus();}">
+              <span class="v-badge-sparkle">✦</span>
+              <span>ScaleReach 2.0 &mdash; 100% Free Open AI Video Repurposing</span>
+              <span class="v-badge-arrow">&rarr;</span>
+            </div>
 
-                <h1 class="vercel-hero-heading">
-                  Your complete platform<br><span class="v-gradient-text">for viral clips.</span>
-                </h1>
+            <!-- Main Vercel Heading -->
+            <h1 class="vercel-hero-heading vercel-hero-heading-centered">
+              Your complete platform<br><span class="v-gradient-text">for viral clips.</span>
+            </h1>
 
-                <p class="vercel-hero-subhead">
-                  ScaleReach provides the developer-grade AI engine to turn long videos into high-retention 9:16 shorts with Hormozi &amp; MrBeast karaoke captions. Completely free, in-browser, no servers.
-                </p>
+            <!-- Subtitle -->
+            <p class="vercel-hero-subhead vercel-hero-subhead-centered">
+              ScaleReach provides the developer-grade AI engine to turn long videos into high-retention 9:16 shorts with Hormozi &amp; MrBeast karaoke captions. Completely free, in-browser, no servers.
+            </p>
 
-                <div class="vercel-hero-cta-group">
-                  <button class="v-btn-pill-primary" type="button" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus();}">
-                    Start Clipping Free
-                  </button>
-                  <button class="v-btn-pill-secondary" type="button" onclick="const el=document.getElementById('demoCardsCarousel'); if(el){el.scrollIntoView({behavior:'smooth'});}">
-                    Explore Demos
-                  </button>
-                </div>
-              </div>
-
-              <!-- Centered Geometric Object with Soft Multi-Color Gradient Glow -->
-              <div class="vercel-hero-visual-wrapper">
-                <div class="vercel-mesh-gradient-glow"></div>
-                <div class="vercel-geometric-prism">
-                  <svg width="124" height="108" viewBox="0 0 76 65" fill="none">
-                    <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#FFFFFF"/>
-                  </svg>
-                </div>
+            <!-- Centered Geometric Triangle with Soft Multi-Color Gradient Glow -->
+            <div class="vercel-hero-visual-wrapper vercel-hero-visual-centered">
+              <div class="vercel-mesh-gradient-glow"></div>
+              <div class="vercel-geometric-prism">
+                <svg width="100" height="86" viewBox="0 0 76 65" fill="none">
+                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#FFFFFF"/>
+                </svg>
               </div>
             </div>
 
-            <!-- Central Hero Generation Card (Vercel Styled) -->
-            <div class="hero-generation-card vercel-card-styled">
-              
-              <!-- 1. YouTube Connect Banner (At top of the card) -->
-              <div class="yt-connect-banner" id="ytConnectBanner">
-                <div class="yt-connect-left">
-                  <span class="yt-badge-red-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                  </span>
-                  <span class="yt-connect-text">Connect your YouTube channel to import videos in one click</span>
-                  <span class="yt-bonus-pill">+Free Bonus</span>
-                </div>
-                <button class="btn-connect-link" id="connectYoutubeBtn">Connect</button>
-              </div>
-
-              <!-- 2. "Don't have a video ready?" + Sample Link Selector -->
-              <div class="sample-prompt-row">
-                <span class="prompt-dim-text">Don't have a video ready?</span>
-                <div class="sample-dropdown-trigger" id="sampleDropdownTrigger">
-                  <span class="sample-link-blue">Try a sample video &#9662;</span>
-                  
-                  <!-- Dropdown Menu of Presets -->
-                  <div class="sample-menu-popover hidden" id="sampleMenuPopover">
-                    <div class="sample-option-item" data-url="https://www.youtube.com/watch?v=ishowspeed_wwe" data-title="HOW I FOUGHT IN WRESTLEMANIA" data-author="IShowSpeed • 18:24" data-img="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?w=800&auto=format&fit=crop&q=80">
-                      <strong>🔥 IShowSpeed WrestleMania</strong>
-                      <small>High Energy • 18:24</small>
-                    </div>
-                    <div class="sample-option-item" data-url="https://www.youtube.com/watch?v=travel_vlogger" data-title="RUSSIA TO IRAN OVERLAND ADVENTURE" data-author="Vlogger Overland • 42:15" data-img="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80">
-                      <strong>🚌 Overland Travel Roadtrip</strong>
-                      <small>Adventure • 42:15</small>
-                    </div>
-                    <div class="sample-option-item" data-url="https://www.youtube.com/watch?v=mkbhd_folding" data-title="The Dual Screen Folding Revolution" data-author="MKBHD • 16:40" data-img="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&auto=format&fit=crop&q=80">
-                      <strong>📱 MKBHD Folding Phone</strong>
-                      <small>Tech Deep Dive • 16:40</small>
-                    </div>
-                    <div class="sample-option-item" data-url="https://www.youtube.com/watch?v=khan_sir_podcast" data-title="KHAN SIR ON PAKISTAN & GEOPOLITICS" data-author="The Real Talks • 1h 12m" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80">
-                      <strong>🎙️ Khan Sir Podcast (35M+ views)</strong>
-                      <small>Podcast • 1h 12m</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 3. Big Input Bar with Google Drive Logo & Multi-Source Placeholder -->
+            <!-- Vercel Minimalist Command Card / URL Ingestion -->
+            <div class="hero-generation-card vercel-card-styled vercel-capsule-command">
               <div class="main-video-input-box">
                 <span class="drive-multi-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 14.5L9.5 5h5L9 14.5H4z" fill="#34A853"/>
-                    <path d="M9.5 5h5l5.5 9.5h-5L9.5 5z" fill="#4285F4"/>
-                    <path d="M4 14.5l2.5 4.5h11l2.5-4.5H4z" fill="#FBBC05"/>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EDEDED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                   </svg>
                 </span>
-                <input type="text" id="mainVideoUrlInput" placeholder="Enter URL" value="https://www.youtube.com/watch?v=pAnGwRiQ4-4">
+                <input type="text" id="mainVideoUrlInput" placeholder="Paste YouTube, Twitch, or video link..." value="https://www.youtube.com/watch?v=pAnGwRiQ4-4">
+                <button class="btn-get-clips-primary vercel-capsule-submit" id="homeGetClipsBtn">
+                  <span>Get clips in 1 click &rarr;</span>
+                </button>
               </div>
 
-              <!-- 4. Big Primary Button "Get clips in 1 click" -->
-              <button class="btn-get-clips-primary" id="homeGetClipsBtn">
-                <span>Get clips in 1 click</span>
-              </button>
-
-              <!-- 5. Footer Row: Upload File + Works With Platform Icons -->
-              <div class="hero-card-footer-row">
+              <!-- Action Sub-row: Upload File + Works With Platform Badges -->
+              <div class="hero-card-footer-row vercel-capsule-footer">
                 <div class="upload-file-group">
                   <input type="file" id="homeFileInput" accept="video/mp4,video/webm,video/quicktime" class="hidden-input">
                   <button class="btn-upload-file-pill" id="homeUploadFileBtn">
                     <span class="icon-upload">📁</span>
-                    <span>Upload file</span>
-                    <span class="badge-free-tag">FREE</span>
+                    <span>Upload local video</span>
+                    <span class="badge-free-tag">1080p FREE</span>
                   </button>
                 </div>
 
                 <div class="works-with-logos">
-                  <span class="works-label">Works with</span>
-                  <span class="icon-brand yt-red">▶</span>
-                  <span class="icon-brand twitch-purp">👾</span>
-                  <span class="icon-brand kick-green">🟩</span>
-                  <span class="icon-brand drive-color">☁️</span>
-                  <span class="icon-brand loom-sun">📼</span>
-                  <span class="formats-text">+ .mp4/.mov links</span>
+                  <span class="works-label">Supports:</span>
+                  <span class="v-platform-tag">YouTube</span>
+                  <span class="v-platform-tag">Twitch</span>
+                  <span class="v-platform-tag">Kick</span>
+                  <span class="v-platform-tag">Drive</span>
+                  <span class="v-platform-tag">MP4 / MOV</span>
                 </div>
-              </div>
-
-            </div>
-
-            <!-- Demo Videos Section (Exact match with screenshot) -->
-            <div class="demo-videos-section">
-              <div class="demo-section-header">
-                <div class="demo-title-group">
-                  <span class="cam-icon">📹</span>
-                  <h3>Demo Videos</h3>
-                  <span class="badge-try-it">TRY IT</span>
-                </div>
-                <p>Explore real videos with AI-generated clips. Edit captions, try styles, and see the full workflow.</p>
-              </div>
-
-              <!-- Demo Thumbnails Carousel / Grid (The 5 exact videos from user screenshot) -->
-              <div class="demo-cards-carousel" id="demoCardsCarousel">
-                
-                <!-- Demo 1: Overland Bus Vlogger -->
-                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=travel_vlogger" data-title="Overland Adventure: Russia to Iran" data-author="Outdoor Vlogger • 24:10" data-img="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80">
-                  <div class="demo-thumb-box">
-                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80" alt="Travel Vlog">
-                    <div class="badge-sticker sticker-russia">RUSSIA ✈️</div>
-                    <div class="badge-sticker sticker-iran">IRAN 🚌</div>
-                    <div class="demo-play-btn">▶</div>
-                  </div>
-                  <div class="demo-card-info">
-                    <h4>Overland Adventure: Russia to Iran</h4>
-                    <p>Travel &amp; Vlog &bull; 24:10</p>
-                  </div>
-                </div>
-
-                <!-- Demo 2: IShowSpeed WrestleMania -->
-                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=ishowspeed_wwe" data-title="HOW I FOUGHT IN WRESTLEMANIA" data-author="IShowSpeed • 18:24" data-img="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?w=800&auto=format&fit=crop&q=80">
-                  <div class="demo-thumb-box">
-                    <img src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?w=800&auto=format&fit=crop&q=80" alt="Speed WrestleMania">
-                    <div class="badge-sticker sticker-speed">WRESTLEMANIA 🔥</div>
-                    <div class="demo-play-btn">▶</div>
-                  </div>
-                  <div class="demo-card-info">
-                    <h4>HOW I FOUGHT IN WRESTLEMANIA</h4>
-                    <p>IShowSpeed &bull; 18:24</p>
-                  </div>
-                </div>
-
-                <!-- Demo 3: MKBHD Folding Phone -->
-                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=mkbhd_folding" data-title="The Dual Screen Folding Revolution" data-author="MKBHD • 16:40" data-img="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&auto=format&fit=crop&q=80">
-                  <div class="demo-thumb-box">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&auto=format&fit=crop&q=80" alt="MKBHD Smartphone">
-                    <div class="badge-sticker sticker-tech">9:41 REVIEW</div>
-                    <div class="demo-play-btn">▶</div>
-                  </div>
-                  <div class="demo-card-info">
-                    <h4>The Dual Screen Folding Revolution</h4>
-                    <p>MKBHD &bull; 16:40</p>
-                  </div>
-                </div>
-
-                <!-- Demo 4: Khan Sir on Pakistan Podcast -->
-                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=khan_sir_podcast" data-title="KHAN SIR ON PAKISTAN & GEOPOLITICS" data-author="The Real Talks • 1h 12m" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80">
-                  <div class="demo-thumb-box">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" alt="Khan Sir Podcast">
-                    <div class="badge-sticker sticker-views">35M+ VIEWS</div>
-                    <div class="demo-play-btn">▶</div>
-                  </div>
-                  <div class="demo-card-info">
-                    <h4>KHAN SIR ON PAKISTAN</h4>
-                    <p>Podcast &bull; 1h 12m</p>
-                  </div>
-                </div>
-
-                <!-- Demo 5: Paris Chef in Kitchen -->
-                <div class="demo-video-card" data-url="https://www.youtube.com/watch?v=french_chef" data-title="Cooking 1,000 Baguettes in Paris" data-author="Chef Pierre • 14:50" data-img="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&auto=format&fit=crop&q=80">
-                  <div class="demo-thumb-box">
-                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&auto=format&fit=crop&q=80" alt="French Chef">
-                    <div class="badge-sticker sticker-paris">PARIS 🥐</div>
-                    <div class="demo-play-btn">▶</div>
-                  </div>
-                  <div class="demo-card-info">
-                    <h4>Cooking 1,000 Baguettes in Paris</h4>
-                    <p>Food &bull; 14:50</p>
-                  </div>
-                </div>
-
               </div>
             </div>
 
-            <!-- Vercel-Style Alternating Feature Sections -->
-            <section class="vercel-features-section" id="features">
-              <!-- Feature 1: Intelligent 9:16 Cropping -->
-              <div class="v-feature-block">
-                <div class="v-feature-visual">
-                  <div class="v-mockup-window">
-                    <div class="v-window-dots"><span></span><span></span><span></span></div>
-                    <div class="v-mockup-preview-inner">
-                      <img src="thumb_reel_1.jpg" alt="Smart 9:16 Reframe" class="v-preview-img">
-                      <div class="v-aspect-badge">9:16 Center Reframe</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="v-feature-copy">
-                  <span class="v-feature-kicker">01 / AUTO-REFRAME</span>
-                  <h2 class="v-feature-title">Smart 9:16 Speaker Tracking.</h2>
-                  <p class="v-feature-desc">Converts standard 16:9 widescreen footage into vertical shorts. Intelligent facial and motion detection ensures talking heads stay dynamically locked in the center.</p>
-                </div>
+            <!-- Hidden compatibility container for DOM IDs required by app.js (Zero visual clutter) -->
+            <div style="display:none !important;" aria-hidden="true">
+              <div class="yt-connect-banner" id="ytConnectBanner">
+                <button class="btn-connect-link" id="connectYoutubeBtn">Connect</button>
               </div>
-
-              <!-- Feature 2: Hormozi & MrBeast Viral Captions -->
-              <div class="v-feature-block v-feature-reversed" id="captions">
-                <div class="v-feature-copy">
-                  <span class="v-feature-kicker">02 / VIRAL CAPTIONS</span>
-                  <h2 class="v-feature-title">Hormozi &amp; MrBeast Captions.</h2>
-                  <p class="v-feature-desc">Word-level karaoke highlighting with bouncy pop scale effects, high-contrast black borders, and punchy yellow &amp; green accents burned directly onto your clips in seconds.</p>
-                </div>
-                <div class="v-feature-visual">
-                  <div class="v-caption-showcase-card">
-                    <div class="v-caption-pill">
-                      <span>THIS IS A </span><span class="highlight-yellow">ONE BILLION</span><span> DOLLAR SHIP!</span>
-                    </div>
-                    <div class="v-caption-pill">
-                      <span>CAN HE </span><span class="highlight-green">SAVE THIS?</span> 😱
-                    </div>
-                  </div>
-                </div>
+              <div class="sample-dropdown-trigger" id="sampleDropdownTrigger">
+                <div class="sample-menu-popover hidden" id="sampleMenuPopover"></div>
               </div>
-            </section>
-
-            <!-- Vercel Clean Light Footer -->
-            <footer class="vercel-site-footer">
-              <div class="v-footer-content">
-                <div class="v-footer-left">
-                  <svg width="18" height="16" viewBox="0 0 76 65" fill="#171717">
-                    <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
-                  </svg>
-                  <span class="v-footer-brand">ScaleReach AI</span>
-                  <span class="v-footer-badge">100% Free Forever</span>
-                </div>
-                <div class="v-footer-links">
-                  <a href="#features">Features</a>
-                  <a href="#captions">Captions</a>
-                  <a href="#demoCardsCarousel">Demos</a>
-                  <a href="https://github.com/MuhammadAbdullahShahid546/scalereach-ai" target="_blank">GitHub</a>
-                </div>
-              </div>
-            </footer>
+              <div class="demo-cards-carousel" id="demoCardsCarousel"></div>
+            </div>
 
           </div>
+
+          <!-- Vercel Site Footer -->
+          <footer class="vercel-site-footer">
+            <div class="v-footer-content">
+              <div class="v-footer-left">
+                <svg width="18" height="16" viewBox="0 0 76 65" fill="#FFFFFF">
+                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
+                </svg>
+                <span class="v-footer-brand">ScaleReach AI</span>
+                <span class="v-footer-badge">100% Free Forever</span>
+              </div>
+              <div class="v-footer-links">
+                <a href="https://github.com/MuhammadAbdullahShahid546/scalereach-ai" target="_blank">GitHub</a>
+                <a href="#mainVideoUrlInput" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus();}">Create Clips</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+              </div>
+            </div>
+          </footer>
 
         </section>
 

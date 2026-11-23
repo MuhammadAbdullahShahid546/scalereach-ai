@@ -4012,27 +4012,17 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Vercel Spacious Asymmetric Hero */
-.vercel-hero-container {
+/* Vercel Centered Minimalist Hero */
+.vercel-hero-centered-layout {
   position: relative;
-  max-width: 1080px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 4rem 1.5rem 2.5rem 1.5rem;
-}
-
-.vercel-hero-content {
+  padding: 4.5rem 1.5rem 3.5rem 1.5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  margin-bottom: 2.8rem;
-  position: relative;
-  z-index: 1;
-}
-
-.vercel-hero-text {
-  flex: 1;
-  max-width: 580px;
+  text-align: center;
+  z-index: 2;
 }
 
 .vercel-badge-pill {
@@ -4040,74 +4030,81 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   align-items: center;
   gap: 0.5rem;
   background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 9999px;
-  padding: 0.35rem 0.95rem;
-  font-size: 0.8rem;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #EDEDED !important;
-  margin-bottom: 1.5rem;
-  transition: border-color 0.2s ease;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
 }
 
 .vercel-badge-pill:hover {
-  border-color: rgba(255, 255, 255, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+  transform: translateY(-1px);
 }
 
 .v-badge-sparkle {
   color: #0072F5;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .v-badge-arrow {
   color: #888888;
-  margin-left: 0.2rem;
+  margin-left: 0.3rem;
+  transition: transform 0.15s ease;
 }
 
-.vercel-hero-heading {
-  font-size: 3.8rem !important;
-  line-height: 1.05 !important;
+.vercel-badge-pill:hover .v-badge-arrow {
+  transform: translateX(2px);
+  color: #FFFFFF;
+}
+
+.vercel-hero-heading-centered {
+  font-size: clamp(3rem, 6.5vw, 4.6rem) !important;
+  line-height: 1.04 !important;
   font-weight: 800 !important;
   color: #FFFFFF !important;
-  letter-spacing: -2.6px !important;
-  margin-bottom: 1.2rem !important;
+  letter-spacing: -2.8px !important;
+  margin-bottom: 1.25rem !important;
+  text-align: center;
 }
 
 .v-gradient-text {
-  background: linear-gradient(180deg, #FFFFFF 0%, #888888 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #777777 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.vercel-hero-subhead {
-  font-size: 1.18rem !important;
-  line-height: 1.6 !important;
+.vercel-hero-subhead-centered {
+  font-size: clamp(1.05rem, 2vw, 1.22rem) !important;
+  line-height: 1.65 !important;
   color: #888888 !important;
-  margin-bottom: 2.2rem !important;
+  margin: 0 auto 2.5rem auto !important;
+  max-width: 660px !important;
   font-weight: 400 !important;
-}
-
-.vercel-hero-cta-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  text-align: center;
 }
 
 /* Centered Geometric Prism with Soft Multi-Color Mesh Gradient Glow */
-.vercel-hero-visual-wrapper {
+.vercel-hero-visual-centered {
   position: relative;
-  width: 340px;
-  height: 300px;
+  width: 220px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  margin: 0 auto 2.5rem auto;
 }
 
 .vercel-mesh-gradient-glow {
   position: absolute;
-  width: 320px;
-  height: 320px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   background: conic-gradient(
     from 180deg at 50% 50%,
@@ -4118,17 +4115,17 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
     #f59e0b 288deg,
     #00f2fe 360deg
   );
-  filter: blur(60px);
-  opacity: 0.75;
+  filter: blur(55px);
+  opacity: 0.7;
   animation: meshPulse 8s infinite alternate ease-in-out;
   pointer-events: none;
   z-index: 0;
 }
 
 @keyframes meshPulse {
-  0% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
-  50% { transform: scale(1.1) rotate(15deg); opacity: 1; }
-  100% { transform: scale(0.95) rotate(-10deg); opacity: 0.85; }
+  0% { transform: scale(0.9) rotate(0deg); opacity: 0.65; }
+  50% { transform: scale(1.12) rotate(15deg); opacity: 0.85; }
+  100% { transform: scale(0.95) rotate(-10deg); opacity: 0.7; }
 }
 
 .vercel-geometric-prism {
@@ -4137,79 +4134,129 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
 }
 
 .vercel-geometric-prism svg path {
   fill: #FFFFFF !important;
 }
 
-/* Vercel Minimalist URL Generation Command Card */
-.hero-generation-card.vercel-card-styled {
+/* Vercel Capsule Command Card */
+.vercel-capsule-command {
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
   background: #0A0A0A !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 20px 50px rgba(0, 0, 0, 0.8) !important;
-  border-radius: 20px !important;
-  padding: 2rem !important;
-  position: relative !important;
-  z-index: 2 !important;
+  border-radius: 24px !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 24px 60px rgba(0, 0, 0, 0.85) !important;
+  text-align: left !important;
 }
 
-.hero-generation-card.vercel-card-styled .main-video-input-box {
+.vercel-capsule-command .main-video-input-box {
+  display: flex !important;
+  align-items: center !important;
   background: #111111 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 9999px !important;
-  padding: 0.5rem 1.4rem !important;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+  padding: 0.4rem 0.5rem 0.4rem 1.4rem !important;
+  gap: 0.8rem !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
 }
 
-.hero-generation-card.vercel-card-styled .main-video-input-box:focus-within {
+.vercel-capsule-command .main-video-input-box:focus-within {
   border-color: #0072F5 !important;
   box-shadow: 0 0 0 3px rgba(0, 114, 245, 0.3) !important;
-  background: #141414 !important;
+  background: #151515 !important;
 }
 
-.hero-generation-card.vercel-card-styled .main-video-input-box input {
+.vercel-capsule-command .main-video-input-box input {
+  flex: 1 !important;
   color: #FFFFFF !important;
   background: transparent !important;
+  border: none !important;
+  outline: none !important;
   font-family: var(--font-sans) !important;
+  font-size: 0.98rem !important;
+  letter-spacing: -0.01em !important;
 }
 
-.hero-generation-card.vercel-card-styled .btn-get-clips-primary {
+.vercel-capsule-command .main-video-input-box input::placeholder {
+  color: #555555 !important;
+}
+
+.vercel-capsule-submit {
+  flex-shrink: 0 !important;
   background: #FFFFFF !important;
   color: #000000 !important;
   border-radius: 9999px !important;
+  padding: 0.75rem 1.6rem !important;
   font-weight: 700 !important;
   font-family: var(--font-sans) !important;
+  font-size: 0.92rem !important;
+  border: none !important;
+  cursor: pointer !important;
   transition: opacity 0.15s ease, transform 0.15s ease !important;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15) !important;
 }
 
-.hero-generation-card.vercel-card-styled .btn-get-clips-primary:hover {
+.vercel-capsule-submit:hover {
   opacity: 0.9 !important;
   transform: translateY(-1px) !important;
 }
 
-.hero-generation-card.vercel-card-styled .btn-upload-file-pill {
+.vercel-capsule-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+  margin-top: 1.25rem !important;
+  padding-top: 1.25rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.vercel-capsule-footer .btn-upload-file-pill {
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  background: #111111 !important;
+  background: #141414 !important;
   color: #EDEDED !important;
   border-radius: 9999px !important;
+  padding: 0.5rem 1.1rem !important;
+  font-size: 0.84rem !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
 }
 
-.hero-generation-card.vercel-card-styled .yt-connect-banner {
-  background: #111111 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
+.vercel-capsule-footer .btn-upload-file-pill:hover {
+  background: #1F1F1F !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-.hero-generation-card.vercel-card-styled .yt-connect-text {
-  color: #EDEDED !important;
+.v-platform-tag {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #888888;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.2rem 0.55rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
 }
 
-.hero-generation-card.vercel-card-styled .btn-connect-link {
-  background: #FFFFFF !important;
-  color: #000000 !important;
-  border-radius: 9999px !important;
+/* Ensure OLED pitch black on entire app */
+html,
+body.dashboard-body,
+.app-layout,
+.app-main-viewport,
+.content-scroll-container,
+#homeDashboardView {
+  background-color: #000000 !important;
 }
 
 /* Vercel Bento Grid Feature Blocks */
