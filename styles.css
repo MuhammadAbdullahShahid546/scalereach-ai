@@ -4125,15 +4125,18 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem auto 3.5rem auto;
+  margin: 2.5rem auto 3.5rem auto;
   position: relative;
   z-index: 2;
   background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .hero-scalereach-raw-logo {
-  width: 340px;
-  max-width: 90vw;
+  width: 320px;
+  max-width: 88vw;
   height: auto;
   display: block;
   object-fit: contain;
@@ -4141,13 +4144,32 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  filter: drop-shadow(0 0 35px rgba(0, 114, 245, 0.45));
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  outline: none !important;
+  mix-blend-mode: screen;
+  animation: heroLogoFloatPulse 5s ease-in-out infinite alternate;
+  will-change: transform, filter;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+@keyframes heroLogoFloatPulse {
+  0% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 0 16px rgba(0, 114, 245, 0.45)) drop-shadow(0 0 35px rgba(0, 114, 245, 0.2));
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+    filter: drop-shadow(0 0 26px rgba(0, 140, 255, 0.65)) drop-shadow(0 0 55px rgba(0, 114, 245, 0.35));
+  }
+  100% {
+    transform: translateY(2px) scale(0.99);
+    filter: drop-shadow(0 0 18px rgba(0, 114, 245, 0.45)) drop-shadow(0 0 38px rgba(0, 114, 245, 0.2));
+  }
 }
 
 .hero-scalereach-raw-logo:hover {
-  transform: scale(1.03);
-  filter: drop-shadow(0 0 55px rgba(0, 114, 245, 0.7));
+  transform: translateY(-10px) scale(1.05) !important;
+  filter: drop-shadow(0 0 35px rgba(0, 160, 255, 0.85)) drop-shadow(0 0 75px rgba(0, 114, 245, 0.5)) !important;
 }
 
 .footer-scalereach-logo-img {
