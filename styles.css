@@ -3918,10 +3918,22 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
-  color: #FFFFFF !important;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: -0.03em;
+  cursor: pointer;
+}
+
+.top-brand-logo-img {
+  height: 32px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 10px rgba(0, 114, 245, 0.35));
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.top-brand-logo-img:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
 .vercel-triangle-icon path {
@@ -4128,104 +4140,105 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   100% { transform: scale(0.95) rotate(-10deg); opacity: 0.7; }
 }
 
-.vercel-geometric-prism {
+.scalereach-hero-logo-box {
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
 }
 
-.vercel-geometric-prism svg path {
-  fill: #FFFFFF !important;
+.hero-scalereach-icon-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 24px;
+  object-fit: contain;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 0 1.5px rgba(255, 255, 255, 0.16);
+  background: #0A0A0A;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-/* Vercel Capsule Command Card */
-.vercel-capsule-command {
-  width: 100% !important;
-  max-width: 760px !important;
-  margin: 0 auto !important;
-  background: #0A0A0A !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 24px !important;
-  padding: 1.5rem !important;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 24px 60px rgba(0, 0, 0, 0.85) !important;
-  text-align: left !important;
+.hero-scalereach-icon-img:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 20px 50px rgba(0, 114, 245, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.3);
 }
 
-.vercel-capsule-command .main-video-input-box {
-  display: flex !important;
-  align-items: center !important;
-  background: #111111 !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  border-radius: 9999px !important;
-  padding: 0.4rem 0.5rem 0.4rem 1.4rem !important;
-  gap: 0.8rem !important;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
+/* Vercel Clean Hero CTA Action Button */
+.vercel-hero-action-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-.vercel-capsule-command .main-video-input-box:focus-within {
-  border-color: #0072F5 !important;
-  box-shadow: 0 0 0 3px rgba(0, 114, 245, 0.3) !important;
-  background: #151515 !important;
-}
-
-.vercel-capsule-command .main-video-input-box input {
-  flex: 1 !important;
-  color: #FFFFFF !important;
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-  font-family: var(--font-sans) !important;
-  font-size: 0.98rem !important;
-  letter-spacing: -0.01em !important;
-}
-
-.vercel-capsule-command .main-video-input-box input::placeholder {
-  color: #555555 !important;
-}
-
-.vercel-capsule-submit {
-  flex-shrink: 0 !important;
+.v-btn-hero-get-clips {
   background: #FFFFFF !important;
   color: #000000 !important;
+  border: 1px solid #FFFFFF !important;
   border-radius: 9999px !important;
-  padding: 0.75rem 1.6rem !important;
-  font-weight: 700 !important;
+  padding: 1.05rem 2.6rem !important;
   font-family: var(--font-sans) !important;
-  font-size: 0.92rem !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: opacity 0.15s ease, transform 0.15s ease !important;
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15) !important;
-}
-
-.vercel-capsule-submit:hover {
-  opacity: 0.9 !important;
-  transform: translateY(-1px) !important;
-}
-
-.vercel-capsule-footer {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: wrap !important;
-  gap: 1rem !important;
-  margin-top: 1.25rem !important;
-  padding-top: 1.25rem !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-.vercel-capsule-footer .btn-upload-file-pill {
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  background: #141414 !important;
-  color: #EDEDED !important;
-  border-radius: 9999px !important;
-  padding: 0.5rem 1.1rem !important;
-  font-size: 0.84rem !important;
-  font-weight: 600 !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
   display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 25px rgba(255, 255, 255, 0.25), 0 12px 40px rgba(0, 0, 0, 0.95) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  margin-bottom: 2rem !important;
+  outline: none !important;
+}
+
+.v-btn-hero-get-clips .btn-arrow {
+  display: inline-block;
+  font-size: 1.35rem;
+  line-height: 1;
+  font-weight: 800;
+  transition: transform 0.2s ease;
+}
+
+.v-btn-hero-get-clips:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  background: #EDEDED !important;
+  box-shadow: 0 6px 35px rgba(255, 255, 255, 0.4), 0 16px 45px rgba(0, 0, 0, 0.98) !important;
+}
+
+.v-btn-hero-get-clips:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+.v-btn-hero-get-clips:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+.hero-quick-features-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.v-quick-tag {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #888888;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 9999px;
+  padding: 0.4rem 0.9rem;
+  backdrop-filter: blur(8px);
+}
+
+.footer-scalereach-logo-img {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
   align-items: center !important;
   gap: 0.5rem !important;
   cursor: pointer !important;

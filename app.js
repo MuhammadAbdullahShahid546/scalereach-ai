@@ -16,8 +16,8 @@ if (typeof window !== 'undefined') {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new ScaleReachFullApp();
-  app.init();
+  window.app = new ScaleReachFullApp();
+  window.app.init();
 });
 
 class ScaleReachFullApp {

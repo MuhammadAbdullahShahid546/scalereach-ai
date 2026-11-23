@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261123_getclips_v3">
+  <link rel="stylesheet" href="styles.css?v=20261123_scalereach_v4">
 </head>
 <body class="dashboard-body">
 
@@ -34,19 +34,12 @@
          ========================================== -->
     <div class="app-main-viewport">
       
-      <!-- Vercel-Style Sticky Navigation Header (64px) -->
+      <!-- Vercel-Style Sticky Navigation Header (64px) with ScaleReach Logo -->
       <header class="top-nav-bar vercel-nav" id="mainHeaderBar">
         <div class="nav-left-group">
-          <a href="#" class="top-nav-brand vercel-brand" id="topNavBrandLogo" title="ScaleReach AI">
-            <svg class="vercel-triangle-icon" width="22" height="19" viewBox="0 0 76 65" fill="#FFFFFF">
-              <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
-            </svg>
-            <span class="vercel-brand-text">ScaleReach</span>
+          <a href="#" class="top-nav-brand vercel-brand" id="topNavBrandLogo" title="ScaleReach AI" onclick="if(window.app){window.app.showHomeScreen(); return false;}">
+            <img src="logo_dark.png" alt="ScaleReach" class="top-brand-logo-img">
           </a>
-          <nav class="vercel-nav-links">
-            <a href="#mainVideoUrlInput" class="v-nav-link" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus();}">Create Clips</a>
-            <a href="https://github.com/MuhammadAbdullahShahid546/scalereach-ai" target="_blank" class="v-nav-link">GitHub</a>
-          </nav>
           <div class="breadcrumb-trail" style="display:none;">
             <a href="#" class="crumb-link" id="crumbDashboard">Dashboard</a>
             <span class="crumb-separator">&gt;</span>
@@ -56,8 +49,8 @@
 
         <div class="nav-right-group">
           <span class="v-status-tag"><span class="v-dot"></span> 100% Free AI</span>
-          <button class="v-btn-pill-primary" id="navPrimaryCtaBtn" type="button" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus(); el.scrollIntoView({behavior:'smooth'});}">
-            Upload Video
+          <button class="v-btn-pill-primary" id="navPrimaryCtaBtn" type="button" onclick="if(window.app){window.app.showConfigureView();}">
+            Upload Video &rarr;
           </button>
         </div>
       </header>
@@ -75,7 +68,7 @@
           <div class="home-hero-center vercel-hero-container vercel-hero-centered-layout">
             
             <!-- Vercel Badge Pill -->
-            <div class="vercel-badge-pill" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus();}">
+            <div class="vercel-badge-pill" onclick="if(window.app){window.app.showConfigureView();}">
               <span class="v-badge-sparkle">✦</span>
               <span>ScaleReach 2.0 &mdash; 100% Free Open AI Video Repurposing</span>
               <span class="v-badge-arrow">&rarr;</span>
@@ -91,61 +84,36 @@
               ScaleReach provides the developer-grade AI engine to turn long videos into high-retention 9:16 shorts with Hormozi &amp; MrBeast karaoke captions. Completely free, in-browser, no servers.
             </p>
 
-            <!-- Centered Geometric Triangle with Soft Multi-Color Gradient Glow -->
+            <!-- Centered Geometric Object with ScaleReach Official Logo & Soft Gradient Glow -->
             <div class="vercel-hero-visual-wrapper vercel-hero-visual-centered">
               <div class="vercel-mesh-gradient-glow"></div>
-              <div class="vercel-geometric-prism">
-                <svg width="100" height="86" viewBox="0 0 76 65" fill="none">
-                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#FFFFFF"/>
-                </svg>
+              <div class="scalereach-hero-logo-box">
+                <img src="logo_icon.png" alt="ScaleReach AI" class="hero-scalereach-icon-img">
               </div>
             </div>
 
-            <!-- Vercel Minimalist Command Card / URL Ingestion -->
-            <div class="hero-generation-card vercel-card-styled vercel-capsule-command">
-              <div class="main-video-input-box">
-                <span class="drive-multi-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EDEDED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                  </svg>
-                </span>
-                <input type="text" id="mainVideoUrlInput" placeholder="Paste YouTube, Twitch, or video link..." value="https://www.youtube.com/watch?v=pAnGwRiQ4-4">
-                <button class="btn-get-clips-primary vercel-capsule-submit" id="homeGetClipsBtn">
-                  <span>Get clips in 1 click &rarr;</span>
-                </button>
-              </div>
-
-              <!-- Action Sub-row: Upload File + Works With Platform Badges -->
-              <div class="hero-card-footer-row vercel-capsule-footer">
-                <div class="upload-file-group">
-                  <input type="file" id="homeFileInput" accept="video/mp4,video/webm,video/quicktime" class="hidden-input">
-                  <button class="btn-upload-file-pill" id="homeUploadFileBtn">
-                    <span class="icon-upload">📁</span>
-                    <span>Upload local video</span>
-                    <span class="badge-free-tag">1080p FREE</span>
-                  </button>
-                </div>
-
-                <div class="capsule-footer-right-group">
-                  <div class="works-with-logos">
-                    <span class="works-label">Supports:</span>
-                    <span class="v-platform-tag">YouTube</span>
-                    <span class="v-platform-tag">Twitch</span>
-                    <span class="v-platform-tag">Kick</span>
-                    <span class="v-platform-tag">Drive</span>
-                    <span class="v-platform-tag">MP4</span>
-                  </div>
-                  <button class="card-right-down-get-clips-btn" id="cardRightDownGetClipsBtn" type="button" title="Get clips">
-                    <span>Get clips</span>
-                    <span class="btn-arrow">&rarr;</span>
-                  </button>
-                </div>
+            <!-- Clean Hero CTA Action Button with Arrow (Opens Screen 2 Configure View) -->
+            <div class="vercel-hero-action-area">
+              <button class="v-btn-hero-get-clips" id="heroGetClipsArrowBtn" type="button">
+                <span>Get clips in 1 click</span>
+                <span class="btn-arrow">&rarr;</span>
+              </button>
+              
+              <div class="hero-quick-features-row">
+                <span class="v-quick-tag">⚡ 100% Free Forever</span>
+                <span class="v-quick-tag">✂️ Smart 9:16 Auto-Reframe</span>
+                <span class="v-quick-tag">🔥 8 Crazy Captions</span>
+                <span class="v-quick-tag">🚫 Zero Watermarks</span>
               </div>
             </div>
 
             <!-- Hidden compatibility container for DOM IDs required by app.js (Zero visual clutter) -->
             <div style="display:none !important;" aria-hidden="true">
+              <input type="text" id="mainVideoUrlInput" value="https://www.youtube.com/watch?v=pAnGwRiQ4-4">
+              <button id="homeGetClipsBtn">Get clips in 1 click</button>
+              <input type="file" id="homeFileInput" accept="video/mp4,video/webm,video/quicktime">
+              <button id="homeUploadFileBtn">Upload local video</button>
+              <button id="cardRightDownGetClipsBtn">Get clips</button>
               <div class="yt-connect-banner" id="ytConnectBanner">
                 <button class="btn-connect-link" id="connectYoutubeBtn">Connect</button>
               </div>
@@ -157,19 +125,17 @@
 
           </div>
 
-          <!-- Vercel Site Footer -->
+          <!-- Vercel Site Footer with ScaleReach Logo -->
           <footer class="vercel-site-footer">
             <div class="v-footer-content">
               <div class="v-footer-left">
-                <svg width="18" height="16" viewBox="0 0 76 65" fill="#FFFFFF">
-                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
-                </svg>
+                <img src="logo_icon.png" alt="ScaleReach" class="footer-scalereach-logo-img">
                 <span class="v-footer-brand">ScaleReach AI</span>
                 <span class="v-footer-badge">100% Free Forever</span>
               </div>
               <div class="v-footer-links">
+                <a href="#" onclick="if(window.app){window.app.showConfigureView(); return false;}">Create Clips</a>
                 <a href="https://github.com/MuhammadAbdullahShahid546/scalereach-ai" target="_blank">GitHub</a>
-                <a href="#mainVideoUrlInput" onclick="const el=document.getElementById('mainVideoUrlInput'); if(el){el.focus();}">Create Clips</a>
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>
               </div>
@@ -1203,23 +1169,33 @@
         }, { passive: true });
       }
 
-      // Handler for Right-Down "Get clips →" buttons
-      const handleGetClipsTrigger = () => {
-        const urlInput = document.getElementById('mainVideoUrlInput');
-        const getClipsBtn = document.getElementById('homeGetClipsBtn');
-        if (urlInput && (!urlInput.value || !urlInput.value.trim())) {
-          urlInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          urlInput.focus();
-        } else if (getClipsBtn) {
-          getClipsBtn.click();
+      // Direct navigation to Screen 2 (Configure View / Video Input & Processing)
+      const navigateToConfigureScreen = () => {
+        if (window.app && typeof window.app.showConfigureView === 'function') {
+          window.app.showConfigureView();
+        } else {
+          const home = document.getElementById('homeDashboardView');
+          const conf = document.getElementById('configureView');
+          if (home && conf) {
+            home.classList.add('hidden');
+            conf.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         }
+        setTimeout(() => {
+          const ytInput = document.getElementById('youtubeUrlInput');
+          if (ytInput) ytInput.focus();
+        }, 120);
       };
 
-      const floatBtn = document.getElementById('floatingRightDownBtn');
-      if (floatBtn) floatBtn.addEventListener('click', handleGetClipsTrigger);
+      const heroBtn = document.getElementById('heroGetClipsArrowBtn');
+      if (heroBtn) heroBtn.addEventListener('click', navigateToConfigureScreen);
 
-      const cardBtn = document.getElementById('cardRightDownGetClipsBtn');
-      if (cardBtn) cardBtn.addEventListener('click', handleGetClipsTrigger);
+      const floatBtn = document.getElementById('floatingRightDownBtn');
+      if (floatBtn) floatBtn.addEventListener('click', navigateToConfigureScreen);
+
+      const navCta = document.getElementById('navPrimaryCtaBtn');
+      if (navCta) navCta.addEventListener('click', navigateToConfigureScreen);
     });
   </script>
 </body>
