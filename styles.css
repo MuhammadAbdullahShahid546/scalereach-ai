@@ -4028,17 +4028,34 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Vercel Centered Minimalist Hero */
+/* Vercel Centered Minimalist Hero Container */
 .vercel-hero-centered-layout {
   position: relative;
-  max-width: 920px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 4.5rem 1.5rem 3.5rem 1.5rem;
+  padding: 2.2rem 1.5rem 1.8rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   z-index: 2;
+  min-height: calc(100vh - 110px);
+  justify-content: center;
+}
+
+/* Center-Left Text Block (Heading and Subhead aligned center-left) */
+.vercel-hero-text-centerleft {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin: 0 auto 0.75rem auto;
+}
+
+.vercel-hero-text-centerleft .vercel-badge-pill {
+  margin-bottom: 1.15rem;
+  align-self: flex-start;
 }
 
 .vercel-badge-pill {
@@ -4052,7 +4069,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   font-size: 0.82rem;
   font-weight: 600;
   color: #EDEDED !important;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   cursor: pointer;
   transition: all 0.2s ease;
   backdrop-filter: blur(8px);
@@ -4080,14 +4097,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   color: #FFFFFF;
 }
 
+.vercel-hero-heading-centerleft,
 .vercel-hero-heading-centered {
-  font-size: clamp(3rem, 6.5vw, 4.6rem) !important;
-  line-height: 1.04 !important;
+  font-size: clamp(2.75rem, 5.5vw, 4.2rem) !important;
+  line-height: 1.05 !important;
   font-weight: 800 !important;
   color: #FFFFFF !important;
-  letter-spacing: -2.8px !important;
-  margin-bottom: 1.25rem !important;
-  text-align: center;
+  letter-spacing: -2.4px !important;
+  margin-bottom: 0.9rem !important;
+  text-align: left !important;
 }
 
 .v-gradient-text {
@@ -4096,14 +4114,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   -webkit-text-fill-color: transparent;
 }
 
+.vercel-hero-subhead-centerleft,
 .vercel-hero-subhead-centered {
-  font-size: clamp(1.05rem, 2vw, 1.22rem) !important;
-  line-height: 1.65 !important;
+  font-size: clamp(0.98rem, 1.5vw, 1.15rem) !important;
+  line-height: 1.62 !important;
   color: #888888 !important;
-  margin: 0 auto 2.5rem auto !important;
-  max-width: 660px !important;
+  margin: 0 0 1rem 0 !important;
+  max-width: 680px !important;
   font-weight: 400 !important;
-  text-align: center;
+  text-align: left !important;
 }
 
 /* Centered Geometric Prism with Soft Multi-Color Mesh Gradient Glow */
@@ -4129,12 +4148,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1.8rem auto 3.2rem auto;
+  margin: 0.5rem auto 1.5rem auto;
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: 540px;
-  min-height: 340px;
+  min-height: 320px;
   perspective: 1200px;
   background: transparent !important;
   border: none !important;
