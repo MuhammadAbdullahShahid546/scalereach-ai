@@ -4108,7 +4108,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .vercel-hero-heading-centerleft,
 .vercel-hero-heading-centered {
-  font-size: clamp(1.9rem, 2.7vw, 2.55rem) !important;
+  font-size: clamp(1.85rem, 2.6vw, 2.45rem) !important;
   line-height: 1.15 !important;
   font-weight: 800 !important;
   color: #FFFFFF !important;
@@ -4121,6 +4121,79 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   background: linear-gradient(180deg, #FFFFFF 0%, #777777 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Vercel 3 Stacked Interactive Headings / Options */
+.vercel-hero-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.vercel-option-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: clamp(1.2rem, 1.55vw, 1.42rem);
+  font-weight: 500;
+  color: #888888;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  width: fit-content;
+  position: relative;
+  letter-spacing: -0.35px;
+  line-height: 1.25;
+}
+
+.vercel-option-item:hover {
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+.vercel-option-item.active {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Info Modals (About Us & Projects) */
+.vercel-info-modal-card {
+  max-width: 540px !important;
+  width: 92% !important;
+  background: #0A0A0A !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 114, 245, 0.15) !important;
+}
+
+.vercel-modal-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 1rem 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.1rem;
+}
+
+.vercel-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: #CCCCCC;
+  line-height: 1.5;
+}
+
+.vercel-feature-item strong {
+  color: #FFFFFF;
+}
+
+.feat-bullet {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1.2;
 }
 
 /* Center Column: ScaleReach 3D Interactive Logo */
@@ -4178,12 +4251,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   .vercel-hero-heading-centerleft {
     text-align: center !important;
   }
-}
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  cursor: pointer;
-  user-select: none;
+  .vercel-hero-options-group {
+    align-items: center;
+  }
+  .vercel-option-item:hover {
+    transform: none;
+  }
 }
 
 /* Atmospheric caustic glow behind the logo that smoothly tracks the cursor */

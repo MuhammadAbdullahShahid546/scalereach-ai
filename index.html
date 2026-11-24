@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261124_centerlogo_v16">
+  <link rel="stylesheet" href="styles.css?v=20261124_options_v17">
 </head>
 <body class="dashboard-body">
 
@@ -80,6 +80,19 @@
               <h1 class="vercel-hero-heading-centerleft">
                 Your complete platform<br><span class="v-gradient-text">for viral clips.</span>
               </h1>
+
+              <!-- 3 Interactive Options (Vercel Style) -->
+              <div class="vercel-hero-options-group">
+                <div class="vercel-option-item active" id="optClippingAgent" title="Launch Clipping Engine">
+                  <span class="option-line-text">For clipping agent</span>
+                </div>
+                <div class="vercel-option-item" id="optAboutUs" title="Learn About ScaleReach AI">
+                  <span class="option-line-text">About us</span>
+                </div>
+                <div class="vercel-option-item" id="optProject" title="View ScaleReach AI Projects">
+                  <span class="option-line-text">Project</span>
+                </div>
+              </div>
             </div>
 
             <!-- Column 2 (Center): ScaleReach Official Clean Interactive Logo (Exact Center) -->
@@ -1080,6 +1093,80 @@
 
   </div>
 
+  <!-- ScaleReach About Us Modal -->
+  <div class="modal-backdrop hidden" id="aboutUsModal">
+    <div class="yt-modal-card vercel-info-modal-card">
+      <div class="yt-modal-top">
+        <span class="yt-modal-icon">✦</span>
+        <h3>About ScaleReach AI</h3>
+        <button class="modal-close-icon" id="closeAboutModalBtn">&times;</button>
+      </div>
+      <p class="yt-modal-desc" style="color:#EDEDED; margin-bottom: 1.25rem; line-height: 1.65; font-size: 0.95rem;">
+        ScaleReach is an autonomous, developer-grade AI video repurposing platform built to transform long-form content into viral, high-retention 9:16 vertical shorts.
+      </p>
+      <div class="vercel-modal-features-list">
+        <div class="vercel-feature-item">
+          <span class="feat-bullet">⚡</span>
+          <div>
+            <strong>100% In-Browser Engine:</strong> Powered by client-side FFmpeg WebAssembly. Zero cloud server fees, zero third-party data tracking.
+          </div>
+        </div>
+        <div class="vercel-feature-item">
+          <span class="feat-bullet">🔥</span>
+          <div>
+            <strong>Viral Subtitle Styles:</strong> Automated spoken-dialogue karaoke captions in 8 Hormozi, MrBeast, and Alex styles.
+          </div>
+        </div>
+        <div class="vercel-feature-item">
+          <span class="feat-bullet">🔒</span>
+          <div>
+            <strong>Privacy-First & No Watermarks:</strong> Your video data stays on your machine and exports in crystal-clear 1080p HD.
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-full" id="aboutModalLaunchBtn" style="margin-top: 1.6rem; padding: 0.8rem; font-weight: 700;">
+        Launch Clipping Agent &rarr;
+      </button>
+    </div>
+  </div>
+
+  <!-- ScaleReach Projects Modal -->
+  <div class="modal-backdrop hidden" id="projectsModal">
+    <div class="yt-modal-card vercel-info-modal-card">
+      <div class="yt-modal-top">
+        <span class="yt-modal-icon">🚀</span>
+        <h3>ScaleReach Projects</h3>
+        <button class="modal-close-icon" id="closeProjectsModalBtn">&times;</button>
+      </div>
+      <p class="yt-modal-desc" style="color:#EDEDED; margin-bottom: 1.25rem; line-height: 1.65; font-size: 0.95rem;">
+        Explore the built-in AI video engines and active pipelines in ScaleReach:
+      </p>
+      <div class="vercel-modal-features-list">
+        <div class="vercel-feature-item">
+          <span class="feat-bullet">🎬</span>
+          <div>
+            <strong>Viral 9:16 Shorts Generator:</strong> Intelligent subject framing, smart face detection, and seamless aspect ratio conversion.
+          </div>
+        </div>
+        <div class="vercel-feature-item">
+          <span class="feat-bullet">🎤</span>
+          <div>
+            <strong>Dynamic Karaoke Captions:</strong> Sub-second audio transcription with animated word-by-word karaoke styling.
+          </div>
+        </div>
+        <div class="vercel-feature-item">
+          <span class="feat-bullet">⚡</span>
+          <div>
+            <strong>Batch Export Pipeline:</strong> Fast multi-clip rendering with direct MP4 downloads and preset sharing.
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-full" id="projectsModalLaunchBtn" style="margin-top: 1.6rem; padding: 0.8rem; font-weight: 700;">
+        Start a New Project &rarr;
+      </button>
+    </div>
+  </div>
+
   <!-- YouTube Connect Channel Modal -->
   <div class="modal-backdrop hidden" id="ytConnectModal">
     <div class="yt-modal-card">
@@ -1193,6 +1280,86 @@
       // Click on interactive hero visual leads directly to Screen 2
       const heroVisual = document.getElementById('heroInteractiveVisual');
       if (heroVisual) heroVisual.addEventListener('click', navigateToConfigureScreen);
+
+      // ======================================================================
+      // 3 INTERACTIVE OPTIONS & MODAL HANDLERS (VERCEL STYLE)
+      // ======================================================================
+      const optClipping = document.getElementById('optClippingAgent');
+      const optAbout = document.getElementById('optAboutUs');
+      const optProject = document.getElementById('optProject');
+
+      const aboutModal = document.getElementById('aboutUsModal');
+      const projModal = document.getElementById('projectsModal');
+
+      const closeAboutBtn = document.getElementById('closeAboutModalBtn');
+      const closeProjBtn = document.getElementById('closeProjectsModalBtn');
+
+      const aboutLaunchBtn = document.getElementById('aboutModalLaunchBtn');
+      const projLaunchBtn = document.getElementById('projectsModalLaunchBtn');
+
+      function setActiveOption(el) {
+        document.querySelectorAll('.vercel-option-item').forEach(item => item.classList.remove('active'));
+        if (el) el.classList.add('active');
+      }
+
+      if (optClipping) {
+        optClipping.addEventListener('click', () => {
+          setActiveOption(optClipping);
+          navigateToConfigureScreen();
+        });
+      }
+
+      if (optAbout && aboutModal) {
+        optAbout.addEventListener('click', () => {
+          setActiveOption(optAbout);
+          aboutModal.classList.remove('hidden');
+        });
+      }
+
+      if (optProject && projModal) {
+        optProject.addEventListener('click', () => {
+          setActiveOption(optProject);
+          projModal.classList.remove('hidden');
+        });
+      }
+
+      // Modal close and launch handlers
+      if (closeAboutBtn && aboutModal) {
+        closeAboutBtn.addEventListener('click', () => aboutModal.classList.add('hidden'));
+      }
+      if (aboutModal) {
+        aboutModal.addEventListener('click', (e) => {
+          if (e.target === aboutModal) aboutModal.classList.add('hidden');
+        });
+      }
+      if (aboutLaunchBtn) {
+        aboutLaunchBtn.addEventListener('click', () => {
+          if (aboutModal) aboutModal.classList.add('hidden');
+          navigateToConfigureScreen();
+        });
+      }
+
+      if (closeProjBtn && projModal) {
+        closeProjBtn.addEventListener('click', () => projModal.classList.add('hidden'));
+      }
+      if (projModal) {
+        projModal.addEventListener('click', (e) => {
+          if (e.target === projModal) projModal.classList.add('hidden');
+        });
+      }
+      if (projLaunchBtn) {
+        projLaunchBtn.addEventListener('click', () => {
+          if (projModal) projModal.classList.add('hidden');
+          navigateToConfigureScreen();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (aboutModal) aboutModal.classList.add('hidden');
+          if (projModal) projModal.classList.add('hidden');
+        }
+      });
 
       // ======================================================================
       // VERCEL-STYLE 3D CURSOR INTERACTIVE TRACKING (PHYSICS ENGINE)
