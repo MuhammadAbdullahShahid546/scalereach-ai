@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261123_heroanim_v10">
+  <link rel="stylesheet" href="styles.css?v=20261124_interactive_v12">
 </head>
 <body class="dashboard-body">
 
@@ -83,9 +83,17 @@
               ScaleReach provides the developer-grade AI engine to turn long videos into high-retention 9:16 shorts with Hormozi &amp; MrBeast karaoke captions. Completely free, in-browser, no servers.
             </p>
 
-            <!-- ScaleReach Official Clean Logo (No background shapes or boxes) -->
-            <div class="scalereach-hero-logo-box">
-              <img src="scalereach_logo_transparent.png?v=20261123_t1" alt="ScaleReach AI" class="hero-scalereach-raw-logo">
+            <!-- ScaleReach Official Clean Interactive Logo (Vercel-style 3D Cursor Tracking) -->
+            <div class="scalereach-hero-interactive-zone" id="heroInteractiveVisual" title="Click to launch ScaleReach AI">
+              <!-- Dynamic caustic glow tracking cursor -->
+              <div class="hero-logo-cursor-glow" id="heroLogoCursorGlow"></div>
+              
+              <!-- 3D Perspective Tilt Wrapper -->
+              <div class="hero-logo-wrapper" id="heroLogoWrapper">
+                <img src="scalereach_logo_transparent.png?v=20261124_v1" alt="ScaleReach AI" class="hero-scalereach-raw-logo" draggable="false">
+                <!-- Cursor-following Specular Glare / Light Reflection -->
+                <div class="hero-logo-light-reflection" id="heroLogoReflection"></div>
+              </div>
             </div>
 
 
@@ -1177,6 +1185,145 @@
 
       const navCta = document.getElementById('navPrimaryCtaBtn');
       if (navCta) navCta.addEventListener('click', navigateToConfigureScreen);
+
+      // Click on interactive hero visual leads directly to Screen 2
+      const heroVisual = document.getElementById('heroInteractiveVisual');
+      if (heroVisual) heroVisual.addEventListener('click', navigateToConfigureScreen);
+
+      // ======================================================================
+      // VERCEL-STYLE 3D CURSOR INTERACTIVE TRACKING (PHYSICS ENGINE)
+      // ======================================================================
+      (function initVercelHeroInteraction() {
+        const zone = document.getElementById('heroInteractiveVisual');
+        const wrapper = document.getElementById('heroLogoWrapper');
+        const glow = document.getElementById('heroLogoCursorGlow');
+        const reflection = document.getElementById('heroLogoReflection');
+        const logo = wrapper ? wrapper.querySelector('.hero-scalereach-raw-logo') : null;
+
+        if (!zone || !wrapper) return;
+
+        let isHovered = false;
+        let targetRotateX = 0;
+        let targetRotateY = 0;
+        let targetScale = 1;
+        let targetGlowX = 0;
+        let targetGlowY = 0;
+        let targetPctX = 50;
+        let targetPctY = 50;
+
+        let currentRotateX = 0;
+        let currentRotateY = 0;
+        let currentScale = 1;
+        let currentGlowX = 0;
+        let currentGlowY = 0;
+        let currentPctX = 50;
+        let currentPctY = 50;
+
+        let idleTick = 0;
+
+        function updateCoords(clientX, clientY) {
+          const rect = zone.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+
+          const relX = clientX - centerX;
+          const relY = clientY - centerY;
+
+          const normX = Math.max(-1, Math.min(1, relX / (rect.width / 2)));
+          const normY = Math.max(-1, Math.min(1, relY / (rect.height / 2)));
+
+          // 3D Tilt angles (Vercel style: max ~16 deg)
+          targetRotateY = normX * 16;
+          targetRotateX = -normY * 16;
+          targetScale = 1.05;
+
+          // Behind glow shift
+          targetGlowX = normX * 42;
+          targetGlowY = normY * 32;
+
+          // Specular reflection percentage (0% to 100%)
+          targetPctX = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+          targetPctY = Math.max(0, Math.min(100, ((clientY - rect.top) / rect.height) * 100));
+        }
+
+        zone.addEventListener('mouseenter', (e) => {
+          isHovered = true;
+          updateCoords(e.clientX, e.clientY);
+        });
+
+        zone.addEventListener('mousemove', (e) => {
+          isHovered = true;
+          updateCoords(e.clientX, e.clientY);
+        });
+
+        zone.addEventListener('mouseleave', () => {
+          isHovered = false;
+          targetRotateX = 0;
+          targetRotateY = 0;
+          targetScale = 1;
+          targetGlowX = 0;
+          targetGlowY = 0;
+          targetPctX = 50;
+          targetPctY = 50;
+        });
+
+        zone.addEventListener('touchmove', (e) => {
+          if (e.touches && e.touches[0]) {
+            isHovered = true;
+            updateCoords(e.touches[0].clientX, e.touches[0].clientY);
+          }
+        }, { passive: true });
+
+        zone.addEventListener('touchend', () => {
+          isHovered = false;
+          targetRotateX = 0;
+          targetRotateY = 0;
+          targetScale = 1;
+          targetGlowX = 0;
+          targetGlowY = 0;
+        });
+
+        function renderLoop() {
+          const lerpFactor = isHovered ? 0.12 : 0.08;
+
+          currentRotateX += (targetRotateX - currentRotateX) * lerpFactor;
+          currentRotateY += (targetRotateY - currentRotateY) * lerpFactor;
+          currentScale += (targetScale - currentScale) * lerpFactor;
+          currentGlowX += (targetGlowX - currentGlowX) * lerpFactor;
+          currentGlowY += (targetGlowY - currentGlowY) * lerpFactor;
+          currentPctX += (targetPctX - currentPctX) * lerpFactor;
+          currentPctY += (targetPctY - currentPctY) * lerpFactor;
+
+          // Gentle ambient float when idle
+          let idleFloatY = 0;
+          if (!isHovered) {
+            idleTick += 0.035;
+            idleFloatY = Math.sin(idleTick) * 6;
+          }
+
+          wrapper.style.transform = `perspective(1200px) rotateX(${currentRotateX.toFixed(2)}deg) rotateY(${currentRotateY.toFixed(2)}deg) translateY(${idleFloatY.toFixed(2)}px) scale3d(${currentScale.toFixed(3)}, ${currentScale.toFixed(3)}, ${currentScale.toFixed(3)})`;
+
+          if (glow) {
+            glow.style.transform = `translate3d(${currentGlowX.toFixed(2)}px, ${(currentGlowY + idleFloatY * 0.5).toFixed(2)}px, 0)`;
+          }
+
+          if (reflection && isHovered) {
+            reflection.style.background = `radial-gradient(circle 220px at ${currentPctX.toFixed(1)}% ${currentPctY.toFixed(1)}%, rgba(255, 255, 255, 0.45) 0%, rgba(56, 189, 248, 0.28) 35%, transparent 70%)`;
+          }
+
+          if (logo) {
+            const shadowX = (-currentRotateY * 0.9).toFixed(1);
+            const shadowY = (currentRotateX * 0.9 + 12).toFixed(1);
+            const glowBlur = isHovered ? '32px' : '22px';
+            const glowAlpha = isHovered ? '0.75' : '0.5';
+            logo.style.filter = `drop-shadow(${shadowX}px ${shadowY}px ${glowBlur} rgba(0, 160, 255, ${glowAlpha})) drop-shadow(0 0 45px rgba(0, 114, 245, 0.35))`;
+          }
+
+          requestAnimationFrame(renderLoop);
+        }
+
+        requestAnimationFrame(renderLoop);
+      })();
     });
   </script>
 </body>

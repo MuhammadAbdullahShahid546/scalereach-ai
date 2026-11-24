@@ -4121,22 +4121,64 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: none !important;
 }
 
+/* ==========================================================================
+   SCALEREACH HERO INTERACTIVE VISUAL (VERCEL-STYLE CURSOR TRACKING)
+   ========================================================================== */
+.scalereach-hero-interactive-zone,
 .scalereach-hero-logo-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2.5rem auto 3.5rem auto;
+  margin: 1.8rem auto 3.2rem auto;
   position: relative;
   z-index: 2;
+  width: 100%;
+  max-width: 540px;
+  min-height: 340px;
+  perspective: 1200px;
   background: transparent !important;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
+  cursor: pointer;
+  user-select: none;
 }
 
-.hero-scalereach-raw-logo {
-  width: 320px;
+/* Atmospheric caustic glow behind the logo that smoothly tracks the cursor */
+.hero-logo-cursor-glow {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 180, 255, 0.42) 0%, rgba(0, 114, 245, 0.22) 42%, rgba(121, 40, 202, 0.12) 65%, transparent 75%);
+  filter: blur(52px);
+  pointer-events: none;
+  opacity: 0.7;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 0.5s ease;
+  will-change: transform, opacity;
+  z-index: 1;
+}
+
+/* 3D tilt wrapper containing the logo and specular reflection */
+.hero-logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 340px;
   max-width: 88vw;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 2;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Clean transparent ScaleReach logo */
+.hero-scalereach-raw-logo {
+  width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
@@ -4146,30 +4188,33 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   box-shadow: none !important;
   outline: none !important;
   mix-blend-mode: screen;
-  animation: heroLogoFloatPulse 5s ease-in-out infinite alternate;
-  will-change: transform, filter;
-  cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  pointer-events: none;
+  filter: drop-shadow(0 0 20px rgba(0, 140, 255, 0.55)) drop-shadow(0 0 45px rgba(0, 114, 245, 0.3));
+  transition: filter 0.25s ease;
+  will-change: filter, transform;
 }
 
-@keyframes heroLogoFloatPulse {
-  0% {
-    transform: translateY(0px) scale(1);
-    filter: drop-shadow(0 0 16px rgba(0, 114, 245, 0.45)) drop-shadow(0 0 35px rgba(0, 114, 245, 0.2));
-  }
-  50% {
-    transform: translateY(-8px) scale(1.02);
-    filter: drop-shadow(0 0 26px rgba(0, 140, 255, 0.65)) drop-shadow(0 0 55px rgba(0, 114, 245, 0.35));
-  }
-  100% {
-    transform: translateY(2px) scale(0.99);
-    filter: drop-shadow(0 0 18px rgba(0, 114, 245, 0.45)) drop-shadow(0 0 38px rgba(0, 114, 245, 0.2));
-  }
+/* Specular glare / sheen highlight tracking the cursor across the logo surface */
+.hero-logo-light-reflection {
+  position: absolute;
+  inset: -15px;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  border-radius: 24px;
+  background: radial-gradient(circle 220px at 50% 50%, rgba(255, 255, 255, 0.45) 0%, rgba(56, 189, 248, 0.25) 35%, transparent 70%);
+  transition: opacity 0.35s ease;
+  z-index: 3;
 }
 
-.hero-scalereach-raw-logo:hover {
-  transform: translateY(-10px) scale(1.05) !important;
-  filter: drop-shadow(0 0 35px rgba(0, 160, 255, 0.85)) drop-shadow(0 0 75px rgba(0, 114, 245, 0.5)) !important;
+.scalereach-hero-interactive-zone:hover .hero-logo-light-reflection,
+.scalereach-hero-logo-box:hover .hero-logo-light-reflection {
+  opacity: 1;
+}
+
+.scalereach-hero-interactive-zone:hover .hero-logo-cursor-glow,
+.scalereach-hero-logo-box:hover .hero-logo-cursor-glow {
+  opacity: 0.95;
 }
 
 .footer-scalereach-logo-img {
