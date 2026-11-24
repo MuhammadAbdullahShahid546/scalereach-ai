@@ -4123,14 +4123,25 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   -webkit-text-fill-color: transparent;
 }
 
+/* Right Column: 3 Interactive Options Group (Aligned Right) */
+.vercel-hero-right-col {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-self: end;
+  z-index: 3;
+}
+
 /* Vercel 3 Stacked Interactive Headings / Hover Accordion */
 .vercel-hero-options-group {
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
-  margin-top: 1.75rem;
+  margin-top: 0;
   width: 100%;
-  max-width: 530px;
+  max-width: 440px;
 }
 
 .vercel-option-item {
@@ -4302,6 +4313,13 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   }
   .vercel-hero-spacer-col {
     display: none !important;
+  }
+  .vercel-hero-right-col {
+    max-width: 100%;
+    align-items: flex-start;
+    justify-self: center;
+    width: 100%;
+    margin-top: 0.5rem;
   }
   .vercel-hero-text-centerleft {
     align-items: center;

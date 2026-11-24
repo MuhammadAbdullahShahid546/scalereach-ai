@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261124_hoveraccordion_v18">
+  <link rel="stylesheet" href="styles.css?v=20261124_rightoptions_v19">
 </head>
 <body class="dashboard-body">
 
@@ -80,27 +80,6 @@
               <h1 class="vercel-hero-heading-centerleft">
                 Your complete platform<br><span class="v-gradient-text">for viral clips.</span>
               </h1>
-
-              <!-- 3 Interactive Options (Vercel Style Hover Accordion) -->
-              <div class="vercel-hero-options-group" id="vercelHeroOptionsGroup">
-                <!-- Option 1: For clipping agent -->
-                <div class="vercel-option-item active" id="optClippingAgent" data-index="0" title="Click or hover to explore clipping agent">
-                  <span class="vercel-opt-title">For clipping agent</span>
-                  <span class="vercel-opt-desc">to autonomously turn long videos into viral 9:16 vertical shorts, with Hormozi karaoke captions, smart face-detection framing, and 100% in-browser processing with zero subscription fees. <span class="vercel-inline-cta" id="inlineLaunchCta">Launch Agent &rarr;</span></span>
-                </div>
-
-                <!-- Option 2: About us -->
-                <div class="vercel-option-item" id="optAboutUs" data-index="1" title="Click or hover to learn about founder & vision">
-                  <span class="vercel-opt-title">About us</span>
-                  <span class="vercel-opt-desc">&mdash; Founded and created by <strong class="vercel-founder-name">Muhammad Abdullah Shahid</strong>. The core idea is to liberate creators from expensive clipping SaaS tools by delivering high-retention video AI directly in your browser with complete privacy.</span>
-                </div>
-
-                <!-- Option 3: Project -->
-                <div class="vercel-option-item" id="optProject" data-index="2" title="Click or hover to view projects">
-                  <span class="vercel-opt-title">Project</span>
-                  <span class="vercel-opt-desc">&mdash; Developer-grade video repurposing platform featuring live waveform scrubbing and batch rendering. Also explore our other live project: <a href="https://ajjez.pages.dev/" target="_blank" rel="noopener noreferrer" class="vercel-external-link" onclick="event.stopPropagation()">ajjez.pages.dev &nearr;</a></span>
-                </div>
-              </div>
             </div>
 
             <!-- Column 2 (Center): ScaleReach Official Clean Interactive Logo (Exact Center) -->
@@ -116,8 +95,28 @@
               </div>
             </div>
 
-            <!-- Column 3 (Right): Visual Balance Column (keeps logo in exact 50% dead center) -->
-            <div class="vercel-hero-spacer-col" aria-hidden="true"></div>
+            <!-- Column 3 (Right): 3 Interactive Hover Options (Vercel Style, Starts Collapsed) -->
+            <div class="vercel-hero-right-col">
+              <div class="vercel-hero-options-group" id="vercelHeroOptionsGroup">
+                <!-- Option 1: For clipping agent (2 lines max, no Launch Agent button) -->
+                <div class="vercel-option-item" id="optClippingAgent" data-index="0" title="Hover to explore clipping agent">
+                  <span class="vercel-opt-title">For clipping agent</span>
+                  <span class="vercel-opt-desc">to turn long videos into viral 9:16 shorts with Hormozi captions in 1 click.</span>
+                </div>
+
+                <!-- Option 2: About us (Founder & Idea, 2 lines max) -->
+                <div class="vercel-option-item" id="optAboutUs" data-index="1" title="Hover to learn about founder & idea">
+                  <span class="vercel-opt-title">About us</span>
+                  <span class="vercel-opt-desc">&mdash; Founded by <strong class="vercel-founder-name">Muhammad Abdullah Shahid</strong> to make AI clipping 100% free and in-browser.</span>
+                </div>
+
+                <!-- Option 3: Project (ScaleReach & ajjez.pages.dev link, 2 lines max) -->
+                <div class="vercel-option-item" id="optProject" data-index="2" title="Hover to view projects">
+                  <span class="vercel-opt-title">Project</span>
+                  <span class="vercel-opt-desc">&mdash; Developer-grade AI clipping engine. Also check our other project: <a href="https://ajjez.pages.dev/" target="_blank" rel="noopener noreferrer" class="vercel-external-link" onclick="event.stopPropagation()">ajjez.pages.dev &nearr;</a></span>
+                </div>
+              </div>
+            </div>
 
           </div>
 
@@ -1290,18 +1289,22 @@
       if (heroVisual) heroVisual.addEventListener('click', navigateToConfigureScreen);
 
       // ======================================================================
-      // 3 INTERACTIVE OPTIONS (VERCEL STYLE HOVER ACCORDION)
+      // 3 INTERACTIVE OPTIONS (VERCEL STYLE HOVER ACCORDION - RIGHT SIDE)
       // ======================================================================
       const vercelOptionItems = document.querySelectorAll('.vercel-option-item');
+      const vercelOptionsGroup = document.getElementById('vercelHeroOptionsGroup');
+
+      function clearVercelActiveOptions() {
+        vercelOptionItems.forEach(item => item.classList.remove('active'));
+      }
 
       function setVercelActiveOption(el) {
-        if (!el) return;
-        vercelOptionItems.forEach(item => item.classList.remove('active'));
-        el.classList.add('active');
+        clearVercelActiveOptions();
+        if (el) el.classList.add('active');
       }
 
       vercelOptionItems.forEach(item => {
-        // Cursor hover activates the option and displays its 3-4 line description
+        // Cursor hover activates the option and displays its crisp 2-line description
         item.addEventListener('mouseenter', () => {
           setVercelActiveOption(item);
         });
@@ -1311,7 +1314,7 @@
           // Allow external link to ajjez.pages.dev to open without interference
           if (e.target.closest('.vercel-external-link')) return;
 
-          if (item.id === 'optClippingAgent' || e.target.closest('#inlineLaunchCta')) {
+          if (item.id === 'optClippingAgent') {
             navigateToConfigureScreen();
             return;
           }
@@ -1320,11 +1323,10 @@
         });
       });
 
-      const inlineLaunchCta = document.getElementById('inlineLaunchCta');
-      if (inlineLaunchCta) {
-        inlineLaunchCta.addEventListener('click', (e) => {
-          e.stopPropagation();
-          navigateToConfigureScreen();
+      // When cursor leaves the options block, collapse all back to single lines
+      if (vercelOptionsGroup) {
+        vercelOptionsGroup.addEventListener('mouseleave', () => {
+          clearVercelActiveOptions();
         });
       }
 
