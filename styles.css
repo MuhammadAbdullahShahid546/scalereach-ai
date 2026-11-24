@@ -4163,13 +4163,10 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   letter-spacing: -0.3px;
 }
 
-.vercel-option-item:hover .vercel-opt-title {
-  color: #FFFFFF;
-}
-
+.vercel-option-item:hover .vercel-opt-title,
 .vercel-option-item.active .vercel-opt-title {
-  color: #FFFFFF;
-  font-weight: 600;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
 }
 
 .vercel-opt-desc {
@@ -4182,8 +4179,9 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   letter-spacing: -0.2px;
 }
 
+.vercel-option-item:hover .vercel-opt-desc,
 .vercel-option-item.active .vercel-opt-desc {
-  display: inline;
+  display: inline !important;
   animation: vercelOptFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
