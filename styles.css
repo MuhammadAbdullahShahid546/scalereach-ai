@@ -4175,27 +4175,29 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .mindset-brand-highlight {
   font-style: italic;
   font-family: 'Playfair Display', Georgia, serif, system-ui;
-  color: #4ADE80;
-  text-shadow: 0 0 24px rgba(74, 222, 128, 0.45);
-  font-weight: 600;
+  background: linear-gradient(135deg, #0072F5 0%, #38BDF8 60%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(0, 114, 245, 0.45));
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .mindset-subtitle {
   font-size: clamp(0.88rem, 1.1vw, 1rem);
-  color: #A3A3A3;
+  color: #94A3B8;
   max-width: 680px;
   margin: 0 auto;
   line-height: 1.55;
 }
 
-/* Big Mindset Glassmorphic Feature Card (Green Matrix Aesthetic) */
+/* Big Mindset Glassmorphic Feature Card (White, Blue & Black Combo) */
 .mindset-feature-card {
-  background: radial-gradient(circle at 85% 15%, rgba(16, 185, 129, 0.09) 0%, rgba(5, 15, 10, 0.9) 65%), #030805;
-  border: 1px solid rgba(74, 222, 128, 0.22);
+  background: radial-gradient(circle at 85% 15%, rgba(0, 114, 245, 0.12) 0%, rgba(6, 8, 14, 0.95) 60%), #000000;
+  border: 1px solid rgba(0, 114, 245, 0.28);
   border-radius: 24px;
   padding: 3rem 3.5rem;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(16, 185, 129, 0.12);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 114, 245, 0.16);
   display: grid;
   grid-template-columns: 240px 1fr;
   gap: 3.5rem;
@@ -4207,8 +4209,8 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 .mindset-feature-card:hover {
-  border-color: rgba(74, 222, 128, 0.35);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 65px rgba(16, 185, 129, 0.18);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 65px rgba(0, 114, 245, 0.25);
 }
 
 /* Subtle tech grid background in card */
@@ -4217,11 +4219,11 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(74, 222, 128, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74, 222, 128, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(0, 114, 245, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 114, 245, 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* Left Column: Founder Photo & Details */
@@ -4240,8 +4242,8 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   height: 220px;
   border-radius: 20px;
   overflow: hidden;
-  border: 2px solid #22C55E;
-  box-shadow: 0 0 25px rgba(34, 197, 94, 0.35);
+  border: 2px solid #0072F5;
+  box-shadow: 0 0 28px rgba(0, 114, 245, 0.45), 0 0 50px rgba(56, 189, 248, 0.2);
 }
 
 .mindset-founder-photo {
@@ -4257,15 +4259,16 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(5, 15, 10, 0.88);
-  border: 1px solid rgba(74, 222, 128, 0.45);
+  background: rgba(4, 7, 14, 0.92);
+  border: 1px solid rgba(0, 114, 245, 0.5);
   border-radius: 9999px;
   padding: 0.22rem 0.75rem;
   font-size: 0.7rem;
   font-weight: 700;
-  color: #4ADE80;
+  color: #38BDF8;
   letter-spacing: 0.03em;
   backdrop-filter: blur(8px);
+  box-shadow: 0 0 12px rgba(0, 114, 245, 0.3);
   white-space: nowrap;
 }
 
@@ -4281,14 +4284,14 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .mindset-founder-role {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #4ADE80;
+  color: #38BDF8;
   margin-bottom: 0.35rem;
 }
 
 .mindset-founder-tagline {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #86EFAC;
+  color: #93C5FD;
   letter-spacing: 0.1em;
   font-family: 'Geist Mono', monospace, sans-serif;
 }
@@ -4310,7 +4313,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .mindset-desc-p1 {
   font-size: 0.95rem;
-  color: #D1D5DB;
+  color: #E2E8F0;
   line-height: 1.65;
   margin-bottom: 0.95rem;
 }
@@ -4321,14 +4324,15 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .mindset-desc-p2 {
   font-size: 0.92rem;
-  color: #9CA3AF;
+  color: #94A3B8;
   line-height: 1.6;
   margin-bottom: 1.85rem;
 }
 
 .mindset-desc-p2 em {
-  color: #86EFAC;
+  color: #38BDF8;
   font-style: italic;
+  font-weight: 500;
 }
 
 /* 3 Stat Metrics */
@@ -4339,8 +4343,8 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 .mindset-metric-box {
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(74, 222, 128, 0.22);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 1.1rem 1.15rem;
   text-align: left;
@@ -4348,8 +4352,9 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 .mindset-metric-box:hover {
-  border-color: rgba(74, 222, 128, 0.45);
-  background: rgba(0, 0, 0, 0.6);
+  border-color: rgba(0, 114, 245, 0.55);
+  background: rgba(0, 114, 245, 0.08);
+  box-shadow: 0 0 25px rgba(0, 114, 245, 0.22);
   transform: translateY(-2px);
 }
 
@@ -4357,7 +4362,8 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   font-family: 'Geist Mono', monospace;
   font-size: 1.65rem;
   font-weight: 800;
-  color: #4ADE80;
+  color: #38BDF8;
+  text-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
   margin-bottom: 0.35rem;
   letter-spacing: -0.02em;
 }
@@ -4365,7 +4371,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .mindset-metric-label {
   font-size: 0.68rem;
   font-weight: 700;
-  color: #9CA3AF;
+  color: #94A3B8;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   line-height: 1.3;
