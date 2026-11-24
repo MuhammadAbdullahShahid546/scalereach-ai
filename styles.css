@@ -4028,33 +4028,39 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Vercel Centered Minimalist Hero Container */
+/* ==========================================================================
+   VERCEL SPLIT HERO: TEXT ON CENTER-LEFT, 3D LOGO IN CENTER
+   ========================================================================== */
+.vercel-hero-split-layout,
 .vercel-hero-centered-layout {
   position: relative;
-  max-width: 960px;
+  max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2.2rem 1.5rem 1.8rem 1.5rem;
-  display: flex;
-  flex-direction: column;
+  padding: 3.5rem 2rem 3rem 2rem;
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
   align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
   z-index: 2;
-  min-height: calc(100vh - 110px);
-  justify-content: center;
+  min-height: calc(100vh - 120px);
 }
 
 /* Center-Left Text Block (Heading and Subhead aligned center-left) */
 .vercel-hero-text-centerleft {
   width: 100%;
-  max-width: 820px;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  margin: 0 auto 0.75rem auto;
+  margin: 0;
+  z-index: 3;
 }
 
 .vercel-hero-text-centerleft .vercel-badge-pill {
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
   align-self: flex-start;
 }
 
@@ -4099,12 +4105,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .vercel-hero-heading-centerleft,
 .vercel-hero-heading-centered {
-  font-size: clamp(2.75rem, 5.5vw, 4.2rem) !important;
+  font-size: clamp(2.8rem, 4.6vw, 4.2rem) !important;
   line-height: 1.05 !important;
   font-weight: 800 !important;
   color: #FFFFFF !important;
-  letter-spacing: -2.4px !important;
-  margin-bottom: 0.9rem !important;
+  letter-spacing: -2.2px !important;
+  margin-bottom: 1.1rem !important;
   text-align: left !important;
 }
 
@@ -4116,28 +4122,74 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .vercel-hero-subhead-centerleft,
 .vercel-hero-subhead-centered {
-  font-size: clamp(0.98rem, 1.5vw, 1.15rem) !important;
-  line-height: 1.62 !important;
+  font-size: clamp(1rem, 1.3vw, 1.16rem) !important;
+  line-height: 1.65 !important;
   color: #888888 !important;
-  margin: 0 0 1rem 0 !important;
-  max-width: 680px !important;
+  margin: 0 0 1.8rem 0 !important;
+  max-width: 540px !important;
   font-weight: 400 !important;
   text-align: left !important;
 }
 
-/* Centered Geometric Prism with Soft Multi-Color Mesh Gradient Glow */
-.vercel-hero-visual-centered {
-  position: relative;
-  width: 220px;
-  height: 180px;
+/* Call to Action Button in Left Column */
+.hero-cta-actions-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 2.5rem auto;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.vercel-mesh-gradient-glow {
-  display: none !important;
+.hero-primary-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+  text-decoration: none;
+}
+
+.hero-primary-cta-btn:hover {
+  background: #EAEAEA !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive adjustments for mobile/tablet */
+@media (max-width: 960px) {
+  .vercel-hero-split-layout,
+  .vercel-hero-centered-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    min-height: auto;
+  }
+  .vercel-hero-text-centerleft {
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .vercel-hero-text-centerleft .vercel-badge-pill {
+    align-self: center;
+  }
+  .vercel-hero-heading-centerleft {
+    text-align: center !important;
+  }
+  .vercel-hero-subhead-centerleft {
+    text-align: center !important;
+    margin: 0 auto 1.5rem auto !important;
+  }
+  .hero-cta-actions-row {
+    justify-content: center;
+  }
 }
 
 /* ==========================================================================
@@ -4148,12 +4200,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem auto 1.5rem auto;
+  margin: 0 auto;
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 540px;
-  min-height: 320px;
+  max-width: 520px;
+  min-height: 380px;
   perspective: 1200px;
   background: transparent !important;
   border: none !important;

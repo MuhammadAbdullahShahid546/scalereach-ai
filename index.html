@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261124_centerleft_v13">
+  <link rel="stylesheet" href="styles.css?v=20261124_split_v14">
 </head>
 <body class="dashboard-body">
 
@@ -64,9 +64,10 @@
              ================================================================== -->
         <section class="view-screen active" id="homeDashboardView">
 
-          <div class="home-hero-center vercel-hero-container vercel-hero-centered-layout">
+          <!-- Hero Section: Text on Center-Left, 3D Interactive Logo in Center -->
+          <div class="vercel-hero-split-layout">
             
-            <!-- Hero Text Content (Center-Left Aligned) -->
+            <!-- Left Column: Center-Left Text & CTA -->
             <div class="vercel-hero-text-centerleft">
               <!-- Vercel Badge Pill -->
               <div class="vercel-badge-pill" onclick="if(window.app){window.app.showConfigureView();}">
@@ -75,18 +76,26 @@
                 <span class="v-badge-arrow">&rarr;</span>
               </div>
 
-              <!-- Main Vercel Heading (Center-Left) -->
-              <h1 class="vercel-hero-heading vercel-hero-heading-centerleft">
+              <!-- Main Heading (Center-Left) -->
+              <h1 class="vercel-hero-heading-centerleft">
                 Your complete platform<br><span class="v-gradient-text">for viral clips.</span>
               </h1>
 
               <!-- Subtitle (Center-Left) -->
-              <p class="vercel-hero-subhead vercel-hero-subhead-centerleft">
+              <p class="vercel-hero-subhead-centerleft">
                 ScaleReach provides the developer-grade AI engine to turn long videos into high-retention 9:16 shorts with Hormozi &amp; MrBeast karaoke captions. Completely free, in-browser, no servers.
               </p>
+
+              <!-- CTA Button -->
+              <div class="hero-cta-actions-row">
+                <button class="hero-primary-cta-btn" id="heroLeftCtaBtn">
+                  <span>Get clips in 1 click</span>
+                  <span class="v-badge-arrow">&rarr;</span>
+                </button>
+              </div>
             </div>
 
-            <!-- ScaleReach Official Clean Interactive Logo (Vercel-style 3D Cursor Tracking) -->
+            <!-- Right Column: ScaleReach Official Clean Interactive Logo (Vercel-style 3D Cursor Tracking) -->
             <div class="scalereach-hero-interactive-zone" id="heroInteractiveVisual" title="Click to launch ScaleReach AI">
               <!-- Dynamic caustic glow tracking cursor -->
               <div class="hero-logo-cursor-glow" id="heroLogoCursorGlow"></div>
@@ -98,6 +107,8 @@
                 <div class="hero-logo-light-reflection" id="heroLogoReflection"></div>
               </div>
             </div>
+
+          </div>
 
 
             <!-- Hidden compatibility container for DOM IDs required by app.js (Zero visual clutter) -->
@@ -1192,6 +1203,9 @@
       // Click on interactive hero visual leads directly to Screen 2
       const heroVisual = document.getElementById('heroInteractiveVisual');
       if (heroVisual) heroVisual.addEventListener('click', navigateToConfigureScreen);
+
+      const heroLeftBtn = document.getElementById('heroLeftCtaBtn');
+      if (heroLeftBtn) heroLeftBtn.addEventListener('click', navigateToConfigureScreen);
 
       // ======================================================================
       // VERCEL-STYLE 3D CURSOR INTERACTIVE TRACKING (PHYSICS ENGINE)
