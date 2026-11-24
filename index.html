@@ -23,9 +23,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261123_heroanim_v10">
+  <link rel="stylesheet" href="styles.css?v=20261124_cursor_v11">
 </head>
 <body class="dashboard-body">
+
+  <!-- Interactive Cursor Follower Glow & Spotlight Animation -->
+  <div class="cursor-glow-spotlight" id="cursorSpotlight" aria-hidden="true"></div>
+  <div class="cursor-dot-follower" id="cursorDotFollower" aria-hidden="true"></div>
 
   <div class="app-layout">
     
@@ -1177,6 +1181,97 @@
 
       const navCta = document.getElementById('navPrimaryCtaBtn');
       if (navCta) navCta.addEventListener('click', navigateToConfigureScreen);
+
+      // Interactive Cursor Follower Glow & 3D Magnetic Logo Tracking
+      (() => {
+        const spotlight = document.getElementById('cursorSpotlight');
+        const dot = document.getElementById('cursorDotFollower');
+        const heroLogo = document.querySelector('.hero-scalereach-raw-logo');
+
+        if (!spotlight && !dot) return;
+
+        let mouseX = -1000;
+        let mouseY = -1000;
+        let spotX = -1000;
+        let spotY = -1000;
+        let dotX = -1000;
+        let dotY = -1000;
+        let isMouseInWindow = false;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          if (!isMouseInWindow) {
+            isMouseInWindow = true;
+            if (spotlight) spotlight.style.opacity = '1';
+            if (dot) dot.style.opacity = '1';
+          }
+        }, { passive: true });
+
+        document.addEventListener('mouseleave', () => {
+          isMouseInWindow = false;
+          if (spotlight) spotlight.style.opacity = '0';
+          if (dot) dot.style.opacity = '0';
+        });
+
+        // Hover effect for interactive elements
+        document.addEventListener('mouseover', (e) => {
+          const target = e.target;
+          if (target && target.closest('button, a, input, select, .hero-scalereach-raw-logo, [role="button"], .v-btn-pill-primary, .right-down-get-clips-btn')) {
+            if (dot) dot.classList.add('cursor-hover-active');
+          }
+        }, { passive: true });
+
+        document.addEventListener('mouseout', (e) => {
+          const target = e.target;
+          if (target && target.closest('button, a, input, select, .hero-scalereach-raw-logo, [role="button"], .v-btn-pill-primary, .right-down-get-clips-btn')) {
+            if (dot) dot.classList.remove('cursor-hover-active');
+          }
+        }, { passive: true });
+
+        // 3D Parallax tilt on hero logo
+        if (heroLogo) {
+          window.addEventListener('mousemove', (e) => {
+            const rect = heroLogo.getBoundingClientRect();
+            const logoCenterX = rect.left + rect.width / 2;
+            const logoCenterY = rect.top + rect.height / 2;
+            const distX = e.clientX - logoCenterX;
+            const distY = e.clientY - logoCenterY;
+            const dist = Math.hypot(distX, distY);
+
+            if (dist < 450) {
+              const tiltX = (distY / 22).toFixed(2);
+              const tiltY = (-distX / 22).toFixed(2);
+              heroLogo.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.04, 1.04, 1.04)`;
+            } else {
+              heroLogo.style.transform = '';
+            }
+          }, { passive: true });
+
+          heroLogo.addEventListener('mouseleave', () => {
+            heroLogo.style.transform = '';
+          });
+        }
+
+        // Fluid animation frame loop with smooth lerp
+        function animateCursor() {
+          spotX += (mouseX - spotX) * 0.12;
+          spotY += (mouseY - spotY) * 0.12;
+          dotX += (mouseX - dotX) * 0.32;
+          dotY += (mouseY - dotY) * 0.32;
+
+          if (spotlight) {
+            spotlight.style.transform = `translate3d(${spotX}px, ${spotY}px, 0)`;
+          }
+          if (dot) {
+            dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+          }
+
+          requestAnimationFrame(animateCursor);
+        }
+
+        requestAnimationFrame(animateCursor);
+      })();
     });
   </script>
 </body>
