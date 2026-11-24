@@ -4042,7 +4042,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: clamp(2.5rem, 4.5vw, 5.5rem);
   z-index: 2;
   min-height: calc(100vh - 120px);
 }
@@ -4123,7 +4123,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   -webkit-text-fill-color: transparent;
 }
 
-/* Right Column: 3 Interactive Options Group (Aligned Right) */
+/* Right Column: 3 Interactive Options Group (Aligned Further Right) */
 .vercel-hero-right-col {
   width: 100%;
   max-width: 440px;
@@ -4131,6 +4131,8 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   flex-direction: column;
   align-items: flex-start;
   justify-self: end;
+  margin-left: auto;
+  padding-left: clamp(1.5rem, 3.5vw, 4.5rem);
   z-index: 3;
 }
 
@@ -4138,7 +4140,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 .vercel-hero-options-group {
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
+  gap: 1.25rem;
   margin-top: 0;
   width: 100%;
   max-width: 440px;
@@ -4146,9 +4148,9 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .vercel-option-item {
   display: block;
-  font-size: clamp(1.05rem, 1.3vw, 1.22rem);
-  line-height: 1.55;
-  color: #888888;
+  font-size: clamp(1.12rem, 1.38vw, 1.3rem);
+  line-height: 1.5;
+  color: #FFFFFF;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: text;
@@ -4157,24 +4159,26 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .vercel-opt-title {
   display: inline;
-  font-weight: 500;
-  color: #888888;
-  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 600;
+  color: #FFFFFF !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: -0.3px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .vercel-option-item:hover .vercel-opt-title,
 .vercel-option-item.active .vercel-opt-title {
   color: #FFFFFF !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.65), 0 0 35px rgba(0, 114, 245, 0.35);
 }
 
 .vercel-opt-desc {
   display: none;
-  color: #A1A1A1;
+  color: #D4D4D8 !important;
   font-weight: 400;
   margin-left: 0.35rem;
-  font-size: 0.96em;
+  font-size: 0.95em;
   line-height: 1.55;
   letter-spacing: -0.2px;
 }
