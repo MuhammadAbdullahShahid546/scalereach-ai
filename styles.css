@@ -5033,3 +5033,345 @@ body.dashboard-body,
 .demo-card-info p {
   color: #888888 !important;
 }
+
+
+/* ============================================================
+   LIVE ANIMATED CAPTION PREVIEWS - Continuous Karaoke Loop
+   ============================================================ */
+
+/* Hide floating button on Configure & Studio views */
+#configureView:not(.hidden) ~ #floatingRightDownBtn,
+#workspaceView:not(.hidden) ~ #floatingRightDownBtn {
+  display: none !important;
+}
+
+/* Base live caption box */
+.live-cap-box {
+  position: relative;
+  overflow: hidden;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #111111 !important;
+}
+
+.live-cap-words {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  font-weight: 800;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.lcw {
+  display: inline-block;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  transition: none;
+}
+
+/* ---- 1. CLASSIC: Yellow karaoke highlight on active word ---- */
+.live-cap-classic {
+  background: #0a0a0a !important;
+}
+.live-cap-classic .lcw {
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+  opacity: 1;
+}
+.live-cap-classic .lcw-highlight {
+  color: #FFE600;
+  text-shadow: 0 0 10px rgba(255,230,0,0.6);
+}
+.live-cap-classic .lcw-1 {
+  animation: classic-word1 2.4s ease infinite;
+}
+.live-cap-classic .lcw-2 {
+  animation: classic-word2 2.4s ease infinite;
+}
+.live-cap-classic .lcw-3 {
+  animation: classic-word3 2.4s ease infinite;
+}
+
+@keyframes classic-word1 {
+  0%, 10% { color: #FFE600; text-shadow: 0 0 12px rgba(255,230,0,0.7); transform: scale(1.1); }
+  25%, 100% { color: #FFFFFF; text-shadow: 0 2px 6px rgba(0,0,0,0.9); transform: scale(1); }
+}
+@keyframes classic-word2 {
+  0%, 25% { color: #FFFFFF; text-shadow: 0 2px 6px rgba(0,0,0,0.9); transform: scale(1); }
+  33%, 50% { color: #FFE600; text-shadow: 0 0 12px rgba(255,230,0,0.7); transform: scale(1.1); }
+  60%, 100% { color: #FFFFFF; text-shadow: 0 2px 6px rgba(0,0,0,0.9); transform: scale(1); }
+}
+@keyframes classic-word3 {
+  0%, 55% { color: #FFFFFF; text-shadow: 0 2px 6px rgba(0,0,0,0.9); transform: scale(1); }
+  65%, 85% { color: #FFE600; text-shadow: 0 0 12px rgba(255,230,0,0.7); transform: scale(1.12); }
+  95%, 100% { color: #FFFFFF; text-shadow: 0 2px 6px rgba(0,0,0,0.9); transform: scale(1); }
+}
+
+/* ---- 2. CYAN SLIDE: Cyan slide-in with blur ---- */
+.live-cap-cyan {
+  background: linear-gradient(135deg, #0a1628, #0d1f3c) !important;
+}
+.live-cap-cyan .lcw {
+  color: #38BDF8;
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-shadow: 0 0 8px rgba(56,189,248,0.5);
+  opacity: 0;
+}
+.live-cap-cyan .lcw-1 {
+  animation: cyanSlide1 2.6s ease-out infinite;
+}
+.live-cap-cyan .lcw-2 {
+  animation: cyanSlide2 2.6s ease-out infinite;
+}
+.live-cap-cyan .lcw-3 {
+  animation: cyanSlide3 2.6s ease-out infinite;
+}
+
+@keyframes cyanSlide1 {
+  0% { opacity: 0; transform: translateX(-18px); filter: blur(4px); }
+  10%, 55% { opacity: 1; transform: translateX(0); filter: blur(0); }
+  70%, 100% { opacity: 0; transform: translateX(10px); filter: blur(2px); }
+}
+@keyframes cyanSlide2 {
+  0%, 12% { opacity: 0; transform: translateX(-18px); filter: blur(4px); }
+  22%, 60% { opacity: 1; transform: translateX(0); filter: blur(0); }
+  75%, 100% { opacity: 0; transform: translateX(10px); filter: blur(2px); }
+}
+@keyframes cyanSlide3 {
+  0%, 24% { opacity: 0; transform: translateX(-18px); filter: blur(4px); }
+  34%, 68% { opacity: 1; transform: translateX(0); filter: blur(0); }
+  82%, 100% { opacity: 0; transform: translateX(10px); filter: blur(2px); }
+}
+
+/* ---- 3. ITALIC RED: Bold italic red punch/scale ---- */
+.live-cap-italicred {
+  background: #0c0808 !important;
+}
+.live-cap-italicred .lcw {
+  color: #EF4444;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 0.85rem;
+  text-shadow: 0 0 6px rgba(239,68,68,0.4);
+  opacity: 1;
+}
+.live-cap-italicred .lcw-1 {
+  animation: italicRedPop1 2.2s ease infinite;
+}
+.live-cap-italicred .lcw-2 {
+  animation: italicRedPop2 2.2s ease infinite;
+}
+.live-cap-italicred .lcw-3 {
+  animation: italicRedPop3 2.2s ease infinite;
+}
+
+@keyframes italicRedPop1 {
+  0%, 5% { transform: scale(1); color: #FFFFFF; }
+  12%, 28% { transform: scale(1.2); color: #EF4444; text-shadow: 0 0 14px rgba(239,68,68,0.8); }
+  38%, 100% { transform: scale(1); color: #FFFFFF; }
+}
+@keyframes italicRedPop2 {
+  0%, 30% { transform: scale(1); color: #FFFFFF; }
+  38%, 55% { transform: scale(1.2); color: #EF4444; text-shadow: 0 0 14px rgba(239,68,68,0.8); }
+  65%, 100% { transform: scale(1); color: #FFFFFF; }
+}
+@keyframes italicRedPop3 {
+  0%, 58% { transform: scale(1); color: #FFFFFF; }
+  66%, 85% { transform: scale(1.25); color: #EF4444; text-shadow: 0 0 18px rgba(239,68,68,0.9); }
+  95%, 100% { transform: scale(1); color: #FFFFFF; }
+}
+
+/* ---- 4. CREAM BLUE: Blue fill wipe across words on cream ---- */
+.live-cap-creamblue {
+  background: linear-gradient(145deg, #101828, #0c1a30) !important;
+}
+.live-cap-creamblue .lcw {
+  color: #93C5FD;
+  font-weight: 800;
+  font-size: 0.82rem;
+  opacity: 0.5;
+}
+.live-cap-creamblue .lcw-1 {
+  animation: creamBlue1 2.8s ease infinite;
+}
+.live-cap-creamblue .lcw-2 {
+  animation: creamBlue2 2.8s ease infinite;
+}
+.live-cap-creamblue .lcw-3 {
+  animation: creamBlue3 2.8s ease infinite;
+}
+
+@keyframes creamBlue1 {
+  0%, 5% { opacity: 0.4; color: #93C5FD; transform: scale(1); }
+  12%, 30% { opacity: 1; color: #38BDF8; transform: scale(1.1); text-shadow: 0 0 10px rgba(56,189,248,0.6); }
+  42%, 100% { opacity: 0.4; color: #93C5FD; transform: scale(1); }
+}
+@keyframes creamBlue2 {
+  0%, 32% { opacity: 0.4; color: #93C5FD; transform: scale(1); }
+  40%, 58% { opacity: 1; color: #38BDF8; transform: scale(1.1); text-shadow: 0 0 10px rgba(56,189,248,0.6); }
+  68%, 100% { opacity: 0.4; color: #93C5FD; transform: scale(1); }
+}
+@keyframes creamBlue3 {
+  0%, 60% { opacity: 0.4; color: #93C5FD; transform: scale(1); }
+  68%, 88% { opacity: 1; color: #38BDF8; transform: scale(1.12); text-shadow: 0 0 10px rgba(56,189,248,0.6); }
+  96%, 100% { opacity: 0.4; color: #93C5FD; transform: scale(1); }
+}
+
+/* ---- 5. RED SPIN: 3D Y-axis flip with red accent ---- */
+.live-cap-redspin {
+  background: #0d0808 !important;
+  perspective: 200px;
+}
+.live-cap-redspin .lcw {
+  color: #FCA5A5;
+  font-weight: 900;
+  font-size: 0.82rem;
+  opacity: 1;
+}
+.live-cap-redspin .lcw-1 {
+  animation: redSpin1 2.5s ease infinite;
+}
+.live-cap-redspin .lcw-2 {
+  animation: redSpin2 2.5s ease infinite;
+}
+.live-cap-redspin .lcw-3 {
+  animation: redSpin3 2.5s ease infinite;
+}
+
+@keyframes redSpin1 {
+  0% { transform: rotateY(0deg); color: #FCA5A5; }
+  12%, 25% { transform: rotateY(360deg); color: #EF4444; text-shadow: 0 0 10px rgba(239,68,68,0.6); }
+  35%, 100% { transform: rotateY(0deg); color: #FCA5A5; }
+}
+@keyframes redSpin2 {
+  0%, 28% { transform: rotateY(0deg); color: #FCA5A5; }
+  38%, 52% { transform: rotateY(360deg); color: #EF4444; text-shadow: 0 0 10px rgba(239,68,68,0.6); }
+  62%, 100% { transform: rotateY(0deg); color: #FCA5A5; }
+}
+@keyframes redSpin3 {
+  0%, 55% { transform: rotateY(0deg); color: #FCA5A5; }
+  65%, 82% { transform: rotateY(360deg); color: #EF4444; text-shadow: 0 0 14px rgba(239,68,68,0.8); }
+  92%, 100% { transform: rotateY(0deg); color: #FCA5A5; }
+}
+
+/* ---- 6. VIOLET: Pulsing violet neon glow ---- */
+.live-cap-violet {
+  background: linear-gradient(135deg, #120a1e, #1a0d2e) !important;
+}
+.live-cap-violet .lcw {
+  color: #C084FC;
+  font-weight: 800;
+  font-size: 0.82rem;
+  opacity: 0.6;
+}
+.live-cap-violet .lcw-1 {
+  animation: violetPulse1 2.4s ease infinite;
+}
+.live-cap-violet .lcw-2 {
+  animation: violetPulse2 2.4s ease infinite;
+}
+.live-cap-violet .lcw-3 {
+  animation: violetPulse3 2.4s ease infinite;
+}
+
+@keyframes violetPulse1 {
+  0%, 5% { opacity: 0.4; color: #C084FC; transform: scale(1); }
+  14%, 30% { opacity: 1; color: #A855F7; transform: scale(1.15); text-shadow: 0 0 16px rgba(168,85,247,0.8), 0 0 30px rgba(168,85,247,0.4); }
+  42%, 100% { opacity: 0.4; color: #C084FC; transform: scale(1); }
+}
+@keyframes violetPulse2 {
+  0%, 32% { opacity: 0.4; color: #C084FC; transform: scale(1); }
+  40%, 58% { opacity: 1; color: #A855F7; transform: scale(1.15); text-shadow: 0 0 16px rgba(168,85,247,0.8), 0 0 30px rgba(168,85,247,0.4); }
+  68%, 100% { opacity: 0.4; color: #C084FC; transform: scale(1); }
+}
+@keyframes violetPulse3 {
+  0%, 60% { opacity: 0.4; color: #C084FC; transform: scale(1); }
+  68%, 88% { opacity: 1; color: #A855F7; transform: scale(1.18); text-shadow: 0 0 20px rgba(168,85,247,0.9), 0 0 36px rgba(168,85,247,0.5); }
+  96%, 100% { opacity: 0.4; color: #C084FC; transform: scale(1); }
+}
+
+/* ---- 7. BLUE GLOW: Electric blue specular backlight ---- */
+.live-cap-blueglow {
+  background: #060c18 !important;
+}
+.live-cap-blueglow .lcw {
+  color: #60A5FA;
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-transform: lowercase;
+  opacity: 0.7;
+}
+.live-cap-blueglow .lcw-upper {
+  text-transform: uppercase !important;
+  font-size: 0.88rem;
+}
+.live-cap-blueglow .lcw-1 {
+  animation: blueGlow1 2.6s ease infinite;
+}
+.live-cap-blueglow .lcw-2 {
+  animation: blueGlow2 2.6s ease infinite;
+}
+.live-cap-blueglow .lcw-3 {
+  animation: blueGlow3 2.6s ease infinite;
+}
+
+@keyframes blueGlow1 {
+  0%, 8% { opacity: 0.5; color: #60A5FA; }
+  16%, 32% { opacity: 1; color: #0072F5; text-shadow: 0 0 14px rgba(0,114,245,0.9), 0 0 28px rgba(0,114,245,0.4); transform: scale(1.1); }
+  44%, 100% { opacity: 0.5; color: #60A5FA; transform: scale(1); }
+}
+@keyframes blueGlow2 {
+  0%, 34% { opacity: 0.5; color: #60A5FA; }
+  42%, 60% { opacity: 1; color: #0072F5; text-shadow: 0 0 14px rgba(0,114,245,0.9), 0 0 28px rgba(0,114,245,0.4); transform: scale(1.1); }
+  70%, 100% { opacity: 0.5; color: #60A5FA; transform: scale(1); }
+}
+@keyframes blueGlow3 {
+  0%, 62% { opacity: 0.5; color: #60A5FA; }
+  70%, 90% { opacity: 1; color: #0072F5; text-shadow: 0 0 18px rgba(0,114,245,1), 0 0 36px rgba(0,114,245,0.5); transform: scale(1.14); }
+  98%, 100% { opacity: 0.5; color: #60A5FA; transform: scale(1); }
+}
+
+/* ---- 8. TOXIC GREEN: Neon green glitch karaoke ---- */
+.live-cap-toxicgreen {
+  background: #040d04 !important;
+}
+.live-cap-toxicgreen .lcw {
+  color: #4ADE80;
+  font-weight: 900;
+  font-size: 0.82rem;
+  opacity: 0.6;
+}
+.live-cap-toxicgreen .lcw-1 {
+  animation: toxicGreen1 2.2s ease infinite;
+}
+.live-cap-toxicgreen .lcw-2 {
+  animation: toxicGreen2 2.2s ease infinite;
+}
+.live-cap-toxicgreen .lcw-3 {
+  animation: toxicGreen3 2.2s ease infinite;
+}
+
+@keyframes toxicGreen1 {
+  0%, 5% { opacity: 0.4; color: #4ADE80; transform: scale(1) translateY(0); }
+  12%, 28% { opacity: 1; color: #22C55E; transform: scale(1.15) translateY(-2px); text-shadow: 0 0 12px rgba(34,197,94,0.9), 0 0 24px rgba(74,222,128,0.4); }
+  38%, 100% { opacity: 0.4; color: #4ADE80; transform: scale(1) translateY(0); }
+}
+@keyframes toxicGreen2 {
+  0%, 30% { opacity: 0.4; color: #4ADE80; transform: scale(1) translateY(0); }
+  38%, 56% { opacity: 1; color: #22C55E; transform: scale(1.15) translateY(-2px); text-shadow: 0 0 12px rgba(34,197,94,0.9), 0 0 24px rgba(74,222,128,0.4); }
+  66%, 100% { opacity: 0.4; color: #4ADE80; transform: scale(1) translateY(0); }
+}
+@keyframes toxicGreen3 {
+  0%, 58% { opacity: 0.4; color: #4ADE80; transform: scale(1) translateY(0); }
+  66%, 86% { opacity: 1; color: #22C55E; transform: scale(1.18) translateY(-2px); text-shadow: 0 0 16px rgba(34,197,94,1), 0 0 30px rgba(74,222,128,0.5); }
+  94%, 100% { opacity: 0.4; color: #4ADE80; transform: scale(1) translateY(0); }
+}

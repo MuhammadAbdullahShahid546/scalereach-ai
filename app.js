@@ -4003,6 +4003,11 @@ class ScaleReachFullApp {
     if (this.crumbCurrent) this.crumbCurrent.textContent = 'Videos';
     if (this.sideNavHome) this.sideNavHome.classList.add('active');
     if (this.sideNavAllClips) this.sideNavAllClips.classList.remove('active');
+
+    // Show floating button on home screen
+    const floatBtn = document.getElementById('floatingRightDownBtn');
+    if (floatBtn) floatBtn.style.display = '';
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -4010,6 +4015,10 @@ class ScaleReachFullApp {
     this.homeDashboardView.classList.add('hidden');
     this.studioView.classList.add('hidden');
     this.configureView.classList.remove('hidden');
+
+    // Hide floating button on configure screen
+    const floatBtn = document.getElementById('floatingRightDownBtn');
+    if (floatBtn) floatBtn.style.display = 'none';
 
     if (this.crumbCurrent) this.crumbCurrent.textContent = 'Configure';
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -4019,6 +4028,10 @@ class ScaleReachFullApp {
     this.homeDashboardView.classList.add('hidden');
     this.configureView.classList.add('hidden');
     this.studioView.classList.remove('hidden');
+
+    // Hide floating button on studio screen
+    const floatBtn = document.getElementById('floatingRightDownBtn');
+    if (floatBtn) floatBtn.style.display = 'none';
 
     if (this.crumbCurrent) this.crumbCurrent.textContent = 'Studio & Export';
     if (this.sideNavHome) this.sideNavHome.classList.remove('active');
