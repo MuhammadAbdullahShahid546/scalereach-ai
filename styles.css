@@ -5040,9 +5040,13 @@ body.dashboard-body,
    ============================================================ */
 
 /* Hide floating button on Configure & Studio views */
-#configureView:not(.hidden) ~ #floatingRightDownBtn,
-#workspaceView:not(.hidden) ~ #floatingRightDownBtn {
+body:has(#configureView:not(.hidden)) .right-down-get-clips-btn,
+body:has(#studioView:not(.hidden)) .right-down-get-clips-btn,
+#configureView:not(.hidden) ~ .right-down-get-clips-btn,
+#studioView:not(.hidden) ~ .right-down-get-clips-btn {
   display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Base live caption box */

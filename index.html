@@ -1389,6 +1389,10 @@
 
       // Direct navigation to Screen 2 (Configure View / Video Input & Processing)
       const navigateToConfigureScreen = () => {
+        // Hide floating button immediately
+        const fb = document.getElementById('floatingRightDownBtn');
+        if (fb) fb.style.display = 'none';
+
         if (window.app && typeof window.app.showConfigureView === 'function') {
           window.app.showConfigureView();
         } else {
