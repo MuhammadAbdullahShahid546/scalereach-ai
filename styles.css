@@ -4029,39 +4029,42 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 }
 
 /* ==========================================================================
-   VERCEL SPLIT HERO: TEXT ON CENTER-LEFT, 3D LOGO IN CENTER
+   VERCEL SPLIT HERO: TEXT ON LEFT, 3D LOGO IN EXACT 50% CENTER
    ========================================================================== */
 .vercel-hero-split-layout,
 .vercel-hero-centered-layout {
   position: relative;
-  max-width: 1240px;
+  max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 3.5rem 2rem 3rem 2rem;
+  padding: 3rem 2.5rem 2rem 2.5rem;
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
+  justify-content: center;
+  gap: 2rem;
   z-index: 2;
   min-height: calc(100vh - 120px);
 }
 
-/* Center-Left Text Block (Heading and Subhead aligned center-left) */
+/* Left Column: Headline and Badge (Pushed to the left, compact refined size) */
 .vercel-hero-text-centerleft {
   width: 100%;
-  max-width: 640px;
+  max-width: 440px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  justify-self: start;
   margin: 0;
   z-index: 3;
 }
 
 .vercel-hero-text-centerleft .vercel-badge-pill {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
   align-self: flex-start;
+  padding: 0.32rem 0.9rem;
+  font-size: 0.76rem;
 }
 
 .vercel-badge-pill {
@@ -4071,11 +4074,11 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 9999px;
-  padding: 0.4rem 1.1rem;
-  font-size: 0.82rem;
+  padding: 0.32rem 0.9rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: #EDEDED !important;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
   backdrop-filter: blur(8px);
@@ -4089,7 +4092,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .v-badge-sparkle {
   color: #0072F5;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .v-badge-arrow {
@@ -4105,12 +4108,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
 
 .vercel-hero-heading-centerleft,
 .vercel-hero-heading-centered {
-  font-size: clamp(2.8rem, 4.6vw, 4.2rem) !important;
-  line-height: 1.05 !important;
+  font-size: clamp(1.9rem, 2.7vw, 2.55rem) !important;
+  line-height: 1.15 !important;
   font-weight: 800 !important;
   color: #FFFFFF !important;
-  letter-spacing: -2.2px !important;
-  margin-bottom: 1.1rem !important;
+  letter-spacing: -1.4px !important;
+  margin-bottom: 0 !important;
   text-align: left !important;
 }
 
@@ -4120,81 +4123,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   -webkit-text-fill-color: transparent;
 }
 
-.vercel-hero-subhead-centerleft,
-.vercel-hero-subhead-centered {
-  font-size: clamp(1rem, 1.3vw, 1.16rem) !important;
-  line-height: 1.65 !important;
-  color: #888888 !important;
-  margin: 0 0 1.8rem 0 !important;
-  max-width: 540px !important;
-  font-weight: 400 !important;
-  text-align: left !important;
-}
-
-/* Call to Action Button in Left Column */
-.hero-cta-actions-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.hero-primary-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: #FFFFFF !important;
-  color: #000000 !important;
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.75rem 1.6rem;
-  border-radius: 9999px;
-  border: 1px solid #FFFFFF;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-  text-decoration: none;
-}
-
-.hero-primary-cta-btn:hover {
-  background: #EAEAEA !important;
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-}
-
-/* Responsive adjustments for mobile/tablet */
-@media (max-width: 960px) {
-  .vercel-hero-split-layout,
-  .vercel-hero-centered-layout {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    min-height: auto;
-  }
-  .vercel-hero-text-centerleft {
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-  }
-  .vercel-hero-text-centerleft .vercel-badge-pill {
-    align-self: center;
-  }
-  .vercel-hero-heading-centerleft {
-    text-align: center !important;
-  }
-  .vercel-hero-subhead-centerleft {
-    text-align: center !important;
-    margin: 0 auto 1.5rem auto !important;
-  }
-  .hero-cta-actions-row {
-    justify-content: center;
-  }
-}
-
-/* ==========================================================================
-   SCALEREACH HERO INTERACTIVE VISUAL (VERCEL-STYLE CURSOR TRACKING)
-   ========================================================================== */
+/* Center Column: ScaleReach 3D Interactive Logo */
 .scalereach-hero-interactive-zone,
 .scalereach-hero-logo-box {
   display: flex;
@@ -4203,11 +4132,53 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 520px;
-  min-height: 380px;
+  width: 380px;
+  max-width: 88vw;
+  min-height: 360px;
   perspective: 1200px;
   background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Right Column: Equal Spacer Column guaranteeing 50% Dead Center Logo Alignment */
+.vercel-hero-spacer-col {
+  width: 100%;
+  max-width: 440px;
+  pointer-events: none;
+}
+
+/* Responsive adjustments for mobile/tablet */
+@media (max-width: 1024px) {
+  .vercel-hero-split-layout,
+  .vercel-hero-centered-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    min-height: auto;
+  }
+  .vercel-hero-spacer-col {
+    display: none !important;
+  }
+  .vercel-hero-text-centerleft {
+    align-items: center;
+    text-align: center;
+    max-width: 580px;
+    justify-self: center;
+  }
+  .vercel-hero-text-centerleft .vercel-badge-pill {
+    align-self: center;
+  }
+  .vercel-hero-heading-centerleft {
+    text-align: center !important;
+  }
+}
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
