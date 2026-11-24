@@ -4123,38 +4123,102 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
   -webkit-text-fill-color: transparent;
 }
 
-/* Vercel 3 Stacked Interactive Headings / Options */
+/* Vercel 3 Stacked Interactive Headings / Hover Accordion */
 .vercel-hero-options-group {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+  gap: 1.15rem;
+  margin-top: 1.75rem;
   width: 100%;
+  max-width: 530px;
 }
 
 .vercel-option-item {
-  display: inline-flex;
-  align-items: center;
-  font-size: clamp(1.2rem, 1.55vw, 1.42rem);
-  font-weight: 500;
+  display: block;
+  font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+  line-height: 1.55;
   color: #888888;
   cursor: pointer;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  user-select: none;
-  width: fit-content;
-  position: relative;
-  letter-spacing: -0.35px;
-  line-height: 1.25;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: text;
+  text-align: left;
 }
 
-.vercel-option-item:hover {
+.vercel-opt-title {
+  display: inline;
+  font-weight: 500;
+  color: #888888;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: -0.3px;
+}
+
+.vercel-option-item:hover .vercel-opt-title {
   color: #FFFFFF;
-  transform: translateX(4px);
 }
 
-.vercel-option-item.active {
+.vercel-option-item.active .vercel-opt-title {
   color: #FFFFFF;
   font-weight: 600;
+}
+
+.vercel-opt-desc {
+  display: none;
+  color: #A1A1A1;
+  font-weight: 400;
+  margin-left: 0.35rem;
+  font-size: 0.96em;
+  line-height: 1.55;
+  letter-spacing: -0.2px;
+}
+
+.vercel-option-item.active .vercel-opt-desc {
+  display: inline;
+  animation: vercelOptFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes vercelOptFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vercel-founder-name {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.vercel-inline-cta {
+  display: inline-block;
+  margin-left: 0.4rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.vercel-inline-cta:hover {
+  color: #00DFD8;
+}
+
+.vercel-external-link {
+  display: inline;
+  color: #0070F3;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vercel-external-link:hover {
+  color: #00DFD8;
 }
 
 /* Info Modals (About Us & Projects) */
@@ -4252,10 +4316,12 @@ input:checked + .toggle-slider:before { transform: translateX(20px); }
     text-align: center !important;
   }
   .vercel-hero-options-group {
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 100%;
   }
-  .vercel-option-item:hover {
-    transform: none;
+  .vercel-option-item {
+    text-align: left;
   }
 }
 

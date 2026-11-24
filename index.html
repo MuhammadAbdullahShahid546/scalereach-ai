@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261124_options_v17">
+  <link rel="stylesheet" href="styles.css?v=20261124_hoveraccordion_v18">
 </head>
 <body class="dashboard-body">
 
@@ -81,16 +81,24 @@
                 Your complete platform<br><span class="v-gradient-text">for viral clips.</span>
               </h1>
 
-              <!-- 3 Interactive Options (Vercel Style) -->
-              <div class="vercel-hero-options-group">
-                <div class="vercel-option-item active" id="optClippingAgent" title="Launch Clipping Engine">
-                  <span class="option-line-text">For clipping agent</span>
+              <!-- 3 Interactive Options (Vercel Style Hover Accordion) -->
+              <div class="vercel-hero-options-group" id="vercelHeroOptionsGroup">
+                <!-- Option 1: For clipping agent -->
+                <div class="vercel-option-item active" id="optClippingAgent" data-index="0" title="Click or hover to explore clipping agent">
+                  <span class="vercel-opt-title">For clipping agent</span>
+                  <span class="vercel-opt-desc">to autonomously turn long videos into viral 9:16 vertical shorts, with Hormozi karaoke captions, smart face-detection framing, and 100% in-browser processing with zero subscription fees. <span class="vercel-inline-cta" id="inlineLaunchCta">Launch Agent &rarr;</span></span>
                 </div>
-                <div class="vercel-option-item" id="optAboutUs" title="Learn About ScaleReach AI">
-                  <span class="option-line-text">About us</span>
+
+                <!-- Option 2: About us -->
+                <div class="vercel-option-item" id="optAboutUs" data-index="1" title="Click or hover to learn about founder & vision">
+                  <span class="vercel-opt-title">About us</span>
+                  <span class="vercel-opt-desc">&mdash; Founded and created by <strong class="vercel-founder-name">Muhammad Abdullah Shahid</strong>. The core idea is to liberate creators from expensive clipping SaaS tools by delivering high-retention video AI directly in your browser with complete privacy.</span>
                 </div>
-                <div class="vercel-option-item" id="optProject" title="View ScaleReach AI Projects">
-                  <span class="option-line-text">Project</span>
+
+                <!-- Option 3: Project -->
+                <div class="vercel-option-item" id="optProject" data-index="2" title="Click or hover to view projects">
+                  <span class="vercel-opt-title">Project</span>
+                  <span class="vercel-opt-desc">&mdash; Developer-grade video repurposing platform featuring live waveform scrubbing and batch rendering. Also explore our other live project: <a href="https://ajjez.pages.dev/" target="_blank" rel="noopener noreferrer" class="vercel-external-link" onclick="event.stopPropagation()">ajjez.pages.dev &nearr;</a></span>
                 </div>
               </div>
             </div>
@@ -1282,84 +1290,43 @@
       if (heroVisual) heroVisual.addEventListener('click', navigateToConfigureScreen);
 
       // ======================================================================
-      // 3 INTERACTIVE OPTIONS & MODAL HANDLERS (VERCEL STYLE)
+      // 3 INTERACTIVE OPTIONS (VERCEL STYLE HOVER ACCORDION)
       // ======================================================================
-      const optClipping = document.getElementById('optClippingAgent');
-      const optAbout = document.getElementById('optAboutUs');
-      const optProject = document.getElementById('optProject');
+      const vercelOptionItems = document.querySelectorAll('.vercel-option-item');
 
-      const aboutModal = document.getElementById('aboutUsModal');
-      const projModal = document.getElementById('projectsModal');
-
-      const closeAboutBtn = document.getElementById('closeAboutModalBtn');
-      const closeProjBtn = document.getElementById('closeProjectsModalBtn');
-
-      const aboutLaunchBtn = document.getElementById('aboutModalLaunchBtn');
-      const projLaunchBtn = document.getElementById('projectsModalLaunchBtn');
-
-      function setActiveOption(el) {
-        document.querySelectorAll('.vercel-option-item').forEach(item => item.classList.remove('active'));
-        if (el) el.classList.add('active');
+      function setVercelActiveOption(el) {
+        if (!el) return;
+        vercelOptionItems.forEach(item => item.classList.remove('active'));
+        el.classList.add('active');
       }
 
-      if (optClipping) {
-        optClipping.addEventListener('click', () => {
-          setActiveOption(optClipping);
-          navigateToConfigureScreen();
+      vercelOptionItems.forEach(item => {
+        // Cursor hover activates the option and displays its 3-4 line description
+        item.addEventListener('mouseenter', () => {
+          setVercelActiveOption(item);
         });
-      }
 
-      if (optAbout && aboutModal) {
-        optAbout.addEventListener('click', () => {
-          setActiveOption(optAbout);
-          aboutModal.classList.remove('hidden');
-        });
-      }
+        // Click handling
+        item.addEventListener('click', (e) => {
+          // Allow external link to ajjez.pages.dev to open without interference
+          if (e.target.closest('.vercel-external-link')) return;
 
-      if (optProject && projModal) {
-        optProject.addEventListener('click', () => {
-          setActiveOption(optProject);
-          projModal.classList.remove('hidden');
-        });
-      }
+          if (item.id === 'optClippingAgent' || e.target.closest('#inlineLaunchCta')) {
+            navigateToConfigureScreen();
+            return;
+          }
 
-      // Modal close and launch handlers
-      if (closeAboutBtn && aboutModal) {
-        closeAboutBtn.addEventListener('click', () => aboutModal.classList.add('hidden'));
-      }
-      if (aboutModal) {
-        aboutModal.addEventListener('click', (e) => {
-          if (e.target === aboutModal) aboutModal.classList.add('hidden');
+          setVercelActiveOption(item);
         });
-      }
-      if (aboutLaunchBtn) {
-        aboutLaunchBtn.addEventListener('click', () => {
-          if (aboutModal) aboutModal.classList.add('hidden');
-          navigateToConfigureScreen();
-        });
-      }
-
-      if (closeProjBtn && projModal) {
-        closeProjBtn.addEventListener('click', () => projModal.classList.add('hidden'));
-      }
-      if (projModal) {
-        projModal.addEventListener('click', (e) => {
-          if (e.target === projModal) projModal.classList.add('hidden');
-        });
-      }
-      if (projLaunchBtn) {
-        projLaunchBtn.addEventListener('click', () => {
-          if (projModal) projModal.classList.add('hidden');
-          navigateToConfigureScreen();
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          if (aboutModal) aboutModal.classList.add('hidden');
-          if (projModal) projModal.classList.add('hidden');
-        }
       });
+
+      const inlineLaunchCta = document.getElementById('inlineLaunchCta');
+      if (inlineLaunchCta) {
+        inlineLaunchCta.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigateToConfigureScreen();
+        });
+      }
 
       // ======================================================================
       // VERCEL-STYLE 3D CURSOR INTERACTIVE TRACKING (PHYSICS ENGINE)
